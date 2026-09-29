@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
+import * as FMC from '../src/capture.mjs';
 import * as FM from '../src/compiler.mjs';
 const host=readFileSync(new URL('../src/plugin.js',import.meta.url),'utf8');
 const node=()=>({id:'host:rectangle',name:'Rectangle',type:'RECTANGLE',visible:true,
@@ -12,7 +13,7 @@ function runtime(selected) {
   const messages=[];
   const figma={showUI(){},mixed:Symbol('mixed'),currentPage:{selection:[selected]},
     ui:{postMessage(message){messages.push(message);}}};
-  const context=vm.createContext({figma,FM,__html__:'',selected});
+  const context=vm.createContext({figma,FM,FMC,__html__:'',selected});
   vm.runInContext(host,context);
   return {context,figma,messages};
 }

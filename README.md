@@ -4,7 +4,7 @@
 
 FigmaMetal exports structured paths, paints, transforms and supported motion tracks into an owned scene format, then renders them with a Swift + Metal runtime. It does not route through Lottie, Rive, Skia, a browser, a screenshot tracer, or an image/video sequence.
 
-This is a working **v0.1 engineering prototype**, not a universal, pixel-perfect Figma player. Supported source features are translated deterministically. Unsupported features are reported; exports containing errors are blocked unless you explicitly allow an incomplete result.
+This is a working **v0.2 engineering prototype**, not a universal, pixel-perfect Figma player. Supported source features are translated deterministically. Unsupported features are reported; exports containing errors are blocked unless you explicitly allow an incomplete result.
 
 ```text
 Figma selection
@@ -14,6 +14,25 @@ Figma selection
                  └─ Native Metal paint / mask / compositing passes
                       └─ MTKView on macOS or iOS
 ```
+
+## Phase 2: live Figma validation
+
+84 tests passed on the M4 Pro: 36 exporter/capture, 29 Swift core, 14 actual Metal GPU, and 5 independent comparison-measurement tests. Metal API Validation was enabled. A 600 x 420 live Figma reference has mean RGB error 0.242/255; a 61-frame translation/opacity clip has at most 1 pixel of detected bounds difference. This is not pixel-perfect certification: the glyph-region mean error is 3.893/255, and edge antialiasing differs.
+
+```bash
+# Preview motion captured from the actual Figma API.
+swift run -c release figma-metal demo fixtures/live/motion.figmetal.json
+
+# Full independent comparison on the installed Mac checkout.
+./scripts/verify_live.sh
+open artifacts/phase2/index.html
+
+# Explicit-time native frame sequence (no video playback in the renderer).
+swift run -c release figma-metal frames fixtures/live/motion.figmetal.json \
+  --output artifacts/frames --fps 30 --frames 61
+```
+
+The downloadable **source-only ZIP** includes the capture/compiler/runtime, source JSONs, compiled scenes, tests and measurements. The original Figma PNG/MP4 and generated visual HTML report are retained in the Mac checkout, not included in that ZIP. Ordinary source/GPU tests and scene playback do not need the image/video oracles. Full visual comparison does; see [fixture instructions](fixtures/live/README.md).
 
 ## Run the native demo
 
@@ -54,7 +73,7 @@ swift run -c release figma-metal demo /path/to/scene.figmetal.json
 
 For a bounded A→B animation, select **two** same-size frames and choose the two-frame mode. The plugin orders them left-to-right, matches uniquely named sibling layers within their hierarchy, and reads the first matching Smart Animate connection's duration/easing when available. Without such a connection, duration is explicitly taken from the panel. It does **not** recreate general navigation or a prototype's complete state machine.
 
-The **Create A/B test frames in this file** button creates a small test pair in the current Figma file. It changes the file only when pressed. Geometry export itself does not flatten original text: it outlines temporary copies and removes them afterward.
+The **Create A/B test frames in this file** button creates a small test pair in the current Figma file. It changes the file only when pressed. Geometry export does not flatten original text. It prefers directly exposed glyph paths and uses temporary copies for stroke outlines and text fallback. Temporary copies are removed afterward.
 
 The manifest contains a local development identifier. If Figma requests a Figma-assigned plugin ID, create a development plugin with **New Plugin**, copy its assigned `id` into this manifest, and re-import it. An assigned ID is required before publishing; this build does not publish anything.
 
@@ -64,17 +83,17 @@ Rebuild the plugin after changing its source:
 (cd plugin && npm run build && npm run check && npm test)
 ```
 
-**Live-host caveat:** automated exporter tests use Figma-shaped snapshots. The development plugin's live Figma API integration and fidelity on a user-authored Figma animation still need a real-file test. In particular, Motion API availability and pivot behavior must be checked in the actual host. See [compatibility](docs/COMPATIBILITY.md).
+**Live-host evidence:** the shared capture implementation has run inside live Figma against two newly authored conformance frames. Its source paths/transforms match the checked-in fixtures. Native output was compared with an independent Figma PNG and all 61 frames of a Figma-rendered video. The desktop plugin panel/import interaction, production files, physical iPhones, and rotation/scale pivot parity remain separate validation gates. See [verification](docs/VERIFICATION.md).
 
-## What v0.1 implements
+## What v0.2 implements
 
 | Area | Implemented behavior |
 |---|---|
 | Vector geometry | Native SVG-style M/L/H/V/C/Q/S/T/Z path parsing, Bézier subdivision, concave fills, nonzero/even-odd holes, bounded self-intersection handling. Geometry is cached as GPU vertex buffers. |
 | Paints | Solid colors and linear/radial gradients, including alpha. Multiple ordinary paints retain paint indices for animation. |
 | Composition | Nested affine transforms, frame clipping, native offscreen group-opacity isolation, premultiplied-alpha blending, transparent output, up to 4× MSAA by default. |
-| Motion | Explicit-time evaluation of translation, rotation, scale, opacity and solid-color tracks. Linear, hold and cubic Bézier easing; SET/OFFSET/SCALE track composition; once/loop/ping-pong. |
-| Text / strokes | Plugin adapter outlines temporary source copies into vector geometry. Text is not editable or intrinsically accessible in the player. |
+| Motion | Explicit-time evaluation of translation, rotation, scale, opacity and solid-color tracks. Linear, hold and cubic Bézier easing; SET/OFFSET/SCALE runtime track composition; source translation currently requires a leading SET track. Once/loop/ping-pong. |
+| Text / strokes | Direct uniform glyph geometry where exposed; temporary-copy fallback and stroke outlining. Text is not editable or intrinsically accessible in the player. |
 | Two-frame export | Restricted, same-topology transitions for translation, opacity and solid colors; rejects unsupported geometry changes rather than guessing a crossfade. |
 | Integration | Swift Package libraries, SwiftUI Metal view, native macOS preview, source validator, GPU PNG export, benchmark, regression tests. |
 
@@ -117,10 +136,12 @@ Sources/FigmaMetal/            Metal renderer and SwiftUI host
 Sources/FigmaMetal/Shaders/    Actual Metal Shading Language source
 Sources/FigmaMetalDemo/        Native preview and command-line tools
 plugin/src/compiler.mjs        Pure, testable source-data compiler
-plugin/src/plugin.js           Figma host adapter
+plugin/src/capture.mjs         Shared live source capture, capability guards, cleanup
+plugin/src/plugin.js           Figma panel adapter
 plugin/manifest.json           Import this into Figma Desktop
 Tests/                        CPU and real-GPU regression tests
 examples/                     Synthetic demo and compiler contract fixture
+fixtures/live/                Live Figma source snapshots and compiled scenes
 scripts/                      Verification and fixture utilities
 ```
 

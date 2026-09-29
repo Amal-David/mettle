@@ -19,6 +19,8 @@ jobs:
           npm test
           cd ..
           node scripts/generate_contract_fixture.mjs
+          node scripts/verify_source_fingerprints.mjs
+          node scripts/compile_live.mjs
       - name: Swift tests including hardware Metal availability
         run: swift test
       - name: Native contract validation

@@ -72,8 +72,8 @@ function drawings(geometry,paints,size,transform,role,report,node) {
   if (paints==='MIXED') { report('error','MIXED_PAINTS',node,'Mixed/rich-text paints require region-level export.');return []; }
   const out=[];const ps=paths(geometry,report,node);
   if (!ps.length && (paints??[]).some(p=>p.visible!==false)) report('error','MISSING_GEOMETRY',node,`No ${role} geometry was exposed.`);
-  // Figma paint index 0 is topmost; native draw calls must run bottom-to-top.
-  for(let index=(paints??[]).length-1;index>=0;index--) {
+  // Live Figma conformance confirms the API paint array is bottom-to-top.
+  for(let index=0;index<(paints??[]).length;index++) {
     const p=paint(paints[index],report,node);
     if(p && ps.length) out.push({paths:ps,paint:p,transform,size,paintIndex:index,role});
   }
@@ -111,7 +111,14 @@ function motionBindings(source,report,options) {
       const needed=field.includes(':')?4:1;
       if(base.length!==needed) throw new Error('Field/value dimension mismatch');
       if((field==='scaleX'||field==='scaleY')&&Math.abs(base[0])<1e-12) throw new Error('Cannot normalize scale from zero');
-      result.push({field,base,tracks});
+      // Figma Motion translation values are OFFSETS, unlike A→B absolute positions.
+      // Live frame 2:9: static x=24, source keyframe=24, Figma renders x=48.
+      // A resolved binding.baseValue may already include the static position.
+      // Use a zero anchor for SET-led offset tracks; preserve raw sourceMotion.
+      if(field==='translationX'||field==='translationY') {
+        if(tracks[0]?.operation!=='set') throw new Error('Translation needs a leading SET track; OFFSET/SCALE-only source bases are not yet validated.');
+        result.push({field,base:[0],tracks});
+      } else result.push({field,base,tracks});
     } catch(error) { report('error','MOTION_BINDING',source,`${field}: ${error.message}`); }
   }
   for(const [name,binding] of Object.entries(data)) {
@@ -187,7 +194,7 @@ export function compileScene(snapshot,options={}) {
   if(timelineIDs.size>1) report('error','MULTIPLE_TIMELINES',snapshot,'Independent/nested timelines need explicit coordination; this player exports a single timeline.');
   if(snapshot.reactions?.length) report('warning','PROTOTYPE_EVENTS_NOT_EXPORTED',snapshot,'Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip.');
   const scene={name:snapshot.name??'Figma scene',width:snapshot.width,height:snapshot.height,duration,loop:options.loop??'once',root};
-  return {format:'figma-metal',version:1,scenes:[scene],diagnostics,sourceMotion,exporter:{name:'FigmaMetal',version:'0.1.0',source:'Figma Plugin API'}};
+  return {format:'figma-metal',version:1,scenes:[scene],diagnostics,sourceMotion,exporter:{name:'FigmaMetal',version:'0.2.0',source:'Figma Plugin API'}};
 }
 
 /** Strict, bounded Smart-Animate-style A→B compiler: stable geometry, translation,

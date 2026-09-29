@@ -65,7 +65,7 @@ struct DemoView: View {
                     Text("Source geometry → native Metal. No animation middleware.").foregroundStyle(.secondary)
                 }
                 Spacer()
-                Text("v0.1 • experimental").font(.system(size:11,design:.monospaced)).foregroundStyle(.secondary)
+                Text("v0.2 • experimental").font(.system(size:11,design:.monospaced)).foregroundStyle(.secondary)
             }
             FigmaMetalView(renderer:renderer,time:playing ? nil : position,isPlaying:playing,onError:{ failure = String(describing:$0) })
                 .aspectRatio(renderer.scene.width/renderer.scene.height,contentMode:.fit)
@@ -103,10 +103,11 @@ func run() throws {
     let args = try Arguments()
     if ["help","--help","-h"].contains(args.verb) {
         print("""
-        FigmaMetal v0.1
+        FigmaMetal v0.2
           figma-metal demo [scene.figmetal.json]
           figma-metal validate scene.figmetal.json [--allow-partial]
           figma-metal render [scene.figmetal.json] --output frame.png [--time 0] [--width 720] [--height 480]
+          figma-metal frames scene.figmetal.json --output frames [--fps 30] [--frames 60]
           figma-metal bench [scene.figmetal.json] [--frames 120] [--width 720] [--height 480]
         Add --scene N to select a scene. Input defaults to the bundled synthetic demo.
         """); return
@@ -145,6 +146,27 @@ func run() throws {
         let output = URL(fileURLWithPath:args.options["--output"] ?? "frame.png")
         try writePNG(data,width:width,height:height,url:output)
         print("Rendered \(output.path) on \(renderer.device.name); \(renderer.lastStatistics.drawCalls) draw calls; GPU \(renderer.lastStatistics.gpuMilliseconds) ms")
+    case "frames":
+        let fps = try args.double("--fps",30), start = try args.double("--time",0)
+        guard fps >= 1 && fps <= 120, start >= 0 else { throw SceneError.invalid("FPS must be 1...120 and start time nonnegative") }
+        let count = try args.int("--frames",max(1,Int(ceil(max(0,scene.duration-start)*fps))))
+        guard count >= 1 && count <= 3600 else { throw SceneError.invalid("Sequence must contain 1...3600 frames") }
+        let directory = URL(fileURLWithPath:args.options["--output"] ?? "frames",isDirectory:true)
+        try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
+        var entries: [[String:Any]] = []
+        for index in 0..<count {
+            let time = start+Double(index)/fps
+            let filename = String(format:"%04d.png",index)
+            let pixels = try renderer.pixels(width:width,height:height,time:time)
+            try writePNG(pixels,width:width,height:height,url:directory.appendingPathComponent(filename))
+            entries.append(["index":index,"time":time,"file":filename])
+        }
+        let manifest: [String:Any] = ["fps":fps,"width":width,"height":height,"frames":entries,
+            "device":renderer.device.name,"curveTolerance":0.05,"sampleCount":renderer.sampleCount,
+            "note":"Native Metal sequence, evaluated at index/fps. No reference images are loaded by the renderer."]
+        try JSONSerialization.data(withJSONObject:manifest,options:[.prettyPrinted,.sortedKeys])
+            .write(to:directory.appendingPathComponent("manifest.json"),options:.atomic)
+        print("Rendered \(count) native frames at \(fps) fps into \(directory.path)")
     case "bench":
         let count = try args.int("--frames",120)
         guard count >= 1 && count <= 10000 else { throw SceneError.invalid("Frames must be 1...10000") }

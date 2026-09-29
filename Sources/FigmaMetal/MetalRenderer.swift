@@ -79,7 +79,7 @@ public final class MetalRenderer {
     private let surfaceBudget = 256*1024*1024
 
     public init(scene: Scene, device: MTLDevice? = MTLCreateSystemDefaultDevice(),
-                sampleCount requestedSamples: Int = 4, curveTolerance: Double = 0.2) throws {
+                sampleCount requestedSamples: Int = 4, curveTolerance: Double = 0.05) throws {
         try SceneDocument(scenes:[scene]).validate()
         guard let device, let queue = device.makeCommandQueue() else { throw SceneError.gpu("No Metal device/queue") }
         self.device = device; self.queue = queue; self.scene = scene

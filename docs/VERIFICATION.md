@@ -1,70 +1,58 @@
-# Verification record — 2026-09-29
+# FigmaMetal v0.2 verification
 
-This record distinguishes actual execution from implementation claims. No real Figma design has been used as a visual ground truth yet.
+Verified on 2026-09-29 on the authorized Apple M4 Pro Mac. This phase validates a small live-Figma corpus, not arbitrary production designs or every supported feature.
 
-## Executed checks
+## What ran
 
-| Check | Environment | Result |
-|---|---|---|
-| Core Swift regression suite | Apple M4 Pro, macOS 27, Xcode / Swift 6.4 | 29 passed, 0 failed |
-| Actual Metal GPU pixel suite | Same physical Mac and GPU | 9 passed, 0 failed; not simulated or skipped |
-| JavaScript compiler / host-adapter suite | Node 22.22.3 on the Mac and Node 22.16 on Linux | 25 passed, 0 failed (21 compiler + 4 mocked host tests) |
-| Native iOS library compilation | Xcode iOS simulator SDK, arm64, iOS 16 deployment target | Passed; compilation only, not an iPhone runtime test |
-| Release Metal image rendering | M4 Pro; bundled synthetic scene at 0, 1 and 2 seconds | PNGs produced; frame at 1 second visually inspected |
-| Compiler → decoder contract | Synthetic source snapshots → JavaScript compiler → Swift loader / tessellator | Validated: 2 nodes, 2 animation bindings, 6 mesh vertices, 1-second clip; start/end PNGs also rendered on the M4 Pro |
-| Portable Swift core | Swift 6.2.1, Linux | 29 core tests passed; Metal unavailable and explicitly skipped on Linux |
+| Check | Result |
+|---|---|
+| Exporter and capture tests, including strict proxy and live fixtures | 36 passed |
+| Swift core tests | 29 passed |
+| Actual Metal GPU pixel/replay tests | 14 passed |
+| Independent comparison-measurement tests | 5 passed |
+| Total automated tests | **84 passed** |
+| Metal API Validation | Enabled; test run passed without validation errors |
+| Shared capture running in live Figma | 13 source-node geometry/transform fingerprints matched; stroke outline matched |
+| Capture cleanup | All three temporary stroke nodes removed; top-level source nodes unchanged |
+| arm64 iOS simulator library compilation | Passed; physical-device execution not performed |
+| Independent visual regression gates | All six passed |
 
-The native GPU suite checks device availability, BGRA channel order and transparent background, overlapping group opacity, child clip masks, a genuinely transparent even-odd hole, timeline-driven geometry translation, linear-gradient endpoints, transformed clipping, and repeat-frame stability.
+The source lab is FigmaMetal — Native Fidelity Lab, file `flxINzepb5BgRcRfGj0Tl5`. Static frame `1:9` is 600 x 420. Motion frame `2:8` is 320 x 180 and owns a two-second timeline. These frames were created for this project inside real Figma, rather than taken from a production file. The actual shared capture logic ran through the live Figma connector; this does not certify the desktop plugin panel/import workflow.
 
-The compiler suite covers source transforms, diagnostics, motion tracks, easing, topology restrictions, source-preserving transitions and unsupported-feature rejection. Four host tests execute the adapter inside a mocked Figma environment; they are **not** evidence of a live Figma integration test.
+## Independent reference comparison
 
-## Actual warmed Metal benchmark
+Figma supplied the reference PNG and 30-fps H264 MP4. The native renderer consumed only source JSON geometry, paints and tracks, never either reference. All 61 video frames, including the two-second endpoint, were compared at matching times.
 
-Source: `artifacts/benchmark.json` generated on the connected Mac using:
-
-```bash
-swift run -c release --skip-build figma-metal bench --frames 180
-```
-
-| Measurement | Observed value |
+| Measurement | Observed |
 |---|---:|
-| GPU | Apple M4 Pro |
-| Target | 720 × 480 pixels |
-| Multisampling | 4× MSAA |
-| Prepared vertices | 2,232 |
-| Draw calls, final frame | 26 |
-| Surface count, final frame | 3 |
-| Timed frames | 180 |
-| GPU median | 0.872 ms |
-| GPU 95th percentile | 1.355 ms |
-| CPU + submission + GPU wait median | 1.528 ms |
-| CPU + submission + GPU wait 95th percentile | 2.127 ms |
+| Static mean RGB absolute error, 0-255 levels | 0.241776 |
+| Static mean alpha absolute error | 0.012631 |
+| Static pixels with any channel error greater than 8 levels | 0.585714% |
+| Interior probe maximum channel error | 1 level |
+| Glyph-region mean RGB error | 3.893303 levels |
+| Worst motion-frame mean RGB error | 1.130365 levels |
+| Maximum detected motion bounding-box difference | 1 pixel |
 
-The benchmark uses five warm-up frames, followed by synchronous offscreen rendering. It does not measure compositor scheduling, display presentation, an actual Figma export, iPhone performance, power consumption or battery life. CPU wall time excludes scene loading, initial tessellation and renderer/shader initialization. Cold-start GPU renders were materially slower: the first separate PNG render reported approximately 44.5 ms GPU time. Do not advertise the warmed number as startup latency or derive an on-screen FPS claim from it.
+Large flat backgrounds lower the global mean. Glyphs and curved edges have larger differences; the glyph region has 14.69% of pixels above an 8-level maximum-channel difference. This is **not pixel-perfect parity**. H264 is lossy, so video pixel errors include compression differences. Position is checked separately. Gates are engineering regression thresholds, not a general fidelity certification.
 
-## Reproduce
+Verified cases: nonidentity linear/radial gradients, ordinary paint stacking, even-odd holes, group opacity with overlapping children, rounded frame clipping, rotated outside strokes, uniform Ag8 glyph paths, smoothed corners, and translation/opacity motion. The run did not test production typography breadth, Display P3, all stroke configurations, springs, source rotation/scale pivots, animation interruptions, nested independent timelines, or prototype interactions.
 
-```bash
-bash scripts/verify.sh
-```
+## Performance
 
-For iOS simulator compilation with the tested Swift toolchain:
+A warmed synchronous offscreen benchmark of the live static 600 x 420 scene used 4x MSAA, 17 draws, 8,208 vertices and five surfaces. Across 600 measured frames on the M4 Pro, GPU median was **0.378 ms**, GPU P95 **0.496 ms**, wall-time median **0.564 ms**, and wall-time P95 **0.679 ms**. This is not startup latency, an iPhone benchmark, or a sustained on-screen frame-rate claim. The previous synthetic benchmark used different artwork; no speedup comparison is implied.
+
+## Reproduce and inspect
+
+On the installed Mac checkout:
 
 ```bash
-swift build --build-system native --scratch-path .build-ios \
-  --target FigmaMetal --triple arm64-apple-ios16.0-simulator \
-  --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" --jobs 4
+cd ~/experiments/figma-metal
+./scripts/verify_live.sh
+open artifacts/phase2/index.html
 ```
 
-The tested Swift 6.4 toolchain warns that `--build-system native` is deprecated. This flag was used for the cross-target build; normal macOS tests used the default build system. The package's declared older deployment targets were not separately exercised on older operating systems.
+The HTML report contains reference/native images, amplified differences, per-region measurements and representative motion pairs. `artifacts/phase2/comparison.json` records every frame. `full-verification.log`, `ios-build.log` and `benchmark.json` retain run evidence. The script counts actual reference frames rather than assuming a video excludes its endpoint. It fails if independent references are missing; it never substitutes native renders as goldens.
 
-Mac test/build logs and rendered images are retained under the installed project's `artifacts/` directory. They are ignored by Git. The source distribution includes the benchmark values in `docs/benchmark-m4-pro.json`; generated binaries and large build caches are not distributed.
+The downloadable source-only ZIP excludes the reference PNG/MP4 and generated visual report. They are retained in the Mac checkout; source snapshots, compiled scenes, test code and this measured report are included in the ZIP. See `fixtures/live/README.md`. Source/GPU tests and native playback work without the reference images.
 
-## Remaining validation gates
-
-1. Import the development plugin in a live Figma host and export its A/B test pair. Confirm the actual API shapes, text/stroke outlining and cleanup, and the assigned-plugin-ID requirements.
-2. Export a real user-authored animation. Compare native frames to Figma captures at fixed timestamps and identical sizes, including pivots, gradients, clipping and group transparency. No pixel-perfect parity claim is justified before this.
-3. Run the runtime on physical iPhones. Measure cold start, sustained frame time, memory and energy, including scene resize and app backgrounding.
-4. Extend the bounded compatibility matrix only with source fixtures and regression tests. Hosted CI configuration is included but has not been run on GitHub.
-
-A compiling project and passing synthetic tests demonstrate a working native foundation; they do not establish universal Figma compatibility.
+The iOS cross-target build used `--build-system native`; Swift 6.4 reports that flag as deprecated. Older deployment-target operating systems, physical iPhones, thermal/energy behavior and hosted GitHub CI have not been exercised. No public repository or package publication was performed.

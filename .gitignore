@@ -4,3 +4,5 @@
 node_modules/
 /artifacts/
 *.xcuserstate
+__pycache__/
+*.pyc

@@ -1,0 +1,351 @@
+{
+  "provenance": {
+    "fileKey": "flxINzepb5BgRcRfGj0Tl5",
+    "kind": "live-Figma-Plugin-API",
+    "captureVersion": "0.2.0",
+    "note": "Captured on 2026-09-29. Source path strings and float32 values retained. Default flags, unused stroke geometry, empty variable bindings, and non-rendering metadata are omitted. Generated conformance design, not a production user design."
+  },
+  "snapshot": {
+    "id": "2:8",
+    "name": "Motion \u2014 source translation opacity",
+    "type": "FRAME",
+    "width": 320,
+    "height": 180,
+    "relativeTransform": [
+      [
+        1,
+        0,
+        1100
+      ],
+      [
+        0,
+        1,
+        100
+      ]
+    ],
+    "fillGeometry": [
+      {
+        "windingRule": "NONZERO",
+        "data": "M0 0 L320 0 L320 180 L0 180 L0 0 Z"
+      }
+    ],
+    "fills": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0.05000000074505806,
+          "g": 0.07000000029802322,
+          "b": 0.10999999940395355
+        },
+        "opacity": 1
+      }
+    ],
+    "clipsContent": true,
+    "timelines": [
+      {
+        "id": "2:8",
+        "duration": 2
+      }
+    ],
+    "children": [
+      {
+        "id": "2:9",
+        "name": "Moving card",
+        "type": "RECTANGLE",
+        "width": 72,
+        "height": 72,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            24
+          ],
+          [
+            0,
+            1,
+            52
+          ]
+        ],
+        "fillGeometry": [
+          {
+            "windingRule": "NONZERO",
+            "data": "M0 14 C0 6.26801 6.26801 0 14 0 L58 0 C65.732 0 72 6.26801 72 14 L72 58 C72 65.732 65.732 72 58 72 L14 72 C6.26801 72 0 65.732 0 58 L0 14 Z"
+          }
+        ],
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.20000000298023224,
+              "g": 0.800000011920929,
+              "b": 0.699999988079071
+            },
+            "opacity": 1
+          }
+        ],
+        "timelines": [
+          {
+            "id": "2:8",
+            "duration": 2
+          }
+        ],
+        "animations": {
+          "OPACITY": {
+            "tracks": [
+              {
+                "id": "KeyframeTrackId:2:14",
+                "keyframes": [
+                  {
+                    "id": "2:15",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 1
+                    },
+                    "timelinePosition": 0
+                  },
+                  {
+                    "id": "2:16",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 0.25
+                    },
+                    "timelinePosition": 1
+                  },
+                  {
+                    "id": "2:17",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 1
+                    },
+                    "timelinePosition": 2
+                  }
+                ],
+                "keyframeOperation": "SET"
+              }
+            ],
+            "timelineDuration": 2,
+            "baseValue": {
+              "type": "FLOAT",
+              "value": 1
+            }
+          },
+          "TRANSLATION_X": {
+            "tracks": [
+              {
+                "id": "KeyframeTrackId:2:10",
+                "keyframes": [
+                  {
+                    "id": "2:11",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 24
+                    },
+                    "timelinePosition": 0
+                  },
+                  {
+                    "id": "2:12",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 224
+                    },
+                    "timelinePosition": 1
+                  },
+                  {
+                    "id": "2:13",
+                    "easing": {
+                      "type": "LINEAR",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 1,
+                        "y2": 1
+                      }
+                    },
+                    "value": {
+                      "type": "FLOAT",
+                      "value": 24
+                    },
+                    "timelinePosition": 2
+                  }
+                ],
+                "keyframeOperation": "SET"
+              }
+            ],
+            "timelineDuration": 2,
+            "baseValue": {
+              "type": "FLOAT",
+              "value": 48
+            }
+          }
+        },
+        "manualKeyframeTracks": {
+          "OPACITY": {
+            "id": "KeyframeTrackId:2:14",
+            "baseValue": {
+              "type": "FLOAT",
+              "value": 1
+            },
+            "keyframes": [
+              {
+                "id": "2:15",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 1
+                },
+                "timelinePosition": 0
+              },
+              {
+                "id": "2:16",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 0.25
+                },
+                "timelinePosition": 1
+              },
+              {
+                "id": "2:17",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 1
+                },
+                "timelinePosition": 2
+              }
+            ]
+          },
+          "TRANSLATION_X": {
+            "id": "KeyframeTrackId:2:10",
+            "baseValue": {
+              "type": "FLOAT",
+              "value": 24
+            },
+            "keyframes": [
+              {
+                "id": "2:11",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 24
+                },
+                "timelinePosition": 0
+              },
+              {
+                "id": "2:12",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 224
+                },
+                "timelinePosition": 1
+              },
+              {
+                "id": "2:13",
+                "easing": {
+                  "type": "LINEAR",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 1,
+                    "y2": 1
+                  }
+                },
+                "value": {
+                  "type": "FLOAT",
+                  "value": 24
+                },
+                "timelinePosition": 2
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

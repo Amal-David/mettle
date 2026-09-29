@@ -4,6 +4,8 @@ cd "$(dirname "$0")/.."
 mkdir -p artifacts
 (cd plugin && npm run check && npm run build && npm test)
 node scripts/generate_contract_fixture.mjs
+node scripts/verify_source_fingerprints.mjs
+node scripts/compile_live.mjs
 swift test
 swift run figma-metal validate examples/compiler-transition.figmetal.json
 if [[ "$(uname -s)" == Darwin ]]; then

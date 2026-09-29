@@ -1,0 +1,16 @@
+{
+  "device": "Apple M4 Pro",
+  "fixture": "live-conformance",
+  "width": 600,
+  "height": 420,
+  "frames": 600,
+  "sampleCount": 4,
+  "drawCalls": 17,
+  "vertices": 8208,
+  "surfaces": 5,
+  "gpuMedianMs": 0.3782083513215184,
+  "gpuP95Ms": 0.4962499951943755,
+  "wallMedianMs": 0.5640983581542969,
+  "wallP95Ms": 0.67901611328125,
+  "note": "Warmed synchronous offscreen benchmark, not iPhone FPS or startup latency."
+}
