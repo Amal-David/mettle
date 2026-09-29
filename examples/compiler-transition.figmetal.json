@@ -1,0 +1,184 @@
+{
+  "format": "figma-metal",
+  "version": 1,
+  "scenes": [
+    {
+      "name": "Compiler A → Compiler B",
+      "width": 160,
+      "height": 80,
+      "duration": 1,
+      "loop": "once",
+      "root": {
+        "id": "Compiler A",
+        "name": "Compiler A",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 160,
+          "y": 80
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 80,
+          "y": 40
+        },
+        "draws": [],
+        "clip": [],
+        "bindings": [],
+        "children": [
+          {
+            "id": "Compiler A:square",
+            "name": "Moving square",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 10,
+              "ty": 20
+            },
+            "size": {
+              "x": 40,
+              "y": 40
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 20,
+              "y": 20
+            },
+            "draws": [
+              {
+                "paths": [
+                  {
+                    "data": "M0 0 H40 V40 H0 Z",
+                    "windingRule": "NONZERO"
+                  }
+                ],
+                "paint": {
+                  "kind": "solid",
+                  "color": {
+                    "r": 1,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                  },
+                  "opacity": 1,
+                  "transform": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "stops": []
+                },
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 40,
+                  "y": 40
+                },
+                "paintIndex": 0,
+                "role": "fills"
+              }
+            ],
+            "clip": [],
+            "bindings": [
+              {
+                "field": "translationX",
+                "base": [
+                  10
+                ],
+                "tracks": [
+                  {
+                    "operation": "set",
+                    "keyframes": [
+                      {
+                        "time": 0,
+                        "value": [
+                          10
+                        ],
+                        "easing": {
+                          "kind": "linear",
+                          "control": []
+                        }
+                      },
+                      {
+                        "time": 1,
+                        "value": [
+                          100
+                        ],
+                        "easing": {
+                          "kind": "linear",
+                          "control": []
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "opacity",
+                "base": [
+                  1
+                ],
+                "tracks": [
+                  {
+                    "operation": "set",
+                    "keyframes": [
+                      {
+                        "time": 0,
+                        "value": [
+                          1
+                        ],
+                        "easing": {
+                          "kind": "linear",
+                          "control": []
+                        }
+                      },
+                      {
+                        "time": 1,
+                        "value": [
+                          0.5
+                        ],
+                        "easing": {
+                          "kind": "linear",
+                          "control": []
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "children": []
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [],
+  "sourceMotion": {
+    "from": {},
+    "to": {}
+  },
+  "exporter": {
+    "name": "FigmaMetal",
+    "version": "0.1.0",
+    "source": "Figma Plugin API",
+    "mode": "two-frame-transition"
+  }
+}

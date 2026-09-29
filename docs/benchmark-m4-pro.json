@@ -1,0 +1,15 @@
+{
+  "device": "Apple M4 Pro",
+  "drawCalls": 26,
+  "frames": 180,
+  "gpuMedianMs": 0.8720000041648746,
+  "gpuP95Ms": 1.3553333701565862,
+  "height": 480,
+  "note": "Synchronous offscreen benchmark; not an on-device iOS FPS measurement.",
+  "sampleCount": 4,
+  "surfaces": 3,
+  "vertices": 2232,
+  "wallMedianMs": 1.528024673461914,
+  "wallP95Ms": 2.126932144165039,
+  "width": 720
+}

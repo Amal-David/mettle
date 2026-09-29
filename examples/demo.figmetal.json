@@ -1,0 +1,2795 @@
+{
+  "format": "figma-metal",
+  "version": 1,
+  "scenes": [
+    {
+      "name": "Synthetic renderer conformance demo",
+      "width": 720,
+      "height": 480,
+      "duration": 4,
+      "loop": "loop",
+      "root": {
+        "id": "demo-root",
+        "name": "demo-root",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 720,
+          "y": 480
+        },
+        "origin": {
+          "x": 360.0,
+          "y": 240.0
+        },
+        "opacity": 1,
+        "draws": [
+          {
+            "paths": [
+              {
+                "data": "M24 0 H696 C709.2548339952 0 720 10.745166004800002 720 24 V456 C720 469.2548339952 709.2548339952 480 696 480 H24 C10.745166004800002 480 0 469.2548339952 0 456 V24 C0 10.745166004800002 10.745166004800002 0 24 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "paint": {
+              "kind": "linear",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+              },
+              "opacity": 1,
+              "transform": {
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "d": 1,
+                "tx": 0,
+                "ty": 0
+              },
+              "stops": [
+                {
+                  "position": 0,
+                  "color": {
+                    "r": 0.035,
+                    "g": 0.05,
+                    "b": 0.09,
+                    "a": 1
+                  }
+                },
+                {
+                  "position": 1,
+                  "color": {
+                    "r": 0.07,
+                    "g": 0.1,
+                    "b": 0.15,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 0,
+              "ty": 0
+            },
+            "size": {
+              "x": 720,
+              "y": 480
+            },
+            "paintIndex": 0,
+            "role": "fills"
+          }
+        ],
+        "children": [
+          {
+            "id": "left-panel",
+            "name": "left-panel",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 24,
+              "ty": 24
+            },
+            "size": {
+              "x": 320,
+              "y": 350
+            },
+            "origin": {
+              "x": 160.0,
+              "y": 175.0
+            },
+            "opacity": 1,
+            "draws": [
+              {
+                "paths": [
+                  {
+                    "data": "M28 0 H292 C307.4639729944 0 320 12.536027005600001 320 28 V322 C320 337.4639729944 307.4639729944 350 292 350 H28 C12.536027005600001 350 0 337.4639729944 0 322 V28 C0 12.536027005600001 12.536027005600001 0 28 0 Z",
+                    "windingRule": "NONZERO"
+                  }
+                ],
+                "paint": {
+                  "kind": "solid",
+                  "color": {
+                    "r": 0.08,
+                    "g": 0.12,
+                    "b": 0.18,
+                    "a": 1
+                  },
+                  "opacity": 1,
+                  "transform": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "stops": []
+                },
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 320,
+                  "y": 350
+                },
+                "paintIndex": 0,
+                "role": "fills"
+              }
+            ],
+            "children": [
+              {
+                "id": "orb",
+                "name": "orb",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 40,
+                  "ty": 40
+                },
+                "size": {
+                  "x": 210,
+                  "y": 210
+                },
+                "origin": {
+                  "x": 105.0,
+                  "y": 105.0
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M210 105.0 C210 162.989898729 162.989898729 210 105.0 210 C47.010101271 210 0 162.989898729 0 105.0 C0 47.010101271 47.010101271 0 105.0 0 C162.989898729 0 210 47.010101271 210 105.0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "radial",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.05,
+                            "g": 0.18,
+                            "b": 0.32,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 210,
+                      "y": 210
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "translationY",
+                    "base": [
+                      40
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              40
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2,
+                            "value": [
+                              70
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              40
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "ring",
+                "name": "ring",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 100,
+                  "ty": 85
+                },
+                "size": {
+                  "x": 145,
+                  "y": 145
+                },
+                "origin": {
+                  "x": 72.5,
+                  "y": 72.5
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M145 72.5 C145 112.5406443605 112.5406443605 145 72.5 145 C32.459355639500004 145 0 112.5406443605 0 72.5 C0 32.459355639500004 32.459355639500004 0 72.5 0 C112.5406443605 0 145 32.459355639500004 145 72.5 Z M111 72.5 C111 93.763 93.763 111 72.5 111 C51.237 111 34 93.763 34 72.5 C34 51.237 51.237 34 72.5 34 C93.763 34 111 51.237 111 72.5 Z",
+                        "windingRule": "EVENODD"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 1,
+                            "g": 0.74,
+                            "b": 0.35,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 145,
+                      "y": 145
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "rotation",
+                    "base": [
+                      0
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              0
+                            ],
+                            "easing": {
+                              "kind": "linear",
+                              "control": []
+                            }
+                          },
+                          {
+                            "time": 2,
+                            "value": [
+                              180
+                            ],
+                            "easing": {
+                              "kind": "linear",
+                              "control": []
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              360
+                            ],
+                            "easing": {
+                              "kind": "linear",
+                              "control": []
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              }
+            ],
+            "bindings": [],
+            "clip": [
+              {
+                "data": "M28 0 H292 C307.4639729944 0 320 12.536027005600001 320 28 V322 C320 337.4639729944 307.4639729944 350 292 350 H28 C12.536027005600001 350 0 337.4639729944 0 322 V28 C0 12.536027005600001 12.536027005600001 0 28 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ]
+          },
+          {
+            "id": "right-panel",
+            "name": "right-panel",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 360,
+              "ty": 24
+            },
+            "size": {
+              "x": 336,
+              "y": 350
+            },
+            "origin": {
+              "x": 168.0,
+              "y": 175.0
+            },
+            "opacity": 1,
+            "draws": [
+              {
+                "paths": [
+                  {
+                    "data": "M28 0 H308 C323.4639729944 0 336 12.536027005600001 336 28 V322 C336 337.4639729944 323.4639729944 350 308 350 H28 C12.536027005600001 350 0 337.4639729944 0 322 V28 C0 12.536027005600001 12.536027005600001 0 28 0 Z",
+                    "windingRule": "NONZERO"
+                  }
+                ],
+                "paint": {
+                  "kind": "solid",
+                  "color": {
+                    "r": 0.08,
+                    "g": 0.12,
+                    "b": 0.18,
+                    "a": 1
+                  },
+                  "opacity": 1,
+                  "transform": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "stops": []
+                },
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 336,
+                  "y": 350
+                },
+                "paintIndex": 0,
+                "role": "fills"
+              }
+            ],
+            "children": [
+              {
+                "id": "bar-0",
+                "name": "bar-0",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 22,
+                  "ty": 195
+                },
+                "size": {
+                  "x": 12,
+                  "y": 50
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 50
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V44 C12 47.3137084988 9.3137084988 50 6 50 H6 C2.6862915012000004 50 0 47.3137084988 0 44 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 50
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.35
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-1",
+                "name": "bar-1",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 45,
+                  "ty": 158
+                },
+                "size": {
+                  "x": 12,
+                  "y": 87
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 87
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V81 C12 84.3137084988 9.3137084988 87 6 87 H6 C2.6862915012000004 87 0 84.3137084988 0 81 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 87
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.55
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-2",
+                "name": "bar-2",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 68,
+                  "ty": 121
+                },
+                "size": {
+                  "x": 12,
+                  "y": 124
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 124
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V118 C12 121.3137084988 9.3137084988 124 6 124 H6 C2.6862915012000004 124 0 121.3137084988 0 118 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 124
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.75
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-3",
+                "name": "bar-3",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 91,
+                  "ty": 84
+                },
+                "size": {
+                  "x": 12,
+                  "y": 161
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 161
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V155 C12 158.3137084988 9.3137084988 161 6 161 H6 C2.6862915012000004 161 0 158.3137084988 0 155 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 161
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.9500000000000001
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-4",
+                "name": "bar-4",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 114,
+                  "ty": 182
+                },
+                "size": {
+                  "x": 12,
+                  "y": 63
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 63
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V57 C12 60.3137084988 9.3137084988 63 6 63 H6 C2.6862915012000004 63 0 60.3137084988 0 57 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 63
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.35
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-5",
+                "name": "bar-5",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 137,
+                  "ty": 145
+                },
+                "size": {
+                  "x": 12,
+                  "y": 100
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 100
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V94 C12 97.3137084988 9.3137084988 100 6 100 H6 C2.6862915012000004 100 0 97.3137084988 0 94 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 100
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.55
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-6",
+                "name": "bar-6",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 160,
+                  "ty": 108
+                },
+                "size": {
+                  "x": 12,
+                  "y": 137
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 137
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V131 C12 134.3137084988 9.3137084988 137 6 137 H6 C2.6862915012000004 137 0 134.3137084988 0 131 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 137
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.75
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-7",
+                "name": "bar-7",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 183,
+                  "ty": 71
+                },
+                "size": {
+                  "x": 12,
+                  "y": 174
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 174
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V168 C12 171.3137084988 9.3137084988 174 6 174 H6 C2.6862915012000004 174 0 171.3137084988 0 168 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 174
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.9500000000000001
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-8",
+                "name": "bar-8",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 206,
+                  "ty": 169
+                },
+                "size": {
+                  "x": 12,
+                  "y": 76
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 76
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V70 C12 73.3137084988 9.3137084988 76 6 76 H6 C2.6862915012000004 76 0 73.3137084988 0 70 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 76
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.35
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-9",
+                "name": "bar-9",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 229,
+                  "ty": 132
+                },
+                "size": {
+                  "x": 12,
+                  "y": 113
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 113
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V107 C12 110.3137084988 9.3137084988 113 6 113 H6 C2.6862915012000004 113 0 110.3137084988 0 107 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 113
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.55
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-10",
+                "name": "bar-10",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 252,
+                  "ty": 95
+                },
+                "size": {
+                  "x": 12,
+                  "y": 150
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 150
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V144 C12 147.3137084988 9.3137084988 150 6 150 H6 C2.6862915012000004 150 0 147.3137084988 0 144 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 150
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.75
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              },
+              {
+                "id": "bar-11",
+                "name": "bar-11",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 275,
+                  "ty": 193
+                },
+                "size": {
+                  "x": 12,
+                  "y": 52
+                },
+                "origin": {
+                  "x": 6,
+                  "y": 52
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M6 0 H6 C9.3137084988 0 12 2.6862915012000004 12 6 V46 C12 49.3137084988 9.3137084988 52 6 52 H6 C2.6862915012000004 52 0 49.3137084988 0 46 V6 C0 2.6862915012000004 2.6862915012000004 0 6 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "linear",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": [
+                        {
+                          "position": 0,
+                          "color": {
+                            "r": 0.25,
+                            "g": 0.92,
+                            "b": 0.84,
+                            "a": 1
+                          }
+                        },
+                        {
+                          "position": 1,
+                          "color": {
+                            "r": 0.56,
+                            "g": 0.39,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 12,
+                      "y": 52
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [
+                  {
+                    "field": "scaleY",
+                    "base": [
+                      1
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 1.3,
+                            "value": [
+                              0.9500000000000001
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 2.7,
+                            "value": [
+                              1.1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 4,
+                            "value": [
+                              1
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.4,
+                                0,
+                                0.2,
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "clip": []
+              }
+            ],
+            "bindings": [],
+            "clip": [
+              {
+                "data": "M28 0 H308 C323.4639729944 0 336 12.536027005600001 336 28 V322 C336 337.4639729944 323.4639729944 350 308 350 H28 C12.536027005600001 350 0 337.4639729944 0 322 V28 C0 12.536027005600001 12.536027005600001 0 28 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ]
+          },
+          {
+            "id": "opacity-group",
+            "name": "opacity-group",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 28,
+              "ty": 410
+            },
+            "size": {
+              "x": 116,
+              "y": 28
+            },
+            "origin": {
+              "x": 58.0,
+              "y": 14.0
+            },
+            "opacity": 0.65,
+            "draws": [],
+            "children": [
+              {
+                "id": "chip-a",
+                "name": "chip-a",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 72,
+                  "y": 28
+                },
+                "origin": {
+                  "x": 36.0,
+                  "y": 14.0
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M14 0 H58 C65.7319864972 0 72 6.268013502800001 72 14 V14 C72 21.731986497199998 65.7319864972 28 58 28 H14 C6.268013502800001 28 0 21.731986497199998 0 14 V14 C0 6.268013502800001 6.268013502800001 0 14 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.25,
+                        "g": 0.92,
+                        "b": 0.84,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 72,
+                      "y": 28
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [],
+                "clip": []
+              },
+              {
+                "id": "chip-b",
+                "name": "chip-b",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 44,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 72,
+                  "y": 28
+                },
+                "origin": {
+                  "x": 36.0,
+                  "y": 14.0
+                },
+                "opacity": 1,
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M14 0 H58 C65.7319864972 0 72 6.268013502800001 72 14 V14 C72 21.731986497199998 65.7319864972 28 58 28 H14 C6.268013502800001 28 0 21.731986497199998 0 14 V14 C0 6.268013502800001 6.268013502800001 0 14 0 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.25,
+                        "g": 0.92,
+                        "b": 0.84,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 72,
+                      "y": 28
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "children": [],
+                "bindings": [],
+                "clip": []
+              }
+            ],
+            "bindings": [],
+            "clip": []
+          },
+          {
+            "id": "progress-track",
+            "name": "progress-track",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 172,
+              "ty": 421
+            },
+            "size": {
+              "x": 470,
+              "y": 5
+            },
+            "origin": {
+              "x": 235.0,
+              "y": 2.5
+            },
+            "opacity": 1,
+            "draws": [
+              {
+                "paths": [
+                  {
+                    "data": "M2.5 0 H467.5 C468.8807118745 0 470 1.1192881255 470 2.5 V2.5 C470 3.8807118745 468.8807118745 5 467.5 5 H2.5 C1.1192881255 5 0 3.8807118745 0 2.5 V2.5 C0 1.1192881255 1.1192881255 0 2.5 0 Z",
+                    "windingRule": "NONZERO"
+                  }
+                ],
+                "paint": {
+                  "kind": "solid",
+                  "color": {
+                    "r": 0.15,
+                    "g": 0.23,
+                    "b": 0.3,
+                    "a": 1
+                  },
+                  "opacity": 1,
+                  "transform": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "stops": []
+                },
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 470,
+                  "y": 5
+                },
+                "paintIndex": 0,
+                "role": "fills"
+              }
+            ],
+            "children": [],
+            "bindings": [],
+            "clip": []
+          },
+          {
+            "id": "moving-marker",
+            "name": "moving-marker",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 172,
+              "ty": 415
+            },
+            "size": {
+              "x": 18,
+              "y": 18
+            },
+            "origin": {
+              "x": 9.0,
+              "y": 9.0
+            },
+            "opacity": 1,
+            "draws": [
+              {
+                "paths": [
+                  {
+                    "data": "M18 9.0 C18 13.970562748199999 13.970562748199999 18 9.0 18 C4.0294372518 18 0 13.970562748199999 0 9.0 C0 4.0294372518 4.0294372518 0 9.0 0 C13.970562748199999 0 18 4.0294372518 18 9.0 Z",
+                    "windingRule": "NONZERO"
+                  }
+                ],
+                "paint": {
+                  "kind": "solid",
+                  "color": {
+                    "r": 1,
+                    "g": 0.74,
+                    "b": 0.35,
+                    "a": 1
+                  },
+                  "opacity": 1,
+                  "transform": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "stops": []
+                },
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 18,
+                  "y": 18
+                },
+                "paintIndex": 0,
+                "role": "fills"
+              }
+            ],
+            "children": [],
+            "bindings": [
+              {
+                "field": "translationX",
+                "base": [
+                  172
+                ],
+                "tracks": [
+                  {
+                    "operation": "set",
+                    "keyframes": [
+                      {
+                        "time": 0,
+                        "value": [
+                          172
+                        ],
+                        "easing": {
+                          "kind": "cubic",
+                          "control": [
+                            0.4,
+                            0,
+                            0.2,
+                            1
+                          ]
+                        }
+                      },
+                      {
+                        "time": 2,
+                        "value": [
+                          624
+                        ],
+                        "easing": {
+                          "kind": "cubic",
+                          "control": [
+                            0.4,
+                            0,
+                            0.2,
+                            1
+                          ]
+                        }
+                      },
+                      {
+                        "time": 4,
+                        "value": [
+                          172
+                        ],
+                        "easing": {
+                          "kind": "cubic",
+                          "control": [
+                            0.4,
+                            0,
+                            0.2,
+                            1
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "clip": []
+          }
+        ],
+        "bindings": [],
+        "clip": []
+      }
+    }
+  ],
+  "diagnostics": []
+}

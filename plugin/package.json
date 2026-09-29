@@ -1,0 +1,12 @@
+{
+  "name": "figma-metal-exporter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check": "node --check src/compiler.mjs && node --check src/plugin.js"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,27 @@
+name: Native and exporter checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  macos:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Export compiler and portable contract
+        run: |
+          cd plugin
+          npm run check
+          npm run build
+          npm test
+          cd ..
+          node scripts/generate_contract_fixture.mjs
+      - name: Swift tests including hardware Metal availability
+        run: swift test
+      - name: Native contract validation
+        run: swift run figma-metal validate examples/compiler-transition.figmetal.json
+      # Real GPU tests intentionally fail rather than silently pass on a host
+      # without a Metal device. Use a Metal-capable self-hosted Mac in that case.
