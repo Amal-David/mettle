@@ -123,7 +123,7 @@ final class CoreTests: XCTestCase {
         XCTAssertEqual(d.scenes.first?.root.id,"a")
     }
     func testUnsupportedVersionAndDuplicateIDs() {
-        var d=document();d.version=2;XCTAssertThrowsError(try d.validate())
+        var d=document();d.version=999;XCTAssertThrowsError(try d.validate())
         d=document(Node(id:"a",children:[shape()]));XCTAssertThrowsError(try d.validate())
     }
     func testInvalidDimensionsAndGradientStopOrder() {

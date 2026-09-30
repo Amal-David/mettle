@@ -7,7 +7,7 @@
 [![MIT license](https://img.shields.io/badge/license-MIT-7cd9c1)](LICENSE)
 
 > [!WARNING]
-> **Experimental v0.2.** A working renderer for a defined subset of Figma, not a drop-in player for every design or prototype. APIs and the asset schema may change. Do not depend on it for production yet.
+> **Experimental v0.3.** A working renderer for a defined subset of Figma, not a drop-in player for every design or prototype. APIs and the asset schema may change. Do not depend on it for production yet.
 
 Mettle reads the original paths, paints, transforms, and supported animation tracks from Figma and renders them with Swift and Metal. No Lottie conversion. No browser. No tracing screenshots and hoping the geometry matches.
 
@@ -16,6 +16,16 @@ Figma source → Mettle exporter → scene + animation data → Swift evaluator 
 ```
 
 The exporter and renderer belong to the same project. A feature is limited by what we implement and verify, not by a third-party animation format. There is no Skia or Rive dependency either.
+
+## September Motion compatibility update
+
+**v0.3 adds resolved custom/composite styles, separate style-local timing, additive slide tracks, exact Back easing curves, and consumer-mode easing/timing token resolution.** Missing styles or unresolved variables block export instead of becoming static artwork.
+
+Exports now use schema **version 2**; update the plugin and Swift runtime together. Older version-1 scenes still load. Native Figma Lottie export remains a separate route—Mettle does not import it or depend on it. The newly announced audio and per-character text animation features are **not yet supported**; the inspected API does not provide a verified capture contract for them. Whole-text transforms/opacity are not the same as per-character animation.
+
+**Validation:** 140 tests passed on the M4 Pro; Metal API Validation and the iOS simulator library build passed. A new 21-frame style scene was independently compared against Figma video (up to 2 pixels of detected boundary difference, not pixel-perfect parity).
+
+[Changes, live-source evidence, migration and test scope →](docs/MOTION_2026_09.md)
 
 ## Start with your export
 
@@ -116,6 +126,8 @@ Pass `time:` for deterministic seeking or leave it `nil` for playback. The view 
 
 **Not implemented:** arbitrary Figma shaders, blur/shadows, image/video/pattern paints, advanced blending, sibling masks, path morph/trim, spring easing, changing text/layout, independent nested timelines, general prototype events, or hit testing. Some regional-paint cases are rejected. [Full compatibility notes →](docs/COMPATIBILITY.md)
 
+The latest update was tested with 56 JavaScript, 40 Swift core and 5 comparison-harness tests on Linux; Apple compilation is checked in CI. The development Mac was offline, so this update does not claim a fresh GPU run. [v0.3 evidence →](docs/MOTION_2026_09.md)
+
 Exports with unsupported features are blocked by default. An explicit incomplete-export override exists for investigation, not as a promise of fidelity.
 
 ## Compared against Figma, not against ourselves
@@ -131,7 +143,7 @@ The test artwork was created **inside live Figma**. The capture implementation p
 
 On the small current corpus: static mean RGB error was **0.242 / 255**, and the largest detected boundary difference across **61 motion frames** was **1 pixel**. This is not pixel-perfect parity: curved edges and small text differ, the glyph-region mean error was **3.893 / 255**, and flat backgrounds lower the overall average. These are conformance fixtures, not a production-design benchmark.
 
-**106 tests pass on the development M4 Pro**: 36 exporter/capture, 29 Swift core, 14 actual GPU, 1 renderer-host regression, 21 preview/playback/reference tests, and 5 comparison-measurement tests. Metal API Validation and an arm64 iOS simulator library build also passed. Hosted CI checks source/compiler/core behavior and compilation; it does not claim GPU fidelity.
+**The previous v0.2 validation passed 106 tests on the development M4 Pro**: 36 exporter/capture, 29 Swift core, 14 actual GPU, 1 renderer-host regression, 21 preview/playback/reference tests, and 5 comparison-measurement tests. Metal API Validation and an arm64 iOS simulator library build also passed. Hosted CI checks source/compiler/core behavior and compilation; it does not claim GPU fidelity.
 
 [Verification and remaining gaps](docs/VERIFICATION.md) · [Machine-readable comparison](docs/media/comparison.json) · [Media provenance](docs/media/README.md)
 

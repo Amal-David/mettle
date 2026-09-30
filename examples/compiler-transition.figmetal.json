@@ -1,6 +1,6 @@
 {
   "format": "figma-metal",
-  "version": 1,
+  "version": 2,
   "scenes": [
     {
       "name": "Compiler A → Compiler B",
@@ -175,9 +175,18 @@
     "from": {},
     "to": {}
   },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
   "exporter": {
     "name": "Mettle",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "source": "Figma Plugin API",
     "mode": "two-frame-transition"
   }

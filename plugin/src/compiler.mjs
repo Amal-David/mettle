@@ -1,3 +1,4 @@
+import {compileEasing,trackPlacement,styleCoverage,MOTION_SUPPORT} from './motion.mjs';
 /** Deterministic Figma snapshot -> native scene compiler. Zero runtime dependencies.
  * Kept separate from the Figma host so source semantics can be unit-tested in Node.
  * Matrices are column-vector affine; times are seconds; source geometry is never traced.
@@ -30,18 +31,8 @@ function value(v) {
   if (v?.type==='VECTOR' && finite(v.value?.x) && finite(v.value?.y)) return [v.value.x,v.value.y];
   throw new Error(`Unsupported or unresolved keyframe value ${v?.type}`);
 }
-export function easing(e={type:'LINEAR'}) {
-  const named={LINEAR:{kind:'linear',control:[]},HOLD:{kind:'hold',control:[]},
-    EASE_IN:{kind:'cubic',control:[.42,0,1,1]},EASE_OUT:{kind:'cubic',control:[0,0,.58,1]},
-    EASE_IN_AND_OUT:{kind:'cubic',control:[.42,0,.58,1]}};
-  if (named[e.type]) return json(named[e.type]);
-  if (e.type==='CUSTOM_CUBIC_BEZIER') {
-    const c=e.easingFunctionCubicBezier;
-    const control=[c?.x1,c?.y1,c?.x2,c?.y2];
-    if (control.every(finite) && control[0]>=0 && control[0]<=1 && control[2]>=0 && control[2]<=1) return {kind:'cubic',control};
-  }
-  throw new Error(`Easing ${e.type} is not implemented; original easing is retained in sourceMotion. No spring approximation is applied.`);
-}
+export const easing = compileEasing;
+
 function paint(p,report,node) {
   if (p.visible===false) return null;
   if (p.blendMode && p.blendMode!=='NORMAL') { report('error','PAINT_BLEND',node,`Paint blend ${p.blendMode} is unsupported.`); return null; }
@@ -80,6 +71,7 @@ function drawings(geometry,paints,size,transform,role,report,node) {
   return out;
 }
 function motionBindings(source,report,options) {
+  styleCoverage(source,report);
   const animations=source.animations;
   const manual=source.manualKeyframeTracks;
   const hasResolved=animations && Object.keys(animations).length>0;
@@ -95,6 +87,7 @@ function motionBindings(source,report,options) {
       if (!base.every(finite)) throw new Error('Binding base dimensions do not match field');
       const sourceTracks=binding.tracks??[{keyframeOperation:'SET',keyframes:binding.keyframes}];
       const tracks=sourceTracks.map(track=>{
+        const timelineOffset=trackPlacement(track,source.animationStyles);
         const op=String(track.keyframeOperation??'SET').toLowerCase();
         if(!['set','offset','scale'].includes(op)) throw new Error(`Unknown track operation ${op}`);
         let previous=-Infinity;
@@ -106,8 +99,9 @@ function motionBindings(source,report,options) {
           return {time:k.timelinePosition,value:v,easing:easing(k.easing)};
         });
         if(!keyframes.length) throw new Error('Empty motion track');
-        return {operation:op,keyframes};
+        return {operation:op,keyframes,...(timelineOffset!==0?{timelineOffset}:{})};
       });
+      if (tracks.length>64) throw new Error('At most 64 tracks per field are supported');
       const needed=field.includes(':')?4:1;
       if(base.length!==needed) throw new Error('Field/value dimension mismatch');
       if((field==='scaleX'||field==='scaleY')&&Math.abs(base[0])<1e-12) throw new Error('Cannot normalize scale from zero');
@@ -116,7 +110,7 @@ function motionBindings(source,report,options) {
       // A resolved binding.baseValue may already include the static position.
       // Use a zero anchor for SET-led offset tracks; preserve raw sourceMotion.
       if(field==='translationX'||field==='translationY') {
-        if(tracks[0]?.operation!=='set') throw new Error('Translation needs a leading SET track; OFFSET/SCALE-only source bases are not yet validated.');
+        if(tracks[0]?.operation!=='set' && !tracks.every(t=>t.operation==='offset')) throw new Error('Non-SET translation supports additive OFFSET tracks only; SCALE-leading semantics remain unverified.');
         result.push({field,base:[0],tracks});
       } else result.push({field,base,tracks});
     } catch(error) { report('error','MOTION_BINDING',source,`${field}: ${error.message}`); }
@@ -127,7 +121,10 @@ function motionBindings(source,report,options) {
       if(['ROTATION','SCALE_X','SCALE_Y','SCALE_XY'].includes(name)) {
         report('warning','EXPLICIT_TRANSFORM_ORIGIN',source,`Motion API does not supply a pivot here. Export uses the explicitly selected ${options.origin??'center'} origin; verify against Figma.`);
       }
-      map[name].forEach((field,i)=>add(field,binding,map[name].length>1?i:undefined));
+      map[name].forEach((field,i)=>{
+        if(result.some(b=>b.field===field)) report('error','DUPLICATE_MOTION_FIELD',source,`${field} is bound twice (for example XY and X); source composition is ambiguous.`);
+        else add(field,binding,map[name].length>1?i:undefined);
+      });
     } else if(name==='fills'||name==='strokes') {
       for(const [index,paintBinding] of Object.entries(binding)) {
         if(paintBinding?.properties) {report('error','SHADER_PROPERTY_MOTION',source,`${name}[${index}] shader parameter tracks are not implemented.`);continue;}
@@ -178,12 +175,17 @@ export function compileScene(snapshot,options={}) {
     }
     if(options.includeMotion!==false) {
       output.bindings=motionBindings(source,report,options);
-      for(const b of output.bindings) for(const t of b.tracks) for(const k of t.keyframes) duration=Math.max(duration,k.time);
+      for(const b of output.bindings) for(const t of b.tracks) for(const k of t.keyframes) duration=Math.max(duration,k.time+(t.timelineOffset??0));
       for(const binding of Object.values(source.animations??{})) if(finite(binding?.timelineDuration)) duration=Math.max(duration,binding.timelineDuration);
       for(const timeline of source.timelines??[]) { if(finite(timeline.duration)) duration=Math.max(duration,timeline.duration);if(timeline.id) timelineIDs.add(timeline.id); }
     }
-    if(Object.keys(source.animations??{}).length||Object.keys(source.manualKeyframeTracks??{}).length) {
-      sourceMotion[source.id]={animations:source.animations??null,manualKeyframeTracks:source.manualKeyframeTracks??null,timelines:source.timelines??[]};
+    if(Object.keys(source.animations??{}).length||Object.keys(source.manualKeyframeTracks??{}).length||source.animationStyles?.length||source.timelines?.length) {
+      sourceMotion[source.id]={...(source.rawMotion??{animations:source.animations??null,manualKeyframeTracks:source.manualKeyframeTracks??null,animationStyles:source.animationStyles??[]}),
+        timelines:source.timelines??[],variableResolutions:source.motionVariableResolutions??[]};
+    }
+    if(options.includeMotion!==false) for(const timeline of source.timelines??[]) {
+      const unknown=Object.keys(timeline).filter(key=>!['id','duration'].includes(key));
+      if(unknown.length) report('error','UNSUPPORTED_TIMELINE_DATA',source,`Timeline contains unhandled fields: ${unknown.join(', ')}. Audio and new timeline payloads must not be silently lost.`);
     }
     let children=(source.children??[]).filter(c=>c.visible!==false);
     if(source.itemReverseZIndex) children=[...children].reverse();
@@ -194,7 +196,7 @@ export function compileScene(snapshot,options={}) {
   if(timelineIDs.size>1) report('error','MULTIPLE_TIMELINES',snapshot,'Independent/nested timelines need explicit coordination; this player exports a single timeline.');
   if(snapshot.reactions?.length) report('warning','PROTOTYPE_EVENTS_NOT_EXPORTED',snapshot,'Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip.');
   const scene={name:snapshot.name??'Figma scene',width:snapshot.width,height:snapshot.height,duration,loop:options.loop??'once',root};
-  return {format:'figma-metal',version:1,scenes:[scene],diagnostics,sourceMotion,exporter:{name:'Mettle',version:'0.2.0',source:'Figma Plugin API'}};
+  return {format:'figma-metal',version:2,scenes:[scene],diagnostics,sourceMotion,motionSupport:{...MOTION_SUPPORT},exporter:{name:'Mettle',version:'0.3.0',source:'Figma Plugin API'}};
 }
 
 /** Strict, bounded Smart-Animate-style A→B compiler: stable geometry, translation,

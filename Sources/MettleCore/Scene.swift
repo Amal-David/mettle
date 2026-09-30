@@ -91,7 +91,7 @@ public struct SceneDocument: Codable, Sendable {
     public var scenes: [Scene]
     public var diagnostics: [Diagnostic]
     public init(scenes: [Scene], diagnostics: [Diagnostic] = []) {
-        self.format = "figma-metal"; self.version = 1; self.scenes = scenes; self.diagnostics = diagnostics
+        self.format = "figma-metal"; self.version = 2; self.scenes = scenes; self.diagnostics = diagnostics
     }
     public static func load(url: URL, allowPartial: Bool = false) throws -> SceneDocument {
         let values = try url.resourceValues(forKeys: [.fileSizeKey])
@@ -100,12 +100,19 @@ public struct SceneDocument: Codable, Sendable {
     }
     public static func decode(_ data: Data, allowPartial: Bool = false) throws -> SceneDocument {
         guard data.count <= 32*1024*1024 else { throw SceneError.invalid("File exceeds 32 MiB") }
+        if data.starts(with: [0x50, 0x4b, 0x03, 0x04]) {
+            throw SceneError.unsupported("Compressed archives, including dotLottie, are not Mettle scenes. Use the Mettle Figma exporter and open its .figmetal.json file.")
+        }
+        if let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+           object["format"] == nil, object["layers"] is [Any], object["fr"] != nil {
+            throw SceneError.unsupported("This is a Lottie export, not a Mettle scene. Use Mettle — Experimental Metal Export in Figma. Lottie is not used as an intermediate format.")
+        }
         let document = try JSONDecoder().decode(Self.self, from: data)
         try document.validate(allowPartial: allowPartial)
         return document
     }
     public func validate(allowPartial: Bool = false) throws {
-        guard format == "figma-metal", version == 1 else { throw SceneError.unsupported("Document format/version") }
+        guard format == "figma-metal", [1, 2].contains(version) else { throw SceneError.unsupported("Document format/version") }
         guard !scenes.isEmpty, scenes.count <= 64 else { throw SceneError.invalid("Expected 1...64 scenes") }
         if !allowPartial, let issue = diagnostics.first(where: {$0.severity == "error"}) {
             throw SceneError.unsupported("\(issue.code) at \(issue.nodeID): \(issue.message)")
@@ -151,7 +158,12 @@ public struct SceneDocument: Codable, Sendable {
             }
             for path in draw.paths { try validatePath(path) }
         }
-        for binding in node.bindings { try binding.validate() }
+        for binding in node.bindings {
+            if version == 1, binding.tracks.contains(where: { ($0.timelineOffset ?? 0) != 0 }) {
+                throw SceneError.invalid("Style-local timing requires scene format version 2")
+            }
+            try binding.validate()
+        }
         for child in node.children { try validateNode(child, depth: depth+1, ids: &ids, count: &count) }
     }
     private func validateColor(_ color: RGBA) throws {

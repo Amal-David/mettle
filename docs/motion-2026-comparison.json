@@ -1,0 +1,1472 @@
+{
+  "scope": "Live Figma style probe, 600x320, 10 fps, 21 frames; H264 is lossy.",
+  "referenceSHA256": "89133c560c84369011f8edce719b1ea172db5de8ba0f5bc2693462ab0b69f69b",
+  "frames": [
+    {
+      "index": 0,
+      "time": 0,
+      "rgbMAE": 1.537583,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.333333,
+          "referenceBounds": null,
+          "nativeBounds": null,
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.831954,
+          "referenceBounds": [
+            44,
+            48,
+            116,
+            96
+          ],
+          "nativeBounds": [
+            45,
+            49,
+            115,
+            95
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.826253,
+          "referenceBounds": [
+            42,
+            8,
+            154,
+            98
+          ],
+          "nativeBounds": [
+            43,
+            9,
+            153,
+            97
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.789056,
+          "referenceBounds": [
+            16,
+            23,
+            116,
+            91
+          ],
+          "nativeBounds": [
+            16,
+            25,
+            116,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 1,
+      "time": 0.1,
+      "rgbMAE": 1.537583,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.333333,
+          "referenceBounds": null,
+          "nativeBounds": null,
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.831954,
+          "referenceBounds": [
+            44,
+            48,
+            116,
+            96
+          ],
+          "nativeBounds": [
+            45,
+            49,
+            115,
+            95
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.826253,
+          "referenceBounds": [
+            42,
+            8,
+            154,
+            98
+          ],
+          "nativeBounds": [
+            43,
+            9,
+            153,
+            97
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.789056,
+          "referenceBounds": [
+            16,
+            23,
+            116,
+            91
+          ],
+          "nativeBounds": [
+            16,
+            25,
+            116,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 2,
+      "time": 0.2,
+      "rgbMAE": 1.537569,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.333333,
+          "referenceBounds": null,
+          "nativeBounds": null,
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.831954,
+          "referenceBounds": [
+            44,
+            48,
+            116,
+            96
+          ],
+          "nativeBounds": [
+            45,
+            49,
+            115,
+            95
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.826253,
+          "referenceBounds": [
+            42,
+            8,
+            154,
+            98
+          ],
+          "nativeBounds": [
+            43,
+            9,
+            153,
+            97
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.788949,
+          "referenceBounds": [
+            16,
+            23,
+            116,
+            91
+          ],
+          "nativeBounds": [
+            16,
+            25,
+            116,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 3,
+      "time": 0.3,
+      "rgbMAE": 1.549486,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.266498,
+          "referenceBounds": [
+            19,
+            20,
+            119,
+            84
+          ],
+          "nativeBounds": [
+            19,
+            20,
+            119,
+            84
+          ],
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.809799,
+          "referenceBounds": [
+            42,
+            48,
+            118,
+            96
+          ],
+          "nativeBounds": [
+            43,
+            48,
+            117,
+            96
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.817313,
+          "referenceBounds": [
+            44,
+            12,
+            152,
+            94
+          ],
+          "nativeBounds": [
+            44,
+            14,
+            151,
+            92
+          ],
+          "boundsError": 2
+        },
+        "back": {
+          "rgbMAE": 1.965939,
+          "referenceBounds": [
+            22,
+            23,
+            124,
+            91
+          ],
+          "nativeBounds": [
+            23,
+            25,
+            123,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 4,
+      "time": 0.4,
+      "rgbMAE": 1.560533,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.572542,
+          "referenceBounds": [
+            22,
+            20,
+            122,
+            84
+          ],
+          "nativeBounds": [
+            22,
+            20,
+            122,
+            84
+          ],
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.704152,
+          "referenceBounds": [
+            42,
+            46,
+            118,
+            98
+          ],
+          "nativeBounds": [
+            42,
+            47,
+            118,
+            97
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.783182,
+          "referenceBounds": [
+            46,
+            18,
+            150,
+            88
+          ],
+          "nativeBounds": [
+            47,
+            19,
+            149,
+            87
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.951471,
+          "referenceBounds": [
+            28,
+            23,
+            130,
+            91
+          ],
+          "nativeBounds": [
+            29,
+            25,
+            129,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 5,
+      "time": 0.5,
+      "rgbMAE": 1.542377,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.374242,
+          "referenceBounds": [
+            24,
+            20,
+            126,
+            84
+          ],
+          "nativeBounds": [
+            25,
+            20,
+            125,
+            84
+          ],
+          "boundsError": 1
+        },
+        "scale": {
+          "rgbMAE": 1.829741,
+          "referenceBounds": [
+            40,
+            46,
+            120,
+            98
+          ],
+          "nativeBounds": [
+            40,
+            46,
+            120,
+            98
+          ],
+          "boundsError": 0
+        },
+        "rotation": {
+          "rgbMAE": 1.802101,
+          "referenceBounds": [
+            45,
+            16,
+            151,
+            90
+          ],
+          "nativeBounds": [
+            45,
+            16,
+            150,
+            90
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.827441,
+          "referenceBounds": [
+            32,
+            23,
+            134,
+            91
+          ],
+          "nativeBounds": [
+            33,
+            25,
+            134,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 6,
+      "time": 0.6,
+      "rgbMAE": 1.574981,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.558754,
+          "referenceBounds": [
+            28,
+            20,
+            128,
+            84
+          ],
+          "nativeBounds": [
+            28,
+            20,
+            128,
+            84
+          ],
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.826193,
+          "referenceBounds": [
+            38,
+            44,
+            122,
+            100
+          ],
+          "nativeBounds": [
+            39,
+            45,
+            121,
+            99
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.821717,
+          "referenceBounds": [
+            43,
+            10,
+            152,
+            96
+          ],
+          "nativeBounds": [
+            44,
+            11,
+            152,
+            95
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.909189,
+          "referenceBounds": [
+            36,
+            23,
+            138,
+            91
+          ],
+          "nativeBounds": [
+            37,
+            25,
+            138,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 7,
+      "time": 0.7,
+      "rgbMAE": 1.601531,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.802929,
+          "referenceBounds": [
+            30,
+            20,
+            132,
+            84
+          ],
+          "nativeBounds": [
+            31,
+            20,
+            131,
+            84
+          ],
+          "boundsError": 1
+        },
+        "scale": {
+          "rgbMAE": 1.882399,
+          "referenceBounds": [
+            36,
+            44,
+            124,
+            100
+          ],
+          "nativeBounds": [
+            37,
+            44,
+            123,
+            100
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.853798,
+          "referenceBounds": [
+            42,
+            6,
+            154,
+            100
+          ],
+          "nativeBounds": [
+            43,
+            6,
+            153,
+            100
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.825118,
+          "referenceBounds": [
+            38,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            39,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 8,
+      "time": 0.8,
+      "rgbMAE": 1.598937,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.721448,
+          "referenceBounds": [
+            34,
+            20,
+            134,
+            84
+          ],
+          "nativeBounds": [
+            34,
+            20,
+            134,
+            84
+          ],
+          "boundsError": 0
+        },
+        "scale": {
+          "rgbMAE": 1.804066,
+          "referenceBounds": [
+            36,
+            42,
+            124,
+            102
+          ],
+          "nativeBounds": [
+            36,
+            43,
+            124,
+            101
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.83697,
+          "referenceBounds": [
+            42,
+            2,
+            154,
+            104
+          ],
+          "nativeBounds": [
+            43,
+            3,
+            153,
+            103
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.964778,
+          "referenceBounds": [
+            40,
+            23,
+            142,
+            91
+          ],
+          "nativeBounds": [
+            41,
+            25,
+            141,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 9,
+      "time": 0.9,
+      "rgbMAE": 1.637014,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.960589,
+          "referenceBounds": [
+            36,
+            18,
+            138,
+            86
+          ],
+          "nativeBounds": [
+            37,
+            20,
+            137,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 2.030158,
+          "referenceBounds": [
+            34,
+            42,
+            126,
+            102
+          ],
+          "nativeBounds": [
+            34,
+            43,
+            126,
+            101
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.807162,
+          "referenceBounds": [
+            44,
+            0,
+            152,
+            106
+          ],
+          "nativeBounds": [
+            44,
+            0,
+            152,
+            106
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.897271,
+          "referenceBounds": [
+            40,
+            23,
+            142,
+            91
+          ],
+          "nativeBounds": [
+            41,
+            25,
+            142,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 10,
+      "time": 1,
+      "rgbMAE": 1.628682,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 2.019052,
+          "referenceBounds": [
+            32,
+            40,
+            128,
+            104
+          ],
+          "nativeBounds": [
+            33,
+            42,
+            127,
+            102
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.788808,
+          "referenceBounds": [
+            46,
+            0,
+            150,
+            108
+          ],
+          "nativeBounds": [
+            46,
+            0,
+            149,
+            108
+          ],
+          "boundsError": 1
+        },
+        "back": {
+          "rgbMAE": 1.909536,
+          "referenceBounds": [
+            40,
+            23,
+            142,
+            91
+          ],
+          "nativeBounds": [
+            41,
+            25,
+            142,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 11,
+      "time": 1.1,
+      "rgbMAE": 1.625845,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 2.06329,
+          "referenceBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "nativeBounds": [
+            31,
+            41,
+            129,
+            103
+          ],
+          "boundsError": 1
+        },
+        "rotation": {
+          "rgbMAE": 1.772657,
+          "referenceBounds": [
+            50,
+            0,
+            146,
+            110
+          ],
+          "nativeBounds": [
+            50,
+            0,
+            146,
+            108
+          ],
+          "boundsError": 2
+        },
+        "back": {
+          "rgbMAE": 1.867975,
+          "referenceBounds": [
+            40,
+            23,
+            142,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            141,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 12,
+      "time": 1.2,
+      "rgbMAE": 1.590715,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796798,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 13,
+      "time": 1.3,
+      "rgbMAE": 1.590708,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 14,
+      "time": 1.4,
+      "rgbMAE": 1.590708,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 15,
+      "time": 1.5,
+      "rgbMAE": 1.590703,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907929,
+          "referenceBounds": [
+            40,
+            18,
+            140,
+            86
+          ],
+          "nativeBounds": [
+            40,
+            20,
+            140,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796727,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 16,
+      "time": 1.6,
+      "rgbMAE": 1.613804,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 2.131886,
+          "referenceBounds": [
+            48,
+            18,
+            150,
+            86
+          ],
+          "nativeBounds": [
+            49,
+            20,
+            149,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 17,
+      "time": 1.7,
+      "rgbMAE": 1.604663,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 2.043249,
+          "referenceBounds": [
+            56,
+            18,
+            158,
+            86
+          ],
+          "nativeBounds": [
+            56,
+            20,
+            157,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 18,
+      "time": 1.8,
+      "rgbMAE": 1.595538,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.954764,
+          "referenceBounds": [
+            60,
+            18,
+            162,
+            86
+          ],
+          "nativeBounds": [
+            61,
+            20,
+            162,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 19,
+      "time": 1.9,
+      "rgbMAE": 1.590734,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.908182,
+          "referenceBounds": [
+            64,
+            18,
+            164,
+            86
+          ],
+          "nativeBounds": [
+            64,
+            20,
+            164,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823865,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.796758,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.788415,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    },
+    {
+      "index": 20,
+      "time": 2,
+      "rgbMAE": 1.591099,
+      "regions": {
+        "stacked": {
+          "rgbMAE": 1.907997,
+          "referenceBounds": [
+            64,
+            18,
+            164,
+            86
+          ],
+          "nativeBounds": [
+            64,
+            20,
+            164,
+            84
+          ],
+          "boundsError": 2
+        },
+        "scale": {
+          "rgbMAE": 1.823621,
+          "referenceBounds": [
+            30,
+            38,
+            130,
+            106
+          ],
+          "nativeBounds": [
+            30,
+            40,
+            130,
+            104
+          ],
+          "boundsError": 2
+        },
+        "rotation": {
+          "rgbMAE": 1.798616,
+          "referenceBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "nativeBounds": [
+            54,
+            0,
+            142,
+            108
+          ],
+          "boundsError": 0
+        },
+        "back": {
+          "rgbMAE": 1.789136,
+          "referenceBounds": [
+            40,
+            23,
+            140,
+            91
+          ],
+          "nativeBounds": [
+            40,
+            25,
+            140,
+            89
+          ],
+          "boundsError": 2
+        }
+      }
+    }
+  ],
+  "worstRGBMAE": 1.637014,
+  "worstRegionRGBMAE": 2.131886,
+  "worstBoundsError": 2,
+  "limitations": "Engine regression gates only. This does not certify arbitrary custom styles or all rotation/scale pivots.",
+  "pass": true
+}

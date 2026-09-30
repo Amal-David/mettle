@@ -76,7 +76,7 @@ public struct PreviewRootView: View {
             HStack(spacing: 5) {
                 Circle().fill(Color.orange).frame(width: 5, height: 5)
                 Text("Experimental").font(.system(size: 11))
-                Spacer(); Text("v0.2").font(.system(size: 10, design: .monospaced))
+                Spacer(); Text("v0.3").font(.system(size: 10, design: .monospaced))
             }.foregroundStyle(.secondary).padding(18)
         }.background(Color(nsColor: .controlBackgroundColor).opacity(0.6))
     }

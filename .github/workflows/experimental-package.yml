@@ -2,7 +2,7 @@ name: Experimental package
 on:
   workflow_dispatch:
   push:
-    branches: [feat/motion-updates-sept-2026]
+    branches: [main, feat/motion-updates-sept-2026]
 permissions:
   contents: read
 concurrency:

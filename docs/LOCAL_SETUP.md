@@ -1,3 +1,5 @@
+> **Upgrading to v0.3:** Run `git pull --ff-only`, re-run the local development plugin from this checkout, and rebuild/update the `Mettle` Swift package. New exports use schema version 2; old runtimes refuse them. Older version-1 exports still load in the new runtime. See [Motion update](MOTION_2026_09.md).
+
 # Run Mettle locally
 
 **Recommended for the experimental build. No Figma Community publication is required.**

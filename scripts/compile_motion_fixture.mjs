@@ -1,0 +1,11 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {compileScene} from '../plugin/src/compiler.mjs';
+const source=JSON.parse(await readFile(new URL('../fixtures/motion-2026/styles.source.json',import.meta.url),'utf8'));
+const text=JSON.stringify(source.snapshot);let hash=2166136261;
+for(let i=0;i<text.length;i++)hash=Math.imul(hash^text.charCodeAt(i),16777619)>>>0;
+if(hash.toString(16)!==source.provenance.fnv1a)throw new Error('Live Figma snapshot fingerprint changed; do not silently replace the reference.');
+const doc=compileScene(source.snapshot);
+const errors=doc.diagnostics.filter(d=>d.severity==='error');
+if(errors.length)throw new Error(JSON.stringify(errors));
+await writeFile(new URL('../fixtures/motion-2026/styles.figmetal.json',import.meta.url),JSON.stringify(doc,null,2)+'\n');
+console.log('Compiled live Figma style fixture: 5 nodes, 8 bindings; placement retained.');

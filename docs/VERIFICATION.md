@@ -1,3 +1,5 @@
+> **Current update:** [v0.3 Motion compatibility evidence](MOTION_2026_09.md) records 140 passing tests on the M4 Pro, the iOS build, and a new 21-frame Figma-versus-Metal comparison. The original hardware/pixel table below remains historical v0.2 evidence; its regression gates were also rerun successfully.
+
 # Mettle v0.2 verification
 
 Verified on 2026-09-29 on the authorized Apple M4 Pro Mac. This phase validates a small live-Figma corpus, not arbitrary production designs or every supported feature.

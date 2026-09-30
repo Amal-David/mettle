@@ -27,7 +27,8 @@ jobs:
           node scripts/generate_contract_fixture.mjs
           node scripts/verify_source_fingerprints.mjs
           node scripts/compile_live.mjs
-          git diff --exit-code -- plugin/code.js examples/compiler-transition.figmetal.json fixtures/live/*.figmetal.json
+          node scripts/compile_motion_fixture.mjs
+          git diff --exit-code -- plugin/code.js examples/compiler-transition.figmetal.json fixtures/live/*.figmetal.json fixtures/motion-2026/styles.figmetal.json
       - name: Comparison measurement tests and repository checksums
         run: |
           python3 -m venv .ci-venv
@@ -45,7 +46,9 @@ jobs:
       - name: Core tests; GPU suites intentionally require a real development Mac
         run: swift test --filter "MettleCoreTests|PlaybackTests|ReferenceTests" --jobs 4
       - name: Validate a source compiler contract
-        run: swift run mettle validate examples/compiler-transition.figmetal.json
+        run: |
+          swift run mettle validate examples/compiler-transition.figmetal.json
+          swift run mettle validate fixtures/motion-2026/styles.figmetal.json
       - name: iOS simulator library compilation
         run: >-
           swift build --scratch-path .build-ios --target Mettle

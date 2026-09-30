@@ -61,7 +61,7 @@ func run() throws {
     let args = try Arguments()
     if ["help","--help","-h"].contains(args.verb) {
         print("""
-        Mettle v0.2
+        Mettle v0.3
           mettle preview [scene.figmetal.json] [--example motion|vectors] [--time 1]
           mettle demo (alias for preview)
           mettle validate scene.figmetal.json [--allow-partial]

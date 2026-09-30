@@ -42,8 +42,14 @@ public struct Keyframe: Codable, Equatable, Sendable {
 public struct Track: Codable, Equatable, Sendable {
     public var operation: String
     public var keyframes: [Keyframe]
-    public init(_ keyframes: [Keyframe], operation: String = "set") { self.keyframes = keyframes; self.operation = operation }
+    /// Placement of a style-local timeline in seconds. Nil means legacy global keys.
+    public var timelineOffset: Double?
+    public init(_ keyframes: [Keyframe], operation: String = "set", timelineOffset: Double? = nil) {
+        self.keyframes = keyframes; self.operation = operation; self.timelineOffset = timelineOffset
+    }
     public func sample(_ time: Double) -> [Double]? {
+        let time = time - (timelineOffset ?? 0)
+        guard time.isFinite else { return nil }
         guard let first = keyframes.first, let last = keyframes.last else { return nil }
         if time <= first.time { return first.value }
         if time >= last.time { return last.value }
@@ -89,11 +95,15 @@ public struct Binding: Codable, Equatable, Sendable {
             guard abs(base[0]) > 1e-12 else { throw SceneError.invalid("Cannot normalize scale from zero") }
         }
         for track in tracks {
+            let offset = track.timelineOffset ?? 0
+            guard offset.isFinite, offset >= 0, offset <= 86400 else {
+                throw SceneError.invalid("Style timeline offset must be finite and in 0...86400")
+            }
             guard ["set","offset","scale"].contains(track.operation), !track.keyframes.isEmpty,
                   track.keyframes.count <= 100000 else { throw SceneError.invalid("Track operation or keyframe count") }
             var previous = -Double.infinity
             for key in track.keyframes {
-                guard key.time.isFinite, key.time >= 0, key.time > previous,
+                guard key.time.isFinite, key.time >= 0, key.time + offset <= 86400, key.time > previous,
                       key.value.count == base.count, key.value.allSatisfy(\.isFinite) else {
                     throw SceneError.invalid("Unsorted, duplicate, or invalid keyframes for \(field)")
                 }

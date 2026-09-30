@@ -1,6 +1,6 @@
 {
   "format": "figma-metal",
-  "version": 1,
+  "version": 2,
   "scenes": [
     {
       "name": "Conformance — gradients outlines clipping",
@@ -856,10 +856,152 @@
     }
   ],
   "diagnostics": [],
-  "sourceMotion": {},
+  "sourceMotion": {
+    "1:9": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "1:10": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "1:11": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "1:12": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "1:13": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:2": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:3": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:4": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:5": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:6": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    },
+    "2:7": {
+      "animations": null,
+      "manualKeyframeTracks": null,
+      "animationStyles": [],
+      "timelines": [
+        {
+          "id": "1:9",
+          "duration": 2
+        }
+      ],
+      "variableResolutions": []
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
   "exporter": {
     "name": "Mettle",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "source": "Figma Plugin API"
   },
   "provenance": {

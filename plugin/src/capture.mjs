@@ -1,3 +1,4 @@
+import {resolveMotionVariables} from './motion.mjs';
 /** Shared, capability-guarded live Figma capture. No UI, compiler, or network. */
 export function createCapture(figma) {
 let captureCount = 0;
@@ -54,6 +55,13 @@ async function captureNode(node,depth=0) {
     animations:read(node,'animations',{}),manualKeyframeTracks:read(node,'manualKeyframeTracks',{}),
     animationStyles:read(node,'animationStyles',[]),timelines:read(node,'timelines',[]),reactions:read(node,'reactions',[]),
     children:[],captureDiagnostics};
+  // Keep raw source aliases and custom-style metadata. Compile only resolved
+  // consumer-mode data; a missing token is an error, never a default easing.
+  out.rawMotion={animations:cloneJSON(out.animations),manualKeyframeTracks:cloneJSON(out.manualKeyframeTracks),animationStyles:cloneJSON(out.animationStyles)};
+  try {
+    const tokens=await resolveMotionVariables(figma,node,out.rawMotion);
+    Object.assign(out,tokens.resolved);out.motionVariableResolutions=tokens.resolutions;
+  } catch(error) {captureDiagnostics.push({code:'MOTION_VARIABLE_UNRESOLVED',message:error.message});}
   if(out.animationStyles.length && !Object.keys(out.animations).length) captureDiagnostics.push({code:'PRESET_MOTION_UNAVAILABLE',message:'Node has animation styles but no resolved animation data was exposed.'});
   if(!('animations' in node)&&!('manualKeyframeTracks' in node)) captureDiagnostics.push({severity:'warning',code:'MOTION_API_UNAVAILABLE',message:'Motion properties are unavailable in this Figma host. Verify that the source is static.'});
   // Figma exposes glyph outlines directly on uniform text in supported hosts.

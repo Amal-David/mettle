@@ -1,3 +1,5 @@
+> **v0.3 update:** Resolved custom-style placement, additive OFFSET translation, consumer-mode variables, and source Back cubics are now supported. See [September Motion update](MOTION_2026_09.md) for the version-2 schema and remaining text/audio gates. Statements below about OFFSET-only translation apply to the earlier v0.2 baseline.
+
 # Compatibility contract — v0.2
 
 The code is authoritative. The following describes intentional boundaries, not blanket Figma support.

@@ -6,6 +6,7 @@ mkdir -p artifacts
 node scripts/generate_contract_fixture.mjs
 node scripts/verify_source_fingerprints.mjs
 node scripts/compile_live.mjs
+node scripts/compile_motion_fixture.mjs
 swift test
 swift run mettle validate examples/compiler-transition.figmetal.json
 if [[ "$(uname -s)" == Darwin ]]; then

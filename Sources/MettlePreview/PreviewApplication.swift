@@ -121,7 +121,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
     @objc private func quit() { NSApp.terminate(nil) }
     @objc private func about() {
         let alert = NSAlert(); alert.messageText = "Mettle Preview"
-        alert.informativeText = "Experimental v0.2\n\nA small macOS utility for previewing Mettle exports.\nThe Swift + Metal library is independent of this app.\n\nOpen an export, inspect the motion, or save a frame."
+        alert.informativeText = "Experimental v0.3\n\nA small macOS utility for previewing Mettle exports.\nThe Swift + Metal library is independent of this app.\n\nOpen an export, inspect the motion, or save a frame."
         if let window { alert.beginSheetModal(for: window) }
     }
 }
