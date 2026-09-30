@@ -1,6 +1,6 @@
 # Independent live-Figma fixtures
 
-Source: FigmaMetal — Native Fidelity Lab, file `flxINzepb5BgRcRfGj0Tl5`, created for this project on 2026-09-29. These are conformance examples authored in real Figma, not a user's production animation.
+Source: FigmaMetal — Native Fidelity Lab (the original lab name), file `flxINzepb5BgRcRfGj0Tl5`, created for this project on 2026-09-29. These are conformance examples authored in real Figma, not a user's production animation.
 
 - `conformance.source.json`: static frame `1:9`; original paths, transforms and paint values.
 - `motion.source.json`: frame `2:8`, animated child `2:9`; original resolved and manual source tracks.
@@ -10,9 +10,9 @@ The compact snapshots omit only default-valued properties and unused empty metad
 
 ## Original reference files
 
-The installed Mac checkout contains `conformance.reference.png` (600 x 420 Figma PNG) and `motion.reference.mp4` (320 x 180, 30 fps, 61 endpoint-inclusive frames from Figma). They are test oracles only, not runtime assets. The downloadable source-only ZIP omits these binaries and the generated HTML visual report; native scene playback and ordinary source/GPU tests do not require them.
+This repository includes `conformance.reference.png` (600 × 420, independently exported by Figma) and `motion.reference.mp4` (320 × 180, 30 fps, 61 endpoint-inclusive Figma-rendered frames). They are test references only, not runtime assets.
 
-To run the full visual harness on another checkout, copy those two files from the installed Mac checkout into this folder. Otherwise independently re-export the unchanged source frames in Figma at the same settings, verify timing/dimensions, and explicitly review any new golden. Never create or replace these reference files with native Metal output.
+These original files were omitted from the early source-only ZIP, but are included in the public repository so anyone can reproduce the comparison. Do not replace them with native Metal output. Re-exporting changed designs creates a new reference that needs explicit review.
 
 Original SHA-256 values:
 

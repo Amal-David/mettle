@@ -16,7 +16,7 @@ Motion beta getters may not exist in every host. A static design has no invented
 
 ## Native runtime
 
-`FigmaMetalCore` is portable Swift. The parser subdivides curves at configurable tolerance. The tessellator splits scan bands at vertices and edge crossings, resolves winding intervals and emits non-overlapping trapezoid triangles within each path. It is a bounded prototype algorithm, not an optimal production tessellator.
+`MettleCore` is portable Swift. The parser subdivides curves at configurable tolerance. The tessellator splits scan bands at vertices and edge crossings, resolves winding intervals and emits non-overlapping trapezoid triangles within each path. It is a bounded prototype algorithm, not an optimal production tessellator.
 
 `MetalRenderer` prepares meshes once and uploads them as native vertex buffers. Per-frame work evaluates bindings and traverses nodes. Shared Metal functions paint solids/gradients. A group with opacity below one is rendered to an isolated surface before alpha multiplication. Clips use a separately rendered alpha mask. Frame strokes render above children. Output and intermediate textures use premultiplied alpha.
 

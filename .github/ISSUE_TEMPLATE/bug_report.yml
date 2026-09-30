@@ -1,0 +1,26 @@
+name: Rendering or export bug
+description: A reproducible mismatch, rejected feature, or crash.
+title: "[bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Mettle is experimental. Use a minimal scene you have permission to share; remove private content."
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Commit, macOS/Xcode version, device, and Figma exporter mode.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Exact commands, minimal scene, expected output, and observed output.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Independent reference and native output
+      description: Original Figma PNG/video, native rendering, diagnostics, and timestamps. Do not upload sensitive assets.

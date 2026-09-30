@@ -1,111 +1,88 @@
-# FigmaMetal
+<p align="center">
+  <img src="docs/media/hero.png" alt="Mettle — Design in Figma. Move in Metal. Experimental native animation compiler and renderer." width="1280">
+</p>
 
-**Experimental, source-based Figma → native Metal animation export.**
+# Mettle
 
-FigmaMetal exports structured paths, paints, transforms and supported motion tracks into an owned scene format, then renders them with a Swift + Metal runtime. It does not route through Lottie, Rive, Skia, a browser, a screenshot tracer, or an image/video sequence.
+**Design in Figma. Move in Metal.**
 
-This is a working **v0.2 engineering prototype**, not a universal, pixel-perfect Figma player. Supported source features are translated deterministically. Unsupported features are reported; exports containing errors are blocked unless you explicitly allow an incomplete result.
+[![Source checks](https://github.com/Amal-David/mettle/actions/workflows/test.yml/badge.svg)](https://github.com/Amal-David/mettle/actions/workflows/test.yml)
+![Status: experimental](https://img.shields.io/badge/status-experimental-e8b86d)
+[![MIT license](https://img.shields.io/badge/license-MIT-7cd9c1)](LICENSE)
+
+> [!WARNING]
+> **Experimental v0.2.** A working renderer for a defined subset of Figma, not a drop-in player for every design or prototype. APIs and the asset schema may change. Do not depend on it for production yet.
+
+Mettle reads the original paths, paints, transforms, and supported animation tracks from Figma and renders them with Swift and Metal. No Lottie conversion. No browser. No tracing screenshots and hoping the geometry matches.
 
 ```text
-Figma selection
-  └─ Development plugin: source geometry + motion + compatibility report
-       └─ .figmetal.json (our scene data, not a third-party animation format)
-            └─ Swift timeline evaluator + cached vector meshes
-                 └─ Native Metal paint / mask / compositing passes
-                      └─ MTKView on macOS or iOS
+Figma source → Mettle exporter → scene + animation data → Swift evaluator → Metal
 ```
 
-## Phase 2: live Figma validation
+The exporter and renderer belong to the same project. A feature is limited by what we implement and verify, not by a third-party animation format. There is no Skia or Rive dependency either.
 
-84 tests passed on the M4 Pro: 36 exporter/capture, 29 Swift core, 14 actual Metal GPU, and 5 independent comparison-measurement tests. Metal API Validation was enabled. A 600 x 420 live Figma reference has mean RGB error 0.242/255; a 61-frame translation/opacity clip has at most 1 pixel of detected bounds difference. This is not pixel-perfect certification: the glyph-region mean error is 3.893/255, and edge antialiasing differs.
+## See it run
+
+![Animated vector test scene rendered directly by the native Metal backend](docs/media/native-demo.gif)
+
+*Actual Metal output, recorded from a synthetic vector test scene. This GIF demonstrates the renderer; it is not an imported Figma production design, and the runtime does not play image sequences.*
+
+<details>
+<summary>Native macOS preview and a frame-by-frame Figma comparison</summary>
+
+![Actual Mettle macOS preview window, including playback controls and scene information](docs/media/native-preview.png)
+
+*An actual screenshot of the native app, not a UI mockup.*
+
+![Figma-rendered reference compared with Mettle across the same motion timeline](docs/media/figma-vs-mettle.gif)
+
+*Left: Figma's video export. Right: native Metal output from the source tracks. Both use the same timestamps; the Figma video is lossy.*
+
+</details>
+
+## Try the native demo
+
+You need a **Metal-capable Mac and full Xcode**. The package uses Swift tools 5.9+ and declares macOS 13+ / iOS 16+ targets. Older deployment targets and physical iPhones have not been validated. [Test environments →](docs/VERIFICATION.md)
 
 ```bash
-# Preview motion captured from the actual Figma API.
-swift run -c release figma-metal demo fixtures/live/motion.figmetal.json
-
-# Full independent comparison on the installed Mac checkout.
-./scripts/verify_live.sh
-open artifacts/phase2/index.html
-
-# Explicit-time native frame sequence (no video playback in the renderer).
-swift run -c release figma-metal frames fixtures/live/motion.figmetal.json \
-  --output artifacts/frames --fps 30 --frames 61
+git clone https://github.com/Amal-David/mettle.git
+cd mettle
+swift run -c release mettle demo
 ```
 
-The downloadable **source-only ZIP** includes the capture/compiler/runtime, source JSONs, compiled scenes, tests and measurements. The original Figma PNG/MP4 and generated visual HTML report are retained in the Mac checkout, not included in that ZIP. Ordinary source/GPU tests and scene playback do not need the image/video oracles. Full visual comparison does; see [fixture instructions](fixtures/live/README.md).
-
-## Run the native demo
-
-Requirements: a Metal-capable Mac, Xcode, Swift 5.9 or newer. Node 20+ is needed only to rebuild or test the exporter. The package declares macOS 13+ and iOS 16+ deployment targets; see [verification](docs/VERIFICATION.md) for the environments actually tested.
+Play, pause, and scrub in the preview. To open the animation captured from live Figma:
 
 ```bash
-cd /path/to/figma-metal
-swift run -c release figma-metal demo
+swift run -c release mettle demo fixtures/live/motion.figmetal.json
 ```
 
-The bundled demonstration is **synthetic renderer-test artwork**, not an animation captured from a real Figma file. It contains animated vector bars, gradient paths, clipping, an even-odd hole, nested transforms, and isolated group transparency. Use the preview's Play / Pause and scrub controls to inspect it.
+## Export your own scene
 
-```bash
-# Render actual Metal output, not a software reconstruction.
-swift run -c release figma-metal render --time 1 --output artifacts/frame.png
-
-# Run CPU and, on a Mac, actual Metal GPU pixel tests.
-swift test
-(cd plugin && npm test)
-
-# Synchronous offscreen benchmark. Not an iPhone frame-rate measurement.
-swift run -c release figma-metal bench --frames 180
-```
-
-## Export from Figma
-
-The ready-to-import development plugin is in `plugin/`. `code.js` is included; there is no npm installation step and no third-party JavaScript dependency.
+The development plugin is in [`plugin/`](plugin). Its built `code.js` is checked in, so **there is no npm install step**.
 
 1. In Figma Desktop, import `plugin/manifest.json` as a development plugin.
-2. Select one frame/component, then run **FigmaMetal — Direct Metal Export**. Use **One selection — Motion / static scene** for supported source Motion tracks, or static artwork.
-3. Inspect the report. Leave **Allow incomplete export** unchecked. Save the `.figmetal.json` file when export is permitted.
-4. Preview that file with the native player:
+2. Select a frame or component and run **Mettle — Experimental Metal Export**.
+3. Choose the single-selection mode, inspect the compatibility report, and save the scene. Leave **Allow incomplete export** unchecked.
+4. Validate and play it:
 
 ```bash
-swift run -c release figma-metal validate /path/to/scene.figmetal.json
-swift run -c release figma-metal demo /path/to/scene.figmetal.json
+swift run -c release mettle validate path/to/scene.figmetal.json
+swift run -c release mettle demo path/to/scene.figmetal.json
 ```
 
-For a bounded A→B animation, select **two** same-size frames and choose the two-frame mode. The plugin orders them left-to-right, matches uniquely named sibling layers within their hierarchy, and reads the first matching Smart Animate connection's duration/easing when available. Without such a connection, duration is explicitly taken from the panel. It does **not** recreate general navigation or a prototype's complete state machine.
+For a bounded A→B animation, select two same-size frames and choose the two-frame mode. It matches uniquely named siblings through the hierarchy and can read a matching Smart Animate connection's timing. It does **not** reproduce an application's navigation or interaction state machine.
 
-The **Create A/B test frames in this file** button creates a small test pair in the current Figma file. It changes the file only when pressed. Geometry export does not flatten original text. It prefers directly exposed glyph paths and uses temporary copies for stroke outlines and text fallback. Temporary copies are removed afterward.
+The manifest uses a local development ID. If Figma asks for an assigned ID, create a development plugin through **New Plugin** and copy its ID into the manifest. This is not a published Figma Community plugin. The shared capture code has run in live Figma; the complete desktop import/panel workflow is still a separate validation gap.
 
-The manifest contains a local development identifier. If Figma requests a Figma-assigned plugin ID, create a development plugin with **New Plugin**, copy its assigned `id` into this manifest, and re-import it. An assigned ID is required before publishing; this build does not publish anything.
+The `.figmetal.json` extension and `figma-metal` format signature are retained from the original prototype so older scenes continue to load. They are Mettle's own data format, not an external runtime dependency.
 
-Rebuild the plugin after changing its source:
+## Use it in SwiftUI
 
-```bash
-(cd plugin && npm run build && npm run check && npm test)
-```
-
-**Live-host evidence:** the shared capture implementation has run inside live Figma against two newly authored conformance frames. Its source paths/transforms match the checked-in fixtures. Native output was compared with an independent Figma PNG and all 61 frames of a Figma-rendered video. The desktop plugin panel/import interaction, production files, physical iPhones, and rotation/scale pivot parity remain separate validation gates. See [verification](docs/VERIFICATION.md).
-
-## What v0.2 implements
-
-| Area | Implemented behavior |
-|---|---|
-| Vector geometry | Native SVG-style M/L/H/V/C/Q/S/T/Z path parsing, Bézier subdivision, concave fills, nonzero/even-odd holes, bounded self-intersection handling. Geometry is cached as GPU vertex buffers. |
-| Paints | Solid colors and linear/radial gradients, including alpha. Multiple ordinary paints retain paint indices for animation. |
-| Composition | Nested affine transforms, frame clipping, native offscreen group-opacity isolation, premultiplied-alpha blending, transparent output, up to 4× MSAA by default. |
-| Motion | Explicit-time evaluation of translation, rotation, scale, opacity and solid-color tracks. Linear, hold and cubic Bézier easing; SET/OFFSET/SCALE runtime track composition; source translation currently requires a leading SET track. Once/loop/ping-pong. |
-| Text / strokes | Direct uniform glyph geometry where exposed; temporary-copy fallback and stroke outlining. Text is not editable or intrinsically accessible in the player. |
-| Two-frame export | Restricted, same-topology transitions for translation, opacity and solid colors; rejects unsupported geometry changes rather than guessing a crossfade. |
-| Integration | Swift Package libraries, SwiftUI Metal view, native macOS preview, source validator, GPU PNG export, benchmark, regression tests. |
-
-Not yet implemented: arbitrary Figma shaders/effects, shadows/blur, image/video/pattern paints, advanced blending, sibling masks, animated path morph/trim, changing layout or text, nested independent timelines, spring easing, complete Smart Animate parity, prototype event handling, and native hit testing. Some text/vector regional-paint cases are rejected. This is deliberately a bounded renderer, not an entire application/UI framework.
-
-## Embed in a SwiftUI application
-
-Add this directory as a local Swift Package dependency in Xcode and link the `FigmaMetal` product. Add your exported JSON to the application's resources. Create the renderer once, not on every SwiftUI body evaluation.
+Add this repository as a Swift Package dependency and link the **`Mettle`** product. Until there is a stable release, use `main` or pin a reviewed commit. Add the exported JSON to your app's resources and create the renderer once rather than in each `body` evaluation.
 
 ```swift
 import SwiftUI
-import FigmaMetal
+import Mettle
 
 struct AnimationScreen: View {
     private let renderer: MetalRenderer
@@ -116,7 +93,7 @@ struct AnimationScreen: View {
     }
 
     var body: some View {
-        FigmaMetalView(renderer: renderer)
+        MettleView(renderer: renderer)
             .aspectRatio(renderer.scene.width / renderer.scene.height,
                          contentMode: .fit)
             .accessibilityLabel("Animated illustration")
@@ -124,35 +101,78 @@ struct AnimationScreen: View {
 }
 ```
 
-Pass `time: someValue` to scrub deterministically, or leave `time` nil for playback. The view pauses for Reduce Motion and inactive scene phases. Keep meaningful labels, buttons, focus, interaction and navigation in native SwiftUI/UIKit controls outside the vector surface. Call a renderer from **one thread**; the provided host uses the main thread.
+Pass `time:` for deterministic seeking or leave it `nil` for playback. The view respects Reduce Motion and inactive scene phases. Keep labels, focus, buttons, and navigation in native SwiftUI/UIKit controls; the vector canvas is not an accessible UI framework. Use each renderer from one thread.
 
-The shader source is packaged with the Swift target and compiled through Metal at renderer initialization. Export does not emit a unique `.metal` program per rectangle: it emits source scene data for the shared native shaders. This remains a direct native renderer, without a third-party animation compatibility ceiling.
+## What works, and what does not
 
-## Project structure
+| Area | Current implementation |
+| :--- | :--- |
+| Geometry | Bézier paths, concave fills, nonzero/even-odd holes, source corner geometry, bounded self-intersections. Cached GPU meshes. |
+| Paint | Solid fills, linear/radial gradients, paint alpha, verified ordinary paint stacking. |
+| Composition | Nested affine transforms, rounded frame clipping, isolated group opacity, transparent output, up to 4× MSAA. |
+| Animation | Translation, rotation, scale, opacity, and solid-color tracks; linear/hold/cubic Bézier easing; deterministic evaluation and looping. **Source rotation/scale pivot parity remains unverified.** |
+| Text and strokes | Uniform glyph paths exposed by Figma; temporary-copy outline fallback. Text is not editable, searchable, or intrinsically accessible in the runtime. |
+| Tools | Figma exporter, Swift Package, SwiftUI view, macOS preview, validator, PNG/sequence export, benchmark, regression harness. |
 
-```text
-Sources/FigmaMetalCore/        Scene schema, time evaluator, parser, tessellator
-Sources/FigmaMetal/            Metal renderer and SwiftUI host
-Sources/FigmaMetal/Shaders/    Actual Metal Shading Language source
-Sources/FigmaMetalDemo/        Native preview and command-line tools
-plugin/src/compiler.mjs        Pure, testable source-data compiler
-plugin/src/capture.mjs         Shared live source capture, capability guards, cleanup
-plugin/src/plugin.js           Figma panel adapter
-plugin/manifest.json           Import this into Figma Desktop
-Tests/                        CPU and real-GPU regression tests
-examples/                     Synthetic demo and compiler contract fixture
-fixtures/live/                Live Figma source snapshots and compiled scenes
-scripts/                      Verification and fixture utilities
+**Not implemented:** arbitrary Figma shaders, blur/shadows, image/video/pattern paints, advanced blending, sibling masks, path morph/trim, spring easing, changing text/layout, independent nested timelines, general prototype events, or hit testing. Some regional-paint cases are rejected. [Full compatibility notes →](docs/COMPATIBILITY.md)
+
+Exports with unsupported features are blocked by default. An explicit incomplete-export override exists for investigation, not as a promise of fidelity.
+
+## Compared against Figma, not against ourselves
+
+![Live Figma conformance reference beside Mettle's native rendering](docs/media/fidelity.png)
+
+The test artwork was created **inside live Figma**. The capture implementation preserved its actual geometry, and independent Figma PNG/video exports supplied the references. Those images are never input to the native renderer.
+
+On the small current corpus: static mean RGB error was **0.242 / 255**, and the largest detected boundary difference across **61 motion frames** was **1 pixel**. This is not pixel-perfect parity: curved edges and small text differ, the glyph-region mean error was **3.893 / 255**, and flat backgrounds lower the overall average. These are conformance fixtures, not a production-design benchmark.
+
+**85 tests pass on the development M4 Pro**: 36 exporter/capture, 29 Swift core, 14 actual GPU, 1 preview-host regression, and 5 comparison-measurement tests. Metal API Validation and an arm64 iOS simulator library build also passed. Hosted CI checks source/compiler/core behavior and compilation; it does not claim GPU fidelity.
+
+[Verification and remaining gaps](docs/VERIFICATION.md) · [Machine-readable comparison](docs/media/comparison.json) · [Media provenance](docs/media/README.md)
+
+## Build, test, and reproduce
+
+Node 20+ rebuilds the dependency-free exporter. The complete visual harness additionally needs Python 3 with Pillow and `ffmpeg` / `ffprobe`. Independent reference PNG/MP4 files are included in this repository.
+
+```bash
+(cd plugin && npm run build && npm run check && npm test)
+swift test                       # Includes real GPU tests on a Metal-capable Mac.
+./scripts/verify_live.sh          # Full source-to-Metal comparison against Figma.
+open artifacts/phase2/index.html
 ```
 
-## Boundaries and performance
+```bash
+# Native GPU output at an exact time.
+swift run -c release mettle render --time 1 --output artifacts/frame.png
 
-This implementation prioritizes a testable direct path over engine-scale optimization. Béziers are approximated with an explicit local-coordinate tolerance, not Figma's private tessellator. The CPU tessellator has quadratic intersection work under bounded path budgets. Isolated groups and clips currently use full-target offscreen surfaces; they are correct for the tested cases, but expensive for deeply nested/high-resolution scenes. Draws are not aggressively batched. Color-space parity, especially Display P3 and difficult gradient boundaries, is not established.
+# Record the output; the runtime still evaluates vector geometry every frame.
+swift run -c release mettle frames examples/demo.figmetal.json \
+  --fps 30 --frames 120 --output artifacts/frames
 
-The loader enforces a 32 MiB file limit and node/path/geometry bounds; the renderer limits target size and offscreen allocations. These checks are engineering guards, **not a security sandbox**. Only open trusted exported assets in this prototype. The plugin requests no network access; export does not upload the design to an external service.
+# Offscreen timing; not an iPhone FPS or startup-latency measurement.
+swift run -c release mettle bench --frames 180
+```
 
-Next engineering milestones and acceptance gates are in [architecture](docs/ARCHITECTURE.md). Actual test evidence and remaining validation gaps are in [verification](docs/VERIFICATION.md).
+```text
+Sources/MettleCore/      Scene schema, animation evaluator, path parser, tessellator
+Sources/Mettle/          Native renderer, Metal shaders, SwiftUI host
+Sources/MettleDemo/      macOS preview and CLI
+plugin/src/             Figma capture, compiler, panel adapter
+Tests/                  Core and actual-GPU tests
+fixtures/live/          Original Figma source data and independent references
+scripts/                Capture checks, comparison harness, media generation
+```
+
+The renderer uses shared Metal shaders, not a different generated shader for every rectangle. Curve subdivision has a finite tolerance. Intersection work is bounded but quadratic; isolated groups use full-target surfaces. Large or deeply nested scenes need more optimization. Display P3, thermal behavior, and broad production fidelity remain unverified.
+
+Only open **trusted exports**. File/geometry/allocation limits are safeguards, not a security sandbox. The plugin requests no network access and does not upload designs. No font files are bundled.
+
+## Contributing
+
+The most useful contribution is a small failing design plus an independent reference, followed by a regression test. Please do not replace Figma goldens with Mettle output to make a test pass. See [CONTRIBUTING.md](CONTRIBUTING.md), the [architecture notes](docs/ARCHITECTURE.md), and [security guidance](SECURITY.md).
+
+Next validation work: production-file coverage, text/edge antialiasing, source rotation/scale pivots, physical-device playback, then additional effects. Nothing in that list is a shipped feature.
 
 ## License
 
-MIT. FigmaMetal is an independent project and is not affiliated with or endorsed by Figma or Apple. The code license does not grant rights to any design, font, artwork or other material you export.
+[MIT](LICENSE). Mettle is independent and is not affiliated with or endorsed by Figma or Apple. The code license does not grant rights to designs, fonts, or other assets you export.

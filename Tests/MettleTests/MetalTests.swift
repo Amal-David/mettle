@@ -1,5 +1,5 @@
 import XCTest
-import FigmaMetal
+import Mettle
 #if canImport(Metal)
 import Metal
 

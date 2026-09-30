@@ -1,5 +1,5 @@
 import XCTest
-@testable import FigmaMetalCore
+@testable import MettleCore
 
 final class CoreTests: XCTestCase {
     let rect = "M0 0 H10 V10 H0 Z"

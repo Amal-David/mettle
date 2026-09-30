@@ -6,3 +6,6 @@ node_modules/
 *.xcuserstate
 __pycache__/
 *.pyc
+
+.venv/
+.ci-venv/

@@ -1,0 +1,27 @@
+# README media provenance
+
+These assets were generated for the September 30, 2026 Mettle publication. No invented UI result is presented as a screenshot.
+
+| Asset | Source |
+| --- | --- |
+| `hero.png` | Designed cover with typography and actual `native-frame.png` Metal output. Its framing is presentation artwork, not a Figma screenshot. |
+| `native-preview.png` | Actual macOS window capture of `mettle demo --time 1`. Only the Mettle window was captured, with no desktop or unrelated content. |
+| `native-frame.png` | PNG read back from the Metal renderer at t=1 s for the synthetic bundled scene. |
+| `native-demo.gif` / `.mp4` | 120 evaluated native frames over four seconds from `examples/demo.figmetal.json`. Synthetic renderer-test artwork. GIF delivery is 20 fps; MP4 is 30 fps. Neither is a runtime input. |
+| `fidelity.png` | Labeled, side-by-side composition of Figma's original 600×420 PNG and Mettle's rendering of the source snapshot. |
+| `figma-vs-mettle.gif` | Matched-time pairs from the Figma video reference and Mettle output. The 30 fps H.264 reference is lossy; the GIF samples both sides at 20 fps. |
+| `comparison.json` | Independent comparison measurements, including all 61 source-video frames. |
+
+`../VERIFICATION.md` explains the corpus and limits. Glyph edge antialiasing differs; the images do not establish universal or pixel-perfect parity.
+
+## Reproduce
+
+On a Metal-capable Mac with Xcode, Node, Python/Pillow, and ffmpeg:
+
+```bash
+./scripts/render_readme_media.sh
+```
+
+For the app screenshot, launch `swift run -c release mettle demo --time 1`, then use macOS window screenshot capture. The app prints its window ID; `screencapture -x -o -l WINDOW_ID docs/media/native-preview.png` captures only that window using the machine owner's ordinary OS permissions.
+
+Typography is rasterized from a local system font; font files are not included. Original references retain the checksums in `fixtures/live/README.md`. Never regenerate Figma reference files using Mettle output.

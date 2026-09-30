@@ -176,8 +176,8 @@
     "to": {}
   },
   "exporter": {
-    "name": "FigmaMetal",
-    "version": "0.1.0",
+    "name": "Mettle",
+    "version": "0.2.0",
     "source": "Figma Plugin API",
     "mode": "two-frame-transition"
   }

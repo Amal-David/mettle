@@ -54,7 +54,7 @@ children.append(node('progress-track',x=172,y=421,w=470,h=5,draws=[draw(rect(470
 children.append(node('moving-marker',x=172,y=415,w=18,h=18,draws=[draw(ellipse(18,18),solid(gold),18,18)],bindings=[binding('translationX',172,[172,624,172],[0,2,4])]))
 root=node('demo-root',w=720,h=480,draws=[draw(rect(720,480,24),bg,720,480)],children=children)
 doc=dict(format='figma-metal',version=1,scenes=[dict(name='Synthetic renderer conformance demo',width=720,height=480,duration=4,loop='loop',root=root)],diagnostics=[])
-for dest in [ROOT/'examples/demo.figmetal.json',ROOT/'Sources/FigmaMetalDemo/Resources/demo.figmetal.json']:
+for dest in [ROOT/'examples/demo.figmetal.json',ROOT/'Sources/MettleDemo/Resources/demo.figmetal.json']:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(doc,indent=2)+'\n')
 print('Generated examples/demo.figmetal.json (synthetic fixture)')

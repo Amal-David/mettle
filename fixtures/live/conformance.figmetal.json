@@ -858,7 +858,7 @@
   "diagnostics": [],
   "sourceMotion": {},
   "exporter": {
-    "name": "FigmaMetal",
+    "name": "Mettle",
     "version": "0.2.0",
     "source": "Figma Plugin API"
   },

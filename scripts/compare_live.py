@@ -79,15 +79,15 @@ def main():
     (args.output/'comparison.json').write_text(json.dumps(summary,indent=2)+'\n')
     rows=''.join(f'<tr><td>{k}</td><td>{v["rgbMAE"]:.3f}</td><td>{v["p99MaxChannelError"]}</td><td>{v["pixelsOver8Percent"]:.2f}%</td></tr>' for k,v in summary['regions'].items())
     gates=''.join(f'<li>{"PASS" if g["pass"] else "FAIL"} — {g["name"]}: {g["actual"]} (limit {g["maximum"]})</li>' for g in summary['gates'])
-    html=f'''<!doctype html><meta charset="utf-8"><title>FigmaMetal 0.2 — live fidelity</title>
+    html=f'''<!doctype html><meta charset="utf-8"><title>Mettle 0.2 — live fidelity</title>
 <style>body{{font:16px system-ui;max-width:1280px;margin:48px auto;padding:0 24px;color:#e7eef6;background:#0b1018}}h1{{font-size:40px}}p{{max-width:900px;line-height:1.6}}.grid{{display:grid;grid-template-columns:1fr 1fr;gap:24px}}img{{width:100%;height:auto;background:repeating-conic-gradient(#182433 0% 25%,#111a25 0% 50%) 50%/16px 16px}}table{{border-collapse:collapse;width:100%;max-width:900px}}td,th{{padding:10px;text-align:left;border-bottom:1px solid #2a3748}}li{{margin:8px 0}}.wide{{max-width:640px}}@media(max-width:700px){{.grid{{display:block}}}}</style>
-<h1>FigmaMetal 0.2</h1><p>Native Metal vs independent live Figma renders. No reference PNG or video is loaded by the runtime. Source geometry, fills and animation tracks drive every native frame.</p>
+<h1>Mettle 0.2</h1><p>Native Metal vs independent live Figma renders. No reference PNG or video is loaded by the runtime. Source geometry, fills and animation tracks drive every native frame.</p>
 <div class="grid"><section><h2>Figma reference</h2><img src="reference.png"></section><section><h2>Native Metal</h2><img src="native.png"></section></div>
 <h2>Measured—not pixel-perfect</h2><p>{summary['limitations']} The small “Ag8” label exercises glyph holes and curves, not text layout breadth. The lab fixtures were created in Figma for this project, not taken from a production design.</p><ul>{gates}</ul>
 <table><tr><th>Region</th><th>RGB MAE /255</th><th>P99 max-channel error</th><th>Pixels &gt;8 levels</th></tr>{rows}</table>
 <h2>Difference ×4</h2><img style="max-width:600px" src="difference-4x.png"><p>Amplified RGB differences; alpha error is measured separately. Rasterizers differ at edges.</p>
 <h2>Motion: all {len(summary['motion'])} frames checked</h2><p>Representative frames at 0, 0.5, 1, 1.5 and 59/30 seconds. Figma H264 reference on the left, native Metal on the right. H264 is lossy; source timestamps, shape bounds and pixel errors are checked separately.</p><img class="wide" src="motion-comparison.png">
-<p>Full measurements: <a href="comparison.json">comparison.json</a>. Source: FigmaMetal — Native Fidelity Lab, file flxINzepb5BgRcRfGj0Tl5.</p>'''
+<p>Full measurements: <a href="comparison.json">comparison.json</a>. Source: Mettle — Native Fidelity Lab, file flxINzepb5BgRcRfGj0Tl5.</p>'''
     (args.output/'index.html').write_text(html)
     print(json.dumps({k:summary[k] for k in ['static','regions','gates','pass']},indent=2))
     return 0 if summary['pass'] else 1

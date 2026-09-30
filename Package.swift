@@ -2,18 +2,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "FigmaMetal",
+    name: "Mettle",
     platforms: [.macOS(.v13), .iOS(.v16)],
     products: [
-        .library(name: "FigmaMetal", targets: ["FigmaMetal"]),
-        .library(name: "FigmaMetalCore", targets: ["FigmaMetalCore"]),
-        .executable(name: "figma-metal", targets: ["FigmaMetalDemo"])
+        .library(name: "Mettle", targets: ["Mettle"]),
+        .library(name: "MettleCore", targets: ["MettleCore"]),
+        .executable(name: "mettle", targets: ["MettleDemo"])
     ],
     targets: [
-        .target(name: "FigmaMetalCore"),
-        .target(name: "FigmaMetal", dependencies: ["FigmaMetalCore"], resources: [.copy("Shaders")]),
-        .executableTarget(name: "FigmaMetalDemo", dependencies: ["FigmaMetal"], resources: [.copy("Resources")]),
-        .testTarget(name: "FigmaMetalCoreTests", dependencies: ["FigmaMetalCore"]),
-        .testTarget(name: "FigmaMetalTests", dependencies: ["FigmaMetal"])
+        .target(name: "MettleCore"),
+        .target(name: "Mettle", dependencies: ["MettleCore"], resources: [.copy("Shaders")]),
+        .executableTarget(name: "MettleDemo", dependencies: ["Mettle"], resources: [.copy("Resources")]),
+        .testTarget(name: "MettleCoreTests", dependencies: ["MettleCore"]),
+        .testTarget(name: "MettleTests", dependencies: ["Mettle"])
     ]
 )

@@ -1,29 +1,55 @@
-name: Native and exporter checks
+name: Source checks
 on:
   push:
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: source-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  macos:
-    runs-on: macos-14
+  exporter:
+    name: Exporter and comparison checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: '22'
-      - name: Export compiler and portable contract
+          package-manager-cache: false
+      - name: Export compiler, generated plugin, and live source fingerprints
         run: |
-          cd plugin
-          npm run check
-          npm run build
-          npm test
-          cd ..
+          (cd plugin && npm run check && npm run build && npm test)
           node scripts/generate_contract_fixture.mjs
           node scripts/verify_source_fingerprints.mjs
           node scripts/compile_live.mjs
-      - name: Swift tests including hardware Metal availability
-        run: swift test
-      - name: Native contract validation
-        run: swift run figma-metal validate examples/compiler-transition.figmetal.json
-      # Real GPU tests intentionally fail rather than silently pass on a host
-      # without a Metal device. Use a Metal-capable self-hosted Mac in that case.
+          git diff --exit-code -- plugin/code.js examples/compiler-transition.figmetal.json fixtures/live/*.figmetal.json
+      - name: Comparison measurement tests and repository checksums
+        run: |
+          python3 -m venv .ci-venv
+          .ci-venv/bin/pip install -r requirements-validation.txt
+          .ci-venv/bin/python scripts/test_compare.py
+          sha256sum -c SHA256SUMS
+  swift:
+    name: Swift core and Apple-target builds (not GPU validation)
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Core tests; GPU suites intentionally require a real development Mac
+        run: swift test --filter MettleCoreTests --jobs 4
+      - name: Validate a source compiler contract
+        run: swift run mettle validate examples/compiler-transition.figmetal.json
+      - name: iOS simulator library compilation
+        run: >-
+          swift build --scratch-path .build-ios --target Mettle
+          --triple arm64-apple-ios16.0-simulator
+          --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" --jobs 4
+      # Run ./scripts/verify_live.sh on a Metal-capable Mac for the actual GPU gates.
+      # Never run untrusted fork code on a privileged self-hosted runner.

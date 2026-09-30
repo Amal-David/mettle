@@ -25,7 +25,7 @@ async function outlineGeometry(node, text) {
   const temporary=[];
   let stage=null,copy=null,outline=null;
   try {
-    stage=figma.createFrame();audit.created.push(stage.id);temporary.push(stage);stage.name='__FigmaMetal temporary outline workspace';
+    stage=figma.createFrame();audit.created.push(stage.id);temporary.push(stage);stage.name='__Mettle temporary outline workspace';
     stage.visible=false;stage.fills=[];stage.clipsContent=false;
     copy=node.clone();audit.created.push(copy.id);temporary.push(copy);stage.appendChild(copy);copy.relativeTransform=[[1,0,0],[0,1,0]];
     if((copy.width!==width||copy.height!==height)&&typeof copy.resizeWithoutConstraints==='function') copy.resizeWithoutConstraints(width,height);

@@ -1,4 +1,4 @@
-@_exported import FigmaMetalCore
+@_exported import MettleCore
 #if canImport(Metal)
 import Foundation
 import Metal
@@ -85,7 +85,7 @@ public final class MetalRenderer {
         self.device = device; self.queue = queue; self.scene = scene
         let samples = device.supportsTextureSampleCount(requestedSamples) ? requestedSamples : 1
         self.sampleCount = samples
-        guard let url = Bundle.module.url(forResource:"FigmaMetal",withExtension:"metal",subdirectory:"Shaders") else {
+        guard let url = Bundle.module.url(forResource:"Mettle",withExtension:"metal",subdirectory:"Shaders") else {
             throw SceneError.gpu("Packaged Metal shader source is missing")
         }
         let library = try device.makeLibrary(source:String(contentsOf:url,encoding:.utf8),options:nil)
@@ -229,7 +229,7 @@ public final class MetalRenderer {
         for surface in frame.surfaces { surface.inUse = false }
         let surface = Surface(color:texture,multisample:frame.rootMSAA)
         guard let command = queue.makeCommandBuffer() else { throw SceneError.gpu("Command buffer creation failed") }
-        command.label = "FigmaMetal frame \(time)"
+        command.label = "Mettle frame \(time)"
         var stats = RenderStatistics(); stats.vertices = vertexCount
         let scale = min(Double(texture.width)/scene.width,Double(texture.height)/scene.height)
         let base = Affine.translation((Double(texture.width)-scene.width*scale)/2,(Double(texture.height)-scene.height*scale)/2) * .scale(scale,scale)

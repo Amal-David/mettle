@@ -1,0 +1,1522 @@
+{
+  "scope": "Live Figma-generated conformance fixtures, not a production animation; 600x420 PNG and 320x180 30fps H264 video.",
+  "static": {
+    "rgbMAE": 0.241776,
+    "alphaMAE": 0.012631,
+    "p95MaxChannelError": 2,
+    "p99MaxChannelError": 2,
+    "pixelsOver8Percent": 0.585714,
+    "maxError": 91
+  },
+  "regions": {
+    "linear": {
+      "rgbMAE": 1.072333,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.41875,
+      "maxError": 61
+    },
+    "radial": {
+      "rgbMAE": 1.07531,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 21,
+      "pixelsOver8Percent": 1.942857,
+      "maxError": 91
+    },
+    "paint-stack": {
+      "rgbMAE": 0.333333,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 1,
+      "pixelsOver8Percent": 0.0,
+      "maxError": 1
+    },
+    "hole": {
+      "rgbMAE": 0.24359,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 1,
+      "pixelsOver8Percent": 0.0,
+      "maxError": 1
+    },
+    "group-clip": {
+      "rgbMAE": 0.015125,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 0,
+      "p99MaxChannelError": 0,
+      "pixelsOver8Percent": 0.1875,
+      "maxError": 35
+    },
+    "outside-stroke": {
+      "rgbMAE": 0.492177,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 26,
+      "pixelsOver8Percent": 3.492063,
+      "maxError": 82
+    },
+    "glyphs": {
+      "rgbMAE": 3.893303,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 29,
+      "p99MaxChannelError": 57,
+      "pixelsOver8Percent": 14.692654,
+      "maxError": 73
+    },
+    "smoothed-corners": {
+      "rgbMAE": 0.530952,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 14,
+      "pixelsOver8Percent": 1.344538,
+      "maxError": 42
+    }
+  },
+  "gates": [
+    {
+      "name": "static RGB MAE (8-bit levels)",
+      "actual": 0.241776,
+      "maximum": 0.75,
+      "pass": true
+    },
+    {
+      "name": "static pixels over 8 levels (%)",
+      "actual": 0.585714,
+      "maximum": 1.5,
+      "pass": true
+    },
+    {
+      "name": "glyph region RGB MAE (8-bit levels)",
+      "actual": 3.893303,
+      "maximum": 5,
+      "pass": true
+    },
+    {
+      "name": "interior probe max channel error",
+      "actual": 1,
+      "maximum": 4,
+      "pass": true
+    },
+    {
+      "name": "all video frames bounding-box error (pixels)",
+      "actual": 1,
+      "maximum": 2,
+      "pass": true
+    },
+    {
+      "name": "worst video frame RGB MAE (8-bit levels)",
+      "actual": 1.130365,
+      "maximum": 2.5,
+      "pass": true
+    }
+  ],
+  "limitations": "Different edge antialiasing and channel rounding remain. Thresholds are engineering regression gates, not pixel-perfect certification.",
+  "motion": [
+    {
+      "frame": 0,
+      "time": 0,
+      "rgbMAE": 1.051302,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.944444,
+      "maxError": 54,
+      "referenceBounds": [
+        48,
+        52,
+        120,
+        124
+      ],
+      "nativeBounds": [
+        48,
+        52,
+        120,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 1,
+      "time": 0.03333333333333333,
+      "rgbMAE": 1.116626,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.265625,
+      "maxError": 60,
+      "referenceBounds": [
+        54,
+        52,
+        127,
+        124
+      ],
+      "nativeBounds": [
+        54,
+        52,
+        127,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 2,
+      "time": 0.06666666666666667,
+      "rgbMAE": 1.110544,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.265625,
+      "maxError": 59,
+      "referenceBounds": [
+        61,
+        52,
+        134,
+        124
+      ],
+      "nativeBounds": [
+        61,
+        52,
+        134,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 3,
+      "time": 0.1,
+      "rgbMAE": 1.073281,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.944444,
+      "maxError": 52,
+      "referenceBounds": [
+        68,
+        52,
+        140,
+        124
+      ],
+      "nativeBounds": [
+        68,
+        52,
+        140,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 4,
+      "time": 0.13333333333333333,
+      "rgbMAE": 1.130365,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.267361,
+      "maxError": 57,
+      "referenceBounds": [
+        74,
+        52,
+        147,
+        124
+      ],
+      "nativeBounds": [
+        74,
+        52,
+        147,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 5,
+      "time": 0.16666666666666666,
+      "rgbMAE": 1.129219,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 10,
+      "pixelsOver8Percent": 1.267361,
+      "maxError": 53,
+      "referenceBounds": [
+        81,
+        52,
+        154,
+        124
+      ],
+      "nativeBounds": [
+        81,
+        52,
+        154,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 6,
+      "time": 0.2,
+      "rgbMAE": 1.066672,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.925347,
+      "maxError": 48,
+      "referenceBounds": [
+        88,
+        52,
+        160,
+        124
+      ],
+      "nativeBounds": [
+        88,
+        52,
+        160,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 7,
+      "time": 0.23333333333333334,
+      "rgbMAE": 1.092564,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.251736,
+      "maxError": 51,
+      "referenceBounds": [
+        94,
+        52,
+        167,
+        124
+      ],
+      "nativeBounds": [
+        94,
+        52,
+        167,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 8,
+      "time": 0.26666666666666666,
+      "rgbMAE": 1.056846,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.253472,
+      "maxError": 51,
+      "referenceBounds": [
+        101,
+        52,
+        174,
+        124
+      ],
+      "nativeBounds": [
+        101,
+        52,
+        174,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 9,
+      "time": 0.3,
+      "rgbMAE": 1.004931,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.907986,
+      "maxError": 41,
+      "referenceBounds": [
+        108,
+        52,
+        180,
+        124
+      ],
+      "nativeBounds": [
+        108,
+        52,
+        180,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 10,
+      "time": 0.3333333333333333,
+      "rgbMAE": 1.056117,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 10,
+      "pixelsOver8Percent": 1.246528,
+      "maxError": 45,
+      "referenceBounds": [
+        114,
+        52,
+        187,
+        124
+      ],
+      "nativeBounds": [
+        114,
+        52,
+        187,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 11,
+      "time": 0.36666666666666664,
+      "rgbMAE": 1.049936,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.227431,
+      "maxError": 45,
+      "referenceBounds": [
+        121,
+        52,
+        194,
+        124
+      ],
+      "nativeBounds": [
+        121,
+        52,
+        194,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 12,
+      "time": 0.4,
+      "rgbMAE": 1.05338,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.904514,
+      "maxError": 39,
+      "referenceBounds": [
+        128,
+        52,
+        200,
+        124
+      ],
+      "nativeBounds": [
+        128,
+        52,
+        200,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 13,
+      "time": 0.43333333333333335,
+      "rgbMAE": 1.068536,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.208333,
+      "maxError": 42,
+      "referenceBounds": [
+        134,
+        52,
+        207,
+        124
+      ],
+      "nativeBounds": [
+        134,
+        52,
+        207,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 14,
+      "time": 0.4666666666666667,
+      "rgbMAE": 1.065706,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 8,
+      "pixelsOver8Percent": 0.890625,
+      "maxError": 40,
+      "referenceBounds": [
+        141,
+        52,
+        214,
+        124
+      ],
+      "nativeBounds": [
+        141,
+        52,
+        214,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 15,
+      "time": 0.5,
+      "rgbMAE": 1.073843,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.560764,
+      "maxError": 34,
+      "referenceBounds": [
+        148,
+        52,
+        220,
+        124
+      ],
+      "nativeBounds": [
+        148,
+        52,
+        220,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 16,
+      "time": 0.5333333333333333,
+      "rgbMAE": 1.006516,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 8,
+      "pixelsOver8Percent": 0.878472,
+      "maxError": 38,
+      "referenceBounds": [
+        154,
+        52,
+        227,
+        124
+      ],
+      "nativeBounds": [
+        154,
+        52,
+        227,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 17,
+      "time": 0.5666666666666667,
+      "rgbMAE": 1.079155,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 7,
+      "pixelsOver8Percent": 0.569444,
+      "maxError": 35,
+      "referenceBounds": [
+        161,
+        52,
+        234,
+        124
+      ],
+      "nativeBounds": [
+        161,
+        52,
+        234,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 18,
+      "time": 0.6,
+      "rgbMAE": 0.985567,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.201389,
+      "maxError": 28,
+      "referenceBounds": [
+        168,
+        52,
+        240,
+        124
+      ],
+      "nativeBounds": [
+        168,
+        52,
+        240,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 19,
+      "time": 0.6333333333333333,
+      "rgbMAE": 1.043675,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.567708,
+      "maxError": 32,
+      "referenceBounds": [
+        174,
+        52,
+        247,
+        124
+      ],
+      "nativeBounds": [
+        174,
+        52,
+        247,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 20,
+      "time": 0.6666666666666666,
+      "rgbMAE": 1.042477,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 6,
+      "pixelsOver8Percent": 0.541667,
+      "maxError": 31,
+      "referenceBounds": [
+        181,
+        52,
+        254,
+        124
+      ],
+      "nativeBounds": [
+        181,
+        52,
+        254,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 21,
+      "time": 0.7,
+      "rgbMAE": 1.033339,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.184028,
+      "maxError": 26,
+      "referenceBounds": [
+        188,
+        52,
+        260,
+        124
+      ],
+      "nativeBounds": [
+        188,
+        52,
+        260,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 22,
+      "time": 0.7333333333333333,
+      "rgbMAE": 1.007668,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.529514,
+      "maxError": 27,
+      "referenceBounds": [
+        194,
+        52,
+        267,
+        124
+      ],
+      "nativeBounds": [
+        194,
+        52,
+        267,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 23,
+      "time": 0.7666666666666667,
+      "rgbMAE": 1.031065,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.496528,
+      "maxError": 27,
+      "referenceBounds": [
+        201,
+        52,
+        274,
+        124
+      ],
+      "nativeBounds": [
+        201,
+        52,
+        274,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 24,
+      "time": 0.8,
+      "rgbMAE": 0.975029,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.171875,
+      "maxError": 24,
+      "referenceBounds": [
+        208,
+        52,
+        280,
+        124
+      ],
+      "nativeBounds": [
+        208,
+        52,
+        280,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 25,
+      "time": 0.8333333333333334,
+      "rgbMAE": 1.054155,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.489583,
+      "maxError": 23,
+      "referenceBounds": [
+        214,
+        52,
+        287,
+        124
+      ],
+      "nativeBounds": [
+        215,
+        52,
+        287,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 26,
+      "time": 0.8666666666666667,
+      "rgbMAE": 1.048287,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.482639,
+      "maxError": 23,
+      "referenceBounds": [
+        221,
+        52,
+        294,
+        124
+      ],
+      "nativeBounds": [
+        221,
+        52,
+        293,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 27,
+      "time": 0.9,
+      "rgbMAE": 0.93765,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 1,
+      "pixelsOver8Percent": 0.112847,
+      "maxError": 17,
+      "referenceBounds": [
+        228,
+        52,
+        300,
+        124
+      ],
+      "nativeBounds": [
+        228,
+        52,
+        300,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 28,
+      "time": 0.9333333333333333,
+      "rgbMAE": 0.956065,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.461806,
+      "maxError": 19,
+      "referenceBounds": [
+        234,
+        52,
+        307,
+        124
+      ],
+      "nativeBounds": [
+        235,
+        52,
+        307,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 29,
+      "time": 0.9666666666666667,
+      "rgbMAE": 0.980868,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.345486,
+      "maxError": 16,
+      "referenceBounds": [
+        241,
+        52,
+        314,
+        124
+      ],
+      "nativeBounds": [
+        241,
+        52,
+        313,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 30,
+      "time": 1,
+      "rgbMAE": 0.932187,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.086806,
+      "maxError": 13,
+      "referenceBounds": [
+        248,
+        52,
+        320,
+        124
+      ],
+      "nativeBounds": [
+        248,
+        52,
+        320,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 31,
+      "time": 1.0333333333333334,
+      "rgbMAE": 0.980822,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.348958,
+      "maxError": 16,
+      "referenceBounds": [
+        241,
+        52,
+        314,
+        124
+      ],
+      "nativeBounds": [
+        241,
+        52,
+        313,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 32,
+      "time": 1.0666666666666667,
+      "rgbMAE": 0.955984,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.456597,
+      "maxError": 19,
+      "referenceBounds": [
+        234,
+        52,
+        307,
+        124
+      ],
+      "nativeBounds": [
+        235,
+        52,
+        307,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 33,
+      "time": 1.1,
+      "rgbMAE": 0.93776,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 1,
+      "pixelsOver8Percent": 0.116319,
+      "maxError": 17,
+      "referenceBounds": [
+        228,
+        52,
+        300,
+        124
+      ],
+      "nativeBounds": [
+        228,
+        52,
+        300,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 34,
+      "time": 1.1333333333333333,
+      "rgbMAE": 1.047975,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.473958,
+      "maxError": 22,
+      "referenceBounds": [
+        221,
+        52,
+        294,
+        124
+      ],
+      "nativeBounds": [
+        221,
+        52,
+        293,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 35,
+      "time": 1.1666666666666667,
+      "rgbMAE": 1.054045,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.487847,
+      "maxError": 22,
+      "referenceBounds": [
+        214,
+        52,
+        287,
+        124
+      ],
+      "nativeBounds": [
+        215,
+        52,
+        287,
+        124
+      ],
+      "boundsError": 1
+    },
+    {
+      "frame": 36,
+      "time": 1.2,
+      "rgbMAE": 0.974514,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.171875,
+      "maxError": 22,
+      "referenceBounds": [
+        208,
+        52,
+        280,
+        124
+      ],
+      "nativeBounds": [
+        208,
+        52,
+        280,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 37,
+      "time": 1.2333333333333334,
+      "rgbMAE": 1.031418,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.506944,
+      "maxError": 27,
+      "referenceBounds": [
+        201,
+        52,
+        274,
+        124
+      ],
+      "nativeBounds": [
+        201,
+        52,
+        274,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 38,
+      "time": 1.2666666666666666,
+      "rgbMAE": 1.00761,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.526042,
+      "maxError": 28,
+      "referenceBounds": [
+        194,
+        52,
+        267,
+        124
+      ],
+      "nativeBounds": [
+        194,
+        52,
+        267,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 39,
+      "time": 1.3,
+      "rgbMAE": 1.033646,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.182292,
+      "maxError": 26,
+      "referenceBounds": [
+        188,
+        52,
+        260,
+        124
+      ],
+      "nativeBounds": [
+        188,
+        52,
+        260,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 40,
+      "time": 1.3333333333333333,
+      "rgbMAE": 1.04261,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 6,
+      "pixelsOver8Percent": 0.538194,
+      "maxError": 31,
+      "referenceBounds": [
+        181,
+        52,
+        254,
+        124
+      ],
+      "nativeBounds": [
+        181,
+        52,
+        254,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 41,
+      "time": 1.3666666666666667,
+      "rgbMAE": 1.043015,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 5,
+      "pixelsOver8Percent": 0.555556,
+      "maxError": 33,
+      "referenceBounds": [
+        174,
+        52,
+        247,
+        124
+      ],
+      "nativeBounds": [
+        174,
+        52,
+        247,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 42,
+      "time": 1.4,
+      "rgbMAE": 0.986036,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 2,
+      "pixelsOver8Percent": 0.204861,
+      "maxError": 28,
+      "referenceBounds": [
+        168,
+        52,
+        240,
+        124
+      ],
+      "nativeBounds": [
+        168,
+        52,
+        240,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 43,
+      "time": 1.4333333333333333,
+      "rgbMAE": 1.078814,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 7,
+      "pixelsOver8Percent": 0.560764,
+      "maxError": 37,
+      "referenceBounds": [
+        161,
+        52,
+        234,
+        124
+      ],
+      "nativeBounds": [
+        161,
+        52,
+        234,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 44,
+      "time": 1.4666666666666666,
+      "rgbMAE": 1.006829,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 8,
+      "pixelsOver8Percent": 0.885417,
+      "maxError": 36,
+      "referenceBounds": [
+        154,
+        52,
+        227,
+        124
+      ],
+      "nativeBounds": [
+        154,
+        52,
+        227,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 45,
+      "time": 1.5,
+      "rgbMAE": 1.074109,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.571181,
+      "maxError": 34,
+      "referenceBounds": [
+        148,
+        52,
+        220,
+        124
+      ],
+      "nativeBounds": [
+        148,
+        52,
+        220,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 46,
+      "time": 1.5333333333333334,
+      "rgbMAE": 1.066059,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 8,
+      "pixelsOver8Percent": 0.901042,
+      "maxError": 39,
+      "referenceBounds": [
+        141,
+        52,
+        214,
+        124
+      ],
+      "nativeBounds": [
+        141,
+        52,
+        214,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 47,
+      "time": 1.5666666666666667,
+      "rgbMAE": 1.068553,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.21875,
+      "maxError": 42,
+      "referenceBounds": [
+        134,
+        52,
+        207,
+        124
+      ],
+      "nativeBounds": [
+        134,
+        52,
+        207,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 48,
+      "time": 1.6,
+      "rgbMAE": 1.05309,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.904514,
+      "maxError": 39,
+      "referenceBounds": [
+        128,
+        52,
+        200,
+        124
+      ],
+      "nativeBounds": [
+        128,
+        52,
+        200,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 49,
+      "time": 1.6333333333333333,
+      "rgbMAE": 1.050405,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.220486,
+      "maxError": 45,
+      "referenceBounds": [
+        121,
+        52,
+        194,
+        124
+      ],
+      "nativeBounds": [
+        121,
+        52,
+        194,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 50,
+      "time": 1.6666666666666667,
+      "rgbMAE": 1.054722,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 10,
+      "pixelsOver8Percent": 1.241319,
+      "maxError": 46,
+      "referenceBounds": [
+        114,
+        52,
+        187,
+        124
+      ],
+      "nativeBounds": [
+        114,
+        52,
+        187,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 51,
+      "time": 1.7,
+      "rgbMAE": 1.005104,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.914931,
+      "maxError": 41,
+      "referenceBounds": [
+        108,
+        52,
+        180,
+        124
+      ],
+      "nativeBounds": [
+        108,
+        52,
+        180,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 52,
+      "time": 1.7333333333333334,
+      "rgbMAE": 1.057726,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.251736,
+      "maxError": 51,
+      "referenceBounds": [
+        101,
+        52,
+        174,
+        124
+      ],
+      "nativeBounds": [
+        101,
+        52,
+        174,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 53,
+      "time": 1.7666666666666666,
+      "rgbMAE": 1.091736,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 9,
+      "pixelsOver8Percent": 1.25,
+      "maxError": 52,
+      "referenceBounds": [
+        94,
+        52,
+        167,
+        124
+      ],
+      "nativeBounds": [
+        94,
+        52,
+        167,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 54,
+      "time": 1.8,
+      "rgbMAE": 1.066765,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 2,
+      "p99MaxChannelError": 4,
+      "pixelsOver8Percent": 0.928819,
+      "maxError": 45,
+      "referenceBounds": [
+        88,
+        52,
+        160,
+        124
+      ],
+      "nativeBounds": [
+        88,
+        52,
+        160,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 55,
+      "time": 1.8333333333333333,
+      "rgbMAE": 1.12691,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 10,
+      "pixelsOver8Percent": 1.265625,
+      "maxError": 54,
+      "referenceBounds": [
+        81,
+        52,
+        154,
+        124
+      ],
+      "nativeBounds": [
+        81,
+        52,
+        154,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 56,
+      "time": 1.8666666666666667,
+      "rgbMAE": 1.129444,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.267361,
+      "maxError": 58,
+      "referenceBounds": [
+        74,
+        52,
+        147,
+        124
+      ],
+      "nativeBounds": [
+        74,
+        52,
+        147,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 57,
+      "time": 1.9,
+      "rgbMAE": 1.072552,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.946181,
+      "maxError": 51,
+      "referenceBounds": [
+        68,
+        52,
+        140,
+        124
+      ],
+      "nativeBounds": [
+        68,
+        52,
+        140,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 58,
+      "time": 1.9333333333333333,
+      "rgbMAE": 1.106319,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.265625,
+      "maxError": 58,
+      "referenceBounds": [
+        61,
+        52,
+        134,
+        124
+      ],
+      "nativeBounds": [
+        61,
+        52,
+        134,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 59,
+      "time": 1.9666666666666666,
+      "rgbMAE": 1.115301,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 12,
+      "pixelsOver8Percent": 1.267361,
+      "maxError": 60,
+      "referenceBounds": [
+        54,
+        52,
+        127,
+        124
+      ],
+      "nativeBounds": [
+        54,
+        52,
+        127,
+        124
+      ],
+      "boundsError": 0
+    },
+    {
+      "frame": 60,
+      "time": 2,
+      "rgbMAE": 1.050255,
+      "alphaMAE": 0.0,
+      "p95MaxChannelError": 1,
+      "p99MaxChannelError": 3,
+      "pixelsOver8Percent": 0.951389,
+      "maxError": 54,
+      "referenceBounds": [
+        48,
+        52,
+        120,
+        124
+      ],
+      "nativeBounds": [
+        48,
+        52,
+        120,
+        124
+      ],
+      "boundsError": 0
+    }
+  ],
+  "pass": true
+}

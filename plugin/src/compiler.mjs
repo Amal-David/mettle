@@ -194,7 +194,7 @@ export function compileScene(snapshot,options={}) {
   if(timelineIDs.size>1) report('error','MULTIPLE_TIMELINES',snapshot,'Independent/nested timelines need explicit coordination; this player exports a single timeline.');
   if(snapshot.reactions?.length) report('warning','PROTOTYPE_EVENTS_NOT_EXPORTED',snapshot,'Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip.');
   const scene={name:snapshot.name??'Figma scene',width:snapshot.width,height:snapshot.height,duration,loop:options.loop??'once',root};
-  return {format:'figma-metal',version:1,scenes:[scene],diagnostics,sourceMotion,exporter:{name:'FigmaMetal',version:'0.2.0',source:'Figma Plugin API'}};
+  return {format:'figma-metal',version:1,scenes:[scene],diagnostics,sourceMotion,exporter:{name:'Mettle',version:'0.2.0',source:'Figma Plugin API'}};
 }
 
 /** Strict, bounded Smart-Animate-style A→B compiler: stable geometry, translation,

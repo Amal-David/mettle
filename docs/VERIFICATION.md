@@ -1,4 +1,4 @@
-# FigmaMetal v0.2 verification
+# Mettle v0.2 verification
 
 Verified on 2026-09-29 on the authorized Apple M4 Pro Mac. This phase validates a small live-Figma corpus, not arbitrary production designs or every supported feature.
 
@@ -46,13 +46,13 @@ A warmed synchronous offscreen benchmark of the live static 600 x 420 scene used
 On the installed Mac checkout:
 
 ```bash
-cd ~/experiments/figma-metal
+cd /path/to/mettle
 ./scripts/verify_live.sh
 open artifacts/phase2/index.html
 ```
 
 The HTML report contains reference/native images, amplified differences, per-region measurements and representative motion pairs. `artifacts/phase2/comparison.json` records every frame. `full-verification.log`, `ios-build.log` and `benchmark.json` retain run evidence. The script counts actual reference frames rather than assuming a video excludes its endpoint. It fails if independent references are missing; it never substitutes native renders as goldens.
 
-The downloadable source-only ZIP excludes the reference PNG/MP4 and generated visual report. They are retained in the Mac checkout; source snapshots, compiled scenes, test code and this measured report are included in the ZIP. See `fixtures/live/README.md`. Source/GPU tests and native playback work without the reference images.
+The original source-only ZIP omitted binary references. The public Mettle repository now includes the original Figma reference PNG/MP4 alongside the source data, so the full visual harness is reproducible after cloning. See `fixtures/live/README.md`. README media is output-only and is never loaded by the runtime.
 
-The iOS cross-target build used `--build-system native`; Swift 6.4 reports that flag as deprecated. Older deployment-target operating systems, physical iPhones, thermal/energy behavior and hosted GitHub CI have not been exercised. No public repository or package publication was performed.
+The iOS cross-target build used `--build-system native`; Swift 6.4 reports that flag as deprecated. Older deployment-target operating systems, physical iPhones, thermal/energy behavior and hosted GitHub CI have not been exercised. This describes the original September 29 validation. On September 30 the code was rebranded as Mettle for public repository publication; see `docs/PUBLICATION.md` for that validation scope.
