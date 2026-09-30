@@ -1,5 +1,6 @@
 import Foundation
 import Mettle
+import MettlePreview
 #if os(macOS)
 import AppKit
 import SwiftUI
@@ -53,119 +54,7 @@ func writePNG(_ bgra:Data,width:Int,height:Int,url:URL) throws {
     CGImageDestinationAddImage(destination,image,nil)
     guard CGImageDestinationFinalize(destination) else { throw SceneError.invalid("PNG write failed") }
 }
-struct DemoView: View {
-    let renderer: MetalRenderer
-    @State private var playing: Bool
-    @State private var position: Double
-    @State private var lastTick = ProcessInfo.processInfo.systemUptime
-    @State private var failure = ""
-    @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    private let clock = Timer.publish(every: 1.0/60.0, on: .main, in: .common).autoconnect()
 
-    init(renderer: MetalRenderer, initialTime: Double? = nil) {
-        self.renderer = renderer
-        _playing = State(initialValue: initialTime == nil)
-        _position = State(initialValue: max(0, initialTime ?? 0))
-    }
-    private func metric(_ label: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: 7) {
-            Text(label.uppercased()).font(.system(size: 10, weight: .medium, design: .monospaced)).foregroundStyle(.secondary)
-            Text(value).font(.system(size: 13, weight: .medium)).textSelection(.enabled)
-        }
-    }
-    var body: some View {
-        VStack(alignment: .leading, spacing: 22) {
-            HStack(spacing: 14) {
-                Text("M").font(.system(size: 27, weight: .bold, design: .monospaced))
-                    .foregroundStyle(Color(red: 0.45, green: 0.94, blue: 0.83))
-                    .frame(width: 48, height: 48)
-                    .background(.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 13))
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("Mettle").font(.system(size: 28, weight: .semibold))
-                    Text("Design in Figma. Move in Metal.").font(.system(size: 13)).foregroundStyle(.secondary)
-                }
-                Spacer()
-                Text("EXPERIMENTAL  /  v0.2").font(.system(size: 10, weight: .medium, design: .monospaced))
-                    .foregroundStyle(Color(red: 0.99, green: 0.77, blue: 0.40))
-                    .padding(.horizontal, 13).padding(.vertical, 9)
-                    .background(.white.opacity(0.055), in: Capsule())
-            }
-            HStack(alignment: .top, spacing: 24) {
-                VStack(spacing: 16) {
-                    MettleView(renderer: renderer, time: position, isPlaying: false,
-                        onError: { failure = String(describing: $0) })
-                        .aspectRatio(renderer.scene.width/renderer.scene.height, contentMode: .fit)
-                        .accessibilityLabel("Native Metal animation preview")
-                        .padding(14).background(.black.opacity(0.22), in: RoundedRectangle(cornerRadius: 20))
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white.opacity(0.08)))
-                    HStack(spacing: 14) {
-                        Button { playing.toggle(); lastTick = ProcessInfo.processInfo.systemUptime } label: {
-                            Image(systemName: playing ? "pause.fill" : "play.fill").frame(width: 18, height: 18)
-                        }.buttonStyle(.bordered).help(playing ? "Pause playback" : "Play animation")
-                        Slider(value: $position, in: 0...max(renderer.scene.duration, 0.001),
-                            onEditingChanged: { editing in if editing { playing = false } })
-                            .tint(Color(red: 0.45, green: 0.94, blue: 0.83))
-                            .accessibilityLabel("Animation time")
-                        Text(String(format: "%.2f / %.2f s", position, renderer.scene.duration))
-                            .font(.system(size: 11, design: .monospaced)).monospacedDigit().frame(width: 118)
-                    }.padding(.horizontal, 4)
-                }.frame(maxWidth: .infinity)
-                VStack(alignment: .leading, spacing: 22) {
-                    Text("NATIVE PREVIEW").font(.system(size: 10, weight: .semibold, design: .monospaced))
-                        .foregroundStyle(Color(red: 0.45, green: 0.94, blue: 0.83))
-                    metric("Scene", renderer.scene.name)
-                    metric("Source canvas", "\(Int(renderer.scene.width)) × \(Int(renderer.scene.height))")
-                    metric("Prepared geometry", "\(renderer.vertexCount) vertices")
-                    metric("Antialiasing", "\(renderer.sampleCount)× MSAA")
-                    metric("Device", renderer.device.name)
-                    Divider()
-                    Text("Source paths. Native shaders.").font(.system(size: 12, weight: .medium))
-                    Text("No Lottie, browser, or image-sequence playback. Unsupported features are reported at export.")
-                        .font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-                }.frame(width: 190).padding(.top, 12)
-            }
-            HStack {
-                Circle().fill(Color(red: 0.45, green: 0.94, blue: 0.83)).frame(width: 5, height: 5)
-                Text("Swift + Metal").font(.system(size: 11, design: .monospaced))
-                Spacer()
-                Text("Engineering prototype · not a universal Figma player")
-                    .font(.system(size: 11)).foregroundStyle(.secondary)
-            }
-            if !failure.isEmpty { Text(failure).foregroundStyle(.red).textSelection(.enabled) }
-        }
-        .padding(28).frame(minWidth: 940, minHeight: 680)
-        .background(Color(red: 0.055, green: 0.065, blue: 0.085))
-        .preferredColorScheme(.dark)
-        .onReceive(clock) { _ in
-            let now = ProcessInfo.processInfo.systemUptime
-            defer { lastTick = now }
-            guard playing, scenePhase == .active, !reduceMotion else { return }
-            position += max(0, now-lastTick)
-            if position > renderer.scene.duration {
-                position = 0 // Preview restart; core playback preserves the scene's own loop semantics.
-            }
-        }
-    }
-}
-final class AppDelegate: NSObject, NSApplicationDelegate {
-    var window: NSWindow?
-    let renderer: MetalRenderer
-    let initialTime: Double?
-    init(_ renderer:MetalRenderer, initialTime: Double? = nil) { self.renderer = renderer; self.initialTime = initialTime }
-    func applicationDidFinishLaunching(_ notification:Notification) {
-        let menu = NSMenu(); let app = NSMenuItem(); menu.addItem(app)
-        let submenu = NSMenu(); submenu.addItem(withTitle:"Quit Mettle",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
-        app.submenu = submenu; NSApp.mainMenu = menu
-        let window = NSWindow(contentRect:NSRect(x:0,y:0,width:1080,height:760),styleMask:[.titled,.closable,.resizable,.miniaturizable],backing:.buffered,defer:false)
-        window.title = "Mettle — Experimental Native Preview"
-        window.contentView = NSHostingView(rootView:DemoView(renderer:renderer, initialTime:initialTime))
-        window.center(); window.makeKeyAndOrderFront(nil); self.window = window
-        NSApp.activate(ignoringOtherApps:true)
-        print("METTLE_WINDOW_ID=\(window.windowNumber)"); fflush(stdout)
-    }
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication) -> Bool { true }
-}
 #endif
 
 func run() throws {
@@ -173,14 +62,41 @@ func run() throws {
     if ["help","--help","-h"].contains(args.verb) {
         print("""
         Mettle v0.2
-          mettle demo [scene.figmetal.json] [--time 1]
+          mettle preview [scene.figmetal.json] [--example motion|vectors] [--time 1]
+          mettle demo (alias for preview)
           mettle validate scene.figmetal.json [--allow-partial]
           mettle render [scene.figmetal.json] --output frame.png [--time 0] [--width 720] [--height 480]
           mettle frames scene.figmetal.json --output frames [--fps 30] [--frames 60]
           mettle bench [scene.figmetal.json] [--frames 120] [--width 720] [--height 480]
-        Add --scene N to select a scene. Input defaults to the bundled synthetic demo.
+        Preview opens a welcome screen. Use --example motion or --example vectors to load an example.
+        Add --scene N to select a scene. Render/bench default to the synthetic test scene.
         """); return
     }
+    #if os(macOS)
+    if ["demo", "preview"].contains(args.verb) {
+        guard let vectors = Bundle.module.url(forResource: "demo.figmetal", withExtension: "json", subdirectory: "Resources"),
+              let motion = Bundle.module.url(forResource: "motion.figmetal", withExtension: "json", subdirectory: "Resources") else {
+            throw SceneError.invalid("Bundled preview examples are missing")
+        }
+        let examples = [
+            PreviewExample(id: "motion", title: "Motion sample", detail: "Example · exported from Figma", symbol: "play.rectangle", url: motion),
+            PreviewExample(id: "vectors", title: "Vector sample", detail: "Example · synthetic test artwork", symbol: "square.on.circle", url: vectors)
+        ]
+        var exampleID = args.options["--example"]
+        // Preserve deterministic legacy screenshot commands without making test
+        // artwork the normal opening screen.
+        if exampleID == nil && args.input == nil && args.options["--time"] != nil { exampleID = "vectors" }
+        if let exampleID, !examples.contains(where: { $0.id == exampleID }) { throw SceneError.invalid("Example must be motion or vectors") }
+        let initialURL = args.input.map { URL(fileURLWithPath: $0) } ?? examples.first(where: { $0.id == exampleID })?.url
+        let app = NSApplication.shared; app.setActivationPolicy(.regular)
+        let delegate = PreviewApplication(examples: examples, initialURL: initialURL,
+            initialExampleID: args.input == nil ? exampleID : nil,
+            initialTime: try args.double("--time", 0), initialScene: try args.int("--scene", 0))
+        app.delegate = delegate
+        withExtendedLifetime(delegate) { app.run() }
+        return
+    }
+    #endif
     let url: URL
     if let input = args.input { url = URL(fileURLWithPath:input) }
     else {
@@ -254,10 +170,6 @@ func run() throws {
             "surfaces":renderer.lastStatistics.surfaceCount,"gpuMedianMs":percentile(gpu,0.5),"gpuP95Ms":percentile(gpu,0.95),
             "wallMedianMs":percentile(wall,0.5),"wallP95Ms":percentile(wall,0.95),"note":"Synchronous offscreen benchmark; not an on-device iOS FPS measurement." ]
         print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.prettyPrinted,.sortedKeys]),encoding:.utf8)!)
-    case "demo":
-        let app = NSApplication.shared; app.setActivationPolicy(.regular)
-        let delegate = AppDelegate(renderer, initialTime: args.options["--time"] == nil ? nil : try args.double("--time",0)); app.delegate = delegate
-        withExtendedLifetime(delegate) { app.run() }
     default: throw SceneError.invalid("Unknown command \(args.verb); run mettle help")
     }
     #else

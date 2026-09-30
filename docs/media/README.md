@@ -25,3 +25,9 @@ On a Metal-capable Mac with Xcode, Node, Python/Pillow, and ffmpeg:
 For the app screenshot, launch `swift run -c release mettle demo --time 1`, then use macOS window screenshot capture. The app prints its window ID; `screencapture -x -o -l WINDOW_ID docs/media/native-preview.png` captures only that window using the machine owner's ordinary OS permissions.
 
 Typography is rasterized from a local system font; font files are not included. Original references retain the checksums in `fixtures/live/README.md`. Never regenerate Figma reference files using Mettle output.
+
+## Preview redesign — 2026-09-30
+
+`preview-welcome.png` and `preview-references.png` are genuine captures of the redesigned Mettle native window. `preview-workspace.png`, when present, is an actual loaded-file view using a clearly labelled developer fixture. They replace the old showcase screenshot in the README; `native-preview.png` and `hero.png` document the earlier presentation and are not current UI.
+
+External artwork visible in these new screenshots is credited in [reference attribution](../../Sources/MettlePreview/References/ATTRIBUTION.md) and remains CC BY 4.0, not MIT. No reference animation is claimed as Mettle output. See [usability audit](../UI_AUDIT.md).

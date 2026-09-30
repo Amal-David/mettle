@@ -43,7 +43,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Core tests; GPU suites intentionally require a real development Mac
-        run: swift test --filter MettleCoreTests --jobs 4
+        run: swift test --filter "MettleCoreTests|PlaybackTests|ReferenceTests" --jobs 4
       - name: Validate a source compiler contract
         run: swift run mettle validate examples/compiler-transition.figmetal.json
       - name: iOS simulator library compilation

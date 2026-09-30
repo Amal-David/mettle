@@ -56,3 +56,7 @@ The HTML report contains reference/native images, amplified differences, per-reg
 The original source-only ZIP omitted binary references. The public Mettle repository now includes the original Figma reference PNG/MP4 alongside the source data, so the full visual harness is reproducible after cloning. See `fixtures/live/README.md`. README media is output-only and is never loaded by the runtime.
 
 The iOS cross-target build used `--build-system native`; Swift 6.4 reports that flag as deprecated. Older deployment-target operating systems, physical iPhones, thermal/energy behavior and hosted GitHub CI have not been exercised. This describes the original September 29 validation. On September 30 the code was rebranded as Mettle for public repository publication; see `docs/PUBLICATION.md` for that validation scope.
+
+## Preview redesign follow-up — 2026-09-30
+
+The optional desktop utility now has a welcome/import workflow, deterministic transport, PNG export, hidden engineering details, and a separate attributed reference gallery. **106 local tests passed**, including 21 new preview/playback/reference tests. Metal API Validation and all independent visual comparison gates passed again; the iOS `Mettle` library target compiled. See [UI audit](UI_AUDIT.md) for the visual findings and remaining manual-interaction gaps. The prior renderer measurements above are retained, not presented as a new benchmark.

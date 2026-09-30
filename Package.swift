@@ -12,8 +12,10 @@ let package = Package(
     targets: [
         .target(name: "MettleCore"),
         .target(name: "Mettle", dependencies: ["MettleCore"], resources: [.copy("Shaders")]),
-        .executableTarget(name: "MettleDemo", dependencies: ["Mettle"], resources: [.copy("Resources")]),
+        .target(name: "MettlePreview", dependencies: ["Mettle"], resources: [.copy("References")]),
+        .executableTarget(name: "MettleDemo", dependencies: ["Mettle", "MettlePreview"], resources: [.copy("Resources")]),
         .testTarget(name: "MettleCoreTests", dependencies: ["MettleCore"]),
-        .testTarget(name: "MettleTests", dependencies: ["Mettle"])
+        .testTarget(name: "MettleTests", dependencies: ["Mettle"]),
+        .testTarget(name: "MettlePreviewTests", dependencies: ["MettlePreview", "Mettle"])
     ]
 )
