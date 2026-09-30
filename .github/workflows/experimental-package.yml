@@ -1,0 +1,35 @@
+name: Experimental package
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/motion-updates-sept-2026]
+permissions:
+  contents: read
+concurrency:
+  group: package-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Check exporter and build local plugin
+        run: |
+          (cd plugin && npm run check && npm test && npm run build)
+          python3 scripts/package_plugin.py
+          git archive --format=zip --prefix=mettle/ HEAD -o artifacts/mettle-source.zip
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mettle-experimental-package
+          path: |
+            artifacts/mettle-source.zip
+            artifacts/mettle-local-plugin.zip
+          retention-days: 7
+          if-no-files-found: error
