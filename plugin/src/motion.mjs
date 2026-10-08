@@ -74,6 +74,33 @@ export function styleCoverage(source, report) {
   }
 }
 
+/** A host can expose only part of its resolved animation object. Choosing that
+ * object wholesale used to drop manual fields (including indexed paint tracks)
+ * without a diagnostic. Do not merge them speculatively: resolved tracks can
+ * compose with styles, so their order is significant. Keep both source payloads
+ * and require Figma to expose a complete binding before claiming an export.
+ */
+export function manualCoverage(source, report) {
+  const resolved=source.animations??{};
+  if(!Object.keys(resolved).length) return;
+  let visited=0;
+  function visit(manual,target,path,depth=0) {
+    if(++visited>200000 || depth>48) throw new Error('Manual motion coverage budget exceeded.');
+    if(!manual || typeof manual!=='object') return;
+    if(Array.isArray(manual.keyframes)) {
+      if(!manual.keyframes.length) return;
+      const tracks=target?.tracks;
+      const missing=!Array.isArray(tracks) || !tracks.some(t=>Array.isArray(t.keyframes)&&t.keyframes.length);
+      const missingID=!missing && typeof manual.id==='string' && tracks.every(t=>typeof t.id==='string') && !tracks.some(t=>t.id===manual.id);
+      if(missing || missingID) report('error','UNRESOLVED_MANUAL_TRACK',source,
+        `Manual track ${path} is absent from the resolved animations. Wait for Figma to resolve it, then export again; it was not silently dropped or reordered.`);
+      return;
+    }
+    for(const [key,child] of Object.entries(manual)) visit(child,target?.[key],path?`${path}.${key}`:key,depth+1);
+  }
+  visit(source.manualKeyframeTracks,resolved,'');
+}
+
 /** Resolve tokens in the consumer's effective variable mode, not the collection
  * default. Raw aliases are retained separately by capture for audit/re-export.
  */

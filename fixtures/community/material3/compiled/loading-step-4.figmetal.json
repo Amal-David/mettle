@@ -1,0 +1,247 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Loading indicator",
+      "width": 48,
+      "height": 48,
+      "duration": 0,
+      "loop": "once",
+      "root": {
+        "id": "20:292",
+        "name": "Loading indicator",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 48,
+          "y": 48
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 24,
+          "y": 24
+        },
+        "draws": [],
+        "clip": [
+          {
+            "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I20:292;58005:8578",
+            "name": "Shape container",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 5,
+              "ty": 5
+            },
+            "size": {
+              "x": 38,
+              "y": 38
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 19,
+              "y": 19
+            },
+            "draws": [],
+            "clip": [
+              {
+                "data": "M0 0 L38 0 L38 38 L0 38 L0 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I20:292;58005:8579",
+                "name": "Shape",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 4,
+                  "ty": 4
+                },
+                "size": {
+                  "x": 30,
+                  "y": 30
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 15,
+                  "y": 15
+                },
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M7.98566 3.77706 C13.0217 -1.25902 21.1869 -1.25902 26.2229 3.77706 C31.259 8.81315 31.259 16.9783 26.2229 22.0143 L22.0143 26.2229 C16.9783 31.259 8.81315 31.259 3.77706 26.2229 C-1.25902 21.1869 -1.25902 13.0217 3.77706 7.98566 L7.98566 3.77706 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.40392157435417175,
+                        "g": 0.3137255012989044,
+                        "b": 0.6431372761726379,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 30,
+                      "y": 30
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "clip": [],
+                "bindings": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+      "nodeID": "20:292",
+      "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+    }
+  ],
+  "sourceMotion": {
+    "20:292": {
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "variableResolutions": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:18",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:18",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ]
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-4"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "static",
+    "sourceNodeIDs": [
+      "20:292"
+    ],
+    "sourceCaptureSHA256": "2651c5632992fa305f00bc65c3579ea81f600d942ba054c95855d383a1a43ce0"
+  }
+}

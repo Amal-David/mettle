@@ -1,0 +1,267 @@
+{
+  "id": "20:300",
+  "name": "Loading indicator",
+  "type": "INSTANCE",
+  "width": 48,
+  "height": 48,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "fillGeometry": [
+    {
+      "windingRule": "NONZERO",
+      "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z"
+    }
+  ],
+  "fills": [],
+  "regionalPaints": false,
+  "visible": true,
+  "opacity": 1,
+  "blendMode": "PASS_THROUGH",
+  "strokes": [],
+  "strokeGeometry": [],
+  "strokeAlign": "INSIDE",
+  "effects": [],
+  "isMask": false,
+  "clipsContent": true,
+  "layoutMode": "NONE",
+  "itemReverseZIndex": false,
+  "animations": {},
+  "manualKeyframeTracks": {},
+  "animationStyles": [],
+  "timelines": [],
+  "reactions": [
+    {
+      "action": {
+        "type": "NODE",
+        "destinationId": "20:20",
+        "navigation": "CHANGE_TO",
+        "transition": {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "CUSTOM_CUBIC_BEZIER",
+            "easingFunctionCubicBezier": {
+              "x1": 0.20000000298023224,
+              "y1": 0,
+              "x2": 0,
+              "y2": 1
+            }
+          },
+          "duration": 0.4000000059604645
+        },
+        "resetVideoPosition": false,
+        "resetScrollPosition": true
+      },
+      "actions": [
+        {
+          "type": "NODE",
+          "destinationId": "20:20",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        }
+      ],
+      "trigger": {
+        "type": "AFTER_TIMEOUT",
+        "timeout": 0.0010000000474974513
+      }
+    }
+  ],
+  "children": [
+    {
+      "id": "I20:300;58005:8599",
+      "name": "Shape container",
+      "type": "FRAME",
+      "width": 38,
+      "height": 38,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          5
+        ],
+        [
+          0,
+          1,
+          5
+        ]
+      ],
+      "fillGeometry": [
+        {
+          "windingRule": "NONZERO",
+          "data": "M0 6 C0 2.68629 2.68629 0 6 0 L32 0 C35.3137 0 38 2.68629 38 6 L38 32 C38 35.3137 35.3137 38 32 38 L6 38 C2.68629 38 0 35.3137 0 32 L0 6 Z"
+        }
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": false,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "regionalPaints": false,
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "PASS_THROUGH",
+      "strokes": [],
+      "strokeGeometry": [],
+      "strokeAlign": "INSIDE",
+      "effects": [],
+      "isMask": false,
+      "clipsContent": true,
+      "layoutMode": "NONE",
+      "itemReverseZIndex": false,
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "reactions": [],
+      "children": [
+        {
+          "id": "I20:300;58005:8600",
+          "name": "Shape",
+          "type": "VECTOR",
+          "width": 30,
+          "height": 30,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              4
+            ],
+            [
+              0,
+              1,
+              4
+            ]
+          ],
+          "fillGeometry": [
+            {
+              "windingRule": "NONZERO",
+              "data": "M23.1309 23.1309 C16.1705 30.0913 6.88765 32.0935 2.39707 27.6029 C-2.09352 23.1123 -0.0913343 13.8295 6.86908 6.86908 C13.8295 -0.0913329 23.1123 -2.09352 27.6029 2.39707 C32.0935 6.88765 30.0913 16.1705 23.1309 23.1309 Z"
+            }
+          ],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.40392157435417175,
+                "g": 0.3137255012989044,
+                "b": 0.6431372761726379
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:76bfbbf87c5f600256e614f12eaf0699927c5a35/57966:62"
+                }
+              }
+            }
+          ],
+          "regionalPaints": false,
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "strokes": [],
+          "strokeGeometry": [],
+          "strokeAlign": "INSIDE",
+          "effects": [],
+          "isMask": false,
+          "clipsContent": false,
+          "layoutMode": "NONE",
+          "itemReverseZIndex": false,
+          "animations": {},
+          "manualKeyframeTracks": {},
+          "animationStyles": [],
+          "timelines": [],
+          "reactions": [],
+          "children": [],
+          "captureDiagnostics": [],
+          "rawMotion": {
+            "animations": {},
+            "manualKeyframeTracks": {},
+            "animationStyles": []
+          },
+          "motionVariableResolutions": [],
+          "motionCapture": "not-requested"
+        }
+      ],
+      "captureDiagnostics": [],
+      "rawMotion": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": []
+      },
+      "motionVariableResolutions": [],
+      "motionCapture": "not-requested"
+    }
+  ],
+  "captureDiagnostics": [],
+  "absoluteTransform": [
+    [
+      1,
+      0,
+      580
+    ],
+    [
+      0,
+      1,
+      80
+    ]
+  ],
+  "absoluteRenderBounds": {
+    "x": 580,
+    "y": 80,
+    "width": 48,
+    "height": 48
+  },
+  "absoluteBoundingBox": {
+    "x": 580,
+    "y": 80,
+    "width": 48,
+    "height": 48
+  },
+  "sourceComponent": {
+    "id": "20:22",
+    "name": "Steps=7, Show container=False",
+    "key": "9cf9837bfca7021370664d5f7b29df614bbafb23"
+  },
+  "rawMotion": {
+    "animations": {},
+    "manualKeyframeTracks": {},
+    "animationStyles": []
+  },
+  "motionVariableResolutions": [],
+  "motionCapture": "not-requested"
+}

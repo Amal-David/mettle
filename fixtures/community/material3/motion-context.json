@@ -1,0 +1,32 @@
+{
+  "format": "mettle-motion-context-observations",
+  "version": 1,
+  "observedDate": "2026-10-08",
+  "queries": [
+    {
+      "sourceFrameId": "20:279",
+      "method": "figma.get_motion_context",
+      "request": {
+        "fileKey": "flxINzepb5BgRcRfGj0Tl5",
+        "nodeId": "20:279",
+        "recursive": true
+      },
+      "response": {
+        "nodes": []
+      }
+    },
+    {
+      "sourceFrameId": "24:198",
+      "method": "figma.get_motion_context",
+      "request": {
+        "fileKey": "flxINzepb5BgRcRfGj0Tl5",
+        "nodeId": "24:198",
+        "recursive": true
+      },
+      "response": {
+        "nodes": []
+      }
+    }
+  ],
+  "note": "Empty native timeline context does not erase prototype reactions. Exact prototype reaction data is retained in the source snapshots."
+}

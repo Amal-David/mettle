@@ -1,0 +1,1321 @@
+{
+  "format": "mettle-community-compilation",
+  "version": 1,
+  "provenance": {
+    "path": "provenance.json",
+    "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+  },
+  "status": "compiled-with-expected-blockers",
+  "nativeComparison": "not-run",
+  "prototypePlaybackFramesCaptured": false,
+  "note": "Compilation acceptance and source endpoint capture are not evidence of native Metal or intermediate motion parity.",
+  "cases": [
+    {
+      "id": "loading-step-1",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-1"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-1.source.json",
+        "sha256": "c3b57c90e99ce80078474abdd9ceb32f76ccbab394a0d0e1dea4f739097f4786"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-1.figmetal.json",
+        "sha256": "9497489f1b16cbdb793c47d6f0d08653d39f5336d3f86c62fa644b2397c28df8"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:280",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-2",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-2"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-2.source.json",
+        "sha256": "b3c25730439493b83c47c06ffe7e36791f02852a92fef482432ed68492455f7f"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-2.figmetal.json",
+        "sha256": "6bfb28624461ee45ee55d2eec656d4b24c758bc3a9b06b5416eaeca6160fb1d8"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:284",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-3",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-3"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-3.source.json",
+        "sha256": "abacc59051b1a3e4ffd356a13604ea545d46498ac62c2f2aa9610f4cf451151e"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-3.figmetal.json",
+        "sha256": "e768ff6e214ed664fb60f6a4af2c78c82c88fd86ef540cae8bd4cf9608f602aa"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:288",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-4",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-4"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-4.source.json",
+        "sha256": "2651c5632992fa305f00bc65c3579ea81f600d942ba054c95855d383a1a43ce0"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-4.figmetal.json",
+        "sha256": "13013b6cf74aa4959969aa90542ee3a0bf200c639d757c2e9f9a836cf4587859"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:292",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-5",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-5"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-5.source.json",
+        "sha256": "aafa6c9842a6cb50e5936e36d967338f4af73f61c74cd22e4a6daaa2bd7b538d"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-5.figmetal.json",
+        "sha256": "1c0663789cfb7e3e28f244ec59963763424df750b8b15068fd885addac17e73f"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:296",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-7",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-7"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-7.source.json",
+        "sha256": "c068d351ab37aa9423cb0044b884ae6099973a7d3452dee3386ecc871f919289"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-7.figmetal.json",
+        "sha256": "0c2d4a475bb5d13cbc24293ec596aa04faea2073c7ba38ca4763707b1a38a723"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:300",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "loading-step-6",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "loading-step-6"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-step-6.source.json",
+        "sha256": "a24315648a5918ff4b6ff33b033b1893562f32adbc10d530d0d3e25b26ec7b47"
+      },
+      "compiled": {
+        "path": "compiled/loading-step-6.figmetal.json",
+        "sha256": "9a2584be73373105d8dcf81a0d6b390c01f0c1ea31fde9ef01787108584b9673"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 1,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "20:304",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        }
+      ]
+    },
+    {
+      "id": "circular-wave-step-1",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "circular-wave-step-1"
+      ],
+      "viewport": {
+        "x": -0.08150482177734375,
+        "y": -0.0849151611328125,
+        "width": 49,
+        "height": 49
+      },
+      "source": {
+        "path": "source/circular-wave-step-1.source.json",
+        "sha256": "b9077357b7e8f39ca4aeb32063932fa10a85906360cef5ed30dc2099e8a4a1cf"
+      },
+      "compiled": {
+        "path": "compiled/circular-wave-step-1.figmetal.json",
+        "sha256": "576fd14964a1d6f3c670c4adca10a6f41c99c458900abf742f8c33097d35c3f7"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 0,
+        "draws": 2,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": []
+    },
+    {
+      "id": "linear-flat-step-1",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "linear-flat-step-1"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 404,
+        "height": 12
+      },
+      "source": {
+        "path": "source/linear-flat-step-1.source.json",
+        "sha256": "45d1f291a62983920b0557b2a45545d63485cc669573cc2a8ee570df1c463df1"
+      },
+      "compiled": {
+        "path": "compiled/linear-flat-step-1.figmetal.json",
+        "sha256": "891ef62831a70f05a5677c50dc5587bc30893a76f9524165d7a35f061fd3a11f"
+      },
+      "summary": {
+        "nodes": 13,
+        "bindings": 0,
+        "draws": 4,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "20:312",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I20:312;58005:8290",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I20:312;58005:8292",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I20:312;58005:8295",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        }
+      ]
+    },
+    {
+      "id": "switch-enabled",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "switch-enabled"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "source": {
+        "path": "source/switch-enabled.source.json",
+        "sha256": "21fa5666edcd58a1d752a07c650e1483598270d5eae932c7f8e8427e1e4acd8e"
+      },
+      "compiled": {
+        "path": "compiled/switch-enabled.figmetal.json",
+        "sha256": "d03960cd5086b470a7c9c4a809fc99787833292cf4a99ab1dd7c579942d45d0b"
+      },
+      "summary": {
+        "nodes": 6,
+        "bindings": 0,
+        "draws": 2,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "24:199",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25292",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "I24:199;54446:25292",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25293",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25294",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        }
+      ]
+    },
+    {
+      "id": "switch-hovered",
+      "mode": "static",
+      "status": "compiled",
+      "coverage": "static",
+      "fixtureSlugs": [
+        "switch-hovered"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "source": {
+        "path": "source/switch-hovered.source.json",
+        "sha256": "08d27ee24dc60bce4186e2ce2a521f618911015690ac70ad0d1989e01e526e95"
+      },
+      "compiled": {
+        "path": "compiled/switch-hovered.figmetal.json",
+        "sha256": "825564a68b56b14e8396185bf9fd600404c7ea1cb4e32556518a2228cc3476ff"
+      },
+      "summary": {
+        "nodes": 6,
+        "bindings": 0,
+        "draws": 3,
+        "duration": 0,
+        "errors": 0,
+        "warnings": 1
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "24:206",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25298",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "warning",
+          "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+          "nodeID": "I24:206;54446:25298",
+          "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25299",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25300",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        }
+      ]
+    },
+    {
+      "id": "switch-hover",
+      "mode": "transition",
+      "status": "compiled",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "switch-enabled",
+        "switch-hovered"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "source": {
+        "path": "source/switch-hover.source.json",
+        "sha256": "9e7e9c161bbeb10ba17a37edd538e84bc229e4519f116882cb4418da255bc6bd"
+      },
+      "compiled": {
+        "path": "compiled/switch-hover.figmetal.json",
+        "sha256": "b6d0230ebd774bd581ba687338eb8e86a517e1e534a1f2687dc8e55ec79ef256"
+      },
+      "summary": {
+        "nodes": 6,
+        "bindings": 2,
+        "draws": 3,
+        "duration": 0.20000000298023224,
+        "errors": 0,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "24:199",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25292",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25293",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:199;54446:25294",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "24:206",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25298",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25299",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "LAYOUT_SNAPSHOT",
+          "nodeID": "I24:206;54446:25300",
+          "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "I24:199;54446:25292",
+          "message": "Switch → Switch: source 0.20000000298023224s Smart Animate transition, 0s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "I24:199;54446:25292",
+        "trigger": {
+          "type": "ON_HOVER"
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "24:65",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.20000000298023224
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": false
+        },
+        "duration": 0.20000000298023224,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0
+      }
+    },
+    {
+      "id": "loading-1-to-2",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-1",
+        "loading-step-2"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-1-to-2.source.json",
+        "sha256": "c17d95164813340f41e1c2d612dbaed22aaf2275cce0eefebcd6307557419496"
+      },
+      "compiled": {
+        "path": "compiled/loading-1-to-2.blocked.figmetal.json",
+        "sha256": "aea990fb89d0ee9098c789c63252694608294c3bece6240b583caf3e7c447f02"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 3,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:280;58005:8557",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:280;58005:8558",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:280;58005:8558",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:280",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:280",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:12",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-2-to-3",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-2",
+        "loading-step-3"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-2-to-3.source.json",
+        "sha256": "116cfbaf41acd8c238567068af1f10b187e026f05e27ca4ec2d24c6f429fe580"
+      },
+      "compiled": {
+        "path": "compiled/loading-2-to-3.blocked.figmetal.json",
+        "sha256": "b05931227878def713acdcfaca375802c24dfb21ba01c8fa00284f104301be55"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 1,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 3,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:284;58005:8564",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:284;58005:8565",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:284;58005:8565",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:284",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:284",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:14",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-3-to-4",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-3",
+        "loading-step-4"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-3-to-4.source.json",
+        "sha256": "d75aad29c306374317c3722d9b9c0d2c64b2ab150a653b6b1f51576c735a5f41"
+      },
+      "compiled": {
+        "path": "compiled/loading-3-to-4.blocked.figmetal.json",
+        "sha256": "565dfee3e0248d7441fc8558574eb1205f57bb0e3a20fbeb84eb582887a82bfb"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 2,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:288;58005:8572",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:288;58005:8572",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:288",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:288",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:16",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-4-to-5",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-4",
+        "loading-step-5"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-4-to-5.source.json",
+        "sha256": "b4b9fa2364029e6b84ab164b181ea2449d48d34da2afe0e38a65440c0c9c222a"
+      },
+      "compiled": {
+        "path": "compiled/loading-4-to-5.blocked.figmetal.json",
+        "sha256": "456e6da2f433731a66540c2eba49289ed9b172b20fd8f59c7d86e55f69d54c64"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 2,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:292;58005:8579",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:292;58005:8579",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:292",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:292",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:18",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-5-to-7",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-5",
+        "loading-step-7"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-5-to-7.source.json",
+        "sha256": "4d5c68a46c9087a424655681cf48c72b986b6efe48899f7b7ecef8b073e11ad6"
+      },
+      "compiled": {
+        "path": "compiled/loading-5-to-7.blocked.figmetal.json",
+        "sha256": "3608f97467332f1d7bd1d94de90c89beef54c49e2d190d7d622ecd4f1753ef6c"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 3,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:296;58005:8585",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:296;58005:8586",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:296;58005:8586",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:296",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:296",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:22",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-7-to-6",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-7",
+        "loading-step-6"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-7-to-6.source.json",
+        "sha256": "81d8f1e01d998e269b7df4576eb7532249289949c342de7511339fc140c96e16"
+      },
+      "compiled": {
+        "path": "compiled/loading-7-to-6.blocked.figmetal.json",
+        "sha256": "774c21eabe3ac4dba0d0c8079d7c646c402f0f7f1c15d5ef02124e095d5105b1"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 3,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:300;58005:8599",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:300;58005:8600",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:300;58005:8600",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:300",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:300",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:20",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    },
+    {
+      "id": "loading-6-to-1",
+      "mode": "transition",
+      "status": "blocked",
+      "coverage": "endpoint-states",
+      "fixtureSlugs": [
+        "loading-step-6",
+        "loading-step-1"
+      ],
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "source": {
+        "path": "source/loading-6-to-1.source.json",
+        "sha256": "e4ac962de2a87917dd16c486a1692ecbeab20fdbfd8d2cb1f939af015a4a7921"
+      },
+      "compiled": {
+        "path": "compiled/loading-6-to-1.blocked.figmetal.json",
+        "sha256": "642e4c36cc332c94b6724a9121e35216876fd16db4ee56cfbca5abdabcdee082"
+      },
+      "summary": {
+        "nodes": 3,
+        "bindings": 2,
+        "draws": 1,
+        "duration": 0.40100000600796193,
+        "errors": 2,
+        "warnings": 0
+      },
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ],
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "TRANSITION_GEOMETRY",
+          "nodeID": "I20:304;58005:8593",
+          "message": "Animated size/clip geometry is not implemented."
+        },
+        {
+          "severity": "error",
+          "code": "TRANSITION_DRAW_GEOMETRY",
+          "nodeID": "I20:304;58005:8593",
+          "message": "Path morphs/different source geometry are not implemented."
+        },
+        {
+          "severity": "info",
+          "code": "SOURCE_TRANSITION",
+          "nodeID": "20:304",
+          "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+        }
+      ],
+      "sourceTransition": {
+        "nodeID": "20:304",
+        "trigger": {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.0010000000474974513
+        },
+        "action": {
+          "type": "NODE",
+          "destinationId": "20:10",
+          "navigation": "CHANGE_TO",
+          "transition": {
+            "type": "SMART_ANIMATE",
+            "easing": {
+              "type": "CUSTOM_CUBIC_BEZIER",
+              "easingFunctionCubicBezier": {
+                "x1": 0.20000000298023224,
+                "y1": 0,
+                "x2": 0,
+                "y2": 1
+              }
+            },
+            "duration": 0.4000000059604645
+          },
+          "resetVideoPosition": false,
+          "resetScrollPosition": true
+        },
+        "duration": 0.4000000059604645,
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "delay": 0.0010000000474974513
+      }
+    }
+  ]
+}

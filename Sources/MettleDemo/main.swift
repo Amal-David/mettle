@@ -7,6 +7,7 @@ import SwiftUI
 import Combine
 import ImageIO
 import UniformTypeIdentifiers
+import CryptoKit
 #endif
 
 struct Arguments {
@@ -19,14 +20,34 @@ struct Arguments {
         var input: String?, options: [String:String] = [:]
         while !tokens.isEmpty {
             let token = tokens.removeFirst()
+            if options[token] != nil { throw SceneError.invalid("Duplicate option \(token)") }
             if token == "--allow-partial" { options[token] = "true" }
             else if token.hasPrefix("--") {
-                guard !tokens.isEmpty else { throw SceneError.invalid("Missing value for \(token)") }
+                guard !tokens.isEmpty, !tokens[0].hasPrefix("--") else { throw SceneError.invalid("Missing value for \(token)") }
                 options[token] = tokens.removeFirst()
             } else if input == nil { input = token }
             else { throw SceneError.invalid("Unexpected argument \(token)") }
         }
         self.input = input; self.options = options
+        let shared: Set<String> = ["--scene", "--allow-partial"]
+        let allowed: [String: Set<String>] = [
+            "validate": shared,
+            "preview": ["--scene", "--example", "--time"], "demo": ["--scene", "--example", "--time"],
+            "render": shared.union(["--output", "--time", "--width", "--height", "--loop"]),
+            "frames": shared.union(["--output", "--time", "--width", "--height", "--loop", "--times", "--fps", "--frames"]),
+            "bench": shared.union(["--frames", "--width", "--height", "--loop"]),
+            "help": [], "--help": [], "-h": []
+        ]
+        guard let valid = allowed[verb] else { throw SceneError.invalid("Unknown command \(verb); run mettle help") }
+        if let unknown = options.keys.sorted().first(where: { !valid.contains($0) }) {
+            throw SceneError.invalid("Unknown option \(unknown) for \(verb)")
+        }
+        if options["--times"] != nil, ["--fps", "--frames", "--time"].contains(where: { options[$0] != nil }) {
+            throw SceneError.invalid("Use either --times or --fps/--frames/--time, not both")
+        }
+        if ["validate", "frames"].contains(verb), input == nil {
+            throw SceneError.invalid("\(verb) requires an explicit .figmetal.json input file")
+        }
     }
     func int(_ key:String,_ fallback:Int) throws -> Int {
         guard let text = options[key] else { return fallback }
@@ -67,9 +88,11 @@ func run() throws {
           mettle validate scene.figmetal.json [--allow-partial]
           mettle render [scene.figmetal.json] --output frame.png [--time 0] [--width 720] [--height 480]
           mettle frames scene.figmetal.json --output frames [--fps 30] [--frames 60]
+          mettle frames scene.figmetal.json --output frames --times 0,0.125,0.2 --loop once
           mettle bench [scene.figmetal.json] [--frames 120] [--width 720] [--height 480]
         Preview opens a welcome screen. Use --example motion or --example vectors to load an example.
         Add --scene N to select a scene. Render/bench default to the synthetic test scene.
+        --times preserves exact source timestamps. --loop once preserves the final endpoint for comparison.
         """); return
     }
     #if os(macOS)
@@ -104,11 +127,18 @@ func run() throws {
             throw SceneError.invalid("Bundled demo is missing")
         }; url = bundled
     }
-    let document = try SceneDocument.load(url:url,allowPartial:args.options["--allow-partial"] == "true")
+    let fileSize = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+    guard fileSize <= 32*1024*1024 else { throw SceneError.invalid("File exceeds 32 MiB") }
+    let sourceData = try Data(contentsOf: url)
+    let document = try SceneDocument.decode(sourceData,allowPartial:args.options["--allow-partial"] == "true")
     let index = try args.int("--scene",0)
     guard document.scenes.indices.contains(index) else { throw SceneError.invalid("Scene index out of range") }
-    let scene = document.scenes[index]
-    for issue in document.diagnostics { print("[\(issue.severity)] \(issue.code) \(issue.nodeID): \(issue.message)") }
+    var scene = document.scenes[index]
+    if let loop = args.options["--loop"] {
+        guard ["once", "loop", "pingPong"].contains(loop) else { throw SceneError.invalid("Loop must be once, loop, or pingPong") }
+        scene.loop = loop
+    }
+    for issue in document.diagnostics { fputs("[\(issue.severity)] \(issue.code) \(issue.nodeID): \(issue.message)\n", stderr) }
     if args.verb == "validate" {
         var nodes = 0, bindings = 0, vertices = 0
         func check(_ node:Node) throws {
@@ -123,35 +153,46 @@ func run() throws {
     }
     #if os(macOS)
     let renderer = try MetalRenderer(scene:scene)
-    let width = try args.int("--width",Int(scene.width)), height = try args.int("--height",Int(scene.height))
+    let width = try args.int("--width",max(1,Int(scene.width.rounded()))), height = try args.int("--height",max(1,Int(scene.height.rounded())))
     switch args.verb {
     case "render":
         let time = try args.double("--time",0)
+        guard (0...86400).contains(time) else { throw SceneError.invalid("Render time must be within 0...86400 seconds") }
         let data = try renderer.pixels(width:width,height:height,time:time)
         let output = URL(fileURLWithPath:args.options["--output"] ?? "frame.png")
         try writePNG(data,width:width,height:height,url:output)
         print("Rendered \(output.path) on \(renderer.device.name); \(renderer.lastStatistics.drawCalls) draw calls; GPU \(renderer.lastStatistics.gpuMilliseconds) ms")
     case "frames":
         let fps = try args.double("--fps",30), start = try args.double("--time",0)
-        guard fps >= 1 && fps <= 120, start >= 0 else { throw SceneError.invalid("FPS must be 1...120 and start time nonnegative") }
-        let count = try args.int("--frames",max(1,Int(ceil(max(0,scene.duration-start)*fps))))
-        guard count >= 1 && count <= 3600 else { throw SceneError.invalid("Sequence must contain 1...3600 frames") }
+        let times: [Double]
+        if let csv = args.options["--times"] { times = try FrameSampling.explicit(csv) }
+        else { times = try FrameSampling.regular(fps: fps, start: start, duration: scene.duration,
+            count: args.options["--frames"] == nil ? nil : try args.int("--frames", 1)) }
         let directory = URL(fileURLWithPath:args.options["--output"] ?? "frames",isDirectory:true)
+        if FileManager.default.fileExists(atPath: directory.path),
+           !(try FileManager.default.contentsOfDirectory(atPath: directory.path)).isEmpty {
+            throw SceneError.invalid("Frame output directory must be empty. Choose a fresh directory so old and new evidence cannot be mixed.")
+        }
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
         var entries: [[String:Any]] = []
-        for index in 0..<count {
-            let time = start+Double(index)/fps
-            let filename = String(format:"%04d.png",index)
+        for (frameIndex, time) in times.enumerated() {
+            let filename = String(format:"%04d.png",frameIndex)
             let pixels = try renderer.pixels(width:width,height:height,time:time)
-            try writePNG(pixels,width:width,height:height,url:directory.appendingPathComponent(filename))
-            entries.append(["index":index,"time":time,"file":filename])
+            let frameURL = directory.appendingPathComponent(filename)
+            try writePNG(pixels,width:width,height:height,url:frameURL)
+            let digest = SHA256.hash(data: try Data(contentsOf: frameURL)).map { String(format:"%02x", $0) }.joined()
+            entries.append(["index":frameIndex,"time":time,"file":filename,"sha256":digest])
         }
-        let manifest: [String:Any] = ["fps":fps,"width":width,"height":height,"frames":entries,
+        var manifest: [String:Any] = ["format":"mettle-frames","version":1,"backend":"Metal",
+            "sourceSHA256":SHA256.hash(data: sourceData).map { String(format:"%02x", $0) }.joined(),
+            "sceneIndex":index,"sceneDuration":scene.duration,"loop":scene.loop,
+            "width":width,"height":height,"frames":entries,
             "device":renderer.device.name,"curveTolerance":0.05,"sampleCount":renderer.sampleCount,
-            "note":"Native Metal sequence, evaluated at index/fps. No reference images are loaded by the renderer."]
+            "note":"Native Metal sequence evaluated at the exact listed timestamps. No reference images are loaded by the renderer."]
+        if args.options["--times"] == nil { manifest["fps"] = fps }
         try JSONSerialization.data(withJSONObject:manifest,options:[.prettyPrinted,.sortedKeys])
             .write(to:directory.appendingPathComponent("manifest.json"),options:.atomic)
-        print("Rendered \(count) native frames at \(fps) fps into \(directory.path)")
+        print("Rendered \(times.count) native frames at exact timestamps into \(directory.path)")
     case "bench":
         let count = try args.int("--frames",120)
         guard count >= 1 && count <= 10000 else { throw SceneError.invalid("Frames must be 1...10000") }

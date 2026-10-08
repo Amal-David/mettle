@@ -45,6 +45,14 @@ final class PlaybackTests: XCTestCase {
     func testBackwardsClockCannotReverseAnimation() {
         var c = PlaybackClock(duration: 4); c.play(at: 5); c.advance(to: 4)
         XCTAssertEqual(c.position, 0)
+        c.advance(to: 5); XCTAssertEqual(c.position, 0)
+        c.advance(to: 5.5); XCTAssertEqual(c.position, 0.5)
+    }
+    func testChangingRepeatModeOnReturnLegKeepsVisiblePlayhead() {
+        var c = PlaybackClock(duration: 2, repetition: .pingPong)
+        c.play(at: 0); c.advance(to: 3); XCTAssertEqual(c.position, 1)
+        c.repetition = .once; c.advance(to: 3.25)
+        XCTAssertEqual(c.position, 1.25); XCTAssertTrue(c.isPlaying)
     }
     func testScrubShowsExactEndpointForLoop() {
         var c = PlaybackClock(duration: 4, repetition: .loop); c.seek(to: 4)

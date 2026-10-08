@@ -21,9 +21,24 @@ public struct MettleView {
         var elapsed = 0.0
         var lastHostTime: Double?
         var controlledTime: Double?
+        private var requestedTime: Double?
         var running = false
         var onError: (Error)->Void
         init(_ renderer:MetalRenderer,onError:@escaping(Error)->Void) { self.renderer = renderer; self.onError = onError }
+        /// Keep the user's seek position separate from Reduced Motion's display
+        /// override, and never carry a previous scene's seek into a new renderer.
+        func updatePlayback(renderer nextRenderer: MetalRenderer, time: Double?, isPlaying: Bool,
+                            reduceMotion: Bool, sceneIsActive: Bool) {
+            if renderer !== nextRenderer {
+                renderer = nextRenderer; elapsed = 0; lastHostTime = nil
+            } else if let previous = requestedTime, time == nil {
+                elapsed = previous.isFinite ? max(0, previous) : 0; lastHostTime = nil
+            }
+            requestedTime = time
+            controlledTime = reduceMotion ? 0 : time
+            running = isPlaying && time == nil && !reduceMotion && sceneIsActive
+            if !running { lastHostTime = nil }
+        }
         public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
             // A controlled/paused view can be configured before it has a drawable.
             // Redraw after layout instead of leaving the first paused frame blank.
@@ -58,12 +73,10 @@ public struct MettleView {
     }
     private func configure(_ view:MTKView,context:Context) {
         let c = context.coordinator
-        if c.renderer !== renderer { c.renderer = renderer; c.elapsed = 0; c.lastHostTime = nil }
-        if c.controlledTime != nil && time == nil { c.elapsed = c.controlledTime ?? 0; c.lastHostTime = nil }
-        c.controlledTime = reduceMotion ? 0 : time
+        if view.device?.registryID != renderer.device.registryID { view.device = renderer.device }
+        c.updatePlayback(renderer: renderer, time: time, isPlaying: isPlaying,
+                         reduceMotion: reduceMotion, sceneIsActive: scenePhase == .active)
         c.onError = onError
-        c.running = isPlaying && time == nil && !reduceMotion && scenePhase == .active
-        if !c.running { c.lastHostTime = nil }
         view.isPaused = !c.running
         view.enableSetNeedsDisplay = !c.running
         if view.isPaused {

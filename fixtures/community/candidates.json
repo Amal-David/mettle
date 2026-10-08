@@ -1,0 +1,122 @@
+{
+  "format": "mettle-community-candidates",
+  "version": 1,
+  "researchedDate": "2026-10-08",
+  "note": "Discovery records only. These sources have not been captured or converted. Imported Material 3 source evidence is tracked separately in material3/provenance.json.",
+  "candidates": [
+    {
+      "id": "figma-motion-playground",
+      "title": "Official Figma Motion playground",
+      "communityURL": "https://www.figma.com/community/file/1663955790391641238",
+      "creator": "Figma",
+      "discoveryURL": "https://help.figma.com/hc/en-us/articles/41780233501591-Edit-an-object-s-motion-path",
+      "discoveryEvidence": "Official motion-path help article links to this Community resource.",
+      "motionCasesToInspect": [
+        "native keyframe timelines",
+        "spatial motion paths",
+        "easing and transform anchors"
+      ],
+      "status": "awaiting-source-access",
+      "fileKey": null,
+      "nodeId": null,
+      "sourceDataCaptured": false,
+      "licenseStatus": "Not independently retrieved for this resource."
+    },
+    {
+      "id": "figma-config-motion-playground",
+      "title": "Figma Motion launch playground",
+      "communityURL": "https://www.figma.com/community/file/1647513942386018246",
+      "creator": "Figma",
+      "discoveryURL": "https://www.figma.com/blog/introducing-figma-motion/",
+      "discoveryEvidence": "Official launch article links to this Community resource.",
+      "motionCasesToInspect": [
+        "native timeline playback",
+        "manual keyframes",
+        "animation styles"
+      ],
+      "status": "awaiting-source-access",
+      "fileKey": null,
+      "nodeId": null,
+      "sourceDataCaptured": false,
+      "licenseStatus": "Not independently retrieved for this resource."
+    },
+    {
+      "id": "heliox-orbit",
+      "title": "HELIOX \u2014 cinematic orbit hero motion study",
+      "communityURL": "https://www.figma.com/community/file/1679366851357632538",
+      "creator": "Aivon",
+      "discoveryURL": "https://forum.figma.com/showcase-your-work-14/heliox-a-cinematic-orbit-hero-motion-study-in-figma-57667",
+      "discoveryEvidence": "Creator's Figma Forum showcase links the Community file and describes native opening keyframes plus ambient video/overlay layers. The creator notes web-demo timing differs from Figma.",
+      "motionCasesToInspect": [
+        "keyframed opening motion",
+        "orbital geometry",
+        "explicit rejection of embedded video where unsupported"
+      ],
+      "status": "awaiting-source-access",
+      "fileKey": null,
+      "nodeId": null,
+      "sourceDataCaptured": false,
+      "licenseStatus": "Not independently retrieved for this resource."
+    },
+    {
+      "id": "arjun-loading-animations",
+      "title": "Free Figma Loading Animations",
+      "communityURL": "https://www.figma.com/community/file/1238864174262623901",
+      "creator": "Nagarjuna Pulugam / Arjun AJ",
+      "discoveryURL": "https://dribbble.com/shots/21446433-Free-Figma-Loading-Animations-for-Your-Next-Project",
+      "discoveryEvidence": "Creator's showcase explicitly describes the loading animations as free and links the Community source.",
+      "motionCasesToInspect": [
+        "loader prototype reactions",
+        "source loop timing",
+        "rotation and opacity transitions"
+      ],
+      "status": "awaiting-source-access",
+      "fileKey": null,
+      "nodeId": null,
+      "sourceDataCaptured": false,
+      "licenseStatus": "Creator confirms a free resource; Figma's free-file CC BY 4.0 policy applies. No additional file notice retrieved."
+    },
+    {
+      "id": "captain-loading-button",
+      "title": "Interactive button loading animation",
+      "communityURL": "https://www.figma.com/community/file/1293820087438051498/figma-interactive-button-loading-animation-ui-design",
+      "creator": "Raouf Belakhdar / Captain Design",
+      "discoveryURL": "https://www.captain-design.com/blog/figma-button-tutorial-creative-loading-button-animation/",
+      "discoveryEvidence": "Creator tutorial links the editable Community source.",
+      "motionCasesToInspect": [
+        "button state reactions",
+        "loading and completion transitions",
+        "source text/vector behavior"
+      ],
+      "status": "awaiting-source-access",
+      "fileKey": null,
+      "nodeId": null,
+      "sourceDataCaptured": false,
+      "licenseStatus": "Not independently retrieved for this resource."
+    }
+  ],
+  "confirmedAccessProbes": [
+    {
+      "fileKey": "JV71sUTF2pFCHjSEhdVHRo",
+      "nodeId": "39:453",
+      "designURL": "https://www.figma.com/design/JV71sUTF2pFCHjSEhdVHRo/Motion-Station?node-id=39-453",
+      "method": "figma.get_metadata",
+      "result": "Looks like you don't have edit access to this file.",
+      "sourceDataCaptured": false
+    },
+    {
+      "fileKey": "JfTMZxIn1ZcgUKYugbenOX",
+      "nodeId": "2:2",
+      "designURL": "https://www.figma.com/design/JfTMZxIn1ZcgUKYugbenOX/Figma-Forum?timeline=keyframe&node-id=2-2",
+      "method": "figma.get_metadata",
+      "result": "Looks like you don't have edit access to this file.",
+      "sourceDataCaptured": false
+    }
+  ],
+  "accessLimitations": [
+    "Community page IDs are resource IDs, not editable design file keys. No file keys or node IDs were guessed from those numeric IDs.",
+    "The available connector returned edit-access errors for the external public design probes. Community web-page fetches were also restricted.",
+    "Browser duplication was not attempted. An editable source copy or approved supported browser workflow is still needed before capturing these candidates.",
+    "A creator's demo video or prose is discovery context, not a replacement for exact Figma geometry, timing, and independent reference frames."
+  ]
+}

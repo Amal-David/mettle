@@ -1,0 +1,627 @@
+{
+  "format": "mettle-source",
+  "version": 1,
+  "mode": "transition",
+  "nodes": [
+    {
+      "id": "20:280",
+      "name": "Loading indicator",
+      "type": "INSTANCE",
+      "width": 48,
+      "height": 48,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "fillGeometry": [
+        {
+          "windingRule": "NONZERO",
+          "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z"
+        }
+      ],
+      "fills": [],
+      "regionalPaints": false,
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "PASS_THROUGH",
+      "strokes": [],
+      "strokeGeometry": [],
+      "strokeAlign": "INSIDE",
+      "effects": [],
+      "isMask": false,
+      "clipsContent": true,
+      "layoutMode": "NONE",
+      "itemReverseZIndex": false,
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:12",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:12",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": "I20:280;58005:8557",
+          "name": "Shape container",
+          "type": "FRAME",
+          "width": 38,
+          "height": 38,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              0,
+              1,
+              5
+            ]
+          ],
+          "fillGeometry": [
+            {
+              "windingRule": "NONZERO",
+              "data": "M0 0 L38 0 L38 38 L0 38 L0 0 Z"
+            }
+          ],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": false,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "regionalPaints": false,
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "strokes": [],
+          "strokeGeometry": [],
+          "strokeAlign": "INSIDE",
+          "effects": [],
+          "isMask": false,
+          "clipsContent": true,
+          "layoutMode": "NONE",
+          "itemReverseZIndex": false,
+          "animations": {},
+          "manualKeyframeTracks": {},
+          "animationStyles": [],
+          "timelines": [],
+          "reactions": [],
+          "children": [
+            {
+              "id": "I20:280;58005:8558",
+              "name": "Shape",
+              "type": "VECTOR",
+              "width": 32.999996185302734,
+              "height": 34,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  2.5
+                ],
+                [
+                  0,
+                  1,
+                  2
+                ]
+              ],
+              "fillGeometry": [
+                {
+                  "windingRule": "NONZERO",
+                  "data": "M14.9683 0.839776 C15.6732 -0.279924 17.3268 -0.279926 18.0317 0.839775 L19.7214 3.52373 C20.1848 4.25987 21.1197 4.55915 21.9338 4.23198 L24.9021 3.0391 C26.1404 2.54145 27.4781 3.49904 27.3804 4.8131 L27.1461 7.96297 C27.0819 8.82689 27.6597 9.61042 28.5135 9.81717 L31.6265 10.571 C32.9252 10.8855 33.4362 12.4349 32.5731 13.4414 L30.5044 15.854 C29.937 16.5158 29.937 17.4842 30.5044 18.146 L32.5731 20.5586 C33.4362 21.5651 32.9252 23.1145 31.6265 23.429 L28.5135 24.1828 C27.6597 24.3896 27.0819 25.1731 27.1461 26.037 L27.3804 29.1869 C27.4781 30.501 26.1404 31.4585 24.9021 30.9609 L21.9338 29.768 C21.1197 29.4408 20.1848 29.7401 19.7214 30.4763 L18.0317 33.1602 C17.3268 34.2799 15.6732 34.2799 14.9683 33.1602 L13.2786 30.4763 C12.8152 29.7401 11.8803 29.4408 11.0662 29.768 L8.09794 30.9609 C6.85964 31.4585 5.52187 30.501 5.6196 29.1869 L5.85388 26.037 C5.91814 25.1731 5.34033 24.3896 4.48651 24.1828 L1.37348 23.429 C0.0747851 23.1145 -0.4362 21.5651 0.426845 20.5586 L2.49559 18.146 C3.06299 17.4842 3.06299 16.5158 2.49559 15.854 L0.426846 13.4414 C-0.436199 12.4349 0.074783 10.8855 1.37348 10.571 L4.48651 9.81717 C5.34033 9.61042 5.91814 8.82689 5.85388 7.96297 L5.6196 4.81311 C5.52187 3.49904 6.85964 2.54145 8.09793 3.0391 L11.0662 4.23198 C11.8803 4.55915 12.8152 4.25987 13.2786 3.52373 L14.9683 0.839776 Z"
+                }
+              ],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.40392157435417175,
+                    "g": 0.3137255012989044,
+                    "b": 0.6431372761726379
+                  },
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:76bfbbf87c5f600256e614f12eaf0699927c5a35/57966:62"
+                    }
+                  }
+                }
+              ],
+              "regionalPaints": false,
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "strokes": [],
+              "strokeGeometry": [],
+              "strokeAlign": "INSIDE",
+              "effects": [],
+              "isMask": false,
+              "clipsContent": false,
+              "layoutMode": "NONE",
+              "itemReverseZIndex": false,
+              "animations": {},
+              "manualKeyframeTracks": {},
+              "animationStyles": [],
+              "timelines": [],
+              "reactions": [],
+              "children": [],
+              "captureDiagnostics": [],
+              "rawMotion": {
+                "animations": {},
+                "manualKeyframeTracks": {},
+                "animationStyles": []
+              },
+              "motionVariableResolutions": [],
+              "motionCapture": "not-requested"
+            }
+          ],
+          "captureDiagnostics": [],
+          "rawMotion": {
+            "animations": {},
+            "manualKeyframeTracks": {},
+            "animationStyles": []
+          },
+          "motionVariableResolutions": [],
+          "motionCapture": "not-requested"
+        }
+      ],
+      "captureDiagnostics": [],
+      "absoluteTransform": [
+        [
+          1,
+          0,
+          80
+        ],
+        [
+          0,
+          1,
+          80
+        ]
+      ],
+      "absoluteRenderBounds": {
+        "x": 80,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "absoluteBoundingBox": {
+        "x": 80,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "sourceComponent": {
+        "id": "20:10",
+        "name": "Steps=1, Show container=False",
+        "key": "195daf47bf5950ea63de766cf0b924872079a253"
+      },
+      "rawMotion": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": []
+      },
+      "motionVariableResolutions": [],
+      "motionCapture": "not-requested"
+    },
+    {
+      "id": "20:284",
+      "name": "Loading indicator",
+      "type": "INSTANCE",
+      "width": 48,
+      "height": 48,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "fillGeometry": [
+        {
+          "windingRule": "NONZERO",
+          "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z"
+        }
+      ],
+      "fills": [],
+      "regionalPaints": false,
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "PASS_THROUGH",
+      "strokes": [],
+      "strokeGeometry": [],
+      "strokeAlign": "INSIDE",
+      "effects": [],
+      "isMask": false,
+      "clipsContent": true,
+      "layoutMode": "NONE",
+      "itemReverseZIndex": false,
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:14",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:14",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": "I20:284;58005:8564",
+          "name": "Shape container",
+          "type": "FRAME",
+          "width": 38,
+          "height": 38,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              0,
+              1,
+              5
+            ]
+          ],
+          "fillGeometry": [
+            {
+              "windingRule": "NONZERO",
+              "data": "M0 8 C0 3.58172 3.58172 0 8 0 L30 0 C34.4183 0 38 3.58172 38 8 L38 30 C38 34.4183 34.4183 38 30 38 L8 38 C3.58172 38 0 34.4183 0 30 L0 8 Z"
+            }
+          ],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": false,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "regionalPaints": false,
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "strokes": [],
+          "strokeGeometry": [],
+          "strokeAlign": "INSIDE",
+          "effects": [],
+          "isMask": false,
+          "clipsContent": true,
+          "layoutMode": "NONE",
+          "itemReverseZIndex": false,
+          "animations": {},
+          "manualKeyframeTracks": {},
+          "animationStyles": [],
+          "timelines": [],
+          "reactions": [],
+          "children": [
+            {
+              "id": "I20:284;58005:8565",
+              "name": "Shape",
+              "type": "VECTOR",
+              "width": 34,
+              "height": 33.57500076293945,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  1,
+                  2.200000047683716
+                ]
+              ],
+              "fillGeometry": [
+                {
+                  "windingRule": "NONZERO",
+                  "data": "M13.3091 1.40363 C13.4924 1.254 13.584 1.17919 13.6677 1.11603 C15.6389 -0.372011 18.3611 -0.372011 20.3323 1.11603 C20.416 1.17919 20.5076 1.254 20.6909 1.40363 C20.7727 1.47042 20.8136 1.50381 20.8541 1.5356 C21.7818 2.26445 22.9191 2.67748 24.0993 2.71409 C24.1508 2.71569 24.2037 2.71634 24.3094 2.71765 C24.5462 2.72059 24.6646 2.72206 24.7694 2.72733 C27.2381 2.85162 29.3234 4.59743 29.8748 7.00154 C29.8982 7.10358 29.9202 7.21966 29.9642 7.45183 C29.9838 7.55547 29.9937 7.60729 30.0042 7.65759 C30.2452 8.81087 30.8504 9.85669 31.7309 10.6416 C31.7693 10.6759 31.8094 10.7103 31.8895 10.7791 C32.069 10.9332 32.1588 11.0102 32.2357 11.0815 C34.0467 12.76 34.5194 15.4347 33.393 17.6299 C33.3451 17.7231 33.2872 17.8262 33.1714 18.0322 C33.1196 18.1242 33.0938 18.1702 33.0694 18.2155 C32.5111 19.2536 32.3009 20.4429 32.4697 21.6088 C32.4771 21.6597 32.4856 21.7117 32.5027 21.8158 C32.5409 22.049 32.56 22.1656 32.573 22.2695 C32.879 24.7168 31.5179 27.0689 29.2407 28.0281 C29.1441 28.0688 29.0333 28.1106 28.8118 28.1942 C28.7129 28.2315 28.6635 28.2501 28.6156 28.2692 C27.5192 28.7063 26.592 29.4826 25.9701 30.484 C25.943 30.5277 25.916 30.5731 25.862 30.6637 C25.741 30.8669 25.6806 30.9685 25.6236 31.0564 C24.2814 33.1273 21.7234 34.0563 19.3609 33.3306 C19.2606 33.2998 19.1489 33.2608 18.9253 33.1827 C18.8256 33.1479 18.7757 33.1305 18.7268 33.1144 C17.6052 32.7461 16.3948 32.7461 15.2732 33.1144 C15.2243 33.1305 15.1744 33.1479 15.0747 33.1827 C14.8511 33.2608 14.7394 33.2998 14.6391 33.3306 C12.2767 34.0563 9.71865 33.1273 8.37641 31.0564 C8.31944 30.9685 8.25897 30.8669 8.13801 30.6637 C8.08402 30.5731 8.05702 30.5277 8.0299 30.484 C7.40803 29.4826 6.48083 28.7063 5.38436 28.2692 C5.33654 28.2501 5.28709 28.2315 5.18821 28.1942 C4.96669 28.1106 4.85593 28.0688 4.75928 28.0281 C2.48205 27.0689 1.12097 24.7168 1.42698 22.2695 C1.43997 22.1656 1.45908 22.049 1.4973 21.8158 C1.51436 21.7117 1.52289 21.6597 1.53026 21.6088 C1.69906 20.4429 1.48889 19.2536 0.930563 18.2155 C0.906211 18.1702 0.880352 18.1242 0.828635 18.0322 C0.712779 17.8262 0.654852 17.7231 0.60704 17.6299 C-0.519433 15.4347 -0.0467336 12.76 1.76433 11.0815 C1.8412 11.0102 1.93096 10.9332 2.11047 10.7791 C2.19061 10.7103 2.23068 10.6759 2.26908 10.6416 C3.14958 9.85669 3.75476 8.81087 3.99583 7.6576 C4.00634 7.60729 4.01617 7.55547 4.03582 7.45183 C4.07984 7.21966 4.10185 7.10357 4.12525 7.00153 C4.67662 4.59743 6.76192 2.85162 9.23063 2.72733 C9.33541 2.72206 9.45381 2.72059 9.69062 2.71765 C9.79633 2.71634 9.84919 2.71569 9.90067 2.71409 C11.0809 2.67748 12.2182 2.26445 13.1459 1.5356 C13.1864 1.50381 13.2273 1.47042 13.3091 1.40363 Z"
+                }
+              ],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.40392157435417175,
+                    "g": 0.3137255012989044,
+                    "b": 0.6431372761726379
+                  },
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:76bfbbf87c5f600256e614f12eaf0699927c5a35/57966:62"
+                    }
+                  }
+                }
+              ],
+              "regionalPaints": false,
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "strokes": [],
+              "strokeGeometry": [],
+              "strokeAlign": "INSIDE",
+              "effects": [],
+              "isMask": false,
+              "clipsContent": false,
+              "layoutMode": "NONE",
+              "itemReverseZIndex": false,
+              "animations": {},
+              "manualKeyframeTracks": {},
+              "animationStyles": [],
+              "timelines": [],
+              "reactions": [],
+              "children": [],
+              "captureDiagnostics": [],
+              "rawMotion": {
+                "animations": {},
+                "manualKeyframeTracks": {},
+                "animationStyles": []
+              },
+              "motionVariableResolutions": [],
+              "motionCapture": "not-requested"
+            }
+          ],
+          "captureDiagnostics": [],
+          "rawMotion": {
+            "animations": {},
+            "manualKeyframeTracks": {},
+            "animationStyles": []
+          },
+          "motionVariableResolutions": [],
+          "motionCapture": "not-requested"
+        }
+      ],
+      "captureDiagnostics": [],
+      "absoluteTransform": [
+        [
+          1,
+          0,
+          180
+        ],
+        [
+          0,
+          1,
+          80
+        ]
+      ],
+      "absoluteRenderBounds": {
+        "x": 180,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "absoluteBoundingBox": {
+        "x": 180,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "sourceComponent": {
+        "id": "20:12",
+        "name": "Steps=2, Show container=False",
+        "key": "8eb3bda9ffac682d52fee6d1d7d3e68ca220c9d9"
+      },
+      "rawMotion": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": []
+      },
+      "motionVariableResolutions": [],
+      "motionCapture": "not-requested"
+    }
+  ],
+  "options": {
+    "loop": "once",
+    "origin": "center",
+    "includeMotion": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "width": 48,
+      "height": 48
+    },
+    "duration": 0.4000000059604645,
+    "easing": {
+      "type": "CUSTOM_CUBIC_BEZIER",
+      "easingFunctionCubicBezier": {
+        "x1": 0.20000000298023224,
+        "y1": 0,
+        "x2": 0,
+        "y2": 1
+      }
+    },
+    "delay": 0.0010000000474974513
+  },
+  "transition": {
+    "nodeID": "20:280",
+    "trigger": {
+      "type": "AFTER_TIMEOUT",
+      "timeout": 0.0010000000474974513
+    },
+    "action": {
+      "type": "NODE",
+      "destinationId": "20:12",
+      "navigation": "CHANGE_TO",
+      "transition": {
+        "type": "SMART_ANIMATE",
+        "easing": {
+          "type": "CUSTOM_CUBIC_BEZIER",
+          "easingFunctionCubicBezier": {
+            "x1": 0.20000000298023224,
+            "y1": 0,
+            "x2": 0,
+            "y2": 1
+          }
+        },
+        "duration": 0.4000000059604645
+      },
+      "resetVideoPosition": false,
+      "resetScrollPosition": true
+    },
+    "duration": 0.4000000059604645,
+    "easing": {
+      "type": "CUSTOM_CUBIC_BEZIER",
+      "easingFunctionCubicBezier": {
+        "x1": 0.20000000298023224,
+        "y1": 0,
+        "x2": 0,
+        "y2": 1
+      }
+    },
+    "delay": 0.0010000000474974513
+  },
+  "notes": [
+    {
+      "severity": "info",
+      "code": "SOURCE_TRANSITION",
+      "nodeID": "20:280",
+      "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+    }
+  ],
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-1",
+      "loading-step-2"
+    ],
+    "referenceCoverage": "endpoint-states",
+    "prototypePlaybackFramesCaptured": false
+  }
+}

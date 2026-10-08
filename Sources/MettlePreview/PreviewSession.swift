@@ -47,7 +47,10 @@ public final class PreviewSession: ObservableObject {
     private var request = UUID()
     private var timer: Timer?
     private var inheritedRepetition = PlaybackClock.Repetition.once
-    public var scene: Scene? { document?.scenes[selectedScene] }
+    public var scene: Scene? {
+        guard let document, document.scenes.indices.contains(selectedScene) else { return nil }
+        return document.scenes[selectedScene]
+    }
     public var title: String {
         if let sample = examples.first(where: { $0.id == exampleID }) { return sample.title }
         return sourceURL?.deletingPathExtension().deletingPathExtension().lastPathComponent ?? "Welcome"
@@ -69,6 +72,7 @@ public final class PreviewSession: ObservableObject {
     /// `open`, below, so expensive tessellation cannot freeze the file picker.
     public func loadSynchronously(url: URL, sceneIndex: Int = 0, exampleID: String? = nil,
                                   initialTime: Double = 0) throws {
+        request = UUID(); isLoading = false
         let prepared = try Self.prepare(url: url, sceneIndex: sceneIndex)
         install(prepared.0, renderer: prepared.1, url: url, sceneIndex: sceneIndex,
                 exampleID: exampleID, initialTime: initialTime)
@@ -113,6 +117,10 @@ public final class PreviewSession: ObservableObject {
         }
     }
     public func openExample(_ example: PreviewExample) { open(example.url, exampleID: example.id) }
+    public func reload() {
+        guard let url = sourceURL, !isLoading else { return }
+        open(url, sceneIndex: selectedScene, exampleID: exampleID, initialTime: playback.position)
+    }
     public func chooseScene(_ index: Int) {
         guard let url = sourceURL, index != selectedScene else { return }
         open(url, sceneIndex: index, exampleID: exampleID)

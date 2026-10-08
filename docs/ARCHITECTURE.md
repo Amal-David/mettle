@@ -12,6 +12,8 @@ The plugin snapshots local fill geometry and affine transforms. Source children 
 
 The pure compiler consumes the snapshot and produces draws, clip paths, per-node bindings and compatibility diagnostics. Unknown motion is retained under `sourceMotion` for future implementation, but is not executed. Unsupported motion/effects must not be replaced by fabricated easing, crossfades, screenshots or fake shader effects.
 
+The panel and replay CLI share the same source-bundle compiler. Bundles retain the selected source snapshots, verified component identities, prototype reactions, export options and provenance. A two-state export follows an actual source connection or requires an explicit start state; it preserves the reaction's duration, delay and cubic easing. Optional reference framing uses the original Figma PNG dimensions and captured render bounds to establish an exact common viewport. Reference pixels are comparison evidence and never become scene geometry.
+
 Motion beta getters may not exist in every host. A static design has no invented animation. Transform origin is an explicit export setting because the snapshot path does not establish a per-node source pivot; the report warns when rotation/scale depends on this choice. Independent timeline IDs are rejected until coordination is implemented.
 
 ## Native runtime
@@ -20,7 +22,7 @@ Motion beta getters may not exist in every host. A static design has no invented
 
 `MetalRenderer` prepares meshes once and uploads them as native vertex buffers. Per-frame work evaluates bindings and traverses nodes. Shared Metal functions paint solids/gradients. A group with opacity below one is rendered to an isolated surface before alpha multiplication. Clips use a separately rendered alpha mask. Frame strokes render above children. Output and intermediate textures use premultiplied alpha.
 
-Two frame-resource slots and a semaphore prevent CPU reuse before submitted GPU work finishes. Each slot pools offscreen textures. The renderer exposes explicit-time rendering for regression tests and screenshots, and command-buffer timing for offscreen benchmarks. It is single-caller-thread code, not a concurrently mutable actor.
+Two frame-resource slots each have their own completion fence, preventing CPU reuse of that slot before its submitted GPU work finishes. The slot cursor advances only after a successful submission. Each slot pools offscreen textures by explicit dimensions, including single-sample rendering. The renderer exposes explicit-time rendering for regression tests and screenshots, and completed command-buffer timing for offscreen benchmarks. Asynchronous renders do not report a measured GPU duration. It is single-caller-thread code, not a concurrently mutable actor.
 
 ## Phase 2 completed: a small independent live corpus
 

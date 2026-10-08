@@ -118,6 +118,9 @@ public struct PreviewRootView: View {
                 .menuStyle(.borderlessButton).fixedSize().help("Appearance").accessibilityLabel("Appearance")
             Button(action: session.openPanel) { Label("Open…", systemImage: "folder") }.help("Open a Mettle export (⌘O)")
             if session.renderer != nil && !session.referencesVisible {
+                Button(action: session.reload) { Image(systemName: "arrow.clockwise") }
+                    .disabled(session.isLoading).help("Reload the updated export and keep this playhead position")
+                    .accessibilityLabel("Reload export")
                 Button(action: session.exportPanel) { Label("Export frame…", systemImage: "square.and.arrow.up") }
                     .disabled(session.isLoading).help("Save this frame as a PNG at its original size (⇧⌘E)")
                 Button { session.inspectorVisible.toggle() } label: { Image(systemName: "sidebar.right") }
@@ -290,7 +293,7 @@ public struct PreviewRootView: View {
                     detail("SOURCE", session.exampleID == nil ? "Local Mettle export" : session.sourceDescription)
                 }
                 Divider()
-                Text("This is a preview, not a design editor. Change the animation in Figma, then open the new export.")
+                Text("Change the animation in Figma, save over the export, then reload here to keep your place in the timeline.")
                     .font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                 if let diagnostics = session.document?.diagnostics, !diagnostics.isEmpty {
                     DisclosureGroup("Export notes (\(diagnostics.count))") {
@@ -323,7 +326,7 @@ public struct PreviewRootView: View {
             Text("Mettle Preview opens exports made by the Mettle plugin. It doesn’t open raw Figma files or connect to your account.")
                 .foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             instruction("1", "Install the development plugin", "In Figma: Plugins → Development → Import plugin from manifest. Choose plugin/manifest.json in the Mettle repository.")
-            instruction("2", "Export a frame", "Select a frame, run Mettle, and review the compatibility report. Keep “Allow incomplete export” unchecked.")
+            instruction("2", "Inspect and export", "Choose keyframe animation, two Smart Animate states, or static artwork. Review the report and leave incomplete diagnostic export unchecked.")
             instruction("3", "Open the exported file", "Save the .figmetal.json file, then drag it into this window or choose Open animation.")
             Link("Full local setup & troubleshooting ↗", destination: URL(string: "https://github.com/Amal-David/mettle/blob/main/docs/LOCAL_SETUP.md")!)
             Text("The desktop preview is optional. The Figma exporter creates the asset; the Swift package plays it inside your app.").font(.system(size: 11)).foregroundStyle(.secondary)

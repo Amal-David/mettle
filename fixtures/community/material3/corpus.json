@@ -1,0 +1,1203 @@
+{
+  "format": "mettle-comparison-corpus",
+  "version": 1,
+  "name": "Material 3 Community source corpus",
+  "provenance": {
+    "path": "provenance.json",
+    "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+  },
+  "sourceEvidence": [
+    {
+      "path": "compile-report.json",
+      "sha256": "0bd81cb9ba6617b50182008eb670bf7893dd47332361e1effbb0765fa70d6797"
+    },
+    {
+      "path": "source-bounds.json",
+      "sha256": "88c687a1446a40e49a2510c41da8a951d5ed28d339764f22a324bf9221d44213"
+    },
+    {
+      "path": "source-instances.json",
+      "sha256": "a3656942b3e00d5bef3847e586c96c893a8626ccdbc99af0d90b373d9365d5a1"
+    },
+    {
+      "path": "switch-source-instances.json",
+      "sha256": "f9b976e3dcf5c40ae0dbb31f15edfd2c0ec5504ba0bfab3688979639cabd0ead"
+    }
+  ],
+  "thresholds": {
+    "whole": {
+      "rgbMAE": 2,
+      "alphaMAE": 3,
+      "pixelsOver8Percent": 5
+    },
+    "foreground": {
+      "rgbMAE": 4,
+      "alphaMAE": 6,
+      "pixelsOver8Percent": 20
+    },
+    "regions": {
+      "rgbMAE": 4,
+      "alphaMAE": 6,
+      "pixelsOver8Percent": 20
+    },
+    "boundsMaxPixels": 2
+  },
+  "thresholdPolicy": "Initial engineering gates declared before native Community measurements. No automatic threshold changes or native-to-reference promotion. Passing endpoint states does not verify intermediate prototype playback.",
+  "cases": [
+    {
+      "id": "loading-step-1",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-1"
+      ],
+      "source": {
+        "path": "source/loading-step-1.source.json",
+        "sha256": "c3b57c90e99ce80078474abdd9ceb32f76ccbab394a0d0e1dea4f739097f4786"
+      },
+      "document": {
+        "path": "compiled/loading-step-1.figmetal.json",
+        "sha256": "9497489f1b16cbdb793c47d6f0d08653d39f5336d3f86c62fa644b2397c28df8"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-1"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-2",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-2"
+      ],
+      "source": {
+        "path": "source/loading-step-2.source.json",
+        "sha256": "b3c25730439493b83c47c06ffe7e36791f02852a92fef482432ed68492455f7f"
+      },
+      "document": {
+        "path": "compiled/loading-step-2.figmetal.json",
+        "sha256": "6bfb28624461ee45ee55d2eec656d4b24c758bc3a9b06b5416eaeca6160fb1d8"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-2"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-3",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-3"
+      ],
+      "source": {
+        "path": "source/loading-step-3.source.json",
+        "sha256": "abacc59051b1a3e4ffd356a13604ea545d46498ac62c2f2aa9610f4cf451151e"
+      },
+      "document": {
+        "path": "compiled/loading-step-3.figmetal.json",
+        "sha256": "e768ff6e214ed664fb60f6a4af2c78c82c88fd86ef540cae8bd4cf9608f602aa"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-3"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-4",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-4"
+      ],
+      "source": {
+        "path": "source/loading-step-4.source.json",
+        "sha256": "2651c5632992fa305f00bc65c3579ea81f600d942ba054c95855d383a1a43ce0"
+      },
+      "document": {
+        "path": "compiled/loading-step-4.figmetal.json",
+        "sha256": "13013b6cf74aa4959969aa90542ee3a0bf200c639d757c2e9f9a836cf4587859"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-4"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-5",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-5"
+      ],
+      "source": {
+        "path": "source/loading-step-5.source.json",
+        "sha256": "aafa6c9842a6cb50e5936e36d967338f4af73f61c74cd22e4a6daaa2bd7b538d"
+      },
+      "document": {
+        "path": "compiled/loading-step-5.figmetal.json",
+        "sha256": "1c0663789cfb7e3e28f244ec59963763424df750b8b15068fd885addac17e73f"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-5"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-7",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-7"
+      ],
+      "source": {
+        "path": "source/loading-step-7.source.json",
+        "sha256": "c068d351ab37aa9423cb0044b884ae6099973a7d3452dee3386ecc871f919289"
+      },
+      "document": {
+        "path": "compiled/loading-step-7.figmetal.json",
+        "sha256": "0c2d4a475bb5d13cbc24293ec596aa04faea2073c7ba38ca4763707b1a38a723"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-7"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-step-6",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "loading-step-6"
+      ],
+      "source": {
+        "path": "source/loading-step-6.source.json",
+        "sha256": "a24315648a5918ff4b6ff33b033b1893562f32adbc10d530d0d3e25b26ec7b47"
+      },
+      "document": {
+        "path": "compiled/loading-step-6.figmetal.json",
+        "sha256": "9a2584be73373105d8dcf81a0d6b390c01f0c1ea31fde9ef01787108584b9673"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-6"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "circular-wave-step-1",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "circular-wave-step-1"
+      ],
+      "source": {
+        "path": "source/circular-wave-step-1.source.json",
+        "sha256": "b9077357b7e8f39ca4aeb32063932fa10a85906360cef5ed30dc2099e8a4a1cf"
+      },
+      "document": {
+        "path": "compiled/circular-wave-step-1.figmetal.json",
+        "sha256": "576fd14964a1d6f3c670c4adca10a6f41c99c458900abf742f8c33097d35c3f7"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": -0.08150482177734375,
+        "y": -0.0849151611328125,
+        "width": 49,
+        "height": 49
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "circular-wave-step-1"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "upper-arc",
+          "rect": [
+            0,
+            0,
+            49,
+            25
+          ]
+        },
+        {
+          "id": "lower-arc",
+          "rect": [
+            0,
+            24,
+            49,
+            49
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "linear-flat-step-1",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "linear-flat-step-1"
+      ],
+      "source": {
+        "path": "source/linear-flat-step-1.source.json",
+        "sha256": "45d1f291a62983920b0557b2a45545d63485cc669573cc2a8ee570df1c463df1"
+      },
+      "document": {
+        "path": "compiled/linear-flat-step-1.figmetal.json",
+        "sha256": "891ef62831a70f05a5677c50dc5587bc30893a76f9524165d7a35f061fd3a11f"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 404,
+        "height": 12
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "linear-flat-step-1"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "left-track",
+          "rect": [
+            0,
+            4,
+            202,
+            8
+          ]
+        },
+        {
+          "id": "right-track",
+          "rect": [
+            202,
+            4,
+            404,
+            8
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "switch-enabled",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "switch-enabled"
+      ],
+      "source": {
+        "path": "source/switch-enabled.source.json",
+        "sha256": "21fa5666edcd58a1d752a07c650e1483598270d5eae932c7f8e8427e1e4acd8e"
+      },
+      "document": {
+        "path": "compiled/switch-enabled.figmetal.json",
+        "sha256": "d03960cd5086b470a7c9c4a809fc99787833292cf4a99ab1dd7c579942d45d0b"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "switch-enabled"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "track",
+          "rect": [
+            0,
+            8,
+            52,
+            40
+          ]
+        },
+        {
+          "id": "thumb",
+          "rect": [
+            24,
+            12,
+            48,
+            36
+          ]
+        },
+        {
+          "id": "hover-halo",
+          "rect": [
+            16,
+            4,
+            56,
+            12
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "switch-hovered",
+      "expectation": "render",
+      "coverage": "static",
+      "sourceFixtures": [
+        "switch-hovered"
+      ],
+      "source": {
+        "path": "source/switch-hovered.source.json",
+        "sha256": "08d27ee24dc60bce4186e2ce2a521f618911015690ac70ad0d1989e01e526e95"
+      },
+      "document": {
+        "path": "compiled/switch-hovered.figmetal.json",
+        "sha256": "825564a68b56b14e8396185bf9fd600404c7ea1cb4e32556518a2228cc3476ff"
+      },
+      "sceneIndex": 0,
+      "duration": 0,
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "switch-hovered"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "track",
+          "rect": [
+            0,
+            8,
+            52,
+            40
+          ]
+        },
+        {
+          "id": "thumb",
+          "rect": [
+            24,
+            12,
+            48,
+            36
+          ]
+        },
+        {
+          "id": "hover-halo",
+          "rect": [
+            16,
+            4,
+            56,
+            12
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "switch-hover",
+      "expectation": "render",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "switch-enabled",
+        "switch-hovered"
+      ],
+      "source": {
+        "path": "source/switch-hover.source.json",
+        "sha256": "9e7e9c161bbeb10ba17a37edd538e84bc229e4519f116882cb4418da255bc6bd"
+      },
+      "document": {
+        "path": "compiled/switch-hover.figmetal.json",
+        "sha256": "b6d0230ebd774bd581ba687338eb8e86a517e1e534a1f2687dc8e55ec79ef256"
+      },
+      "sceneIndex": 0,
+      "duration": 0.20000000298023224,
+      "viewport": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "switch-enabled"
+        },
+        {
+          "index": 1,
+          "time": 0.20000000298023224,
+          "fixture": "switch-hovered"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "track",
+          "rect": [
+            0,
+            8,
+            52,
+            40
+          ]
+        },
+        {
+          "id": "thumb",
+          "rect": [
+            24,
+            12,
+            48,
+            36
+          ]
+        },
+        {
+          "id": "hover-halo",
+          "rect": [
+            16,
+            4,
+            56,
+            12
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false
+    },
+    {
+      "id": "loading-1-to-2",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-1",
+        "loading-step-2"
+      ],
+      "source": {
+        "path": "source/loading-1-to-2.source.json",
+        "sha256": "c17d95164813340f41e1c2d612dbaed22aaf2275cce0eefebcd6307557419496"
+      },
+      "document": {
+        "path": "compiled/loading-1-to-2.blocked.figmetal.json",
+        "sha256": "aea990fb89d0ee9098c789c63252694608294c3bece6240b583caf3e7c447f02"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-1"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-2"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-2-to-3",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-2",
+        "loading-step-3"
+      ],
+      "source": {
+        "path": "source/loading-2-to-3.source.json",
+        "sha256": "116cfbaf41acd8c238567068af1f10b187e026f05e27ca4ec2d24c6f429fe580"
+      },
+      "document": {
+        "path": "compiled/loading-2-to-3.blocked.figmetal.json",
+        "sha256": "b05931227878def713acdcfaca375802c24dfb21ba01c8fa00284f104301be55"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-2"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-3"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-3-to-4",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-3",
+        "loading-step-4"
+      ],
+      "source": {
+        "path": "source/loading-3-to-4.source.json",
+        "sha256": "d75aad29c306374317c3722d9b9c0d2c64b2ab150a653b6b1f51576c735a5f41"
+      },
+      "document": {
+        "path": "compiled/loading-3-to-4.blocked.figmetal.json",
+        "sha256": "565dfee3e0248d7441fc8558574eb1205f57bb0e3a20fbeb84eb582887a82bfb"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-3"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-4"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-4-to-5",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-4",
+        "loading-step-5"
+      ],
+      "source": {
+        "path": "source/loading-4-to-5.source.json",
+        "sha256": "b4b9fa2364029e6b84ab164b181ea2449d48d34da2afe0e38a65440c0c9c222a"
+      },
+      "document": {
+        "path": "compiled/loading-4-to-5.blocked.figmetal.json",
+        "sha256": "456e6da2f433731a66540c2eba49289ed9b172b20fd8f59c7d86e55f69d54c64"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-4"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-5"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-5-to-7",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-5",
+        "loading-step-7"
+      ],
+      "source": {
+        "path": "source/loading-5-to-7.source.json",
+        "sha256": "4d5c68a46c9087a424655681cf48c72b986b6efe48899f7b7ecef8b073e11ad6"
+      },
+      "document": {
+        "path": "compiled/loading-5-to-7.blocked.figmetal.json",
+        "sha256": "3608f97467332f1d7bd1d94de90c89beef54c49e2d190d7d622ecd4f1753ef6c"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-5"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-7"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-7-to-6",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-7",
+        "loading-step-6"
+      ],
+      "source": {
+        "path": "source/loading-7-to-6.source.json",
+        "sha256": "81d8f1e01d998e269b7df4576eb7532249289949c342de7511339fc140c96e16"
+      },
+      "document": {
+        "path": "compiled/loading-7-to-6.blocked.figmetal.json",
+        "sha256": "774c21eabe3ac4dba0d0c8079d7c646c402f0f7f1c15d5ef02124e095d5105b1"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-7"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-6"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    },
+    {
+      "id": "loading-6-to-1",
+      "expectation": "blocked",
+      "coverage": "endpoint-states",
+      "sourceFixtures": [
+        "loading-step-6",
+        "loading-step-1"
+      ],
+      "source": {
+        "path": "source/loading-6-to-1.source.json",
+        "sha256": "e4ac962de2a87917dd16c486a1692ecbeab20fdbfd8d2cb1f939af015a4a7921"
+      },
+      "document": {
+        "path": "compiled/loading-6-to-1.blocked.figmetal.json",
+        "sha256": "642e4c36cc332c94b6724a9121e35216876fd16db4ee56cfbca5abdabcdee082"
+      },
+      "sceneIndex": 0,
+      "duration": 0.40100000600796193,
+      "viewport": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "loop": "once",
+      "referenceFrames": [
+        {
+          "index": 0,
+          "time": 0,
+          "fixture": "loading-step-6"
+        },
+        {
+          "index": 1,
+          "time": 0.40100000600796193,
+          "fixture": "loading-step-1"
+        }
+      ],
+      "foreground": {
+        "backgroundRGBA": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": 8
+      },
+      "regions": [
+        {
+          "id": "indicator",
+          "rect": [
+            6,
+            6,
+            42,
+            42
+          ]
+        }
+      ],
+      "motionPlaybackVerified": false,
+      "expectedErrorCodes": [
+        "TRANSITION_GEOMETRY",
+        "TRANSITION_DRAW_GEOMETRY"
+      ]
+    }
+  ]
+}

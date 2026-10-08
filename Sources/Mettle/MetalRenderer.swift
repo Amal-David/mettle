@@ -8,6 +8,8 @@ public struct RenderStatistics: Sendable {
     public var vertices: Int = 0
     public var drawCalls: Int = 0
     public var surfaceCount: Int = 0
+    /// New offscreen surfaces allocated for this frame (reused surfaces do not count).
+    public var surfaceAllocations: Int = 0
     public var gpuMilliseconds: Double = 0
 }
 private struct Uniforms {
@@ -58,6 +60,12 @@ private final class Surface {
 private final class FrameResources {
     var surfaces: [Surface] = []
     var rootMSAA: MTLTexture?
+    var width = 0
+    var height = 0
+    var surfaceAllocations = 0
+    // Each slot owns its fence. A failed encode or an out-of-order completion
+    // must never make another frame's textures available for reuse.
+    let semaphore = DispatchSemaphore(value: 1)
 }
 
 /// All geometry and compositing are rendered with Metal. No CoreGraphics drawing,
@@ -74,13 +82,15 @@ public final class MetalRenderer {
     private let paintPipeline: MTLRenderPipelineState
     private let compositePipeline: MTLRenderPipelineState
     private let slots = [FrameResources(),FrameResources()]
-    private let semaphore = DispatchSemaphore(value:2)
     private var nextSlot = 0
     private let surfaceBudget = 256*1024*1024
 
     public init(scene: Scene, device: MTLDevice? = MTLCreateSystemDefaultDevice(),
                 sampleCount requestedSamples: Int = 4, curveTolerance: Double = 0.05) throws {
         try SceneDocument(scenes:[scene]).validate()
+        guard curveTolerance.isFinite, curveTolerance > 0, requestedSamples > 0 else {
+            throw SceneError.invalid("Curve tolerance and sample count must be positive and finite")
+        }
         guard let device, let queue = device.makeCommandQueue() else { throw SceneError.gpu("No Metal device/queue") }
         self.device = device; self.queue = queue; self.scene = scene
         let samples = device.supportsTextureSampleCount(requestedSamples) ? requestedSamples : 1
@@ -127,12 +137,12 @@ public final class MetalRenderer {
         if let s = frame.surfaces.first(where:{ !$0.inUse && $0.color.width == width && $0.color.height == height }) {
             s.inUse = true; s.initialized = false; return s
         }
-        let bytes = width*height*4*(sampleCount+1)
+        let bytes = width*height*4*(sampleCount == 1 ? 1 : sampleCount+1)
         guard (frame.surfaces.count+2)*bytes <= surfaceBudget else {
             throw SceneError.gpu("Offscreen surface budget exceeded. Reduce render size or nested isolation/clips.")
         }
         let s = Surface(color:try makeTarget(width:width,height:height),multisample:try makeMSAA(width:width,height:height))
-        s.inUse = true; frame.surfaces.append(s); return s
+        s.inUse = true; frame.surfaces.append(s); frame.surfaceAllocations += 1; return s
     }
     private func encoder(_ surface: Surface, _ command: MTLCommandBuffer) throws -> MTLRenderCommandEncoder {
         let d = MTLRenderPassDescriptor()
@@ -201,7 +211,9 @@ public final class MetalRenderer {
             try draw(clip,paint:Paint(),size:node.source.size,world:world,into:mask,command:command,stats:&stats)
             try composite(children,mask:mask,into:surface,command:command,stats:&stats)
             children.inUse = false; mask.inUse = false
-        } else {
+        } else if node.source.clip.isEmpty {
+            // An explicitly supplied clip that tessellates to zero area clips
+            // every child. It is different from a node with no clip at all.
             for child in node.children { try renderNode(child,parent:world,time:time,target:surface,frame:frame,command:command,stats:&stats) }
         }
         // Frame strokes remain above children and are not clipped away by clipsContent.
@@ -214,18 +226,23 @@ public final class MetalRenderer {
     @discardableResult
     public func render(to texture: MTLTexture, time: Double, present: MTLDrawable? = nil,
                        waitUntilCompleted: Bool = false) throws -> MTLCommandBuffer {
-        guard texture.pixelFormat == .bgra8Unorm, texture.sampleCount == 1,
-              texture.width > 0, texture.height > 0, texture.width*texture.height <= 8_388_608 else {
-            throw SceneError.invalid("Expected a BGRA8 single-sample target up to 8 megapixels")
+        guard texture.device.registryID == device.registryID,
+              texture.textureType == .type2D, texture.pixelFormat == .bgra8Unorm, texture.sampleCount == 1,
+              texture.usage.isEmpty || texture.usage.contains(.renderTarget),
+              texture.width > 0, texture.height > 0, texture.width <= 8192, texture.height <= 8192,
+              texture.width*texture.height <= 8_388_608 else {
+            throw SceneError.invalid("Expected a BGRA8 single-sample 2D render target on this Metal device, up to 8 megapixels and 8192 on one axis")
         }
-        semaphore.wait()
-        let frame = slots[nextSlot]; nextSlot = (nextSlot+1)%slots.count
+        let frame = slots[nextSlot]
+        frame.semaphore.wait()
         var submitted = false
-        defer { if !submitted { semaphore.signal() } }
-        if frame.rootMSAA?.width != texture.width || frame.rootMSAA?.height != texture.height {
+        defer { if !submitted { frame.semaphore.signal() } }
+        if frame.width != texture.width || frame.height != texture.height {
             frame.rootMSAA = try makeMSAA(width:texture.width,height:texture.height)
+            frame.width = texture.width; frame.height = texture.height
             frame.surfaces.removeAll()
         }
+        frame.surfaceAllocations = 0
         for surface in frame.surfaces { surface.inUse = false }
         let surface = Surface(color:texture,multisample:frame.rootMSAA)
         guard let command = queue.makeCommandBuffer() else { throw SceneError.gpu("Command buffer creation failed") }
@@ -237,10 +254,11 @@ public final class MetalRenderer {
         let clear = try encoder(surface,command); clear.endEncoding()
         try renderNode(root,parent:base,time:scene.localTime(time),target:surface,frame:frame,command:command,stats:&stats)
         stats.surfaceCount = frame.surfaces.count+1
+        stats.surfaceAllocations = frame.surfaceAllocations
         if let present { command.present(present) }
-        let signal = semaphore
+        let signal = frame.semaphore
         command.addCompletedHandler { _ in signal.signal() }
-        submitted = true; command.commit()
+        submitted = true; nextSlot = (nextSlot+1)%slots.count; command.commit()
         if waitUntilCompleted {
             command.waitUntilCompleted()
             if let error = command.error { throw SceneError.gpu(error.localizedDescription) }

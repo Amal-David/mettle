@@ -6,7 +6,7 @@ thresholds are regression gates, not general pixel-perfect certification.
 from pathlib import Path
 from PIL import Image, ImageChops
 from compare_live import metrics
-import hashlib, json, subprocess, sys
+import argparse, hashlib, json, subprocess, sys
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'artifacts/motion-2026'
 REGIONS = {'stacked':(0,20,180,130), 'scale':(190,0,350,145),
@@ -17,13 +17,17 @@ def bounds(image, region):
     background = image.getpixel((599,319))[2]
     return ImageChops.difference(crop, Image.new('L',crop.size,background)).point(lambda v:255 if v>12 else 0).getbbox()
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=OUT)
+    args = parser.parse_args()
+    out = args.output
     video = ROOT / 'fixtures/motion-2026/styles.reference.mp4'
     if hashlib.sha256(video.read_bytes()).hexdigest() != REFERENCE_SHA:
         raise ValueError('Independent Figma reference changed; do not replace it with native output.')
-    manifest = json.loads((OUT / 'native/manifest.json').read_text())
+    manifest = json.loads((out / 'native/manifest.json').read_text())
     if manifest['fps'] != 10 or len(manifest['frames']) != 21:
         raise ValueError('Expected 21 endpoint-inclusive frames at 10 fps.')
-    refdir = OUT / 'reference'; refdir.mkdir(parents=True, exist_ok=True)
+    refdir = out / 'reference'; refdir.mkdir(parents=True, exist_ok=True)
     subprocess.run(['ffmpeg','-v','error','-y','-i',str(video),'-fps_mode','passthrough',
                     '-start_number','0',str(refdir/'%04d.png')],check=True)
     rows = []
@@ -31,7 +35,7 @@ def main():
         if entry['index'] != index or abs(entry['time']-index/10) > 1e-9:
             raise ValueError('Native timestamps do not match the independent Figma timeline.')
         reference = Image.open(refdir/f'{index:04}.png').convert('RGB')
-        native = Image.open(OUT/'native'/entry['file']).convert('RGB')
+        native = Image.open(out/'native'/entry['file']).convert('RGB')
         if reference.size != (600,320) or native.size != reference.size:
             raise ValueError('Unexpected frame dimensions.')
         row = {'index':index,'time':entry['time'], 'rgbMAE':metrics(reference,native)['rgbMAE'], 'regions':{}}
@@ -50,7 +54,7 @@ def main():
                'worstBoundsError':max(v['boundsError'] for r in rows for v in r['regions'].values()),
                'limitations':'Engine regression gates only. This does not certify arbitrary custom styles or all rotation/scale pivots.'}
     summary['pass'] = summary['worstRGBMAE']<=2.5 and summary['worstRegionRGBMAE']<=3 and summary['worstBoundsError']<=2
-    (OUT/'style-comparison.json').write_text(json.dumps(summary,indent=2)+'\n')
+    (out/'style-comparison.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps({k:v for k,v in summary.items() if k!='frames'},indent=2))
     return 0 if summary['pass'] else 1
 if __name__ == '__main__':

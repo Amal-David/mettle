@@ -38,9 +38,20 @@ Import `artifacts/local-plugin/manifest.json`. This does not edit the tracked ma
 
 ## 3. Export a design
 
-Select **one frame or component**, run the plugin, and use its one-selection export mode. Review the compatibility report and keep **Allow incomplete export** unchecked. Save the `.figmetal.json` file.
+Select **one frame or component**, run the plugin, and choose **Keyframe animation** or **Static artwork**. Review the compatibility report and leave incomplete diagnostic export unchecked. Save the `.figmetal.json` file. A selection with no captured tracks is explicitly labeled static.
 
-For a bounded A/B transition, select two same-size frames and use the two-frame mode. This is not a general prototype/state-machine exporter. Read [compatibility](COMPATIBILITY.md) before choosing a design. Unsupported effects are reported rather than reproduced approximately.
+For a bounded A/B transition, select two same-size source states and choose **Smart Animate · two states**. Follow the source interaction, or choose the start state explicitly for bidirectional connections. The captured connection supplies timing and easing; canvas position does not choose the direction. This does not export a general prototype state machine.
+
+When the report flags artwork outside the nominal canvas, enable **Use Figma reference bounds** under the advanced options and inspect again. Static/two-state captures can use Figma's actual PNG dimensions and source render origin to preserve overflow. This requires unrotated source roots and matching local viewports for both states. Save the offered Figma PNGs separately; they are comparison references, not native renderer inputs.
+
+**Save source capture** and **Save report** remain available when a scene is blocked. Clicking a diagnostic reveals its source layer. Reproduce a saved capture without Figma:
+
+```bash
+node scripts/compile_capture.mjs animation.source.json \
+  --output animation.figmetal.json --report animation.report.json
+```
+
+The command writes the diagnostic scene and exits with failure if unsupported features remain. The normal preview rejects incomplete scenes. `--allow-partial` on the native CLI is an explicit debugging override, not a fidelity result. Read [compatibility](COMPATIBILITY.md) and the [real Community corpus](../fixtures/community/material3/README.md) before choosing source motion.
 
 ## 4. Preview on a Mac (optional)
 
@@ -52,7 +63,7 @@ swift run -c release mettle preview
 
 Use **Open animation…** (⌘O), or drag a `.figmetal.json` export into the window. Raw `.fig`, Lottie, SVG and `.riv` files are not supported inputs. The welcome screen does not automatically play test artwork.
 
-The loaded-file controls are **Play/Pause**, **Restart**, the time slider, **Speed**, **Repeat**, **Zoom**, **Background**, and **Export frame…**. Space plays/pauses; arrow keys step by 1/30 second. ⇧⌘E exports a PNG at the original canvas size. ⌘I reveals optional file/rendering details. Reduce Motion prevents playback. Appearance can be Light, Dark, or System.
+The loaded-file controls are **Play/Pause**, **Restart**, the time slider, **Speed**, **Repeat**, **Zoom**, **Background**, and **Export frame…**. Space plays/pauses; arrow keys step by 1/30 second. After saving an updated source export, **Reload Export** (⇧⌘R) reloads it at the same playhead position. ⇧⌘E exports a PNG at the original canvas size. ⌘I reveals optional file/rendering details. Reduce Motion prevents playback. Appearance can be Light, Dark, or System.
 
 ```bash
 # Open a specific exported file directly.
@@ -87,6 +98,8 @@ Restart the development plugin in Figma after updating. Re-run the Swift command
 - **Cannot open a file:** choose the plugin’s `.figmetal.json`, not a raw design or external reference. An invalid file leaves the existing preview intact.
 - **No Metal device / Xcode error:** run the native preview on a Metal-capable Mac with Xcode selected. The Figma plugin alone does not require Xcode.
 - **Static frame:** a scene without tracks is labelled static, with playback disabled. Nothing is invented to make it move.
+- **Cropped overflow:** use Figma reference bounds for static/two-state captures. Preserve the generated numeric viewport when replaying the source.
+- **Frame output already exists:** choose a fresh directory. Native sequences refuse to mix an old manifest or frames with a new run.
 
 The exporter requests no network access. Native preview/export reads local scene data. Reference links and the browser reference board visit external websites only when opened. Open only trusted exports; this experimental renderer is not a security sandbox.
 

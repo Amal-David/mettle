@@ -4,6 +4,8 @@
 
 The code is authoritative. The following describes intentional boundaries, not blanket Figma support.
 
+The October Community pass adds replayable source bundles, verified descendant prototype connections and exact reference viewports. A solid fill may appear or disappear during a transition only when its source geometry is unchanged; the absent endpoint is transparent and retains the original paint index. Path morphing, changing clips and resizing remain blocked. The current Community corpus verifies source integrity and compiler behavior; native endpoint comparison and intermediate prototype playback require separate evidence. See [Community verification](COMMUNITY_VERIFICATION.md).
+
 | Source feature | v0.2 handling |
 |---|---|
 | Shape/Boolean fill geometry | Source paths; Boolean operands are not independently drawn. Smoothed corners verified from source geometry. |

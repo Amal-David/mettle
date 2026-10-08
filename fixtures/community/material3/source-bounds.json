@@ -1,0 +1,1128 @@
+{
+  "bounds": [
+    {
+      "slug": "switch-enabled",
+      "frameId": "24:198",
+      "instanceId": "24:199",
+      "host": {
+        "id": "24:198",
+        "type": "FRAME",
+        "width": 52,
+        "height": 32,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 400,
+          "width": 52,
+          "height": 32
+        },
+        "absoluteRenderBounds": {
+          "x": 80,
+          "y": 392,
+          "width": 60,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "24:199",
+        "type": "INSTANCE",
+        "width": 52,
+        "height": 32,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 400,
+          "width": 52,
+          "height": 32
+        },
+        "absoluteRenderBounds": {
+          "x": 80,
+          "y": 392,
+          "width": 60,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "switch-hovered",
+      "frameId": "24:205",
+      "instanceId": "24:206",
+      "host": {
+        "id": "24:205",
+        "type": "FRAME",
+        "width": 52,
+        "height": 32,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            200
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            200
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 200,
+          "y": 400,
+          "width": 52,
+          "height": 32
+        },
+        "absoluteRenderBounds": {
+          "x": 200,
+          "y": 392,
+          "width": 60,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "24:206",
+        "type": "INSTANCE",
+        "width": 52,
+        "height": 32,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            200
+          ],
+          [
+            0,
+            1,
+            400
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 200,
+          "y": 400,
+          "width": 52,
+          "height": 32
+        },
+        "absoluteRenderBounds": {
+          "x": 200,
+          "y": 392,
+          "width": 60,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": -8,
+        "width": 60,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-1",
+      "frameId": "20:279",
+      "instanceId": "20:280",
+      "host": {
+        "id": "20:279",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 80,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:280",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 80,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-2",
+      "frameId": "20:283",
+      "instanceId": "20:284",
+      "host": {
+        "id": "20:283",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 180,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 180,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:284",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 180,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 180,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-3",
+      "frameId": "20:287",
+      "instanceId": "20:288",
+      "host": {
+        "id": "20:287",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            280
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            280
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 280,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 280,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:288",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            280
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 280,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 280,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-4",
+      "frameId": "20:291",
+      "instanceId": "20:292",
+      "host": {
+        "id": "20:291",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            380
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            380
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 380,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 380,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:292",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            380
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 380,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 380,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-5",
+      "frameId": "20:295",
+      "instanceId": "20:296",
+      "host": {
+        "id": "20:295",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            480
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            480
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 480,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 480,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:296",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            480
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 480,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 480,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-7",
+      "frameId": "20:299",
+      "instanceId": "20:300",
+      "host": {
+        "id": "20:299",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            580
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            580
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 580,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 580,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:300",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            580
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 580,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 580,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "loading-step-6",
+      "frameId": "20:303",
+      "instanceId": "20:304",
+      "host": {
+        "id": "20:303",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            680
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            680
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 680,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 680,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:304",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            680
+          ],
+          [
+            0,
+            1,
+            80
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 680,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 680,
+          "y": 80,
+          "width": 48,
+          "height": 48
+        },
+        "exportSettings": [],
+        "clipsContent": true
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 48
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "circular-wave-step-1",
+      "frameId": "20:307",
+      "instanceId": "20:308",
+      "host": {
+        "id": "20:307",
+        "type": "FRAME",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 200,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 79.91849517822266,
+          "y": 199.9150848388672,
+          "width": 48.081504821777344,
+          "height": 48.08491516113281
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:308",
+        "type": "INSTANCE",
+        "width": 48,
+        "height": 48,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            80
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 80,
+          "y": 200,
+          "width": 48,
+          "height": 48
+        },
+        "absoluteRenderBounds": {
+          "x": 79.91849517822266,
+          "y": 199.9150848388672,
+          "width": 48.081504821777344,
+          "height": 48.08491516113281
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "localRenderBounds": {
+        "x": -0.08150482177734375,
+        "y": -0.0849151611328125,
+        "width": 48.081504821777344,
+        "height": 48.08491516113281
+      },
+      "transformClassification": "translation-only"
+    },
+    {
+      "slug": "linear-flat-step-1",
+      "frameId": "20:311",
+      "instanceId": "20:312",
+      "host": {
+        "id": "20:311",
+        "type": "FRAME",
+        "width": 404,
+        "height": 12,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 180,
+          "y": 200,
+          "width": 404,
+          "height": 12
+        },
+        "absoluteRenderBounds": {
+          "x": 180,
+          "y": 200,
+          "width": 404.00030517578125,
+          "height": 12
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "instance": {
+        "id": "20:312",
+        "type": "INSTANCE",
+        "width": 404,
+        "height": 12,
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "absoluteTransform": [
+          [
+            1,
+            0,
+            180
+          ],
+          [
+            0,
+            1,
+            200
+          ]
+        ],
+        "absoluteBoundingBox": {
+          "x": 180,
+          "y": 200,
+          "width": 404,
+          "height": 12
+        },
+        "absoluteRenderBounds": {
+          "x": 180,
+          "y": 200,
+          "width": 404.00030517578125,
+          "height": 12
+        },
+        "exportSettings": [],
+        "clipsContent": false
+      },
+      "localRenderBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 404.00030517578125,
+        "height": 12
+      },
+      "transformClassification": "translation-only"
+    }
+  ],
+  "fileKey": "flxINzepb5BgRcRfGj0Tl5",
+  "pageId": "18:2",
+  "observedDate": "2026-10-08",
+  "pngExportSettings": {
+    "format": "PNG",
+    "constraint": {
+      "type": "SCALE",
+      "value": 1
+    }
+  },
+  "notes": [
+    "All source instance roots have identity linear transform; local render bounds are absoluteRenderBounds minus absoluteTransform translation.",
+    "Node exportSettings arrays are empty; explicit PNG export settings above were supplied per call.",
+    "Existing reference PNGs are exact bytes from provider exports, without cropping or resizing."
+  ],
+  "documentColorProfile": "LEGACY",
+  "svgInspection": {
+    "format": "SVG_STRING",
+    "fixtures": [
+      "circular-wave-step-1",
+      "switch-enabled"
+    ],
+    "role": "Provider export viewport evidence only; not compiler input."
+  }
+}

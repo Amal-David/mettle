@@ -1,14 +1,24 @@
-/* Figma host UI adapter. FM/FMC are injected by build.mjs. */
-figma.showUI(__html__, { width: 440, height: 590, themeColors: true });
+/* Figma host UI adapter. FM/FMC/FME are injected by build.mjs. */
+figma.showUI(__html__, { width: 480, height: 690, themeColors: true });
 let busy=false;
+let selectionToRestore=null;
 const capture=FMC.createCapture(figma);
 const captureNode=capture.captureNode;
-function transitionFrom(a,b) {
-  for(const reaction of a.reactions??[]) for(const action of reaction.actions??(reaction.action?[reaction.action]:[])) {
-    if(action.destinationId===b.id && action.transition?.type==='SMART_ANIMATE') return action.transition;
-  }
-  return null;
+function notifySelection(reason='selection') {
+  if(busy) return;
+  figma.ui.postMessage({type:'selection',reason,nodes:Array.from(figma.currentPage.selection).map(node=>({id:node.id,name:node.name,type:node.type}))});
 }
+if(typeof figma.on==='function') figma.on('selectionchange',()=>{
+  if(busy) {
+    const nodes=Array.from(figma.currentPage.selection);
+    if(selectionToRestore&&nodes.every(node=>!capture.ownsTemporaryNode(node.id))) {
+      selectionToRestore={page:figma.currentPage,nodes};
+    }
+    return;
+  }
+  notifySelection();
+});
+notifySelection();
 async function createTestFrames() {
   const a=figma.createFrame();a.name='Metal test — A';a.resize(480,320);a.fills=[{type:'SOLID',color:{r:.05,g:.07,b:.12}}];a.cornerRadius=24;
   const shape=figma.createEllipse();a.appendChild(shape);shape.name='Orb';shape.resize(120,120);shape.x=40;shape.y=100;
@@ -23,31 +33,63 @@ async function createTestFrames() {
 figma.ui.onmessage=async message=>{
   if(busy) return;
   busy=true;
-  const originalSelection=Array.from(figma.currentPage.selection);
+  if(message.type==='export') selectionToRestore={page:figma.currentPage,nodes:Array.from(figma.currentPage.selection)};
+  let selectionReason='selection';
   try {
+    if(message.type==='selection') {busy=false;notifySelection();return;}
+    if(message.type==='reveal-node') {
+      const node=await figma.getNodeByIdAsync(message.nodeID);
+      if(node&&'visible' in node) {figma.currentPage.selection=[node];figma.viewport.scrollAndZoomIntoView([node]);selectionReason='reveal';}
+      return;
+    }
     if(message.type==='create-test') {await createTestFrames();return;}
     if(message.type!=='export') return;
     const selection=Array.from(figma.currentPage.selection);
     const expected=message.mode==='transition'?2:1;
     if(selection.length!==expected) throw new Error(`Select exactly ${expected} frame/component${expected===2?'s':''}.`);
     if(selection.some(n=>!('width' in n)||!('height' in n))) throw new Error('Selection must have a width and height.');
-    // Use canvas left-to-right order, not unstable selection order, for A→B.
-    if(expected===2) selection.sort((a,b)=>a.absoluteTransform[0][2]-b.absoluteTransform[0][2]);
+    if(message.referenceBounds&&!['static','transition'].includes(message.mode)) throw new Error('Figma reference bounds are available for static artwork or two states. A single PNG cannot establish the bounds of a keyframe animation.');
     capture.reset();
-    const snapshots=[];for(const node of selection) snapshots.push(await captureNode(node));
-    const options={loop:message.loop,origin:message.origin};
-    let document;
-    if(expected===2) {
-      const sourceTransition=transitionFrom(snapshots[0],snapshots[1]);
-      document=FM.compileTransition(snapshots[0],snapshots[1],{...options,duration:sourceTransition?.duration??message.duration,easing:sourceTransition?.easing});
-      if(!sourceTransition) document.diagnostics.push({severity:'info',code:'EXPLICIT_TRANSITION_TIMING',nodeID:snapshots[0].id,message:'No matching Smart Animate connection was found. Duration comes from the export panel.'});
-    } else document=FM.compileScene(snapshots[0],options);
+    const snapshots=[];
+    for(const node of selection) snapshots.push(await captureNode(node,{includeMotion:message.mode==='motion'}));
+    const provenance={source:'Figma Plugin API',fileName:figma.root?.name??'',
+      fileKey:('fileKey' in figma?figma.fileKey:null)??null};
+    let viewport;
+    const referenceFrames=[];
+    if(message.referenceBounds) {
+      let totalBytes=0;
+      const exportSettings={format:'PNG',constraint:{type:'SCALE',value:1},contentsOnly:true,useAbsoluteBounds:false};
+      provenance.referenceExports=[];
+      for(let index=0;index<selection.length;index++) {
+        const node=selection[index],bytes=await node.exportAsync(exportSettings);
+        if(!bytes||!Number.isInteger(bytes.length)||(totalBytes+=bytes.length)>32*1024*1024) throw new Error('Figma reference PNGs exceed the 32 MiB transport limit. Select smaller source frames.');
+        const local=FME.referenceViewport(snapshots[index],bytes);
+        if(viewport&&!['x','y','width','height'].every(key=>viewport[key]===local[key])) {
+          throw new Error('The selected Figma references have different local viewports. Use matching source frames before exporting a two-state comparison.');
+        }
+        viewport??=local;
+        const fileName=(node.name.replace(/[^a-z0-9_-]+/gi,'-').slice(0,64)||'scene')+`-${index+1}.figma.png`;
+        provenance.referenceExports.push({id:node.id,name:node.name,width:local.width,height:local.height,viewport:local,exportSettings});
+        referenceFrames.push({name:node.name,fileName,width:local.width,height:local.height,bytes:Array.from(bytes)});
+      }
+    }
+    const source=FME.makeCapture(snapshots,{mode:message.mode,startNodeID:message.startNodeID??'auto',
+      loop:message.loop??'once',origin:message.origin??'center',duration:message.duration,viewport},provenance);
+    const document=FME.compileCapture(source);
     const blocked=document.diagnostics.some(d=>d.severity==='error')&&!message.allowPartial;
-    const filename=(selection[0].name.replace(/[^a-z0-9_-]+/gi,'-').slice(0,64)||'scene')+'.figmetal.json';
-    figma.ui.postMessage({type:'result',document,filename,blocked});
+    const filename=(source.nodes[0].name.replace(/[^a-z0-9_-]+/gi,'-').slice(0,64)||'scene')+'.figmetal.json';
+    figma.ui.postMessage({type:'result',document,source,summary:FME.summarize(document),filename,blocked,referenceFrames});
   } catch(error) { figma.ui.postMessage({type:'failure',message:error.message??String(error)}); }
   finally {
-    if(message.type!=='create-test') figma.currentPage.selection=originalSelection.filter(n=>!n.removed);
-    busy=false;figma.ui.postMessage({type:'ready'});
+    // Outline capture restores its own synchronous temporary selections. Keep
+    // genuine selections made during asynchronous reads, including deselecting
+    // everything. This fallback only handles a surviving plugin-owned node.
+    const current=Array.from(figma.currentPage.selection);
+    if(selectionToRestore&&current.some(node=>capture.ownsTemporaryNode(node.id))) {
+      const real=current.filter(node=>!node.removed&&!capture.ownsTemporaryNode(node.id));
+      figma.currentPage.selection=real.length?real:selectionToRestore.page===figma.currentPage?selectionToRestore.nodes.filter(node=>!node.removed&&!capture.ownsTemporaryNode(node.id)):[];
+    }
+    selectionToRestore=null;
+    busy=false;notifySelection(selectionReason);figma.ui.postMessage({type:'ready'});
   }
 };

@@ -1,0 +1,214 @@
+{
+  "pageId": "18:2",
+  "createdNodeIds": [
+    "24:198",
+    "24:199",
+    "I24:199;54446:25291",
+    "I24:199;54446:25292",
+    "I24:199;54446:25293",
+    "I24:199;54446:25294",
+    "I24:199;54446:25295",
+    "24:205",
+    "24:206",
+    "I24:206;54446:25297",
+    "I24:206;54446:25298",
+    "I24:206;54446:25299",
+    "I24:206;54446:25300",
+    "I24:206;54446:25301"
+  ],
+  "fixtures": [
+    {
+      "slug": "switch-enabled",
+      "frameId": "24:198",
+      "instanceId": "24:199",
+      "width": 52,
+      "height": 32,
+      "sourceSet": {
+        "id": "24:63",
+        "key": "1f6ff0e7afa1181d166c5dbd3856ba6135b75019",
+        "name": "Switch"
+      },
+      "sourceVariant": {
+        "id": "24:64",
+        "key": "d50bda82e600fa5aea973274a89c5d844d559bb2",
+        "name": "Selected=True, State=Enabled, Icon=False"
+      },
+      "interactionNodes": [
+        {
+          "id": "I24:199;54446:25292",
+          "name": "Target",
+          "reactions": [
+            {
+              "action": {
+                "type": "NODE",
+                "destinationId": "24:65",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.20000000298023224
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": false
+              },
+              "actions": [
+                {
+                  "type": "NODE",
+                  "destinationId": "24:65",
+                  "navigation": "CHANGE_TO",
+                  "transition": {
+                    "type": "SMART_ANIMATE",
+                    "easing": {
+                      "type": "CUSTOM_CUBIC_BEZIER",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0.20000000298023224,
+                        "y1": 0,
+                        "x2": 0,
+                        "y2": 1
+                      }
+                    },
+                    "duration": 0.20000000298023224
+                  },
+                  "resetVideoPosition": false,
+                  "resetScrollPosition": false
+                }
+              ],
+              "trigger": {
+                "type": "ON_HOVER"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "switch-hovered",
+      "frameId": "24:205",
+      "instanceId": "24:206",
+      "width": 52,
+      "height": 32,
+      "sourceSet": {
+        "id": "24:63",
+        "key": "1f6ff0e7afa1181d166c5dbd3856ba6135b75019",
+        "name": "Switch"
+      },
+      "sourceVariant": {
+        "id": "24:65",
+        "key": "2f28942ca6b134c2163e91781df9a20d4dd617e1",
+        "name": "Selected=True, State=Hovered, Icon=False"
+      },
+      "interactionNodes": [
+        {
+          "id": "I24:206;54446:25298",
+          "name": "Target",
+          "reactions": [
+            {
+              "action": {
+                "type": "NODE",
+                "destinationId": "24:67",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.20000000298023224
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": false
+              },
+              "actions": [
+                {
+                  "type": "NODE",
+                  "destinationId": "24:67",
+                  "navigation": "CHANGE_TO",
+                  "transition": {
+                    "type": "SMART_ANIMATE",
+                    "easing": {
+                      "type": "CUSTOM_CUBIC_BEZIER",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0.20000000298023224,
+                        "y1": 0,
+                        "x2": 0,
+                        "y2": 1
+                      }
+                    },
+                    "duration": 0.20000000298023224
+                  },
+                  "resetVideoPosition": false,
+                  "resetScrollPosition": false
+                }
+              ],
+              "trigger": {
+                "type": "ON_PRESS"
+              }
+            },
+            {
+              "action": {
+                "type": "NODE",
+                "destinationId": "24:64",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.20000000298023224
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": false
+              },
+              "actions": [
+                {
+                  "type": "NODE",
+                  "destinationId": "24:64",
+                  "navigation": "CHANGE_TO",
+                  "transition": {
+                    "type": "SMART_ANIMATE",
+                    "easing": {
+                      "type": "CUSTOM_CUBIC_BEZIER",
+                      "easingFunctionCubicBezier": {
+                        "x1": 0.20000000298023224,
+                        "y1": 0,
+                        "x2": 0,
+                        "y2": 1
+                      }
+                    },
+                    "duration": 0.20000000298023224
+                  },
+                  "resetVideoPosition": false,
+                  "resetScrollPosition": false
+                }
+              ],
+              "trigger": {
+                "type": "MOUSE_LEAVE",
+                "delay": 0,
+                "deprecatedVersion": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -82,12 +82,16 @@ public struct Binding: Codable, Equatable, Sendable {
     }
     public func validate() throws {
         let scalar = ["translationX","translationY","rotation","scaleX","scaleY","opacity"].contains(field)
-        let color = field.hasPrefix("fills:") || field.hasPrefix("strokes:")
+        let components = field.split(separator: ":", omittingEmptySubsequences: false)
+        let color = components.count == 2 && ["fills", "strokes"].contains(String(components[0]))
         guard scalar || color, base.count == (color ? 4 : 1), base.allSatisfy(\.isFinite), tracks.count <= 64 else {
             throw SceneError.unsupported("Binding field or dimensions: \(field)")
         }
         if color {
-            guard let index = Int(field.split(separator: ":").last ?? ""), index >= 0 else {
+            // The renderer addresses paints by their canonical original index.
+            // Accepting fills:01 or fills:extra:1 would validate a binding that
+            // can never reach the corresponding fills:1 draw.
+            guard let index = Int(components[1]), index >= 0, String(index) == components[1] else {
                 throw SceneError.invalid("Paint index in \(field)")
             }
         }

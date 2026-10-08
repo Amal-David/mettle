@@ -28,27 +28,30 @@ jobs:
           node scripts/verify_source_fingerprints.mjs
           node scripts/compile_live.mjs
           node scripts/compile_motion_fixture.mjs
+          node scripts/compile_community.mjs --check
           git diff --exit-code -- plugin/code.js examples/compiler-transition.figmetal.json fixtures/live/*.figmetal.json fixtures/motion-2026/styles.figmetal.json
       - name: Comparison measurement tests and repository checksums
         run: |
           python3 -m venv .ci-venv
           .ci-venv/bin/pip install -r requirements-validation.txt
           .ci-venv/bin/python scripts/test_compare.py
+          .ci-venv/bin/python scripts/test_corpus_compare.py
           sha256sum -c SHA256SUMS
   swift:
-    name: Swift core and Apple-target builds (not GPU validation)
+    name: Apple builds and available Metal evidence
     runs-on: macos-15
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Core tests; GPU suites intentionally require a real development Mac
+      - name: Core and preview transport tests
         run: swift test --filter "MettleCoreTests|PlaybackTests|ReferenceTests" --jobs 4
       - name: Validate a source compiler contract
         run: |
           swift run mettle validate examples/compiler-transition.figmetal.json
           swift run mettle validate fixtures/motion-2026/styles.figmetal.json
+          swift run mettle validate fixtures/community/material3/compiled/switch-hover.figmetal.json
       - name: iOS simulator library compilation
         run: >-
           swift build --scratch-path .build-ios --target Mettle
@@ -56,3 +59,37 @@ jobs:
           --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" --jobs 4
       # Run ./scripts/verify_live.sh on a Metal-capable Mac for the actual GPU gates.
       # Never run untrusted fork code on a privileged self-hosted runner.
+      - name: Check whether this runner provides an actual Metal device
+        id: metal
+        run: |
+          mkdir -p artifacts
+          set +e
+          swift scripts/check_metal.swift > artifacts/metal-capability.json
+          mettle_probe_status=$?
+          set -e
+          cat artifacts/metal-capability.json
+          if [ "$mettle_probe_status" -eq 0 ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          elif [ "$mettle_probe_status" -eq 2 ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "### Native Metal comparison: not run — this runner has no Metal device." >> "$GITHUB_STEP_SUMMARY"
+          else
+            exit "$mettle_probe_status"
+          fi
+      - name: Compare Community source endpoints on Metal when available
+        if: steps.metal.outputs.available == 'true'
+        run: |
+          python3 -m venv .native-venv
+          .native-venv/bin/pip install -r requirements-validation.txt
+          export PATH="$PWD/.native-venv/bin:$PATH"
+          bash scripts/verify_community.sh
+      - name: Preserve native evidence and explicit availability status
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-community-evidence
+          path: |
+            artifacts/metal-capability.json
+            artifacts/community/
+          retention-days: 7
+          if-no-files-found: warn

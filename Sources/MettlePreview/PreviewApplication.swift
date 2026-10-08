@@ -75,6 +75,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         app.addItem(.separator()); add(app, "Quit Mettle", #selector(quit), "q")
         let file = menu("File")
         add(file, "Open Animation…", #selector(openFile), "o")
+        add(file, "Reload Export", #selector(reloadFile), "r", modifiers: [.command, .shift])
         add(file, "Export Current Frame…", #selector(exportFrame), "e", modifiers: [.command, .shift])
         file.addItem(.separator()); add(file, "Close Animation", #selector(closeDocument), "w", modifiers: [.command, .shift])
         add(file, "Close Window", #selector(closeWindow), "w")
@@ -95,7 +96,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         NSApp.mainMenu = bar
     }
     public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        if [#selector(exportFrame), #selector(closeDocument), #selector(details), #selector(fit)].contains(menuItem.action) {
+        if [#selector(exportFrame), #selector(reloadFile), #selector(closeDocument), #selector(details), #selector(fit)].contains(menuItem.action) {
             return session.renderer != nil && !session.isLoading
         }
         if [#selector(togglePlay), #selector(restart)].contains(menuItem.action) {
@@ -104,6 +105,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         return true
     }
     @objc private func openFile() { session.openPanel() }
+    @objc private func reloadFile() { session.reload() }
     @objc private func exportFrame() { session.exportPanel() }
     @objc private func closeDocument() { session.close() }
     @objc private func closeWindow() { window?.performClose(nil) }

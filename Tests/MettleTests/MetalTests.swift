@@ -35,6 +35,14 @@ final class MetalTests: XCTestCase {
         let bytes=render(root)
         XCTAssertEqual(pixel(bytes,8,8),[0,255,0,255]);XCTAssertEqual(pixel(bytes,24,24),[0,0,0,0])
     }
+    func testZeroAreaClipDoesNotBecomeAnUnclippedGroup() {
+        let root = Node(id: "zero-width-frame", size: Point(0, 16),
+                        clip: [VectorPath("M0 0 H0 V16 H0 Z")],
+                        children: [rectangle("child", 0, 0, 50, 50, RGBA(0, 1, 0))])
+        let bytes = render(root)
+        XCTAssertEqual(pixel(bytes, 8, 8), [0, 0, 0, 0])
+        XCTAssertEqual(pixel(bytes, 24, 24), [0, 0, 0, 0])
+    }
     func testEvenOddHoleIsActuallyTransparentOnGPU() {
         var n=rectangle("hole",0,0,48,48,RGBA(0,0,1))
         n.draws[0].paths=[VectorPath("M0 0 H48 V48 H0 Z M16 16 H32 V32 H16 Z",windingRule:"EVENODD")]
@@ -63,6 +71,53 @@ final class MetalTests: XCTestCase {
         let renderer=try MetalRenderer(scene:Scene(width:64,height:64,root:rectangle("r",0,0,32,32,RGBA(1,0,0))))
         let first=try renderer.pixels(width:64,height:64,time:0)
         for _ in 0..<5 { XCTAssertEqual(try renderer.pixels(width:64,height:64,time:0),first) }
+    }
+    func testSingleSampleRenderingReusesOffscreenSurfacesAfterBothSlotsWarm() throws {
+        var group = rectangle("card", 0, 0, 32, 32, RGBA(1, 0, 0))
+        group.opacity = 0.5
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: group), sampleCount: 1)
+        let first = try renderer.pixels(width: 64, height: 64, time: 0)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1)
+        XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1)
+        for _ in 0..<4 {
+            XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+            XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 0)
+        }
+        _ = try renderer.pixels(width: 32, height: 32, time: 0)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1, "A resized target needs new surfaces")
+    }
+    func testColorMotionUsesTheOriginalPaintIndexAndEffectiveAlpha() {
+        var node = rectangle("multi-fill", 0, 0, 16, 16, RGBA(1, 0, 0))
+        node.draws[0].paintIndex = 2
+        node.draws.append(Draw(paths: [VectorPath("M16 0 H32 V16 H16 Z")],
+                               paint: Paint(color: RGBA(0, 0, 1), opacity: 0.25),
+                               size: Point(32, 16), paintIndex: 7))
+        node.bindings = [Binding("fills:7", base: [0, 0, 1, 0.25], tracks: [
+            Track([Keyframe(0, [0, 0, 1, 0.25]), Keyframe(1, [0, 1, 0, 0.5])])
+        ])]
+        let bytes = render(node, time: 1)
+        XCTAssertEqual(pixel(bytes, 8, 8), [0, 0, 255, 255])
+        let animated = pixel(bytes, 24, 8)
+        XCTAssertEqual(animated[0], 0); XCTAssertEqual(animated[2], 0)
+        XCTAssertEqual(Int(animated[1]), 128, accuracy: 1)
+        XCTAssertEqual(Int(animated[3]), 128, accuracy: 1)
+    }
+    func testRenderRejectsNonRenderTargetsBeforeEncoding() throws {
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: Node(id: "root")))
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 64, height: 64, mipmapped: false)
+        descriptor.usage = .shaderRead
+        let texture = try XCTUnwrap(renderer.device.makeTexture(descriptor: descriptor))
+        XCTAssertThrowsError(try renderer.render(to: texture, time: 0))
+        // Invalid input must not consume a frame slot or poison later rendering.
+        XCTAssertNoThrow(try renderer.pixels(width: 64, height: 64, time: 0))
+    }
+    func testInvalidTessellationConfigurationFailsBeforeGPUPreparation() {
+        let scene = Scene(width: 64, height: 64, root: Node(id: "root"))
+        for tolerance in [0.0, -1.0, Double.nan, Double.infinity] {
+            XCTAssertThrowsError(try MetalRenderer(scene: scene, curveTolerance: tolerance))
+        }
+        XCTAssertThrowsError(try MetalRenderer(scene: scene, sampleCount: 0))
     }
 }
 #else
