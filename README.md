@@ -30,9 +30,13 @@ The current repair pass uses **real published Material 3 Community components**:
 
 The exporter now follows actual interaction direction, resolves component variant targets and descendant hotspots, retains source delays, and catches partially missing motion. The plugin separates keyframe, Smart Animate and static exports, saves replayable source captures and diagnostic reports, and can include original Figma reference PNGs with their exact bounds. Native fixes address frame-resource reuse, empty clips, paint-binding validation and playback state changes.
 
-**All 12 native render cases / 13 endpoint frames pass the original comparison gates at High quality.** The [Apple CI run](https://github.com/Amal-David/mettle/actions/runs/37772525330) passed 103 Swift tests with Metal API Validation and the iOS simulator build on an Apple Paravirtual device. The first native run exposed coarse edge coverage; a bounded Metal supersampling/resolve pass reduced the circular indicator's foreground RGB error from **7.242 to 0.343 / 255**. Source geometry, reference PNGs, camera coordinates and thresholds were held fixed.
+**All 12 native render cases / 13 endpoint frames pass the original comparison gates at High quality.** The [final Apple CI run](https://github.com/Amal-David/mettle/actions/runs/37774638676) passed 108 Swift tests with Metal API Validation and the iOS simulator build on an Apple Paravirtual device. The first native run exposed coarse edge coverage; a bounded Metal supersampling/resolve pass reduced the circular indicator's foreground RGB error from **7.242 to 0.343 / 255**. Source geometry, reference PNGs, camera coordinates and thresholds were held fixed.
 
 Standard remains the default for resource compatibility. Select **High quality** in Preview or use `--raster-scale 2` for the measured setting. The [verification report](docs/COMMUNITY_VERIFICATION.md) includes the original before/after CI archives and all measurements. Endpoint matches do not establish intermediate motion fidelity or physical iPhone performance.
+
+![Animated walkthrough of the real Community source, exporter result, quality repair and native verification](docs/media/community-walkthrough.gif)
+
+[Watch the 10-second MP4 walkthrough](docs/media/community-walkthrough.mp4) · [Open the static result overview](docs/media/community-overview.png)
 
 ![Figma source compared with Standard and High-quality native Metal rendering](docs/media/community-fidelity.png)
 
