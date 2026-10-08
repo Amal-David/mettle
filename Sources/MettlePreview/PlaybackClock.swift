@@ -7,7 +7,13 @@ public struct PlaybackClock {
     public private(set) var duration: Double
     public private(set) var position: Double = 0
     public private(set) var isPlaying = false
-    public var repetition: Repetition
+    public var repetition: Repetition {
+        didSet {
+            // A ping-pong return phase can be greater than the visible duration.
+            // Changing repeat mode must continue at the visible playhead.
+            if repetition != oldValue { phase = position }
+        }
+    }
     public private(set) var speed: Double = 1
     private var phase: Double = 0
     private var lastTick: Double?
@@ -37,7 +43,8 @@ public struct PlaybackClock {
     public mutating func advance(to now: Double) {
         guard isPlaying, now.isFinite, duration > 0 else { return }
         guard let previous = lastTick else { lastTick = now; return }
-        let delta = max(0, now - previous)
+        guard now >= previous else { return }
+        let delta = now - previous
         lastTick = now
         phase += delta * speed
         switch repetition {

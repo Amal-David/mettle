@@ -35,6 +35,14 @@ final class MetalTests: XCTestCase {
         let bytes=render(root)
         XCTAssertEqual(pixel(bytes,8,8),[0,255,0,255]);XCTAssertEqual(pixel(bytes,24,24),[0,0,0,0])
     }
+    func testZeroAreaClipDoesNotBecomeAnUnclippedGroup() {
+        let root = Node(id: "zero-width-frame", size: Point(0, 16),
+                        clip: [VectorPath("M0 0 H0 V16 H0 Z")],
+                        children: [rectangle("child", 0, 0, 50, 50, RGBA(0, 1, 0))])
+        let bytes = render(root)
+        XCTAssertEqual(pixel(bytes, 8, 8), [0, 0, 0, 0])
+        XCTAssertEqual(pixel(bytes, 24, 24), [0, 0, 0, 0])
+    }
     func testEvenOddHoleIsActuallyTransparentOnGPU() {
         var n=rectangle("hole",0,0,48,48,RGBA(0,0,1))
         n.draws[0].paths=[VectorPath("M0 0 H48 V48 H0 Z M16 16 H32 V32 H16 Z",windingRule:"EVENODD")]
@@ -63,6 +71,93 @@ final class MetalTests: XCTestCase {
         let renderer=try MetalRenderer(scene:Scene(width:64,height:64,root:rectangle("r",0,0,32,32,RGBA(1,0,0))))
         let first=try renderer.pixels(width:64,height:64,time:0)
         for _ in 0..<5 { XCTAssertEqual(try renderer.pixels(width:64,height:64,time:0),first) }
+    }
+    func testSingleSampleRenderingReusesOffscreenSurfacesAfterBothSlotsWarm() throws {
+        var group = rectangle("card", 0, 0, 32, 32, RGBA(1, 0, 0))
+        group.opacity = 0.5
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: group), sampleCount: 1)
+        let first = try renderer.pixels(width: 64, height: 64, time: 0)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1)
+        XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1)
+        for _ in 0..<4 {
+            XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+            XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 0)
+        }
+        _ = try renderer.pixels(width: 32, height: 32, time: 0)
+        XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1, "A resized target needs new surfaces")
+    }
+    func testSupersampleResolvePreservesOutputSizeAndPremultipliedCoverage() throws {
+        let shape = rectangle("subpixel", 2.1, 3.1, 0.4, 0.4, RGBA(1, 0, 0, 0.5))
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: shape),
+                                         sampleCount: 1, rasterScale: 2)
+        let bytes = Array(try renderer.pixels(width: 64, height: 64, time: 0))
+        XCTAssertEqual(bytes.count, 64*64*4)
+        XCTAssertEqual(renderer.rasterScale, 2)
+        // One of four internal pixels is half-opaque red: both color and alpha
+        // resolve to 1/8. Averaging straight RGB would leave a bright fringe.
+        XCTAssertEqual(Int(pixel(bytes, 2, 3)[2]), 32, accuracy: 1)
+        XCTAssertEqual(Int(pixel(bytes, 2, 3)[3]), 32, accuracy: 1)
+        XCTAssertEqual(pixel(bytes, 3, 3), [0, 0, 0, 0])
+    }
+    func testSupersampledClipOpacityAndFrameSlotsSurviveReuseAndResize() throws {
+        var group = Node(id: "group", size: Point(16, 16),
+                         clip: [VectorPath("M0 0 H16 V16 H0 Z")],
+                         children: [rectangle("first", 0, 0, 32, 32, RGBA(1, 0, 0)),
+                                    rectangle("overlap", 8, 0, 32, 32, RGBA(1, 0, 0))])
+        group.opacity = 0.5
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: group), rasterScale: 2)
+        let first = try renderer.pixels(width: 64, height: 64, time: 0)
+        XCTAssertEqual(Int(pixel(Array(first), 12, 8)[3]), 128, accuracy: 1)
+        XCTAssertEqual(pixel(Array(first), 24, 8), [0, 0, 0, 0])
+        _ = try renderer.pixels(width: 64, height: 64, time: 0) // Warm the second independent slot.
+        for _ in 0..<4 {
+            XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+            XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 0)
+        }
+        let resized = try renderer.pixels(width: 32, height: 32, time: 0)
+        XCTAssertEqual(resized.count, 32*32*4)
+        XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+    }
+    func testSupersampleLimitsApplyToInternalTargetsBeforeAllocation() throws {
+        let scene = Scene(width: 64, height: 64, root: Node(id: "root"))
+        let renderer = try MetalRenderer(scene: scene, rasterScale: 2)
+        XCTAssertThrowsError(try renderer.makeTarget(width: 4097, height: 1))
+        XCTAssertThrowsError(try renderer.makeTarget(width: 2048, height: 1025))
+        for scale in [0, 3, Int.max] { XCTAssertThrowsError(try MetalRenderer(scene: scene, rasterScale: scale)) }
+        XCTAssertNoThrow(try renderer.pixels(width: 64, height: 64, time: 0))
+    }
+    func testColorMotionUsesTheOriginalPaintIndexAndEffectiveAlpha() {
+        var node = rectangle("multi-fill", 0, 0, 16, 16, RGBA(1, 0, 0))
+        node.draws[0].paintIndex = 2
+        node.draws.append(Draw(paths: [VectorPath("M16 0 H32 V16 H16 Z")],
+                               paint: Paint(color: RGBA(0, 0, 1), opacity: 0.25),
+                               size: Point(32, 16), paintIndex: 7))
+        node.bindings = [Binding("fills:7", base: [0, 0, 1, 0.25], tracks: [
+            Track([Keyframe(0, [0, 0, 1, 0.25]), Keyframe(1, [0, 1, 0, 0.5])])
+        ])]
+        let bytes = render(node, time: 1)
+        XCTAssertEqual(pixel(bytes, 8, 8), [0, 0, 255, 255])
+        let animated = pixel(bytes, 24, 8)
+        XCTAssertEqual(animated[0], 0); XCTAssertEqual(animated[2], 0)
+        XCTAssertEqual(Int(animated[1]), 128, accuracy: 1)
+        XCTAssertEqual(Int(animated[3]), 128, accuracy: 1)
+    }
+    func testRenderRejectsNonRenderTargetsBeforeEncoding() throws {
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: Node(id: "root")))
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 64, height: 64, mipmapped: false)
+        descriptor.usage = .shaderRead
+        let texture = try XCTUnwrap(renderer.device.makeTexture(descriptor: descriptor))
+        XCTAssertThrowsError(try renderer.render(to: texture, time: 0))
+        // Invalid input must not consume a frame slot or poison later rendering.
+        XCTAssertNoThrow(try renderer.pixels(width: 64, height: 64, time: 0))
+    }
+    func testInvalidTessellationConfigurationFailsBeforeGPUPreparation() {
+        let scene = Scene(width: 64, height: 64, root: Node(id: "root"))
+        for tolerance in [0.0, -1.0, Double.nan, Double.infinity] {
+            XCTAssertThrowsError(try MetalRenderer(scene: scene, curveTolerance: tolerance))
+        }
+        XCTAssertThrowsError(try MetalRenderer(scene: scene, sampleCount: 0))
     }
 }
 #else

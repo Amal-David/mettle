@@ -62,3 +62,18 @@ fragment float4 fm_composite(VertexOut in [[stage_in]],
     float coverage = options.y > 0.5 ? mask.read(p).a : 1.0;
     return source.read(p) * (coverage * options.x);
 }
+
+// Average the completed premultiplied render graph. No reference pixels or
+// image-library resampling participate in native output.
+fragment float4 fm_downsample(VertexOut in [[stage_in]],
+                             texture2d<float> source [[texture(0)]],
+                             constant uint &factor [[buffer(0)]]) {
+    uint2 origin = uint2(in.position.xy) * factor;
+    float4 color = float4(0);
+    for (uint y = 0; y < factor; ++y) {
+        for (uint x = 0; x < factor; ++x) {
+            color += source.read(origin + uint2(x, y));
+        }
+    }
+    return color / float(factor * factor);
+}

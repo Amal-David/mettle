@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "check": "node --check src/motion.mjs && node --check src/compiler.mjs && node --check src/plugin.js && node --check src/capture.mjs"
+    "check": "node --check src/motion.mjs && node --check src/compiler.mjs && node --check src/plugin.js && node --check src/capture.mjs && node --check src/export.mjs"
   },
   "engines": { "node": ">=18" }
 }

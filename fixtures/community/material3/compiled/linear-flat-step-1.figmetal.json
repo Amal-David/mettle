@@ -1,0 +1,580 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Linear-indeterminate progress indicator",
+      "width": 404,
+      "height": 12,
+      "duration": 0,
+      "loop": "once",
+      "root": {
+        "id": "20:312",
+        "name": "Linear-indeterminate progress indicator",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 404,
+          "y": 12
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 202,
+          "y": 6
+        },
+        "draws": [],
+        "clip": [],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I20:312;58005:8289",
+            "name": "Container",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 0,
+              "ty": 0
+            },
+            "size": {
+              "x": 404,
+              "y": 12
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 202,
+              "y": 6
+            },
+            "draws": [],
+            "clip": [],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I20:312;58005:8290",
+                "name": "track",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 0,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 46.22885513305664,
+                  "y": 12
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 23.11442756652832,
+                  "y": 6
+                },
+                "draws": [],
+                "clip": [],
+                "bindings": [],
+                "children": [
+                  {
+                    "id": "I20:312;58005:8291",
+                    "name": "Track",
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 40.22885513305664,
+                      "y": 12
+                    },
+                    "opacity": 1,
+                    "origin": {
+                      "x": 20.11442756652832,
+                      "y": 6
+                    },
+                    "draws": [],
+                    "clip": [],
+                    "bindings": [],
+                    "children": [
+                      {
+                        "id": "I20:312;58005:8291;58005:7991",
+                        "name": "Track shape",
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 0,
+                          "ty": 4
+                        },
+                        "size": {
+                          "x": 40,
+                          "y": 4
+                        },
+                        "opacity": 1,
+                        "origin": {
+                          "x": 20,
+                          "y": 2
+                        },
+                        "draws": [
+                          {
+                            "paths": [
+                              {
+                                "data": "M0 2 C0 0.895431 0.895431 0 2 0 L38 0 C39.1046 0 40 0.895431 40 2 L40 2 C40 3.10457 39.1046 4 38 4 L2 4 C0.895431 4 0 3.10457 0 2 L0 2 Z",
+                                "windingRule": "NONZERO"
+                              }
+                            ],
+                            "paint": {
+                              "kind": "solid",
+                              "color": {
+                                "r": 0.9098039269447327,
+                                "g": 0.8705882430076599,
+                                "b": 0.9725490212440491,
+                                "a": 1
+                              },
+                              "opacity": 1,
+                              "transform": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                              },
+                              "stops": []
+                            },
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": 0,
+                              "ty": 0
+                            },
+                            "size": {
+                              "x": 40,
+                              "y": 4
+                            },
+                            "paintIndex": 0,
+                            "role": "fills"
+                          }
+                        ],
+                        "clip": [],
+                        "bindings": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "I20:312;58005:8292",
+                "name": "Active indicator",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 46.228515625,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 120.59701538085938,
+                  "y": 12
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 60.29850769042969,
+                  "y": 6
+                },
+                "draws": [],
+                "clip": [],
+                "bindings": [],
+                "children": [
+                  {
+                    "id": "I20:312;58005:8293",
+                    "name": "Segment - flat - start",
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 40,
+                      "y": 12
+                    },
+                    "opacity": 1,
+                    "origin": {
+                      "x": 20,
+                      "y": 6
+                    },
+                    "draws": [],
+                    "clip": [],
+                    "bindings": [],
+                    "children": [
+                      {
+                        "id": "I20:312;58005:8293;58005:7989",
+                        "name": "wave-increment",
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 0,
+                          "ty": 6
+                        },
+                        "size": {
+                          "x": 40,
+                          "y": 0
+                        },
+                        "opacity": 1,
+                        "origin": {
+                          "x": 20,
+                          "y": 0
+                        },
+                        "draws": [
+                          {
+                            "paths": [
+                              {
+                                "data": "M42 0 C43.1046 0 44 0.89543 44 2 C44 3.10457 43.1046 4 42 4 L2 4 C0.89543 4 0 3.10457 0 2 C0 0.89543 0.89543 0 2 0 L42 0 Z",
+                                "windingRule": "NONZERO"
+                              }
+                            ],
+                            "paint": {
+                              "kind": "solid",
+                              "color": {
+                                "r": 0.40392157435417175,
+                                "g": 0.3137255012989044,
+                                "b": 0.6431372761726379,
+                                "a": 1
+                              },
+                              "opacity": 1,
+                              "transform": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                              },
+                              "stops": []
+                            },
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": -2,
+                              "ty": -2
+                            },
+                            "size": {
+                              "x": 44,
+                              "y": 4
+                            },
+                            "paintIndex": 0,
+                            "role": "strokes"
+                          }
+                        ],
+                        "clip": [],
+                        "bindings": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I20:312;58005:8294",
+                    "name": "Segment - flat",
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 40,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 80.59701538085938,
+                      "y": 12
+                    },
+                    "opacity": 1,
+                    "origin": {
+                      "x": 40.29850769042969,
+                      "y": 6
+                    },
+                    "draws": [],
+                    "clip": [],
+                    "bindings": [],
+                    "children": [
+                      {
+                        "id": "I20:312;58005:8294;58005:7989",
+                        "name": "wave-increment",
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 0,
+                          "ty": 6
+                        },
+                        "size": {
+                          "x": 81,
+                          "y": 0
+                        },
+                        "opacity": 1,
+                        "origin": {
+                          "x": 40.5,
+                          "y": 0
+                        },
+                        "draws": [
+                          {
+                            "paths": [
+                              {
+                                "data": "M83 0 C84.1046 0 85 0.89543 85 2 C85 3.10457 84.1046 4 83 4 L2 4 C0.89543 4 0 3.10457 0 2 C0 0.89543 0.89543 0 2 0 L83 0 Z",
+                                "windingRule": "NONZERO"
+                              }
+                            ],
+                            "paint": {
+                              "kind": "solid",
+                              "color": {
+                                "r": 0.40392157435417175,
+                                "g": 0.3137255012989044,
+                                "b": 0.6431372761726379,
+                                "a": 1
+                              },
+                              "opacity": 1,
+                              "transform": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                              },
+                              "stops": []
+                            },
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": -2,
+                              "ty": -2
+                            },
+                            "size": {
+                              "x": 85,
+                              "y": 4
+                            },
+                            "paintIndex": 0,
+                            "role": "strokes"
+                          }
+                        ],
+                        "clip": [],
+                        "bindings": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "I20:312;58005:8295",
+                "name": "track",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 166.826171875,
+                  "ty": 0
+                },
+                "size": {
+                  "x": 237.17413330078125,
+                  "y": 12
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 118.58706665039062,
+                  "y": 6
+                },
+                "draws": [],
+                "clip": [],
+                "bindings": [],
+                "children": [
+                  {
+                    "id": "I20:312;58005:8296",
+                    "name": "Track",
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 6,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 231.17413330078125,
+                      "y": 12
+                    },
+                    "opacity": 1,
+                    "origin": {
+                      "x": 115.58706665039062,
+                      "y": 6
+                    },
+                    "draws": [],
+                    "clip": [],
+                    "bindings": [],
+                    "children": [
+                      {
+                        "id": "I20:312;58005:8296;58005:7991",
+                        "name": "Track shape",
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 0,
+                          "ty": 4
+                        },
+                        "size": {
+                          "x": 231,
+                          "y": 4
+                        },
+                        "opacity": 1,
+                        "origin": {
+                          "x": 115.5,
+                          "y": 2
+                        },
+                        "draws": [
+                          {
+                            "paths": [
+                              {
+                                "data": "M0 2 C0 0.895431 0.895431 0 2 0 L229 0 C230.105 0 231 0.895431 231 2 L231 2 C231 3.10457 230.105 4 229 4 L2 4 C0.895427 4 0 3.10457 0 2 L0 2 Z",
+                                "windingRule": "NONZERO"
+                              }
+                            ],
+                            "paint": {
+                              "kind": "solid",
+                              "color": {
+                                "r": 0.9098039269447327,
+                                "g": 0.8705882430076599,
+                                "b": 0.9725490212440491,
+                                "a": 1
+                              },
+                              "opacity": 1,
+                              "transform": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                              },
+                              "stops": []
+                            },
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": 0,
+                              "ty": 0
+                            },
+                            "size": {
+                              "x": 231,
+                              "y": 4
+                            },
+                            "paintIndex": 0,
+                            "role": "fills"
+                          }
+                        ],
+                        "clip": [],
+                        "bindings": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "20:312",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I20:312;58005:8290",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I20:312;58005:8292",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I20:312;58005:8295",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    }
+  ],
+  "sourceMotion": {},
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "linear-flat-step-1"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "static",
+    "sourceNodeIDs": [
+      "20:312"
+    ],
+    "sourceCaptureSHA256": "45d1f291a62983920b0557b2a45545d63485cc669573cc2a8ee570df1c463df1"
+  }
+}

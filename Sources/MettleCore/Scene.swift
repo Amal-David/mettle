@@ -142,6 +142,7 @@ public struct SceneDocument: Codable, Sendable {
         for draw in node.draws {
             guard draw.transform.isFinite, draw.size.x.isFinite, draw.size.y.isFinite,
                   draw.size.x >= 0, draw.size.y >= 0,
+                  ["fills", "strokes"].contains(draw.role), draw.paintIndex >= 0,
                   ["solid","linear","radial"].contains(draw.paint.kind),
                   draw.paint.transform.isFinite, draw.paint.opacity.isFinite,
                   (0...1).contains(draw.paint.opacity), draw.paint.stops.count <= 64 else {
@@ -158,11 +159,23 @@ public struct SceneDocument: Codable, Sendable {
             }
             for path in draw.paths { try validatePath(path) }
         }
+        var fields = Set<String>()
         for binding in node.bindings {
+            guard fields.insert(binding.field).inserted else {
+                throw SceneError.invalid("Duplicate binding for \(binding.field) at \(node.id)")
+            }
             if version == 1, binding.tracks.contains(where: { ($0.timelineOffset ?? 0) != 0 }) {
                 throw SceneError.invalid("Style-local timing requires scene format version 2")
             }
             try binding.validate()
+            if binding.field.contains(":") {
+                let components = binding.field.split(separator: ":")
+                let role = String(components[0]), index = Int(components[1])!
+                let targets = node.draws.filter { $0.role == role && $0.paintIndex == index }
+                guard !targets.isEmpty, targets.allSatisfy({ $0.paint.kind == "solid" }) else {
+                    throw SceneError.invalid("Color binding \(binding.field) requires a matching solid paint at \(node.id)")
+                }
+            }
         }
         for child in node.children { try validateNode(child, depth: depth+1, ids: &ids, count: &count) }
     }

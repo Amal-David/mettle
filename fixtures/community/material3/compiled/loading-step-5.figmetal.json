@@ -1,0 +1,247 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Loading indicator",
+      "width": 48,
+      "height": 48,
+      "duration": 0,
+      "loop": "once",
+      "root": {
+        "id": "20:296",
+        "name": "Loading indicator",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 48,
+          "y": 48
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 24,
+          "y": 24
+        },
+        "draws": [],
+        "clip": [
+          {
+            "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I20:296;58005:8585",
+            "name": "Shape container",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 5,
+              "ty": 5
+            },
+            "size": {
+              "x": 38,
+              "y": 38
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 19,
+              "y": 19
+            },
+            "draws": [],
+            "clip": [
+              {
+                "data": "M0 0 L38 0 L38 38 L0 38 L0 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I20:296;58005:8586",
+                "name": "Shape",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 2,
+                  "ty": 2
+                },
+                "size": {
+                  "x": 34,
+                  "y": 34
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 17,
+                  "y": 17
+                },
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M26.1856 4.12375 C27.2431 4.19561 27.7718 4.23154 28.1991 4.41844 C28.8175 4.68887 29.3111 5.18252 29.5816 5.80088 C29.7685 6.22823 29.8044 6.75694 29.8762 7.81438 L30.0402 10.2275 C30.0693 10.6552 30.0838 10.869 30.1303 11.0733 C30.1975 11.3684 30.3142 11.6501 30.4754 11.9063 C30.5869 12.0836 30.7279 12.2451 31.0097 12.5681 L32.6001 14.3903 C33.297 15.1889 33.6455 15.5881 33.8155 16.0225 C34.0615 16.6509 34.0615 17.3491 33.8155 17.9775 C33.6455 18.4119 33.297 18.8111 32.6001 19.6097 L31.0097 21.4319 C30.7279 21.7549 30.5869 21.9164 30.4754 22.0937 C30.3142 22.3499 30.1975 22.6316 30.1303 22.9267 C30.0838 23.131 30.0693 23.3448 30.0402 23.7725 L29.8762 26.1856 C29.8044 27.2431 29.7685 27.7718 29.5816 28.1991 C29.3111 28.8175 28.8175 29.3111 28.1991 29.5816 C27.7718 29.7685 27.2431 29.8044 26.1856 29.8762 L23.7725 30.0402 C23.3448 30.0693 23.131 30.0838 22.9267 30.1303 C22.6316 30.1975 22.3499 30.3142 22.0937 30.4754 C21.9164 30.5869 21.7549 30.7279 21.4319 31.0097 L19.6097 32.6001 C18.8111 33.297 18.4119 33.6455 17.9775 33.8155 C17.3491 34.0615 16.6509 34.0615 16.0225 33.8155 C15.5881 33.6455 15.1889 33.297 14.3903 32.6001 L12.5681 31.0097 C12.2451 30.7279 12.0836 30.5869 11.9063 30.4754 C11.6501 30.3142 11.3684 30.1975 11.0733 30.1303 C10.869 30.0838 10.6552 30.0693 10.2275 30.0402 L7.81438 29.8762 C6.75694 29.8044 6.22822 29.7685 5.80088 29.5816 C5.18252 29.3111 4.68887 28.8175 4.41844 28.1991 C4.23154 27.7718 4.19561 27.2431 4.12375 26.1856 L3.95977 23.7725 C3.93071 23.3448 3.91618 23.131 3.86969 22.9267 C3.80251 22.6316 3.68584 22.3499 3.52463 22.0937 C3.41306 21.9164 3.27213 21.7549 2.99027 21.4319 L1.3999 19.6097 C0.702996 18.8111 0.354542 18.4119 0.184516 17.9775 C-0.0615054 17.3491 -0.0615053 16.6509 0.184516 16.0225 C0.354542 15.5881 0.702996 15.1889 1.3999 14.3903 L2.99027 12.5681 C3.27213 12.2451 3.41306 12.0836 3.52463 11.9063 C3.68584 11.6501 3.80251 11.3684 3.86969 11.0733 C3.91618 10.869 3.93071 10.6552 3.95977 10.2275 L4.12375 7.81438 C4.19561 6.75694 4.23154 6.22823 4.41844 5.80088 C4.68887 5.18252 5.18252 4.68887 5.80088 4.41844 C6.22823 4.23154 6.75694 4.19561 7.81438 4.12375 L10.2275 3.95977 C10.6552 3.93071 10.869 3.91618 11.0733 3.86969 C11.3684 3.80251 11.6501 3.68584 11.9063 3.52463 C12.0836 3.41306 12.2451 3.27213 12.5681 2.99027 L14.3903 1.3999 C15.1889 0.702996 15.5881 0.354542 16.0225 0.184516 C16.6509 -0.0615054 17.3491 -0.0615054 17.9775 0.184516 C18.4119 0.354542 18.8111 0.702996 19.6097 1.3999 L21.4319 2.99027 C21.7549 3.27213 21.9164 3.41306 22.0937 3.52463 C22.3499 3.68584 22.6316 3.80251 22.9267 3.86969 C23.131 3.91618 23.3448 3.93071 23.7725 3.95977 L26.1856 4.12375 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.40392157435417175,
+                        "g": 0.3137255012989044,
+                        "b": 0.6431372761726379,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 34,
+                      "y": 34
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "clip": [],
+                "bindings": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+      "nodeID": "20:296",
+      "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+    }
+  ],
+  "sourceMotion": {
+    "20:296": {
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "variableResolutions": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:22",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:22",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ]
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-5"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "static",
+    "sourceNodeIDs": [
+      "20:296"
+    ],
+    "sourceCaptureSHA256": "aafa6c9842a6cb50e5936e36d967338f4af73f61c74cd22e4a6daaa2bd7b538d"
+  }
+}

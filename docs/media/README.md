@@ -2,6 +2,8 @@
 
 These assets were generated for the September 30, 2026 Mettle publication. No invented UI result is presented as a screenshot.
 
+The October 8 Community repair adds a separate evidence-backed walkthrough. It is generated from the pinned Figma reference PNGs and native CI archives; its presentation transitions move cards and labels only.
+
 | Asset | Source |
 | --- | --- |
 | `hero.png` | Designed cover with typography and actual `native-frame.png` Metal output. Its framing is presentation artwork, not a Figma screenshot. |
@@ -11,6 +13,9 @@ These assets were generated for the September 30, 2026 Mettle publication. No in
 | `fidelity.png` | Labeled, side-by-side composition of Figma's original 600×420 PNG and Mettle's rendering of the source snapshot. |
 | `figma-vs-mettle.gif` | Matched-time pairs from the Figma video reference and Mettle output. The 30 fps H.264 reference is lossy; the GIF samples both sides at 20 fps. |
 | `comparison.json` | Independent comparison measurements, including all 61 source-video frames. |
+| `community-overview.png` | Static summary of the final Community verification: 12/12 accepted cases, 13 endpoints, and the explicitly retained blockers. |
+| `community-walkthrough.gif` / `.mp4` | Ten-second presentation assembled from immutable Figma endpoint PNGs and the pinned Standard/High native evidence. It does not synthesize loader morphs or intermediate prototype playback. |
+| `community-fidelity.png` | Detailed source/Standard/High/difference figure generated from the two pinned native CI archives. |
 
 `../VERIFICATION.md` explains the corpus and limits. Glyph edge antialiasing differs; the images do not establish universal or pixel-perfect parity.
 
@@ -25,6 +30,13 @@ On a Metal-capable Mac with Xcode, Node, Python/Pillow, and ffmpeg:
 For the app screenshot, launch `swift run -c release mettle demo --time 1`, then use macOS window screenshot capture. The app prints its window ID; `screencapture -x -o -l WINDOW_ID docs/media/native-preview.png` captures only that window using the machine owner's ordinary OS permissions.
 
 Typography is rasterized from a local system font; font files are not included. Original references retain the checksums in `fixtures/live/README.md`. Never regenerate Figma reference files using Mettle output.
+
+Rebuild the Community media from the checked archives with:
+
+```bash
+python3 scripts/render_community_evidence.py
+python3 scripts/render_community_walkthrough.py
+```
 
 ## Preview redesign — 2026-09-30
 

@@ -1,0 +1,247 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Loading indicator",
+      "width": 48,
+      "height": 48,
+      "duration": 0,
+      "loop": "once",
+      "root": {
+        "id": "20:288",
+        "name": "Loading indicator",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 48,
+          "y": 48
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 24,
+          "y": 24
+        },
+        "draws": [],
+        "clip": [
+          {
+            "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I20:288;58005:8571",
+            "name": "Shape container",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 5,
+              "ty": 5
+            },
+            "size": {
+              "x": 38,
+              "y": 38
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 19,
+              "y": 19
+            },
+            "draws": [],
+            "clip": [
+              {
+                "data": "M0 0 L38 0 L38 38 L0 38 L0 0 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I20:288;58005:8572",
+                "name": "Shape",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 2,
+                  "ty": 2.5
+                },
+                "size": {
+                  "x": 34,
+                  "y": 32
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 17,
+                  "y": 16
+                },
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M11.6481 2.43735 C13.3067 1.22903 14.136 0.624865 15.022 0.325145 C16.3035 -0.108382 17.6965 -0.108382 18.978 0.325145 C19.864 0.624865 20.6933 1.22903 22.3519 2.43735 L25.9794 5.08012 L29.6049 7.5564 C31.3249 8.73116 32.1849 9.31853 32.7598 10.0573 C33.5914 11.1258 34.0282 12.4391 33.9986 13.7824 C33.9781 14.711 33.6363 15.6817 32.9526 17.6232 L31.529 21.6657 L30.215 25.808 C29.5983 27.7519 29.29 28.7239 28.7509 29.48 C27.9712 30.5736 26.838 31.378 25.5341 31.7634 C24.6327 32.0299 23.5936 32.0144 21.5154 31.9835 L17 31.9162 L12.4846 31.9835 C10.4064 32.0144 9.36728 32.0299 8.46588 31.7634 C7.16204 31.378 6.02882 30.5736 5.24909 29.48 C4.71002 28.7239 4.40169 27.7519 3.78503 25.808 L2.47101 21.6657 L1.04741 17.6232 C0.363716 15.6817 0.021869 14.711 0.00141072 13.7824 C-0.0281818 12.4391 0.408555 11.1258 1.24017 10.0573 C1.8151 9.31853 2.67508 8.73116 4.39505 7.5564 L8.02059 5.08012 L11.6481 2.43735 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.40392157435417175,
+                        "g": 0.3137255012989044,
+                        "b": 0.6431372761726379,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 34,
+                      "y": 32
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "clip": [],
+                "bindings": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+      "nodeID": "20:288",
+      "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+    }
+  ],
+  "sourceMotion": {
+    "20:288": {
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "variableResolutions": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:16",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:16",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ]
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-3"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "static",
+    "sourceNodeIDs": [
+      "20:288"
+    ],
+    "sourceCaptureSHA256": "abacc59051b1a3e4ffd356a13604ea545d46498ac62c2f2aa9610f4cf451151e"
+  }
+}

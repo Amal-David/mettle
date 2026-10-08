@@ -1,0 +1,835 @@
+{
+  "format": "mettle-community-provenance",
+  "version": 1,
+  "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+  "resourceName": "Material 3 Design Kit",
+  "creator": {
+    "name": "Google / Material Design",
+    "url": "https://m3.material.io/"
+  },
+  "captureFileKey": "flxINzepb5BgRcRfGj0Tl5",
+  "capturePageId": "18:2",
+  "capturePageURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=18-2",
+  "capturedDate": "2026-10-08",
+  "captureMethod": "Published Material 3 library components imported by component-set key into an isolated page; exact variant instances captured through the Figma Plugin API.",
+  "libraryKey": "lk-5a31d104cabc6a74d4edf6425e7bc6575e9c0f18cda7efb746193aef4d915b077d115c985e6cf49d36d97d455a17d5127a2cbbfbc618b8a70a38669dccb61462",
+  "captureBundle": {
+    "sha256": "f854fc2cc2781cf7f619a922c8b63ce6b55733e6ea80d130ee46dc500b32e5b5",
+    "sources": [
+      "plugin/src/motion.mjs",
+      "plugin/src/capture.mjs"
+    ],
+    "assembly": "Import statements and export keywords stripped; original modules enclosed in FMM/FMC scopes; createCapture(figma).captureNode(instance,{includeMotion:false})."
+  },
+  "license": {
+    "spdx": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Material 3 Design Kit by Google / Material Design. Source geometry, state designs, and prototype reactions are preserved in these test fixtures; conversion output is a Mettle adaptation. No endorsement is implied.",
+    "evidence": [
+      "https://help.figma.com/hc/en-us/articles/360042296374-Figma-Community-copyright-and-licensing",
+      "https://m3.material.io/get-started"
+    ],
+    "basis": "Figma licenses free Community files under CC BY 4.0; Material identifies its content and resources as Apache 2.0 or CC BY 4.0. These are design assets, not imported Material implementation code."
+  },
+  "identityEvidence": [
+    "https://help.figma.com/hc/en-us/articles/24037724065943-Start-designing-with-UI-kits",
+    "https://design.google/library/figma-comments-material-ux-euphrates-dahout"
+  ],
+  "changes": {
+    "originalComponentArtworkModified": false,
+    "prototypeReactionsModified": false,
+    "referencePNGModified": false,
+    "sourcePlacement": "Exact published variants instantiated at natural size inside separate transparent, unclipped host frames. Instances remain at local (0,0).",
+    "snapshotNormalization": "Source stroke outlines are obtained through Figma outlining when required; temporary clones are removed. No raster tracing, path reconstruction, or animation authoring."
+  },
+  "coverageLimitations": [
+    "PNG references are independent static exports of source variants, not sampled prototype playback frames.",
+    "Switch and loading sources use prototype Smart Animate reactions. Recursive get_motion_context returned nodes:[] for the inspected hosts, because these contain no native keyframe timeline.",
+    "No intermediate Smart Animate frames or native Metal rendering were captured in this session. Endpoint equality cannot establish full motion fidelity.",
+    "Circular and linear sampled components contain no captured prototype reactions or native keyframe tracks. Their numbered variants do not imply an executable animation."
+  ],
+  "sourceBounds": {
+    "path": "source-bounds.json",
+    "sha256": "88c687a1446a40e49a2510c41da8a951d5ed28d339764f22a324bf9221d44213"
+  },
+  "captureAudits": [
+    {
+      "slug": "loading-step-1",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-2",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-3",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-4",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-5",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-7",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "loading-step-6",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "circular-wave-step-1",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "linear-flat-step-1",
+      "created": [
+        "30:44",
+        "30:45",
+        "30:46",
+        "30:47",
+        "30:48",
+        "30:49"
+      ],
+      "removed": [
+        "30:44",
+        "30:45",
+        "30:46",
+        "30:47",
+        "30:48",
+        "30:49"
+      ]
+    },
+    {
+      "slug": "switch-enabled",
+      "created": [],
+      "removed": []
+    },
+    {
+      "slug": "switch-hovered",
+      "created": [],
+      "removed": []
+    }
+  ],
+  "fixtures": [
+    {
+      "slug": "loading-step-1",
+      "sourceFrameId": "20:279",
+      "instanceId": "20:280",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-279",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:10",
+        "name": "Steps=1, Show container=False",
+        "key": "195daf47bf5950ea63de766cf0b924872079a253"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-1.snapshot.json",
+        "sha256": "823d83c6808c1537b8a881eae99a24ab6ef861f087bfb8ca8d36bc0c3fd87840"
+      },
+      "reference": {
+        "path": "reference/loading-step-1.png",
+        "sha256": "314f8db241b2aba20faf5927a2a0771e1785a2e805cb9af070b88402e7558d46",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:279",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.347275+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-2",
+      "sourceFrameId": "20:283",
+      "instanceId": "20:284",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-283",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:12",
+        "name": "Steps=2, Show container=False",
+        "key": "8eb3bda9ffac682d52fee6d1d7d3e68ca220c9d9"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-2.snapshot.json",
+        "sha256": "2d6c721de865367c8ac1796ff0348583e631b4dd3084fce289bf71d11b9413fd"
+      },
+      "reference": {
+        "path": "reference/loading-step-2.png",
+        "sha256": "41d8b7f27ca23c81d85ee6fa40a3b15b9bb9c2138786dfba5b5f0dcbadd7c2c5",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:283",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.347914+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-3",
+      "sourceFrameId": "20:287",
+      "instanceId": "20:288",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-287",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:14",
+        "name": "Steps=3, Show container=False",
+        "key": "d8a3bfd5850bbe8c68141c21b8185dac777e4003"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-3.snapshot.json",
+        "sha256": "3a122e4c0e2f5dda7d2c26073d3a5fc2c2135ec34983413de7309b2442467d4d"
+      },
+      "reference": {
+        "path": "reference/loading-step-3.png",
+        "sha256": "04975b5991e59581a3762c82cb70e470442f403e28a6715e49e6dc171e780ca9",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:287",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.349471+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-4",
+      "sourceFrameId": "20:291",
+      "instanceId": "20:292",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-291",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:16",
+        "name": "Steps=4, Show container=False",
+        "key": "bf2087f3831309ad7df8c887828d1af675e1500a"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-4.snapshot.json",
+        "sha256": "66a7057b2b6049ceb8f88fe0c4ede27ec4a57e8b730d5d460d902aa67f019550"
+      },
+      "reference": {
+        "path": "reference/loading-step-4.png",
+        "sha256": "bdbd7e9c62e875aa34f792d0c22256698a64211ee73b02c4c0389bed95306427",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:291",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.349770+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-5",
+      "sourceFrameId": "20:295",
+      "instanceId": "20:296",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-295",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:18",
+        "name": "Steps=5, Show container=False",
+        "key": "228b556988b61e7eab2734d44d51d36fd4ed8ac8"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-5.snapshot.json",
+        "sha256": "d7b629530854765c67991eff27963dd0ee921d2fd92730ca80312005941026b5"
+      },
+      "reference": {
+        "path": "reference/loading-step-5.png",
+        "sha256": "5c49eb5fcd634d6dfd32dff03f972afa87665eb46a202074ae9799dd67e1beed",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:295",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.350054+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-7",
+      "sourceFrameId": "20:299",
+      "instanceId": "20:300",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-299",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:22",
+        "name": "Steps=7, Show container=False",
+        "key": "9cf9837bfca7021370664d5f7b29df614bbafb23"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-7.snapshot.json",
+        "sha256": "1119c11183a5f379e5137faa81c0dd71fdb590db1d1dcfad833ce64a2f96fa5d"
+      },
+      "reference": {
+        "path": "reference/loading-step-7.png",
+        "sha256": "fdb0f66064f347cdf2738afd7d1910851b2fcb0ada2f8bae7b41db819aa10e51",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:299",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.352109+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "loading-step-6",
+      "sourceFrameId": "20:303",
+      "instanceId": "20:304",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-303",
+      "sourceComponentSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceComponent": {
+        "id": "20:20",
+        "name": "Steps=6, Show container=False",
+        "key": "42cdb2e988776670b7c89ad29d2a29c7bbdd2bea"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "loading-step-6.snapshot.json",
+        "sha256": "d4169b6c0030f4e46ff7438eedefe1a8f30242a1582ea079a23310509551bccf"
+      },
+      "reference": {
+        "path": "reference/loading-step-6.png",
+        "sha256": "545edf4442ab11d5335d52a57f54e0579e24c5fc06ba80cebe78546c08802559",
+        "width": 48,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:303",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.352880+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions."
+      }
+    },
+    {
+      "slug": "circular-wave-step-1",
+      "sourceFrameId": "20:307",
+      "instanceId": "20:308",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-307",
+      "sourceComponentSet": {
+        "id": "20:61",
+        "key": "0f6663248f1907b46c8c4b28e4c94fee3b9bdcfe",
+        "name": "Circular-indeterminate progress indicator"
+      },
+      "sourceComponent": {
+        "id": "20:64",
+        "name": "Type=Wave, Thickness=4 dp, Step=1",
+        "key": "4eac09ee99cd51437b8a3c840aeb5eb989dbf9f2"
+      },
+      "nominalSize": {
+        "width": 48,
+        "height": 48
+      },
+      "motionSource": "none-observed",
+      "snapshot": {
+        "path": "circular-wave-step-1.snapshot.json",
+        "sha256": "70ab1e03f27062c45ddafe16be62abac9b612424ccd03c34a9f874818ef51704"
+      },
+      "reference": {
+        "path": "reference/circular-wave-step-1.png",
+        "sha256": "fbde4711b4bafe659e8f3e78eb7873caea4e0bd1735029e03ee126d2d044b707",
+        "width": 49,
+        "height": 49,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:307",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.353218+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": -0.08150482177734375,
+          "y": -0.0849151611328125,
+          "width": 49,
+          "height": 49
+        },
+        "mappingEvidence": [
+          "source-bounds.json",
+          "reference/circular-wave-step-1.svg"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions. Provider SVG path coordinates independently support the fractional origin (not an integer floor); PNG/SVG viewport equivalence remains a provider export contract, not a native pixel-parity result."
+      }
+    },
+    {
+      "slug": "linear-flat-step-1",
+      "sourceFrameId": "20:311",
+      "instanceId": "20:312",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=20-311",
+      "sourceComponentSet": {
+        "id": "20:106",
+        "key": "714a49e2ecdf470d71046463100d8caa7df9f802",
+        "name": "Linear-indeterminate progress indicator"
+      },
+      "sourceComponent": {
+        "id": "20:108",
+        "name": "Type=Flat, Thickness=4 dp, Step=1",
+        "key": "87606133e8898402ac7f829da44be33a86cdee15"
+      },
+      "nominalSize": {
+        "width": 404,
+        "height": 12
+      },
+      "motionSource": "none-observed",
+      "snapshot": {
+        "path": "linear-flat-step-1.snapshot.json",
+        "sha256": "19c2a2f8f8666d439292625169ea15462b5ae41e7e9a8534cec3d6597345ea62"
+      },
+      "reference": {
+        "path": "reference/linear-flat-step-1.png",
+        "sha256": "7f43ba16161a4a4bf197ac12f7babf8240c86ef159919ce083cf8df5974bfde0",
+        "width": 404,
+        "height": 12,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "20:311",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.354072+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": 0,
+          "width": 404,
+          "height": 12
+        },
+        "mappingEvidence": [
+          "source-bounds.json"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions. The provider reports 404.00030517578125 render width but emits a 404-pixel image; the observed PNG dimension is retained."
+      }
+    },
+    {
+      "slug": "switch-enabled",
+      "sourceFrameId": "24:198",
+      "instanceId": "24:199",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=24-198",
+      "sourceComponentSet": {
+        "id": "24:63",
+        "key": "1f6ff0e7afa1181d166c5dbd3856ba6135b75019",
+        "name": "Switch"
+      },
+      "sourceComponent": {
+        "id": "24:64",
+        "name": "Selected=True, State=Enabled, Icon=False",
+        "key": "d50bda82e600fa5aea973274a89c5d844d559bb2"
+      },
+      "nominalSize": {
+        "width": 52,
+        "height": 32
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "switch-enabled.snapshot.json",
+        "sha256": "d9a060d0b2ce464e70c47be8d64467528545942874ff50979a1a609fa0b2d1ec"
+      },
+      "reference": {
+        "path": "reference/switch-enabled.png",
+        "sha256": "debf416dabf5291ac1d4d54cb7e2f878c75c622bab2526c2b69d03061eabefbf",
+        "width": 60,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "24:198",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.345752+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": -8,
+          "width": 60,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json",
+          "reference/switch-enabled.svg"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions. Both switch states have identical local render bounds; provider SVG places the 52x32 track at y=8 within a 60x48 viewport."
+      }
+    },
+    {
+      "slug": "switch-hovered",
+      "sourceFrameId": "24:205",
+      "instanceId": "24:206",
+      "sourceURL": "https://www.figma.com/design/flxINzepb5BgRcRfGj0Tl5?node-id=24-205",
+      "sourceComponentSet": {
+        "id": "24:63",
+        "key": "1f6ff0e7afa1181d166c5dbd3856ba6135b75019",
+        "name": "Switch"
+      },
+      "sourceComponent": {
+        "id": "24:65",
+        "name": "Selected=True, State=Hovered, Icon=False",
+        "key": "2f28942ca6b134c2163e91781df9a20d4dd617e1"
+      },
+      "nominalSize": {
+        "width": 52,
+        "height": 32
+      },
+      "motionSource": "prototype-smart-animate",
+      "snapshot": {
+        "path": "switch-hovered.snapshot.json",
+        "sha256": "9acdb5869f8744b15d55685e96e73821875ead8b59461c65621a8bf29cae2b5a"
+      },
+      "reference": {
+        "path": "reference/switch-hovered.png",
+        "sha256": "20a2422a1be9194740b582859e0fe1a31d6917cf80e7ef291a276c266bb7c0ac",
+        "width": 60,
+        "height": 48,
+        "method": "figma.exportAsync/png",
+        "sourceFrameId": "24:205",
+        "capturedDate": "2026-10-08",
+        "savedAtUTC": "2026-10-08T10:51:12.346721+00:00",
+        "savedAtMeaning": "Local save timestamp, not a reconstructed source playback timestamp.",
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        },
+        "defaultExportSettings": {
+          "contentsOnly": true,
+          "useAbsoluteBounds": false,
+          "colorProfile": "DOCUMENT"
+        },
+        "documentColorProfile": "LEGACY",
+        "pngMetadata": {
+          "srgb": 0,
+          "gamma": 0.45455,
+          "Software": "Figma"
+        },
+        "viewport": {
+          "x": 0,
+          "y": -8,
+          "width": 60,
+          "height": 48
+        },
+        "mappingEvidence": [
+          "source-bounds.json",
+          "reference/switch-enabled.svg"
+        ],
+        "mappingExplanation": "Origin is the exact local absoluteRenderBounds minimum; size is the original PNG IHDR dimensions. Both switch states have identical local render bounds; provider SVG places the 52x32 track at y=8 within a 60x48 viewport."
+      }
+    }
+  ]
+}

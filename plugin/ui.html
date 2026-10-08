@@ -1,32 +1,81 @@
-<!doctype html><html><head><meta charset="utf-8"><style>
-*{box-sizing:border-box}body{font:12px Inter,system-ui,sans-serif;margin:0;padding:22px;background:var(--figma-color-bg,#fff);color:var(--figma-color-text,#141414)}h1{font-size:23px;margin:0 0 6px}p{line-height:1.5;color:var(--figma-color-text-secondary,#666)}label{display:block;margin:16px 0 6px}select,input[type=number]{width:100%;padding:9px;border:1px solid var(--figma-color-border,#ddd);border-radius:6px;background:var(--figma-color-bg,#fff);color:inherit}button{padding:11px;border:0;border-radius:7px;font:inherit;cursor:pointer}button.primary{width:100%;background:#1c685c;color:#fff;font-weight:600;margin-top:18px}button:disabled{opacity:.4;cursor:default}.row{display:flex;gap:12px}.row>div{flex:1}.check{display:flex;align-items:center;gap:8px}.report{max-height:135px;overflow:auto;margin-top:12px;white-space:pre-wrap;font:11px ui-monospace,monospace;line-height:1.5}.minor{background:transparent;color:inherit;text-decoration:underline;padding:8px 0}.error{color:var(--figma-color-text-danger,#b42318)}.badge{font:10px ui-monospace,monospace;letter-spacing:1px}#download{background:#1c685c;color:#fff;width:100%;margin-top:12px}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><style>
+:root{color-scheme:light dark}*{box-sizing:border-box}body{font:12px Inter,system-ui,sans-serif;margin:0;padding:24px;background:var(--figma-color-bg,#fff);color:var(--figma-color-text,#18221f)}
+h1{font-size:26px;letter-spacing:-.8px;margin:0}h2{font-size:13px;margin:0}p{line-height:1.5;color:var(--figma-color-text-secondary,#66726c);margin:8px 0 18px}label{display:block;font-weight:500;margin:14px 0 6px}
+select,input[type=number]{width:100%;padding:9px;border:1px solid var(--figma-color-border,#ddd);border-radius:6px;background:var(--figma-color-bg,#fff);color:inherit;font:inherit}button{padding:10px 12px;border:1px solid var(--figma-color-border,#ddd);border-radius:7px;font:inherit;cursor:pointer;background:var(--figma-color-bg-secondary,#f5f7f5);color:inherit}button:disabled{opacity:.45;cursor:default}
+.primary{width:100%;background:#226d5d;color:white;border-color:#226d5d;font-weight:600;margin-top:18px}.row{display:flex;gap:12px}.row>div{flex:1;min-width:0}.check{display:flex;align-items:center;gap:7px;font-weight:400}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:1px;color:#348371;margin-bottom:8px}.selection{border:1px solid var(--figma-color-border,#ddd);border-radius:8px;padding:12px;line-height:1.5;white-space:pre-wrap}.caption{font-size:11px;color:var(--figma-color-text-secondary,#66726c);line-height:1.5;margin-top:6px}details{margin-top:14px}summary{cursor:pointer;font-size:11px;color:var(--figma-color-text-secondary,#66726c)}
+.status{margin-top:18px;padding-top:16px;border-top:1px solid var(--figma-color-border,#ddd)}.status h2{line-height:1.5}.error{color:var(--figma-color-text-danger,#b42318)}.warning{color:var(--figma-color-text-warning,#946600)}#report{max-height:190px;overflow:auto;margin:10px 0}.issue{border-left:2px solid var(--figma-color-border,#ddd);padding:7px 10px;margin:8px 0;line-height:1.5;font-size:11px}.issue.error{border-color:#b42318}.issue.warning{border-color:#bd8e23}.issue button{border:0;padding:0;background:transparent;font:10px ui-monospace,monospace;text-decoration:underline;color:inherit;margin-bottom:3px;max-width:100%;overflow-wrap:anywhere}.issue p{color:inherit;margin:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.minor{font-size:11px}.download{background:#226d5d;color:white;border-color:#226d5d}.footer{margin-top:20px;font-size:10px;color:var(--figma-color-text-secondary,#66726c);line-height:1.5}[hidden]{display:none!important}
 </style></head><body>
-<div class="badge">DIRECT NATIVE EXPORT · EXPERIMENTAL 0.3</div><h1>Mettle</h1>
-<p>Export real paths, paint values, and motion tracks. Render with the included Swift + Metal player. No Lottie or screenshot reconstruction. Open v0.3 exports with the updated native runtime.</p>
-<p><strong>Motion update:</strong> resolved custom styles, delayed/composed tracks and easing variables. Audio and per-character text animations are not supported yet. Native Lottie export is a different format.</p>
-<label for="mode">Source</label><select id="mode"><option value="motion">One selection — Motion / static scene</option><option value="transition">Two frames — constrained A → B transition</option></select>
-<div class="row"><div><label for="loop">Playback</label><select id="loop"><option value="once">Once</option><option value="loop">Loop</option><option value="pingPong">Ping-pong</option></select></div><div><label for="duration">A → B duration (seconds)</label><input id="duration" type="number" value="0.6" min="0.01" max="3600" step="0.1"></div></div>
-<label for="origin">Explicit rotation / scale origin</label><select id="origin"><option value="center">Center of each layer</option><option value="topLeft">Top-left of each layer</option></select>
-<label class="check"><input type="checkbox" id="partial">Allow incomplete export (unsupported features omitted)</label>
-<button class="primary" id="export">Inspect & export selection</button>
-<button id="download" hidden>Save .figmetal.json</button>
-<div class="report" id="report" role="status" aria-live="polite"></div>
-<button class="minor" id="create">Create A/B test frames in this file</button>
+<div class="eyebrow">FIGMA → METAL</div><h1>Mettle</h1>
+<p>Inspect a selection, resolve compatibility issues, then open the export in Mettle Preview.</p>
+<div id="selection" class="selection" aria-live="polite">Select a frame or component in Figma.</div>
+<label for="mode">What are you exporting?</label>
+<select id="mode"><option value="motion">Keyframe animation</option><option value="transition">Smart Animate · two states</option><option value="static">Static artwork</option></select>
+<div class="caption" id="mode-help">Reads the selection’s actual Motion tracks. A static layer will be identified as static.</div>
+<div id="transition-options" hidden>
+  <label for="start">Start state</label><select id="start"><option value="auto">Follow the source interaction</option></select>
+  <div class="caption">The source connection decides direction, duration and easing. Canvas position does not decide the animation order.</div>
+  <label for="duration">Duration when no source interaction exists (seconds)</label>
+  <input id="duration" type="number" value="0.6" min="0.01" max="3600" step="0.1">
+</div>
+<label for="loop">Playback</label><select id="loop"><option value="once">Play once</option><option value="loop">Repeat</option><option value="pingPong">Back and forth</option></select>
+<details><summary>Transform origin and diagnostic exports</summary>
+  <label class="check"><input type="checkbox" id="referenceBounds">Use Figma reference bounds</label>
+  <div class="caption">For static artwork or two states: include visible overflow and save the original Figma reference images alongside your export.</div>
+  <label for="origin">Rotation / scale origin when Figma does not expose one</label>
+  <select id="origin"><option value="center">Center of each layer</option><option value="topLeft">Top-left of each layer</option></select>
+  <div class="caption">Exports using this fallback include a warning. Check rotating and scaling layers against Figma.</div>
+  <label class="check"><input type="checkbox" id="partial">Allow an incomplete scene for debugging</label>
+  <div class="caption">Incomplete scenes still require an explicit override in the command-line validator. The regular preview rejects them.</div>
+</details>
+<button class="primary" id="export">Inspect selection</button>
+<section class="status" id="results" hidden aria-live="polite">
+  <h2 id="headline"></h2><div id="stats" class="caption"></div><div id="report"></div>
+  <div class="actions"><button class="download" id="download" hidden>Save animation</button><button id="source" hidden>Save source capture</button><button id="save-report" hidden>Save report</button></div>
+  <div class="actions" id="references" style="margin-top:8px"></div>
+  <div class="caption" id="next"></div>
+</section>
+<details class="footer"><summary>Developer fixture</summary><p>Create a small pair of test frames in this file to check your installation.</p><button id="create" class="minor">Create A/B test frames</button></details>
+<div class="footer">Experimental · paths and paints stay vectors. Source captures let you reproduce conversion failures without re-opening Figma.</div>
 <script>
-const $=id=>document.getElementById(id);let result;
-$('export').onclick=()=>{ $('export').disabled=true;$('download').hidden=true;$('report').textContent='Reading source geometry and motion…';parent.postMessage({pluginMessage:{type:'export',mode:$('mode').value,loop:$('loop').value,origin:$('origin').value,duration:Number($('duration').value),allowPartial:$('partial').checked}},'*'); };
-$('create').onclick=()=>parent.postMessage({pluginMessage:{type:'create-test'}},'*');
+const $=id=>document.getElementById(id);let result=null,signature='',working=false;
+const send=message=>parent.postMessage({pluginMessage:message},'*');
+function invalidate(){result=null;$('results').hidden=true;}
+function setBusy(value){working=value;for(const id of ['export','create','mode','start','loop','duration','origin','partial','referenceBounds'])$(id).disabled=value;$('export').textContent=value?'Reading source…':'Inspect selection';}
+function syncMode(){const transition=$('mode').value==='transition';$('transition-options').hidden=!transition;$('loop').disabled=$('mode').value==='static'||working;$('referenceBounds').disabled=$('mode').value==='motion'||working;if($('mode').value==='motion')$('referenceBounds').checked=false;$('mode-help').textContent=transition?'Select the start and end states. Mettle exports a bounded transition from the source interaction.':$('mode').value==='static'?'Exports source geometry without reading animation APIs.':'Reads the selection’s actual Motion tracks. A static layer will be identified as static.';invalidate();}
+for(const id of ['mode','start','loop','duration','origin','partial','referenceBounds'])$(id).onchange=()=>{if(id==='mode')syncMode();else invalidate();};
+$('export').onclick=()=>{invalidate();setBusy(true);send({type:'export',mode:$('mode').value,startNodeID:$('start').value,loop:$('mode').value==='static'?'once':$('loop').value,origin:$('origin').value,duration:Number($('duration').value),allowPartial:$('partial').checked,referenceBounds:$('referenceBounds').checked});};
+$('create').onclick=()=>{invalidate();setBusy(true);send({type:'create-test'});};
+function saveBlob(blob,filename){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function save(value,filename){saveBlob(new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json'}),filename);}
+$('download').onclick=()=>{if(result&&!result.blocked)save(result.document,result.filename);};
+$('source').onclick=()=>{if(result)save(result.source,result.filename.replace('.figmetal.json','.source.json'));};
+$('save-report').onclick=()=>{if(result)save({provenance:result.document.provenance,summary:result.summary,diagnostics:result.document.diagnostics},result.filename.replace('.figmetal.json','.report.json'));};
 window.onmessage=event=>{
   const message=event.data.pluginMessage;if(!message)return;
-  if(message.type==='ready')$('export').disabled=false;
-  if(message.type==='notice')$('report').textContent=message.text;
-  if(message.type==='failure'){$('report').textContent=message.message;$('report').classList.add('error');}
+  if(message.type==='selection'){
+    const next=JSON.stringify(message.nodes);if(next!==signature){signature=next;if(message.reason==='reveal'&&result){$('next').textContent='Showing the captured export while its source layer is selected. Inspect selection to capture a new export.';}else invalidate();}
+    $('selection').textContent=message.nodes.length?message.nodes.map((node,i)=>`${i+1}. ${node.name} · ${node.type.toLowerCase()}`).join('\n'):'Select a frame or component in Figma.';
+    const previous=$('start').value;$('start').replaceChildren(new Option('Follow the source interaction','auto'));
+    for(const node of message.nodes)$('start').add(new Option(node.name,node.id));
+    if([...$('start').options].some(option=>option.value===previous))$('start').value=previous;
+  }
+  if(message.type==='ready'){setBusy(false);$('loop').disabled=$('mode').value==='static';$('referenceBounds').disabled=$('mode').value==='motion';}
+  if(message.type==='failure'||message.type==='notice'){
+    result=null;$('results').hidden=false;$('headline').textContent=message.message??message.text;$('headline').className=message.type==='failure'?'error':'';
+    $('stats').textContent='';$('report').replaceChildren();$('references').replaceChildren();$('next').textContent='';for(const id of ['download','source','save-report'])$(id).hidden=true;
+  }
   if(message.type==='result'){
-    result=message;$('report').classList.toggle('error',message.blocked);
-    const errors=message.document.diagnostics.filter(d=>d.severity==='error').length;
-    $('report').textContent=(message.blocked?'EXPORT BLOCKED — fix the errors below.':`Ready. ${errors} unsupported-feature errors.`)+'\n'+message.document.diagnostics.map(d=>`[${d.severity}] ${d.code} (${d.nodeID})\n${d.message}`).join('\n');
-    $('download').hidden=message.blocked;
+    result=message;const s=message.summary;$('results').hidden=false;
+    $('headline').textContent=message.blocked?'Export needs attention':s.errors?'Incomplete diagnostic export':s.bindings?'Animation ready':'Static artwork ready';
+    $('headline').className=message.blocked?'error':s.errors||s.warnings?'warning':'';
+    $('stats').textContent=`${s.nodes} layers · ${s.bindings} motion bindings · ${s.duration.toFixed(3)} seconds · ${s.errors} errors · ${s.warnings} warnings`;
+    $('report').replaceChildren();
+    for(const issue of message.document.diagnostics){const item=document.createElement('div');item.className='issue '+issue.severity;const link=document.createElement('button');link.textContent=issue.code+' · '+issue.nodeID;link.onclick=()=>send({type:'reveal-node',nodeID:issue.nodeID});const p=document.createElement('p');p.textContent=issue.message;item.append(link,p);$('report').append(item);}
+    $('download').hidden=message.blocked;$('download').textContent=s.bindings?'Save animation':'Save static scene';$('source').hidden=false;$('save-report').hidden=false;
+    $('references').replaceChildren();for(const frame of message.referenceFrames??[]){const button=document.createElement('button');button.textContent='Save Figma reference · '+frame.name;button.onclick=()=>saveBlob(new Blob([new Uint8Array(frame.bytes)],{type:'image/png'}),frame.fileName);$('references').append(button);}
+    $('next').textContent=message.blocked?'Select an issue to reveal its source layer. Save the capture and report to reproduce this conversion.':s.errors?'This incomplete scene is for command-line debugging with --allow-partial. Fix the source errors before opening it in Mettle Preview.':'Open the .figmetal.json in Mettle Preview. Keep the source capture alongside it for repeatable comparisons.';
   }
 };
-$('download').onclick=()=>{if(!result||result.blocked)return;const url=URL.createObjectURL(new Blob([JSON.stringify(result.document,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=result.filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);};
+syncMode();send({type:'selection'});
 </script></body></html>

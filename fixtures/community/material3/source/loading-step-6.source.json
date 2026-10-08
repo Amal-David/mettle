@@ -1,0 +1,304 @@
+{
+  "format": "mettle-source",
+  "version": 1,
+  "mode": "static",
+  "nodes": [
+    {
+      "id": "20:304",
+      "name": "Loading indicator",
+      "type": "INSTANCE",
+      "width": 48,
+      "height": 48,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "fillGeometry": [
+        {
+          "windingRule": "NONZERO",
+          "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z"
+        }
+      ],
+      "fills": [],
+      "regionalPaints": false,
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "PASS_THROUGH",
+      "strokes": [],
+      "strokeGeometry": [],
+      "strokeAlign": "INSIDE",
+      "effects": [],
+      "isMask": false,
+      "clipsContent": true,
+      "layoutMode": "NONE",
+      "itemReverseZIndex": false,
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "20:10",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.4000000059604645
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "20:10",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.0010000000474974513
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": "I20:304;58005:8592",
+          "name": "Shape container",
+          "type": "FRAME",
+          "width": 38,
+          "height": 38,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              0,
+              1,
+              5
+            ]
+          ],
+          "fillGeometry": [
+            {
+              "windingRule": "NONZERO",
+              "data": "M0 0 L38 0 L38 38 L0 38 L0 0 Z"
+            }
+          ],
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": false,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "regionalPaints": false,
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "PASS_THROUGH",
+          "strokes": [],
+          "strokeGeometry": [],
+          "strokeAlign": "INSIDE",
+          "effects": [],
+          "isMask": false,
+          "clipsContent": true,
+          "layoutMode": "NONE",
+          "itemReverseZIndex": false,
+          "animations": {},
+          "manualKeyframeTracks": {},
+          "animationStyles": [],
+          "timelines": [],
+          "reactions": [],
+          "children": [
+            {
+              "id": "I20:304;58005:8593",
+              "name": "Shape",
+              "type": "VECTOR",
+              "width": 28,
+              "height": 28,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  1,
+                  5
+                ]
+              ],
+              "fillGeometry": [
+                {
+                  "windingRule": "NONZERO",
+                  "data": "M17.8729 0.620696 C23.8872 -1.99138 29.9914 4.11282 27.3793 10.1271 L26.9474 11.1214 C26.1499 12.9576 26.1499 15.0424 26.9474 16.8786 L27.3793 17.8729 C29.9914 23.8872 23.8872 29.9914 17.8729 27.3793 L16.8786 26.9474 C15.0424 26.1499 12.9576 26.1499 11.1214 26.9474 L10.1271 27.3793 C4.11281 29.9914 -1.99138 23.8872 0.620698 17.8729 L1.05257 16.8786 C1.85006 15.0424 1.85005 12.9576 1.05257 11.1214 L0.620696 10.1271 C-1.99138 4.11281 4.11282 -1.99138 10.1271 0.620698 L11.1214 1.05257 C12.9576 1.85005 15.0424 1.85005 16.8786 1.05257 L17.8729 0.620696 Z"
+                }
+              ],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.40392157435417175,
+                    "g": 0.3137255012989044,
+                    "b": 0.6431372761726379
+                  },
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:76bfbbf87c5f600256e614f12eaf0699927c5a35/57966:62"
+                    }
+                  }
+                }
+              ],
+              "regionalPaints": false,
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "PASS_THROUGH",
+              "strokes": [],
+              "strokeGeometry": [],
+              "strokeAlign": "INSIDE",
+              "effects": [],
+              "isMask": false,
+              "clipsContent": false,
+              "layoutMode": "NONE",
+              "itemReverseZIndex": false,
+              "animations": {},
+              "manualKeyframeTracks": {},
+              "animationStyles": [],
+              "timelines": [],
+              "reactions": [],
+              "children": [],
+              "captureDiagnostics": [],
+              "rawMotion": {
+                "animations": {},
+                "manualKeyframeTracks": {},
+                "animationStyles": []
+              },
+              "motionVariableResolutions": [],
+              "motionCapture": "not-requested"
+            }
+          ],
+          "captureDiagnostics": [],
+          "rawMotion": {
+            "animations": {},
+            "manualKeyframeTracks": {},
+            "animationStyles": []
+          },
+          "motionVariableResolutions": [],
+          "motionCapture": "not-requested"
+        }
+      ],
+      "captureDiagnostics": [],
+      "absoluteTransform": [
+        [
+          1,
+          0,
+          680
+        ],
+        [
+          0,
+          1,
+          80
+        ]
+      ],
+      "absoluteRenderBounds": {
+        "x": 680,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "absoluteBoundingBox": {
+        "x": 680,
+        "y": 80,
+        "width": 48,
+        "height": 48
+      },
+      "sourceComponent": {
+        "id": "20:20",
+        "name": "Steps=6, Show container=False",
+        "key": "42cdb2e988776670b7c89ad29d2a29c7bbdd2bea"
+      },
+      "rawMotion": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": []
+      },
+      "motionVariableResolutions": [],
+      "motionCapture": "not-requested"
+    }
+  ],
+  "options": {
+    "loop": "once",
+    "origin": "center",
+    "includeMotion": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "width": 48,
+      "height": 48
+    }
+  },
+  "transition": null,
+  "notes": [],
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-6"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false
+  }
+}

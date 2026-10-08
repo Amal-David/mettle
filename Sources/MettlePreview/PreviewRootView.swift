@@ -118,6 +118,9 @@ public struct PreviewRootView: View {
                 .menuStyle(.borderlessButton).fixedSize().help("Appearance").accessibilityLabel("Appearance")
             Button(action: session.openPanel) { Label("Open…", systemImage: "folder") }.help("Open a Mettle export (⌘O)")
             if session.renderer != nil && !session.referencesVisible {
+                Button(action: session.reload) { Image(systemName: "arrow.clockwise") }
+                    .disabled(session.isLoading).help("Reload the updated export and keep this playhead position")
+                    .accessibilityLabel("Reload export")
                 Button(action: session.exportPanel) { Label("Export frame…", systemImage: "square.and.arrow.up") }
                     .disabled(session.isLoading).help("Save this frame as a PNG at its original size (⇧⌘E)")
                 Button { session.inspectorVisible.toggle() } label: { Image(systemName: "sidebar.right") }
@@ -226,7 +229,7 @@ public struct PreviewRootView: View {
             if let document = session.document, document.scenes.count > 1 {
                 Picker("Scene", selection: Binding(get: { session.selectedScene }, set: session.chooseScene)) {
                     ForEach(document.scenes.indices, id: \.self) { Text(document.scenes[$0].name).tag($0) }
-                }.frame(maxWidth: 230)
+                }.frame(maxWidth: 230).disabled(session.isLoading)
             } else {
                 Text("Canvas").font(.system(size: 11, weight: .medium))
                 if let s = session.scene {
@@ -234,6 +237,11 @@ public struct PreviewRootView: View {
                 }
             }
             Spacer(minLength: 4)
+            Picker("Quality", selection: Binding(get: { session.rasterScale }, set: session.setRasterScale)) {
+                Text("Standard").tag(1)
+                Text("High quality").tag(2)
+            }.frame(width: 150).disabled(session.isLoading)
+                .help("High quality smooths edges and uses more GPU memory. This setting applies to the live preview and exported PNGs.")
             Menu {
                 Picker("Preview background", selection: $session.background) {
                     ForEach(["Checkerboard", "Light", "Dark"], id: \.self) { Text($0) }
@@ -254,7 +262,7 @@ public struct PreviewRootView: View {
                 }.buttonStyle(.borderedProminent).disabled(!session.hasMotion || session.reduceMotion || session.isLoading)
                     .help(session.reduceMotion ? "Reduce Motion is enabled in macOS" : "Play or pause (Space)")
                 Button { session.seek(0) } label: { Image(systemName: "backward.end") }
-                    .buttonStyle(.borderless).help("Restart (⌘R)").accessibilityLabel("Restart animation")
+                    .buttonStyle(.borderless).disabled(session.isLoading).help("Restart (⌘R)").accessibilityLabel("Restart animation")
                 Slider(value: Binding(get: { session.playback.position }, set: session.seek), in: 0...max(0.001, session.duration))
                     .disabled(!session.hasMotion || session.isLoading).accessibilityLabel("Animation time")
                     .accessibilityValue(String(format: "%.2f of %.2f seconds", session.playback.position, session.duration))
@@ -272,10 +280,10 @@ public struct PreviewRootView: View {
                 Spacer(minLength: 2)
                 Picker("Speed", selection: Binding(get: { session.playback.speed }, set: session.setSpeed)) {
                     ForEach([0.25, 0.5, 1.0, 2.0], id: \.self) { Text(String(format: "%g×", $0)).tag($0) }
-                }.frame(width: 98).disabled(!session.hasMotion).controlSize(.small)
+                }.frame(width: 98).disabled(!session.hasMotion || session.isLoading).controlSize(.small)
                 Toggle(isOn: Binding(get: { session.repeatEnabled }, set: { _ in session.toggleRepeat() })) {
                     Label(session.playback.repetition == .pingPong ? "Ping-pong" : "Repeat", systemImage: "repeat")
-                }.toggleStyle(.button).controlSize(.small).disabled(!session.hasMotion)
+                }.toggleStyle(.button).controlSize(.small).disabled(!session.hasMotion || session.isLoading)
             }
         }.padding(.horizontal, 22).padding(.vertical, 16)
     }
@@ -290,7 +298,7 @@ public struct PreviewRootView: View {
                     detail("SOURCE", session.exampleID == nil ? "Local Mettle export" : session.sourceDescription)
                 }
                 Divider()
-                Text("This is a preview, not a design editor. Change the animation in Figma, then open the new export.")
+                Text("Change the animation in Figma, save over the export, then reload here to keep your place in the timeline.")
                     .font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                 if let diagnostics = session.document?.diagnostics, !diagnostics.isEmpty {
                     DisclosureGroup("Export notes (\(diagnostics.count))") {
@@ -305,6 +313,7 @@ public struct PreviewRootView: View {
                             detail("DEVICE", r.device.name)
                             detail("GEOMETRY", "\(r.vertexCount) vertices")
                             detail("ANTIALIASING", "\(r.sampleCount)× MSAA")
+                            detail("QUALITY", "\(session.qualityName) · \(r.rasterScale)× internal raster size")
                         }.padding(.top, 12)
                     }.font(.system(size: 11))
                 }
@@ -323,7 +332,7 @@ public struct PreviewRootView: View {
             Text("Mettle Preview opens exports made by the Mettle plugin. It doesn’t open raw Figma files or connect to your account.")
                 .foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
             instruction("1", "Install the development plugin", "In Figma: Plugins → Development → Import plugin from manifest. Choose plugin/manifest.json in the Mettle repository.")
-            instruction("2", "Export a frame", "Select a frame, run Mettle, and review the compatibility report. Keep “Allow incomplete export” unchecked.")
+            instruction("2", "Inspect and export", "Choose keyframe animation, two Smart Animate states, or static artwork. Review the report and leave incomplete diagnostic export unchecked.")
             instruction("3", "Open the exported file", "Save the .figmetal.json file, then drag it into this window or choose Open animation.")
             Link("Full local setup & troubleshooting ↗", destination: URL(string: "https://github.com/Amal-David/mettle/blob/main/docs/LOCAL_SETUP.md")!)
             Text("The desktop preview is optional. The Figma exporter creates the asset; the Swift package plays it inside your app.").font(.system(size: 11)).foregroundStyle(.secondary)

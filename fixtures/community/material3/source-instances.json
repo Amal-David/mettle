@@ -1,0 +1,558 @@
+{
+  "pageId": "18:2",
+  "createdNodeIds": [
+    "20:279",
+    "20:280",
+    "I20:280;58005:8557",
+    "I20:280;58005:8558",
+    "20:283",
+    "20:284",
+    "I20:284;58005:8564",
+    "I20:284;58005:8565",
+    "20:287",
+    "20:288",
+    "I20:288;58005:8571",
+    "I20:288;58005:8572",
+    "20:291",
+    "20:292",
+    "I20:292;58005:8578",
+    "I20:292;58005:8579",
+    "20:295",
+    "20:296",
+    "I20:296;58005:8585",
+    "I20:296;58005:8586",
+    "20:299",
+    "20:300",
+    "I20:300;58005:8599",
+    "I20:300;58005:8600",
+    "20:303",
+    "20:304",
+    "I20:304;58005:8592",
+    "I20:304;58005:8593",
+    "20:307",
+    "20:308",
+    "I20:308;58005:8534",
+    "I20:308;58005:8533",
+    "20:311",
+    "20:312",
+    "I20:312;58005:8289",
+    "I20:312;58005:8295",
+    "I20:312;58005:8296",
+    "I20:312;58005:8296;58005:7991",
+    "I20:312;58005:8292",
+    "I20:312;58005:8294",
+    "I20:312;58005:8294;58005:7989",
+    "I20:312;58005:8293",
+    "I20:312;58005:8293;58005:7989",
+    "I20:312;58005:8290",
+    "I20:312;58005:8291",
+    "I20:312;58005:8291;58005:7991"
+  ],
+  "fixtures": [
+    {
+      "slug": "loading-step-1",
+      "frameId": "20:279",
+      "instanceId": "20:280",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:10",
+        "key": "195daf47bf5950ea63de766cf0b924872079a253",
+        "name": "Steps=1, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:12",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:12",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-2",
+      "frameId": "20:283",
+      "instanceId": "20:284",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:12",
+        "key": "8eb3bda9ffac682d52fee6d1d7d3e68ca220c9d9",
+        "name": "Steps=2, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:14",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:14",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-3",
+      "frameId": "20:287",
+      "instanceId": "20:288",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:14",
+        "key": "d8a3bfd5850bbe8c68141c21b8185dac777e4003",
+        "name": "Steps=3, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:16",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:16",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-4",
+      "frameId": "20:291",
+      "instanceId": "20:292",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:16",
+        "key": "bf2087f3831309ad7df8c887828d1af675e1500a",
+        "name": "Steps=4, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:18",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:18",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-5",
+      "frameId": "20:295",
+      "instanceId": "20:296",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:18",
+        "key": "228b556988b61e7eab2734d44d51d36fd4ed8ac8",
+        "name": "Steps=5, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:22",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:22",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-7",
+      "frameId": "20:299",
+      "instanceId": "20:300",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:22",
+        "key": "9cf9837bfca7021370664d5f7b29df614bbafb23",
+        "name": "Steps=7, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:20",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:20",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "loading-step-6",
+      "frameId": "20:303",
+      "instanceId": "20:304",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:9",
+        "key": "9ba8ab419ed610f820741d629e63798736c92e7c",
+        "name": "Loading indicator"
+      },
+      "sourceVariant": {
+        "id": "20:20",
+        "key": "42cdb2e988776670b7c89ad29d2a29c7bbdd2bea",
+        "name": "Steps=6, Show container=False",
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:10",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:10",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    {
+      "slug": "circular-wave-step-1",
+      "frameId": "20:307",
+      "instanceId": "20:308",
+      "width": 48,
+      "height": 48,
+      "sourceSet": {
+        "id": "20:61",
+        "key": "0f6663248f1907b46c8c4b28e4c94fee3b9bdcfe",
+        "name": "Circular-indeterminate progress indicator"
+      },
+      "sourceVariant": {
+        "id": "20:64",
+        "key": "4eac09ee99cd51437b8a3c840aeb5eb989dbf9f2",
+        "name": "Type=Wave, Thickness=4 dp, Step=1",
+        "reactions": []
+      }
+    },
+    {
+      "slug": "linear-flat-step-1",
+      "frameId": "20:311",
+      "instanceId": "20:312",
+      "width": 404,
+      "height": 12,
+      "sourceSet": {
+        "id": "20:106",
+        "key": "714a49e2ecdf470d71046463100d8caa7df9f802",
+        "name": "Linear-indeterminate progress indicator"
+      },
+      "sourceVariant": {
+        "id": "20:108",
+        "key": "87606133e8898402ac7f829da44be33a86cdee15",
+        "name": "Type=Flat, Thickness=4 dp, Step=1",
+        "reactions": []
+      }
+    }
+  ]
+}

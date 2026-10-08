@@ -1,0 +1,476 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Switch",
+      "width": 60,
+      "height": 48,
+      "duration": 0,
+      "loop": "once",
+      "root": {
+        "id": "24:206",
+        "name": "Switch",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 8
+        },
+        "size": {
+          "x": 52,
+          "y": 32
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 26,
+          "y": 16
+        },
+        "draws": [
+          {
+            "paths": [
+              {
+                "data": "M0 16 C0 7.16344 7.16344 0 16 0 L36 0 C44.8366 0 52 7.16344 52 16 L52 16 C52 24.8366 44.8366 32 36 32 L16 32 C7.16344 32 0 24.8366 0 16 L0 16 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "paint": {
+              "kind": "solid",
+              "color": {
+                "r": 0.40392157435417175,
+                "g": 0.3137255012989044,
+                "b": 0.6431372761726379,
+                "a": 1
+              },
+              "opacity": 1,
+              "transform": {
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "d": 1,
+                "tx": 0,
+                "ty": 0
+              },
+              "stops": []
+            },
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 0,
+              "ty": 0
+            },
+            "size": {
+              "x": 52,
+              "y": 32
+            },
+            "paintIndex": 0,
+            "role": "fills"
+          }
+        ],
+        "clip": [],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I24:206;54446:25297",
+            "name": "Handle",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 4,
+              "ty": 2
+            },
+            "size": {
+              "x": 44,
+              "y": 28
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 22,
+              "y": 14
+            },
+            "draws": [],
+            "clip": [],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I24:206;54446:25298",
+                "name": "Target",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 8,
+                  "ty": -10
+                },
+                "size": {
+                  "x": 48,
+                  "y": 48
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 24,
+                  "y": 24
+                },
+                "draws": [],
+                "clip": [],
+                "bindings": [],
+                "children": [
+                  {
+                    "id": "I24:206;54446:25299",
+                    "name": "State-layer",
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 4,
+                      "ty": 4
+                    },
+                    "size": {
+                      "x": 40,
+                      "y": 40
+                    },
+                    "opacity": 1,
+                    "origin": {
+                      "x": 20,
+                      "y": 20
+                    },
+                    "draws": [
+                      {
+                        "paths": [
+                          {
+                            "data": "M0 20 C0 8.95431 8.95431 0 20 0 L20 0 C31.0457 0 40 8.95431 40 20 L40 20 C40 31.0457 31.0457 40 20 40 L20 40 C8.95431 40 0 31.0457 0 20 L0 20 Z",
+                            "windingRule": "NONZERO"
+                          }
+                        ],
+                        "paint": {
+                          "kind": "solid",
+                          "color": {
+                            "r": 0.40392157435417175,
+                            "g": 0.3137255012989044,
+                            "b": 0.6431372761726379,
+                            "a": 1
+                          },
+                          "opacity": 0.07999999821186066,
+                          "transform": {
+                            "a": 1,
+                            "b": 0,
+                            "c": 0,
+                            "d": 1,
+                            "tx": 0,
+                            "ty": 0
+                          },
+                          "stops": []
+                        },
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 0,
+                          "ty": 0
+                        },
+                        "size": {
+                          "x": 40,
+                          "y": 40
+                        },
+                        "paintIndex": 0,
+                        "role": "fills"
+                      }
+                    ],
+                    "clip": [],
+                    "bindings": [],
+                    "children": [
+                      {
+                        "id": "I24:206;54446:25300",
+                        "name": "Handle shape",
+                        "transform": {
+                          "a": 1,
+                          "b": 0,
+                          "c": 0,
+                          "d": 1,
+                          "tx": 8,
+                          "ty": 8
+                        },
+                        "size": {
+                          "x": 24,
+                          "y": 24
+                        },
+                        "opacity": 1,
+                        "origin": {
+                          "x": 12,
+                          "y": 12
+                        },
+                        "draws": [
+                          {
+                            "paths": [
+                              {
+                                "data": "M0 12 C0 5.37258 5.37258 0 12 0 L12 0 C18.6274 0 24 5.37258 24 12 L24 12 C24 18.6274 18.6274 24 12 24 L12 24 C5.37258 24 0 18.6274 0 12 L0 12 Z",
+                                "windingRule": "NONZERO"
+                              }
+                            ],
+                            "paint": {
+                              "kind": "solid",
+                              "color": {
+                                "r": 0.9176470637321472,
+                                "g": 0.8666666746139526,
+                                "b": 1,
+                                "a": 1
+                              },
+                              "opacity": 1,
+                              "transform": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                              },
+                              "stops": []
+                            },
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": 0,
+                              "ty": 0
+                            },
+                            "size": {
+                              "x": 24,
+                              "y": 24
+                            },
+                            "paintIndex": 0,
+                            "role": "fills"
+                          }
+                        ],
+                        "clip": [
+                          {
+                            "data": "M0 12 C0 5.37258 5.37258 0 12 0 L12 0 C18.6274 0 24 5.37258 24 12 L24 12 C24 18.6274 18.6274 24 12 24 L12 24 C5.37258 24 0 18.6274 0 12 L0 12 Z",
+                            "windingRule": "NONZERO"
+                          }
+                        ],
+                        "bindings": [],
+                        "children": [
+                          {
+                            "id": "I24:206;54446:25301",
+                            "name": "Container",
+                            "transform": {
+                              "a": 1,
+                              "b": 0,
+                              "c": 0,
+                              "d": 1,
+                              "tx": 11,
+                              "ty": 11
+                            },
+                            "size": {
+                              "x": 2,
+                              "y": 2
+                            },
+                            "opacity": 1,
+                            "origin": {
+                              "x": 1,
+                              "y": 1
+                            },
+                            "draws": [],
+                            "clip": [],
+                            "bindings": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "24:206",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I24:206;54446:25298",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "warning",
+      "code": "PROTOTYPE_EVENTS_NOT_EXPORTED",
+      "nodeID": "I24:206;54446:25298",
+      "message": "Interactive event wiring is not part of a single-scene export. Use the two-frame compiler for a constrained A→B clip."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I24:206;54446:25299",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    },
+    {
+      "severity": "info",
+      "code": "LAYOUT_SNAPSHOT",
+      "nodeID": "I24:206;54446:25300",
+      "message": "Resolved layout is exported at this size. No responsive layout engine is included."
+    }
+  ],
+  "sourceMotion": {
+    "I24:206;54446:25298": {
+      "animations": {},
+      "manualKeyframeTracks": {},
+      "animationStyles": [],
+      "timelines": [],
+      "variableResolutions": [],
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "24:67",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.20000000298023224
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "24:67",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.20000000298023224
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_PRESS"
+          }
+        },
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "24:64",
+            "navigation": "CHANGE_TO",
+            "transition": {
+              "type": "SMART_ANIMATE",
+              "easing": {
+                "type": "CUSTOM_CUBIC_BEZIER",
+                "easingFunctionCubicBezier": {
+                  "x1": 0.20000000298023224,
+                  "y1": 0,
+                  "x2": 0,
+                  "y2": 1
+                }
+              },
+              "duration": 0.20000000298023224
+            },
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "24:64",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.20000000298023224
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "MOUSE_LEAVE",
+            "delay": 0,
+            "deprecatedVersion": true
+          }
+        }
+      ]
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "switch-hovered"
+    ],
+    "referenceCoverage": "static",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "static",
+    "sourceNodeIDs": [
+      "24:206"
+    ],
+    "sourceCaptureSHA256": "08d27ee24dc60bce4186e2ce2a521f618911015690ac70ad0d1989e01e526e95"
+  }
+}

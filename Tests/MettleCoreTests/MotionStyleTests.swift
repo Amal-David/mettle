@@ -74,4 +74,26 @@ final class MotionStyleTests: XCTestCase {
         let first=track.sample(1.1)
         _=track.sample(2.5);_=track.sample(0.1);XCTAssertEqual(track.sample(1.1),first)
     }
+    func testChatBubbleOvershootPreservesItsBottomLeftAnchor() {
+        // Contract case using Figma's documented chat-bubble scale curve and
+        // bottom-left anchor, not a captured Community animation reference:
+        // https://help.figma.com/hc/en-us/articles/41837837143831
+        let scale = Track([Keyframe(0, [0], easing: Easing("cubic", control: [0, 0, 0.3, 1.4])),
+                           Keyframe(0.25, [1])])
+        let bubble = Node(id: "bubble", transform: .translation(24, 12), size: Point(60, 40),
+                          origin: Point(0, 40), bindings: [
+                            Binding("scaleX", base: [1], tracks: [scale]),
+                            Binding("scaleY", base: [1], tracks: [scale])
+                          ])
+        for time in [0.0, 0.08, 0.17, 0.25] {
+            let anchor = bubble.evaluate(at: time).transform.apply(Point(0, 40))
+            XCTAssertEqual(anchor.x, 24, accuracy: 1e-9)
+            XCTAssertEqual(anchor.y, 52, accuracy: 1e-9)
+        }
+        XCTAssertEqual(bubble.evaluate(at: 0).transform.apply(Point(60, 0)), Point(24, 52))
+        let overshoot = bubble.evaluate(at: 0.17).transform.apply(Point(60, 0))
+        XCTAssertGreaterThan(overshoot.x, 84)
+        XCTAssertLessThan(overshoot.y, 12)
+        XCTAssertEqual(bubble.evaluate(at: 0.25).transform.apply(Point(60, 0)), Point(84, 12))
+    }
 }

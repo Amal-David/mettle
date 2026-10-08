@@ -1,0 +1,369 @@
+{
+  "format": "figma-metal",
+  "version": 2,
+  "scenes": [
+    {
+      "name": "Loading indicator → Loading indicator",
+      "width": 48,
+      "height": 48,
+      "duration": 0.40100000600796193,
+      "loop": "once",
+      "root": {
+        "id": "20:284",
+        "name": "Loading indicator",
+        "transform": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 1,
+          "tx": 0,
+          "ty": 0
+        },
+        "size": {
+          "x": 48,
+          "y": 48
+        },
+        "opacity": 1,
+        "origin": {
+          "x": 24,
+          "y": 24
+        },
+        "draws": [],
+        "clip": [
+          {
+            "data": "M0 0 L48 0 L48 48 L0 48 L0 0 Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "bindings": [],
+        "children": [
+          {
+            "id": "I20:284;58005:8564",
+            "name": "Shape container",
+            "transform": {
+              "a": 1,
+              "b": 0,
+              "c": 0,
+              "d": 1,
+              "tx": 5,
+              "ty": 5
+            },
+            "size": {
+              "x": 38,
+              "y": 38
+            },
+            "opacity": 1,
+            "origin": {
+              "x": 19,
+              "y": 19
+            },
+            "draws": [],
+            "clip": [
+              {
+                "data": "M0 8 C0 3.58172 3.58172 0 8 0 L30 0 C34.4183 0 38 3.58172 38 8 L38 30 C38 34.4183 34.4183 38 30 38 L8 38 C3.58172 38 0 34.4183 0 30 L0 8 Z",
+                "windingRule": "NONZERO"
+              }
+            ],
+            "bindings": [],
+            "children": [
+              {
+                "id": "I20:284;58005:8565",
+                "name": "Shape",
+                "transform": {
+                  "a": 1,
+                  "b": 0,
+                  "c": 0,
+                  "d": 1,
+                  "tx": 2,
+                  "ty": 2.200000047683716
+                },
+                "size": {
+                  "x": 34,
+                  "y": 33.57500076293945
+                },
+                "opacity": 1,
+                "origin": {
+                  "x": 17,
+                  "y": 16.787500381469727
+                },
+                "draws": [
+                  {
+                    "paths": [
+                      {
+                        "data": "M13.3091 1.40363 C13.4924 1.254 13.584 1.17919 13.6677 1.11603 C15.6389 -0.372011 18.3611 -0.372011 20.3323 1.11603 C20.416 1.17919 20.5076 1.254 20.6909 1.40363 C20.7727 1.47042 20.8136 1.50381 20.8541 1.5356 C21.7818 2.26445 22.9191 2.67748 24.0993 2.71409 C24.1508 2.71569 24.2037 2.71634 24.3094 2.71765 C24.5462 2.72059 24.6646 2.72206 24.7694 2.72733 C27.2381 2.85162 29.3234 4.59743 29.8748 7.00154 C29.8982 7.10358 29.9202 7.21966 29.9642 7.45183 C29.9838 7.55547 29.9937 7.60729 30.0042 7.65759 C30.2452 8.81087 30.8504 9.85669 31.7309 10.6416 C31.7693 10.6759 31.8094 10.7103 31.8895 10.7791 C32.069 10.9332 32.1588 11.0102 32.2357 11.0815 C34.0467 12.76 34.5194 15.4347 33.393 17.6299 C33.3451 17.7231 33.2872 17.8262 33.1714 18.0322 C33.1196 18.1242 33.0938 18.1702 33.0694 18.2155 C32.5111 19.2536 32.3009 20.4429 32.4697 21.6088 C32.4771 21.6597 32.4856 21.7117 32.5027 21.8158 C32.5409 22.049 32.56 22.1656 32.573 22.2695 C32.879 24.7168 31.5179 27.0689 29.2407 28.0281 C29.1441 28.0688 29.0333 28.1106 28.8118 28.1942 C28.7129 28.2315 28.6635 28.2501 28.6156 28.2692 C27.5192 28.7063 26.592 29.4826 25.9701 30.484 C25.943 30.5277 25.916 30.5731 25.862 30.6637 C25.741 30.8669 25.6806 30.9685 25.6236 31.0564 C24.2814 33.1273 21.7234 34.0563 19.3609 33.3306 C19.2606 33.2998 19.1489 33.2608 18.9253 33.1827 C18.8256 33.1479 18.7757 33.1305 18.7268 33.1144 C17.6052 32.7461 16.3948 32.7461 15.2732 33.1144 C15.2243 33.1305 15.1744 33.1479 15.0747 33.1827 C14.8511 33.2608 14.7394 33.2998 14.6391 33.3306 C12.2767 34.0563 9.71865 33.1273 8.37641 31.0564 C8.31944 30.9685 8.25897 30.8669 8.13801 30.6637 C8.08402 30.5731 8.05702 30.5277 8.0299 30.484 C7.40803 29.4826 6.48083 28.7063 5.38436 28.2692 C5.33654 28.2501 5.28709 28.2315 5.18821 28.1942 C4.96669 28.1106 4.85593 28.0688 4.75928 28.0281 C2.48205 27.0689 1.12097 24.7168 1.42698 22.2695 C1.43997 22.1656 1.45908 22.049 1.4973 21.8158 C1.51436 21.7117 1.52289 21.6597 1.53026 21.6088 C1.69906 20.4429 1.48889 19.2536 0.930563 18.2155 C0.906211 18.1702 0.880352 18.1242 0.828635 18.0322 C0.712779 17.8262 0.654852 17.7231 0.60704 17.6299 C-0.519433 15.4347 -0.0467336 12.76 1.76433 11.0815 C1.8412 11.0102 1.93096 10.9332 2.11047 10.7791 C2.19061 10.7103 2.23068 10.6759 2.26908 10.6416 C3.14958 9.85669 3.75476 8.81087 3.99583 7.6576 C4.00634 7.60729 4.01617 7.55547 4.03582 7.45183 C4.07984 7.21966 4.10185 7.10357 4.12525 7.00153 C4.67662 4.59743 6.76192 2.85162 9.23063 2.72733 C9.33541 2.72206 9.45381 2.72059 9.69062 2.71765 C9.79633 2.71634 9.84919 2.71569 9.90067 2.71409 C11.0809 2.67748 12.2182 2.26445 13.1459 1.5356 C13.1864 1.50381 13.2273 1.47042 13.3091 1.40363 Z",
+                        "windingRule": "NONZERO"
+                      }
+                    ],
+                    "paint": {
+                      "kind": "solid",
+                      "color": {
+                        "r": 0.40392157435417175,
+                        "g": 0.3137255012989044,
+                        "b": 0.6431372761726379,
+                        "a": 1
+                      },
+                      "opacity": 1,
+                      "transform": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "stops": []
+                    },
+                    "transform": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0,
+                      "d": 1,
+                      "tx": 0,
+                      "ty": 0
+                    },
+                    "size": {
+                      "x": 34,
+                      "y": 33.57500076293945
+                    },
+                    "paintIndex": 0,
+                    "role": "fills"
+                  }
+                ],
+                "clip": [],
+                "bindings": [
+                  {
+                    "field": "translationY",
+                    "base": [
+                      2.200000047683716
+                    ],
+                    "tracks": [
+                      {
+                        "operation": "set",
+                        "timelineOffset": 0.0010000000474974513,
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": [
+                              2.200000047683716
+                            ],
+                            "easing": {
+                              "kind": "cubic",
+                              "control": [
+                                0.20000000298023224,
+                                0,
+                                0,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "time": 0.4000000059604645,
+                            "value": [
+                              2.5
+                            ],
+                            "easing": {
+                              "kind": "linear",
+                              "control": []
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "TRANSITION_GEOMETRY",
+      "nodeID": "I20:284;58005:8564",
+      "message": "Animated size/clip geometry is not implemented."
+    },
+    {
+      "severity": "error",
+      "code": "TRANSITION_GEOMETRY",
+      "nodeID": "I20:284;58005:8565",
+      "message": "Animated size/clip geometry is not implemented."
+    },
+    {
+      "severity": "error",
+      "code": "TRANSITION_DRAW_GEOMETRY",
+      "nodeID": "I20:284;58005:8565",
+      "message": "Path morphs/different source geometry are not implemented."
+    },
+    {
+      "severity": "info",
+      "code": "SOURCE_TRANSITION",
+      "nodeID": "20:284",
+      "message": "Loading indicator → Loading indicator: source 0.4000000059604645s Smart Animate transition, 0.0010000000474974513s delay. This clip does not run a prototype state machine."
+    }
+  ],
+  "sourceMotion": {
+    "from": {
+      "20:284": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": [],
+        "timelines": [],
+        "variableResolutions": [],
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:14",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:14",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    },
+    "to": {
+      "20:288": {
+        "animations": {},
+        "manualKeyframeTracks": {},
+        "animationStyles": [],
+        "timelines": [],
+        "variableResolutions": [],
+        "reactions": [
+          {
+            "action": {
+              "type": "NODE",
+              "destinationId": "20:16",
+              "navigation": "CHANGE_TO",
+              "transition": {
+                "type": "SMART_ANIMATE",
+                "easing": {
+                  "type": "CUSTOM_CUBIC_BEZIER",
+                  "easingFunctionCubicBezier": {
+                    "x1": 0.20000000298023224,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                  }
+                },
+                "duration": 0.4000000059604645
+              },
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            },
+            "actions": [
+              {
+                "type": "NODE",
+                "destinationId": "20:16",
+                "navigation": "CHANGE_TO",
+                "transition": {
+                  "type": "SMART_ANIMATE",
+                  "easing": {
+                    "type": "CUSTOM_CUBIC_BEZIER",
+                    "easingFunctionCubicBezier": {
+                      "x1": 0.20000000298023224,
+                      "y1": 0,
+                      "x2": 0,
+                      "y2": 1
+                    }
+                  },
+                  "duration": 0.4000000059604645
+                },
+                "resetVideoPosition": false,
+                "resetScrollPosition": true
+              }
+            ],
+            "trigger": {
+              "type": "AFTER_TIMEOUT",
+              "timeout": 0.0010000000474974513
+            }
+          }
+        ]
+      }
+    }
+  },
+  "motionSupport": {
+    "checkedAt": "2026-09-30",
+    "customStyles": "resolved-supported-tracks",
+    "easingVariables": "resolved-for-consumer-at-export",
+    "backEasing": "source-cubic-required",
+    "textAnimation": "whole-node-only; per-character/word not supported",
+    "audioTimeline": "not-supported; no published capture contract verified",
+    "lottie": "alternative-export; not a Mettle input or dependency"
+  },
+  "exporter": {
+    "name": "Mettle",
+    "version": "0.3.0",
+    "source": "Figma Plugin API",
+    "mode": "two-frame-transition"
+  },
+  "provenance": {
+    "communityURL": "https://www.figma.com/community/file/1035203688168086460/material-3-design-kit",
+    "creator": {
+      "name": "Google / Material Design",
+      "url": "https://m3.material.io/"
+    },
+    "capturedDate": "2026-10-08",
+    "sourceManifest": {
+      "path": "fixtures/community/material3/provenance.json",
+      "sha256": "3d6a919065d46229fe5587941ff9a36e6969a991c0194d7f1d21742e4e445b28"
+    },
+    "fixtureSlugs": [
+      "loading-step-2",
+      "loading-step-3"
+    ],
+    "referenceCoverage": "endpoint-states",
+    "prototypePlaybackFramesCaptured": false,
+    "captureFormat": "mettle-source",
+    "captureVersion": 1,
+    "mode": "transition",
+    "sourceNodeIDs": [
+      "20:284",
+      "20:288"
+    ],
+    "sourceCaptureSHA256": "116cfbaf41acd8c238567068af1f10b187e026f05e27ca4ec2d24c6f429fe580"
+  }
+}
