@@ -229,7 +229,7 @@ public struct PreviewRootView: View {
             if let document = session.document, document.scenes.count > 1 {
                 Picker("Scene", selection: Binding(get: { session.selectedScene }, set: session.chooseScene)) {
                     ForEach(document.scenes.indices, id: \.self) { Text(document.scenes[$0].name).tag($0) }
-                }.frame(maxWidth: 230)
+                }.frame(maxWidth: 230).disabled(session.isLoading)
             } else {
                 Text("Canvas").font(.system(size: 11, weight: .medium))
                 if let s = session.scene {
@@ -237,6 +237,11 @@ public struct PreviewRootView: View {
                 }
             }
             Spacer(minLength: 4)
+            Picker("Quality", selection: Binding(get: { session.rasterScale }, set: session.setRasterScale)) {
+                Text("Standard").tag(1)
+                Text("High quality").tag(2)
+            }.frame(width: 150).disabled(session.isLoading)
+                .help("High quality smooths edges and uses more GPU memory. This setting applies to the live preview and exported PNGs.")
             Menu {
                 Picker("Preview background", selection: $session.background) {
                     ForEach(["Checkerboard", "Light", "Dark"], id: \.self) { Text($0) }
@@ -257,7 +262,7 @@ public struct PreviewRootView: View {
                 }.buttonStyle(.borderedProminent).disabled(!session.hasMotion || session.reduceMotion || session.isLoading)
                     .help(session.reduceMotion ? "Reduce Motion is enabled in macOS" : "Play or pause (Space)")
                 Button { session.seek(0) } label: { Image(systemName: "backward.end") }
-                    .buttonStyle(.borderless).help("Restart (⌘R)").accessibilityLabel("Restart animation")
+                    .buttonStyle(.borderless).disabled(session.isLoading).help("Restart (⌘R)").accessibilityLabel("Restart animation")
                 Slider(value: Binding(get: { session.playback.position }, set: session.seek), in: 0...max(0.001, session.duration))
                     .disabled(!session.hasMotion || session.isLoading).accessibilityLabel("Animation time")
                     .accessibilityValue(String(format: "%.2f of %.2f seconds", session.playback.position, session.duration))
@@ -275,10 +280,10 @@ public struct PreviewRootView: View {
                 Spacer(minLength: 2)
                 Picker("Speed", selection: Binding(get: { session.playback.speed }, set: session.setSpeed)) {
                     ForEach([0.25, 0.5, 1.0, 2.0], id: \.self) { Text(String(format: "%g×", $0)).tag($0) }
-                }.frame(width: 98).disabled(!session.hasMotion).controlSize(.small)
+                }.frame(width: 98).disabled(!session.hasMotion || session.isLoading).controlSize(.small)
                 Toggle(isOn: Binding(get: { session.repeatEnabled }, set: { _ in session.toggleRepeat() })) {
                     Label(session.playback.repetition == .pingPong ? "Ping-pong" : "Repeat", systemImage: "repeat")
-                }.toggleStyle(.button).controlSize(.small).disabled(!session.hasMotion)
+                }.toggleStyle(.button).controlSize(.small).disabled(!session.hasMotion || session.isLoading)
             }
         }.padding(.horizontal, 22).padding(.vertical, 16)
     }
@@ -308,6 +313,7 @@ public struct PreviewRootView: View {
                             detail("DEVICE", r.device.name)
                             detail("GEOMETRY", "\(r.vertexCount) vertices")
                             detail("ANTIALIASING", "\(r.sampleCount)× MSAA")
+                            detail("QUALITY", "\(session.qualityName) · \(r.rasterScale)× internal raster size")
                         }.padding(.top, 12)
                     }.font(.system(size: 11))
                 }

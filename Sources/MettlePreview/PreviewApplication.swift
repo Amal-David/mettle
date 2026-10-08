@@ -13,11 +13,12 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
     private var keyboardMonitor: Any?
     private var appearanceObserver: AnyCancellable?
     public init(examples: [PreviewExample], initialURL: URL? = nil, initialExampleID: String? = nil,
-                initialTime: Double = 0, initialScene: Int = 0) {
+                initialTime: Double = 0, initialScene: Int = 0, initialRasterScale: Int = 1) {
         session = PreviewSession(examples: examples)
         self.initialURL = initialURL; self.initialExampleID = initialExampleID
         self.initialTime = initialTime; self.initialScene = initialScene
         super.init()
+        session.setRasterScale(initialRasterScale)
     }
     public func applicationDidFinishLaunching(_ notification: Notification) {
         installMenus()
@@ -35,7 +36,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         NSApp.activate(ignoringOtherApps: true)
         keyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             guard let self, NSApp.keyWindow === self.window, self.window?.attachedSheet == nil,
-                  !self.session.helpVisible, !self.session.referencesVisible, !(self.window?.firstResponder is NSTextView),
+                  !self.session.helpVisible, !self.session.referencesVisible, !self.session.isLoading, !(self.window?.firstResponder is NSTextView),
                   event.modifierFlags.intersection([.command, .control, .option, .shift]).isEmpty else { return event }
             switch event.keyCode {
             case 49: self.session.togglePlayback(); return nil // Space
@@ -83,6 +84,12 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         add(playback, "Play / Pause", #selector(togglePlay), " ", modifiers: [])
         add(playback, "Restart", #selector(restart), "r")
         let view = menu("View")
+        let qualityItem = NSMenuItem(title: "Quality", action: nil, keyEquivalent: "")
+        let qualityMenu = NSMenu(title: "Quality"); qualityItem.submenu = qualityMenu; view.addItem(qualityItem)
+        for (scale, title) in [(1, "Standard"), (2, "High quality")] {
+            let item = NSMenuItem(title: title, action: #selector(setQuality(_:)), keyEquivalent: "")
+            item.target = self; item.tag = scale; qualityMenu.addItem(item)
+        }
         add(view, "Fit Canvas", #selector(fit), "0")
         add(view, "Show / Hide File Details", #selector(details), "i")
         add(view, "Motion References", #selector(showReferences))
@@ -96,6 +103,10 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
         NSApp.mainMenu = bar
     }
     public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(setQuality(_:)) {
+            menuItem.state = session.rasterScale == menuItem.tag ? .on : .off
+            return !session.isLoading && window?.attachedSheet == nil
+        }
         if [#selector(exportFrame), #selector(reloadFile), #selector(closeDocument), #selector(details), #selector(fit)].contains(menuItem.action) {
             return session.renderer != nil && !session.isLoading
         }
@@ -112,6 +123,7 @@ public final class PreviewApplication: NSObject, NSApplicationDelegate, NSMenuIt
     @objc private func togglePlay() { session.togglePlayback() }
     @objc private func restart() { session.seek(0) }
     @objc private func fit() { session.zoom = "Fit" }
+    @objc private func setQuality(_ sender: NSMenuItem) { session.setRasterScale(sender.tag) }
     @objc private func details() { session.inspectorVisible.toggle() }
     @objc private func showReferences() { session.pause(); session.referencesVisible = true }
     @objc private func openFixture(_ sender: NSMenuItem) {

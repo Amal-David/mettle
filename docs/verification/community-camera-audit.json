@@ -1,0 +1,491 @@
+{
+  "format": "mettle-circular-source-camera-audit",
+  "version": 1,
+  "recordedAtUTC": "2026-10-08T11:45:13.683380+00:00",
+  "sourceFixture": "circular-wave-step-1",
+  "nativeRun": "artifacts/ci/40008b5/extracted/community/run-20261008T113624Z",
+  "scope": "Read-only audit of frozen Figma source geometry and PNGs plus provider export options. This record is not a changed reference or a new native pass.",
+  "files": {
+    "snapshot": {
+      "path": "fixtures/community/material3/circular-wave-step-1.snapshot.json",
+      "sha256": "70ab1e03f27062c45ddafe16be62abac9b612424ccd03c34a9f874818ef51704"
+    },
+    "referencePNG": {
+      "path": "fixtures/community/material3/reference/circular-wave-step-1.png",
+      "sha256": "fbde4711b4bafe659e8f3e78eb7873caea4e0bd1735029e03ee126d2d044b707"
+    },
+    "sourceSVG": {
+      "path": "fixtures/community/material3/reference/circular-wave-step-1.svg",
+      "sha256": "b6edf073fe07ef4c4fd22f40e1e74ebae6b33c685d92b0d21687047e81637179"
+    },
+    "nativePNG": {
+      "path": "artifacts/ci/40008b5/extracted/community/run-20261008T113624Z/native/circular-wave-step-1/0000.png",
+      "sha256": "b3acae00a428327fe36b18b3555e1216fe762c6a7c25e9a5a527ffc2a938a202"
+    }
+  },
+  "recordedViewport": {
+    "x": -0.08150482177734375,
+    "y": -0.0849151611328125,
+    "width": 49,
+    "height": 49
+  },
+  "sourceGeometryCheck": {
+    "method": "Parse every M/L/C/Z command in each source path and provider SVG path; transform original source control points using captured child matrices, then subtract recorded viewport origin. Compare corresponding coordinates without fitting any transform.",
+    "paths": [
+      {
+        "name": "Track",
+        "matchingCommandCount": 110,
+        "maximumCoordinateDifferencePixels": 9.037924558441546e-05
+      },
+      {
+        "name": "Active indicator",
+        "matchingCommandCount": 22,
+        "maximumCoordinateDifferencePixels": 8.364726155818403e-05
+      }
+    ],
+    "interpretation": "All 132 commands correspond. Differences are within provider SVG decimal serialization precision.",
+    "approximateSVGOuterExtent": [
+      0,
+      0,
+      48.078142665255065,
+      48.078122181981485
+    ],
+    "boundaryAreaCheck": {
+      "method": "Flatten each SVG cubic at 4096 equal parameter intervals; clip the resulting path to the named unit pixel; compute polygon area. Analysis only, not a renderer or golden.",
+      "pixel48_22": {
+        "approximateCoverage": 0.041056420984546094,
+        "referenceAlpha": 16,
+        "nativeAlpha": 0
+      },
+      "pixel22_48": {
+        "approximateCoverage": 0.04103540396886274,
+        "referenceAlpha": 16,
+        "nativeAlpha": 0
+      }
+    },
+    "svgApproximateFilledAreaPixels": 511.8557203748153
+  },
+  "alphaEvidence": {
+    "reference": {
+      "size": [
+        49,
+        49
+      ],
+      "intermediateAlphaHistogram": [
+        [
+          16,
+          32
+        ],
+        [
+          31,
+          10
+        ],
+        [
+          32,
+          18
+        ],
+        [
+          47,
+          10
+        ],
+        [
+          48,
+          2
+        ],
+        [
+          63,
+          8
+        ],
+        [
+          64,
+          3
+        ],
+        [
+          79,
+          10
+        ],
+        [
+          95,
+          17
+        ],
+        [
+          96,
+          3
+        ],
+        [
+          111,
+          10
+        ],
+        [
+          127,
+          12
+        ],
+        [
+          128,
+          12
+        ],
+        [
+          143,
+          10
+        ],
+        [
+          144,
+          4
+        ],
+        [
+          159,
+          9
+        ],
+        [
+          160,
+          1
+        ],
+        [
+          175,
+          4
+        ],
+        [
+          191,
+          16
+        ],
+        [
+          207,
+          7
+        ],
+        [
+          223,
+          15
+        ],
+        [
+          224,
+          14
+        ],
+        [
+          239,
+          28
+        ]
+      ],
+      "alphaTotal": 130438,
+      "alphaAreaPixels": 511.52156862745096,
+      "nonzeroLastRow": [
+        [
+          22,
+          16
+        ]
+      ],
+      "nonzeroLastColumn": [
+        [
+          22,
+          16
+        ]
+      ],
+      "alphaRow24": [
+        255,
+        255,
+        255,
+        255,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        16,
+        32,
+        0,
+        0
+      ]
+    },
+    "native": {
+      "size": [
+        49,
+        49
+      ],
+      "intermediateAlphaHistogram": [
+        [
+          64,
+          44
+        ],
+        [
+          128,
+          74
+        ],
+        [
+          191,
+          40
+        ]
+      ],
+      "alphaTotal": 130853,
+      "alphaAreaPixels": 513.1490196078431,
+      "nonzeroLastRow": [],
+      "nonzeroLastColumn": [],
+      "alphaRow24": [
+        255,
+        255,
+        255,
+        255,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64,
+        0,
+        0
+      ]
+    },
+    "interpretation": "Reference edge alphas occupy approximately one-sixteenth coverage increments; native intermediate alpha levels are exactly 64, 128, 191, consistent with four-sample MSAA. The one-pixel threshold-bounds discrepancy is caused by the two alpha-16 reference pixels at (48,22) and (22,48). The histogram alone does not identify Figma's internal AA implementation."
+  },
+  "liveProviderProbe": {
+    "fileKey": "flxINzepb5BgRcRfGj0Tl5",
+    "sourceFrameId": "20:307",
+    "absoluteTransform": [
+      [
+        1,
+        0,
+        80
+      ],
+      [
+        0,
+        1,
+        200
+      ]
+    ],
+    "absoluteBoundingBox": {
+      "x": 80,
+      "y": 200,
+      "width": 48,
+      "height": 48
+    },
+    "absoluteRenderBounds": {
+      "x": 79.91849517822266,
+      "y": 199.9150848388672,
+      "width": 48.081504821777344,
+      "height": 48.08491516113281
+    },
+    "createdNodeIds": [],
+    "mutatedNodeIds": [],
+    "outputs": [
+      {
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          },
+          "useAbsoluteBounds": false
+        },
+        "pngSHA256": "fbde4711b4bafe659e8f3e78eb7873caea4e0bd1735029e03ee126d2d044b707",
+        "dimensions": [
+          49,
+          49
+        ],
+        "exactlyMatchesFrozenReference": true,
+        "alphaRow24": [
+          255,
+          255,
+          255,
+          255,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          32,
+          0,
+          0
+        ]
+      },
+      {
+        "exportSettings": {
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          },
+          "useAbsoluteBounds": true
+        },
+        "pngSHA256": "3ef364ba0f9173dd009a0dc5408f3ba44918508b74df671eefe70c10667b60b5",
+        "dimensions": [
+          48,
+          48
+        ],
+        "exactlyMatchesFrozenReference": false,
+        "alphaRow24": [
+          255,
+          255,
+          255,
+          239,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0
+        ]
+      }
+    ],
+    "commonOriginOverlap": {
+      "dimensions": [
+        48,
+        48
+      ],
+      "differentRGBAPixels": 207,
+      "maximumAlphaDifference": 64
+    },
+    "interpretation": "The default export exactly reproduces the frozen PNG. Absolute-bounds export produces 48x48 and changes subpixel coverage within the shared area; the default 49x49 export is not simply nominal-origin pixels with extra padding. At row24,x3, alpha changes 255 to239 when selecting nominal absolute bounds, consistent with removing the recorded fractional offset."
+  },
+  "conclusion": [
+    "No evidence justifies changing the original camera, source geometry, or reference PNG.",
+    "The captured geometry, provider SVG, and read-only PNG export-options probe support the existing fractional source viewport.",
+    "Native edge coverage differs materially from the original Figma PNG; rasterization and AA require investigation. This audit does not prove that AA quantization is the sole source of all remaining error.",
+    "No transform was selected by minimizing native/reference image error, and no reference was cropped, resized, or replaced."
+  ]
+}

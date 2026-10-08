@@ -15,7 +15,7 @@ The import lives on an isolated [Community comparison page](https://www.figma.co
 
 These are four component families from one creator's Community kit. They are not four independently authored motion projects. The two progress controls are useful static controls and examples of absent motion; a numbered variant is not sufficient evidence of an animation.
 
-**Compilation acceptance is not native rendering parity.** No Metal device was available for these captures. The PNGs are static exports of actual variants, not frames sampled from a playing Figma prototype. Even a later passing comparison of both switch endpoints will not verify the transition's intermediate frames. The corpus and runner distinguish `static`, `endpoint-states`, and `timeline-frames` coverage.
+**Compilation acceptance is not native rendering parity.** The source capture stage had no Metal device. A later [native CI run and preserved report](../../../docs/COMMUNITY_VERIFICATION.md) passed all 12 render cases / 13 endpoint frames at High quality on an Apple Paravirtual device. The PNGs are static exports of actual variants, not frames sampled from a playing Figma prototype; the successful endpoint comparison does not verify intermediate playback. The corpus and runner distinguish `static`, `endpoint-states`, and `timeline-frames` coverage.
 
 ## Authentic motion evidence
 

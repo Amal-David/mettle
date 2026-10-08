@@ -24,6 +24,8 @@ Motion beta getters may not exist in every host. A static design has no invented
 
 Two frame-resource slots each have their own completion fence, preventing CPU reuse of that slot before its submitted GPU work finishes. The slot cursor advances only after a successful submission. Each slot pools offscreen textures by explicit dimensions, including single-sample rendering. The renderer exposes explicit-time rendering for regression tests and screenshots, and completed command-buffer timing for offscreen benchmarks. Asynchronous renders do not report a measured GPU duration. It is single-caller-thread code, not a concurrently mutable actor.
 
+High quality (`rasterScale: 2`) doubles the internal width and height while preserving the scene camera and requested output size. The entire clip/isolation graph renders at that size; a final Metal pass averages premultiplied 2×2 pixels before presentation or PNG readback. The larger root color/MSAA textures belong to their fenced frame slots. Internal dimensions and memory remain bounded. Standard (`rasterScale: 1`) is the default; the native manifest records the actual choice. This coverage fix passes all 13 current Community endpoint frames without altering references or gates; see [Community verification](COMMUNITY_VERIFICATION.md).
+
 ## Phase 2 completed: a small independent live corpus
 
 Two conformance frames were authored in real Figma, captured through the shared adapter, and rendered independently by Figma as PNG/video. The source snapshots retain geometry, transforms, paints and motion tracks. Source fingerprints confirm the transport did not alter paths/transforms. Goldens never enter the native runtime. The video check uses all 61 source timestamps, with position checks in addition to global RGB error. See VERIFICATION.md for results and limits.
@@ -37,7 +39,7 @@ This pass fixed reversed paint order, translation offset semantics, unsupported-
 3. **Effect passes:** Add a render graph for Gaussian/backdrop blur, shadows and supported blend modes, each with isolated source fixtures and goldens. WGSL/Figma shader adaptation is a separate future compiler/host project; no adapter is implemented here.
 4. **Native interactions:** Add a state-machine/event layer, transform-aware hit testing and application input bindings without coupling them to rasterization. Keep accessibility semantics in native controls.
 5. **Optimization:** Tight offscreen bounds, scissor intersections, batching, persistent uniforms, pipeline caches, tessellation caching and GPU captures. Establish stable color correctness before aggressive batching.
-6. **Packaging:** Versioned backward compatibility, resource manifests, a production fuzzing suite, installable binaries and code-signing workflows. Public distribution/CI execution are not performed by this local build.
+6. **Packaging:** Versioned backward compatibility, resource manifests, a production fuzzing suite, installable binaries and code-signing workflows. Signed binary distribution is not implemented.
 
 For each extension, add a compiler diagnostic test, CPU semantics tests where applicable, native GPU pixel tests, and a real Figma reference fixture. Removing an unsupported-feature error without those tests is not an implementation.
 

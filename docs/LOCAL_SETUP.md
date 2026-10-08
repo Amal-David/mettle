@@ -63,11 +63,13 @@ swift run -c release mettle preview
 
 Use **Open animation…** (⌘O), or drag a `.figmetal.json` export into the window. Raw `.fig`, Lottie, SVG and `.riv` files are not supported inputs. The welcome screen does not automatically play test artwork.
 
-The loaded-file controls are **Play/Pause**, **Restart**, the time slider, **Speed**, **Repeat**, **Zoom**, **Background**, and **Export frame…**. Space plays/pauses; arrow keys step by 1/30 second. After saving an updated source export, **Reload Export** (⇧⌘R) reloads it at the same playhead position. ⇧⌘E exports a PNG at the original canvas size. ⌘I reveals optional file/rendering details. Reduce Motion prevents playback. Appearance can be Light, Dark, or System.
+The loaded-file controls are **Play/Pause**, **Restart**, the time slider, **Speed**, **Repeat**, **Zoom**, **Background**, **Quality**, and **Export frame…**. Space plays/pauses; arrow keys step by 1/30 second. After saving an updated source export, **Reload Export** (⇧⌘R) reloads it at the same playhead position. ⇧⌘E exports a PNG at the original canvas size. ⌘I reveals optional file/rendering details. Reduce Motion prevents playback. Appearance can be Light, Dark, or System.
+
+Choose **High quality** for the edge coverage verified against the Community references. It uses the same quality for the live preview and exported PNG. Changing quality pauses in place and preserves your loaded scene, exact playhead, speed, repeat setting and zoom. **Standard** is the default and uses less GPU memory. High quality renders at twice the internal dimensions with a final Metal resolve; if an enlarged canvas exceeds the target or surface budget, choose Standard or reduce zoom. The app reports the limit and does not silently fall back.
 
 ```bash
 # Open a specific exported file directly.
-swift run -c release mettle preview /path/to/animation.figmetal.json
+swift run -c release mettle preview /path/to/animation.figmetal.json --raster-scale 2
 
 # Validate without opening the preview window.
 swift run -c release mettle validate /path/to/animation.figmetal.json

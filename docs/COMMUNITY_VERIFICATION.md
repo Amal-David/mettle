@@ -2,20 +2,48 @@
 
 ## Current evidence — October 8, 2026
 
-The corpus contains **11 authentic Material 3 component states**, **one compiled source hover transition**, and **seven deliberately blocked loading transitions**. Source provenance and deterministic compilation checks pass. Native Metal comparison of this new corpus is still pending; the capture session did not include a connected Metal-capable Mac.
+The corpus contains **11 authentic Material 3 component states**, **one compiled source hover transition**, and **seven deliberately blocked loading transitions**. Source provenance and deterministic compilation checks pass. **All 12 render cases, covering 13 exact-time endpoint frames, passed the original pixel gates** on the CI runner's **Apple Paravirtual device**, using High quality (`rasterScale: 2`, four-sample MSAA). [The successful native run](https://github.com/Amal-David/mettle/actions/runs/37772525330) also passed 103 Swift tests with Metal API Validation, macOS debug/release builds, and the iOS simulator library build. This is actual Metal execution on a virtualized Mac; physical iPhone performance and thermal behavior were not measured.
 
 The source is the [Material 3 Design Kit by Google / Material Design](https://www.figma.com/community/file/1035203688168086460/material-3-design-kit). Exact published component variants were imported into an isolated Figma page and captured through the Plugin API. The independent PNGs are Figma exports of those source variants. Their original bytes, node identities, component keys, source bounds, export settings, and SHA256 fingerprints are recorded in [provenance.json](../fixtures/community/material3/provenance.json).
 
 | Cases | Source evidence | Compiler result | Native pixel status |
 | --- | --- | --- | --- |
-| Loading indicator, seven creator-authored states | Seven independent 48×48 PNGs and source snapshots | All seven static states compile | Pending |
-| Circular wave, first state | Independent 49×49 PNG and source snapshot | Static state compiles | Pending |
-| Linear progress, first state | Independent 404×12 PNG and source snapshot | Static state compiles | Pending |
-| Switch enabled and hovered | Two independent 60×48 PNGs and source snapshots | Both static states compile | Pending |
-| Switch enabled → hovered | Captured descendant `ON_HOVER` → `CHANGE_TO` Smart Animate reaction; source duration 0.20000000298023224 seconds | Two native color bindings; no blocking diagnostics | Endpoint comparisons pending; intermediate source playback not captured |
+| Loading indicator, seven creator-authored states | Seven independent 48×48 PNGs and source snapshots | All seven static states compile | All seven pass |
+| Circular wave, first state | Independent 49×49 PNG and source snapshot | Static state compiles | Pass |
+| Linear progress, first state | Independent 404×12 PNG and source snapshot | Static state compiles | Pass |
+| Switch enabled and hovered | Two independent 60×48 PNGs and source snapshots | Both static states compile | Both pass |
+| Switch enabled → hovered | Captured descendant `ON_HOVER` → `CHANGE_TO` Smart Animate reaction; source duration 0.20000000298023224 seconds | Two native color bindings; no blocking diagnostics | Both endpoints pass; intermediate source playback not captured |
 | Loading cycle `1 → 2 → 3 → 4 → 5 → 7 → 6 → 1` | Seven captured creator-authored `AFTER_TIMEOUT` connections | All seven reject animated clip/size or path changes with `TRANSITION_GEOMETRY` and `TRANSITION_DRAW_GEOMETRY` | Deliberately not rendered |
 
 The switch reference images are **endpoint states**, not sampled prototype playback. Matching them can establish the final colors and geometry at the recorded endpoints. It cannot establish the easing curve or intermediate animation fidelity. The circular and linear snapshots contain no captured executable motion; numbered variants alone do not supply a timeline. These limits are preserved in the corpus and every HTML report.
+
+## Native findings and quality choice
+
+The first native run passed eight of 12 cases. The circular indicator failed foreground error gates, and the switch narrowly exceeded the whole-image changed-pixel gate. Source and native opaque colors matched. Native edge alpha values had four-sample coverage steps, while the Figma PNGs contained finer coverage increments. A separate [source camera audit](verification/community-camera-audit.json) matched all 132 circular SVG commands to the captured geometry and fractional viewport within 0.000091 pixels. A read-only Figma re-export reproduced the original PNG byte for byte. This supported improving edge sampling while preserving the camera.
+
+High quality renders the same scene at twice the internal width and height, then averages the completed premultiplied pixels in a final Metal pass. The reference files, source geometry, viewport, timestamps and gates remained unchanged between these runs:
+
+| Measurement | Standard, scale 1 | High quality, scale 2 |
+| --- | ---: | ---: |
+| Circular foreground RGB mean absolute error | 7.242094 | **0.343183** |
+| Circular foreground alpha mean absolute error | 8.909798 | **0.510109** |
+| Circular pixels with channel error above 8 | 8.746356% | **0.583090%** |
+| Circular foreground bounds error | 1 px | **0 px** |
+| Switch enabled pixels with channel error above 8 | 5.138889% | **1.666667%** |
+| Switch hovered pixels with channel error above 8 | 5.138889% | **1.111111%** |
+
+Every rendered case improved. At High quality, the largest whole-image RGB mean error among the 13 frames was 0.148843/255; the largest foreground RGB mean error was 0.343183/255. All foreground bounds matched exactly. These are measurements at the recorded endpoint sizes, not a guarantee for other artwork, sizes, or motion.
+
+![Independent Figma source, Standard Metal, High-quality Metal, and measured differences](media/community-fidelity.png)
+
+The [before-and-after measurements](verification/community-results.json) identify both commits, source hashes and settings. The complete, unmodified CI archives are preserved here:
+
+- [Standard run — 40008b5](verification/community-standard-40008b5.zip), including its failed gates.
+- [High-quality run — 01fbeac](verification/community-high-01fbeac.zip), including all 13 native PNGs, manifests and the passing HTML report.
+
+Extract either archive and open `community/run-<timestamp>/report/index.html`. Both include the original reference PNG bytes, native frames, amplified differences, exact times, provenance links and numerical gates. `python3 scripts/render_community_evidence.py` rebuilds the summary and display figure from those pinned archives.
+
+Standard remains the runtime, CLI and Preview default. Choose **High quality** in Preview or pass `--raster-scale 2` for the measured source-fidelity setting; the live preview and exported PNG share that choice. High quality uses four times as many internal pixels. The internal 8,388,608-pixel / 8192-per-axis limits allow at most 2,097,152 output pixels and 4096 on one output axis at scale 2. Nested isolation and clipping can reach the 256 MiB per-slot surface budget sooner. Oversized requests fail explicitly; choose Standard or a smaller target instead of silently substituting lower quality.
 
 ## Reproduce on a Metal-capable Mac
 
@@ -37,12 +65,13 @@ The script checks the frozen source artifacts, runs the comparison measurement t
 - `report/index.html`, linking a contact sheet for every case.
 - `report/comparison.json`, containing all frame metrics, gates, source/native hashes, exact times, and declared blockers.
 
-The renderer receives only compiled source JSON and explicit numerical settings. Reference PNG paths are never renderer arguments. For example, the source hover endpoints are rendered with `--times 0,0.20000000298023224 --loop once`; the explicit loop mode prevents the final endpoint from wrapping to the first frame.
+The renderer receives only compiled source JSON and explicit numerical settings. Reference PNG paths are never renderer arguments. The runner explicitly requests High quality. For example, the source hover endpoints are rendered with `--times 0,0.20000000298023224 --loop once --raster-scale 2`; the explicit loop mode prevents the final endpoint from wrapping to the first frame.
 
 Existing native outputs can be compared independently:
 
 ```bash
 python3 scripts/compare_corpus.py \
+  --raster-scale 2 \
   --native artifacts/community/my-native-run/native \
   --output artifacts/community/my-native-run/report
 ```
@@ -57,9 +86,9 @@ python3 scripts/compare_corpus.py --check-sources
 python3 scripts/test_corpus_compare.py
 ```
 
-The initial harness run passes 22 adversarial tests. Their images and native-looking manifests are temporary, explicitly synthetic measurement fixtures. They are never added to the Community reference corpus or treated as GPU renders.
+The current harness passes 23 adversarial tests. Their images and native-looking manifests are temporary, explicitly synthetic measurement fixtures. They are never added to the Community reference corpus or treated as GPU renders.
 
-The complete local repair validation passed 105 JavaScript exporter/host tests and 27 Python measurement tests (22 Community harness tests plus five existing comparison tests). The Linux Swift run executed 64 tests: 63 passed and one explicitly skipped because Metal is unavailable. Apple-only code and actual GPU regressions need the Mac checks described above; the portable count does not include them as passes.
+The repair validation passed 105 JavaScript exporter/host tests and 28 Python measurement tests (23 Community harness tests plus five existing comparison tests). The earlier Linux Swift run executed 64 tests: 63 passed and one explicitly skipped because Metal is unavailable. The later 103-test Apple run above includes actual GPU tests; the Linux skip was never counted as a GPU pass.
 
 The tests exercise missing native output; incorrect document hash, device/backend, scene, duration, dimensions, loop, timestamps and frame indices; stale or missing PNGs; modified reference/source files; localized errors hidden by large backgrounds; invisible RGB values; out-of-bounds regions; endpoint exports relabeled as timeline samples; and preservation of original PNG bytes in the generated report. They also check that declared blockers cannot produce pixel success.
 
@@ -75,10 +104,10 @@ The harness validates the complete association:
 2. Snapshot and PNG bytes match the provenance hashes. Reference dimensions and camera coordinates agree with the corpus.
 3. Each replay bundle contains the exact captured nodes in their recorded source order and points to the pinned provenance.
 4. Each compiled document points back to its replay-bundle hash. Its dimensions, scene index and duration match the case.
-5. Each native manifest identifies `backend: Metal`, the exact compiled-document SHA256, scene index, duration, loop, device, dimensions, and one hash-checked PNG for each exact scheduled timestamp.
+5. Each native manifest identifies `backend: Metal`, the exact compiled-document SHA256, scene index, duration, loop, device, dimensions, render settings, and one hash-checked PNG for each exact scheduled timestamp.
 6. Native frame counts and indices are complete and ordered. Unlisted PNGs, duplicate filenames, missing endpoints, or a looping final frame fail verification.
 
-The native frame schema is `mettle-frames`, version 1. Frame entries contain `index`, `time`, `file`, and `sha256`; the manifest additionally contains `sourceSHA256`, `sceneIndex`, `sceneDuration`, `loop`, `width`, `height`, and `device`.
+The native frame schema is `mettle-frames`, version 1. Frame entries contain `index`, `time`, `file`, and `sha256`; the manifest additionally contains `sourceSHA256`, `sceneIndex`, `sceneDuration`, `loop`, `width`, `height`, `device`, `curveTolerance`, `sampleCount`, `rasterScale`, `rasterWidth` and `rasterHeight`. Earlier manifests without raster fields retain scale-1 meaning. A requested quality must match the manifest; lower-quality evidence cannot satisfy a scale-2 request.
 
 For blocked cases, the exact set of error codes must match the declared contract. They receive the status `blocked-as-expected` and no pixel pass. Unexpected native output for a blocked case is itself a failed evidence check. `--check-sources` explicitly reports native pixels as `not-run`.
 
@@ -109,6 +138,6 @@ Every frame must pass its own whole-image, foreground and regional gates. Errors
 
 Foreground bounds may differ by at most two pixels. Regions include the switch thumb and hover halo, the loading shape, the two halves of the circular arc, and the visible four-pixel-high linear track. These measurements prevent large transparent areas from concealing missing artwork or a lost hover state.
 
-These are **initial engineering gates declared before native Community measurements**. They are not a claim of measured quality or universal source compatibility. The harness never changes thresholds or promotes a native image into a reference. A failed gate requires inspecting the source/native/difference panels and the renderer or source coordinate mapping; any later threshold change must be separately justified and reviewed.
+These are **engineering gates declared before native Community measurements and held unchanged through the repair**. Passing them does not imply universal source compatibility or pixel-perfect equality. The harness never changes thresholds or promotes a native image into a reference. A failed gate requires inspecting the source/native/difference panels and the renderer or source coordinate mapping; any later threshold change must be separately justified and reviewed.
 
 The HTML report copies the original reference and native PNG bytes into a separate directory, displays the exact timestamp, and adds a derived maximum-channel difference image amplified four times. Only that explicitly labeled difference image is synthesized.

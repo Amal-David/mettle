@@ -24,13 +24,17 @@ The current repair pass uses **real published Material 3 Community components**:
 | Real source case | Current result |
 | :--- | :--- |
 | Switch Enabled → Hovered | Converts the genuine 200 ms source interaction into two native paint bindings. The appearing state-layer fill and its overflow bounds are preserved. |
-| Eleven captured endpoints | All compile from original vectors. Independent Figma PNGs are retained for native comparison. |
+| Eleven captured endpoints | All compile from original vectors and pass the independent Figma PNG comparison at High quality. |
 | Seven loading-indicator transitions | Explicitly blocked because source paths, size and clipping change. No guessed morph or dissolve is exported. |
 | Circular and linear progress variants | Static artwork; their inspected component sets contain no executable motion. |
 
 The exporter now follows actual interaction direction, resolves component variant targets and descendant hotspots, retains source delays, and catches partially missing motion. The plugin separates keyframe, Smart Animate and static exports, saves replayable source captures and diagnostic reports, and can include original Figma reference PNGs with their exact bounds. Native fixes address frame-resource reuse, empty clips, paint-binding validation and playback state changes.
 
-**Native pixel comparison for this new Community corpus is pending until it runs on a Metal device.** A successful compile or a matching pair of endpoint states does not establish intermediate motion fidelity. The [verification report](docs/COMMUNITY_VERIFICATION.md) keeps those states separate. GitHub CI checks Apple compilation and records whether its runner actually provides Metal before attempting native comparisons.
+**All 12 native render cases / 13 endpoint frames pass the original comparison gates at High quality.** The [Apple CI run](https://github.com/Amal-David/mettle/actions/runs/37772525330) passed 103 Swift tests with Metal API Validation and the iOS simulator build on an Apple Paravirtual device. The first native run exposed coarse edge coverage; a bounded Metal supersampling/resolve pass reduced the circular indicator's foreground RGB error from **7.242 to 0.343 / 255**. Source geometry, reference PNGs, camera coordinates and thresholds were held fixed.
+
+Standard remains the default for resource compatibility. Select **High quality** in Preview or use `--raster-scale 2` for the measured setting. The [verification report](docs/COMMUNITY_VERIFICATION.md) includes the original before/after CI archives and all measurements. Endpoint matches do not establish intermediate motion fidelity or physical iPhone performance.
+
+![Figma source compared with Standard and High-quality native Metal rendering](docs/media/community-fidelity.png)
 
 ```bash
 node scripts/compile_community.mjs --check
@@ -99,7 +103,7 @@ The development plugin is in [`plugin/`](plugin). Its built `code.js` is checked
 
 ```bash
 swift run -c release mettle validate path/to/scene.figmetal.json
-swift run -c release mettle preview path/to/scene.figmetal.json
+swift run -c release mettle preview path/to/scene.figmetal.json --raster-scale 2
 ```
 
 For a bounded A→B animation, select two same-size source states and choose **Smart Animate · two states**. The source interaction determines direction, duration, easing and timeout. Bidirectional interactions require an explicit start state. Matching uses the source hierarchy and verified component identities; it does not reproduce an application's navigation or interaction state machine.
@@ -130,7 +134,7 @@ struct AnimationScreen: View {
 
     init(sceneURL: URL) throws {
         let document = try SceneDocument.load(url: sceneURL)
-        renderer = try MetalRenderer(scene: document.scenes[0])
+        renderer = try MetalRenderer(scene: document.scenes[0], rasterScale: 2)
     }
 
     var body: some View {
@@ -157,7 +161,7 @@ Pass `time:` for deterministic seeking or leave it `nil` for playback. The view 
 
 **Not implemented:** arbitrary Figma shaders, blur/shadows, image/video/pattern paints, advanced blending, sibling masks, path morph/trim, spring easing, changing text/layout, independent nested timelines, general prototype events, or hit testing. Some regional-paint cases are rejected. [Full compatibility notes →](docs/COMPATIBILITY.md)
 
-The current portable checks cover the exporter/host, Swift core/playback, and adversarial comparison measurements. Apple compilation is checked in CI. The connected development Mac was offline during this repair; current native evidence is tracked separately in the [Community verification report](docs/COMMUNITY_VERIFICATION.md). [Historical v0.3 evidence →](docs/MOTION_2026_09.md)
+The current checks cover the exporter/host, Swift core/playback, adversarial comparison measurements, actual Metal tests and independent source endpoints. The [Community verification report](docs/COMMUNITY_VERIFICATION.md) records the observed virtualized Mac device and limits. [Historical v0.3 evidence →](docs/MOTION_2026_09.md)
 
 Exports with unsupported features are blocked by default. An explicit incomplete-export override exists for investigation, not as a promise of fidelity.
 
@@ -174,7 +178,7 @@ The test artwork was created **inside live Figma**. The capture implementation p
 
 On the earlier controlled Figma conformance corpus: static mean RGB error was **0.242 / 255**, and the largest detected boundary difference across **61 motion frames** was **1 pixel**. This is not pixel-perfect parity: curved edges and small text differ, the glyph-region mean error was **3.893 / 255**, and flat backgrounds lower the overall average. These historical results do not measure the new Community corpus.
 
-**The previous v0.2 validation passed 106 tests on the development M4 Pro**: 36 exporter/capture, 29 Swift core, 14 actual GPU, 1 renderer-host regression, 21 preview/playback/reference tests, and 5 comparison-measurement tests. Metal API Validation and an arm64 iOS simulator library build also passed. Hosted CI checks source/compiler/core behavior and compilation; it does not claim GPU fidelity.
+**The previous v0.2 validation passed 106 tests on the development M4 Pro**: 36 exporter/capture, 29 Swift core, 14 actual GPU, 1 renderer-host regression, 21 preview/playback/reference tests, and 5 comparison-measurement tests. Metal API Validation and an arm64 iOS simulator library build also passed. Current Community native CI evidence is recorded separately above.
 
 [Verification and remaining gaps](docs/VERIFICATION.md) · [Machine-readable comparison](docs/media/comparison.json) · [Media provenance](docs/media/README.md)
 
@@ -201,7 +205,7 @@ swift run -c release mettle frames examples/demo.figmetal.json \
 # Exact source endpoints, with no loop-end wrap or FPS rounding:
 swift run -c release mettle frames \
   fixtures/community/material3/compiled/switch-hover.figmetal.json \
-  --times 0,0.20000000298023224 --loop once --output artifacts/switch-frames
+  --times 0,0.20000000298023224 --loop once --raster-scale 2 --output artifacts/switch-frames
 
 # Offscreen timing; not an iPhone FPS or startup-latency measurement.
 swift run -c release mettle bench --frames 180

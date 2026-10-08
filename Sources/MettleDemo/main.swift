@@ -32,7 +32,7 @@ struct Arguments {
         let shared: Set<String> = ["--scene", "--allow-partial"]
         let allowed: [String: Set<String>] = [
             "validate": shared,
-            "preview": ["--scene", "--example", "--time"], "demo": ["--scene", "--example", "--time"],
+            "preview": ["--scene", "--example", "--time", "--raster-scale"], "demo": ["--scene", "--example", "--time", "--raster-scale"],
             "render": shared.union(["--output", "--time", "--width", "--height", "--loop", "--raster-scale"]),
             "frames": shared.union(["--output", "--time", "--width", "--height", "--loop", "--times", "--fps", "--frames", "--raster-scale"]),
             "bench": shared.union(["--frames", "--width", "--height", "--loop", "--raster-scale"]),
@@ -86,7 +86,7 @@ func run() throws {
     if ["help","--help","-h"].contains(args.verb) {
         print("""
         Mettle v0.3
-          mettle preview [scene.figmetal.json] [--example motion|vectors] [--time 1]
+          mettle preview [scene.figmetal.json] [--example motion|vectors] [--time 1] [--raster-scale 1|2]
           mettle demo (alias for preview)
           mettle validate scene.figmetal.json [--allow-partial]
           mettle render [scene.figmetal.json] --output frame.png [--time 0] [--width 720] [--height 480]
@@ -96,7 +96,7 @@ func run() throws {
         Preview opens a welcome screen. Use --example motion or --example vectors to load an example.
         Add --scene N to select a scene. Render/bench default to the synthetic test scene.
         --times preserves exact source timestamps. --loop once preserves the final endpoint for comparison.
-        Render/frames/bench accept --raster-scale 2 for higher coverage with a Metal resolve; default is 1.
+        Preview/render/frames/bench accept --raster-scale 2 for higher coverage with a Metal resolve; default is 1.
         """); return
     }
     #if os(macOS)
@@ -118,7 +118,8 @@ func run() throws {
         let app = NSApplication.shared; app.setActivationPolicy(.regular)
         let delegate = PreviewApplication(examples: examples, initialURL: initialURL,
             initialExampleID: args.input == nil ? exampleID : nil,
-            initialTime: try args.double("--time", 0), initialScene: try args.int("--scene", 0))
+            initialTime: try args.double("--time", 0), initialScene: try args.int("--scene", 0),
+            initialRasterScale: try args.int("--raster-scale", 1))
         app.delegate = delegate
         withExtendedLifetime(delegate) { app.run() }
         return
