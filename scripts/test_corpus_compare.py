@@ -317,7 +317,8 @@ class CorpusComparisonTests(unittest.TestCase):
         with patch("compare_corpus.subprocess.run") as run:
             render_native(prepare(self.corpus_path), executable, self.root / "new-native-run")
         args = run.call_args.args[0]
-        self.assertIn(str(self.document_path), args)
+        # macOS aliases /var to /private/var; renderer inputs are canonical paths.
+        self.assertIn(str(self.document_path.resolve()), args)
         self.assertEqual(args[args.index("--times") + 1], "0,0.20000000298023224")
         self.assertEqual(args[args.index("--loop") + 1], "once")
         self.assertFalse(any(value.endswith(".png") for value in args))
