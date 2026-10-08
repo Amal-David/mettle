@@ -87,6 +87,46 @@ final class MetalTests: XCTestCase {
         _ = try renderer.pixels(width: 32, height: 32, time: 0)
         XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 1, "A resized target needs new surfaces")
     }
+    func testSupersampleResolvePreservesOutputSizeAndPremultipliedCoverage() throws {
+        let shape = rectangle("subpixel", 2.1, 3.1, 0.4, 0.4, RGBA(1, 0, 0, 0.5))
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: shape),
+                                         sampleCount: 1, rasterScale: 2)
+        let bytes = Array(try renderer.pixels(width: 64, height: 64, time: 0))
+        XCTAssertEqual(bytes.count, 64*64*4)
+        XCTAssertEqual(renderer.rasterScale, 2)
+        // One of four internal pixels is half-opaque red: both color and alpha
+        // resolve to 1/8. Averaging straight RGB would leave a bright fringe.
+        XCTAssertEqual(Int(pixel(bytes, 2, 3)[2]), 32, accuracy: 1)
+        XCTAssertEqual(Int(pixel(bytes, 2, 3)[3]), 32, accuracy: 1)
+        XCTAssertEqual(pixel(bytes, 3, 3), [0, 0, 0, 0])
+    }
+    func testSupersampledClipOpacityAndFrameSlotsSurviveReuseAndResize() throws {
+        var group = Node(id: "group", size: Point(16, 16),
+                         clip: [VectorPath("M0 0 H16 V16 H0 Z")],
+                         children: [rectangle("first", 0, 0, 32, 32, RGBA(1, 0, 0)),
+                                    rectangle("overlap", 8, 0, 32, 32, RGBA(1, 0, 0))])
+        group.opacity = 0.5
+        let renderer = try MetalRenderer(scene: Scene(width: 64, height: 64, root: group), rasterScale: 2)
+        let first = try renderer.pixels(width: 64, height: 64, time: 0)
+        XCTAssertEqual(Int(pixel(Array(first), 12, 8)[3]), 128, accuracy: 1)
+        XCTAssertEqual(pixel(Array(first), 24, 8), [0, 0, 0, 0])
+        _ = try renderer.pixels(width: 64, height: 64, time: 0) // Warm the second independent slot.
+        for _ in 0..<4 {
+            XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+            XCTAssertEqual(renderer.lastStatistics.surfaceAllocations, 0)
+        }
+        let resized = try renderer.pixels(width: 32, height: 32, time: 0)
+        XCTAssertEqual(resized.count, 32*32*4)
+        XCTAssertEqual(try renderer.pixels(width: 64, height: 64, time: 0), first)
+    }
+    func testSupersampleLimitsApplyToInternalTargetsBeforeAllocation() throws {
+        let scene = Scene(width: 64, height: 64, root: Node(id: "root"))
+        let renderer = try MetalRenderer(scene: scene, rasterScale: 2)
+        XCTAssertThrowsError(try renderer.makeTarget(width: 4097, height: 1))
+        XCTAssertThrowsError(try renderer.makeTarget(width: 2048, height: 1025))
+        for scale in [0, 3, Int.max] { XCTAssertThrowsError(try MetalRenderer(scene: scene, rasterScale: scale)) }
+        XCTAssertNoThrow(try renderer.pixels(width: 64, height: 64, time: 0))
+    }
     func testColorMotionUsesTheOriginalPaintIndexAndEffectiveAlpha() {
         var node = rectangle("multi-fill", 0, 0, 16, 16, RGBA(1, 0, 0))
         node.draws[0].paintIndex = 2

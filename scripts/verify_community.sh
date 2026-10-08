@@ -16,6 +16,7 @@ MTL_DEBUG_LAYER=1 swift test --jobs 4
 swift build -c release --product mettle
 MTL_DEBUG_LAYER=1 python3 scripts/compare_corpus.py \
   --render-with .build/release/mettle \
+  --raster-scale 2 \
   --native "$output/native" \
   --output "$output/report"
 printf 'Community comparison report: %s/report/index.html\n' "$output"

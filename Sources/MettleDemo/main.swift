@@ -33,9 +33,9 @@ struct Arguments {
         let allowed: [String: Set<String>] = [
             "validate": shared,
             "preview": ["--scene", "--example", "--time"], "demo": ["--scene", "--example", "--time"],
-            "render": shared.union(["--output", "--time", "--width", "--height", "--loop"]),
-            "frames": shared.union(["--output", "--time", "--width", "--height", "--loop", "--times", "--fps", "--frames"]),
-            "bench": shared.union(["--frames", "--width", "--height", "--loop"]),
+            "render": shared.union(["--output", "--time", "--width", "--height", "--loop", "--raster-scale"]),
+            "frames": shared.union(["--output", "--time", "--width", "--height", "--loop", "--times", "--fps", "--frames", "--raster-scale"]),
+            "bench": shared.union(["--frames", "--width", "--height", "--loop", "--raster-scale"]),
             "help": [], "--help": [], "-h": []
         ]
         guard let valid = allowed[verb] else { throw SceneError.invalid("Unknown command \(verb); run mettle help") }
@@ -47,6 +47,9 @@ struct Arguments {
         }
         if ["validate", "frames"].contains(verb), input == nil {
             throw SceneError.invalid("\(verb) requires an explicit .figmetal.json input file")
+        }
+        if let scale = options["--raster-scale"], !["1", "2"].contains(scale) {
+            throw SceneError.invalid("Raster scale must be 1 or 2")
         }
     }
     func int(_ key:String,_ fallback:Int) throws -> Int {
@@ -93,6 +96,7 @@ func run() throws {
         Preview opens a welcome screen. Use --example motion or --example vectors to load an example.
         Add --scene N to select a scene. Render/bench default to the synthetic test scene.
         --times preserves exact source timestamps. --loop once preserves the final endpoint for comparison.
+        Render/frames/bench accept --raster-scale 2 for higher coverage with a Metal resolve; default is 1.
         """); return
     }
     #if os(macOS)
@@ -152,7 +156,7 @@ func run() throws {
         return
     }
     #if os(macOS)
-    let renderer = try MetalRenderer(scene:scene)
+    let renderer = try MetalRenderer(scene:scene, rasterScale:try args.int("--raster-scale",1))
     let width = try args.int("--width",max(1,Int(scene.width.rounded()))), height = try args.int("--height",max(1,Int(scene.height.rounded())))
     switch args.verb {
     case "render":
@@ -188,6 +192,7 @@ func run() throws {
             "sceneIndex":index,"sceneDuration":scene.duration,"loop":scene.loop,
             "width":width,"height":height,"frames":entries,
             "device":renderer.device.name,"curveTolerance":0.05,"sampleCount":renderer.sampleCount,
+            "rasterScale":renderer.rasterScale,"rasterWidth":width*renderer.rasterScale,"rasterHeight":height*renderer.rasterScale,
             "note":"Native Metal sequence evaluated at the exact listed timestamps. No reference images are loaded by the renderer."]
         if args.options["--times"] == nil { manifest["fps"] = fps }
         try JSONSerialization.data(withJSONObject:manifest,options:[.prettyPrinted,.sortedKeys])
@@ -207,7 +212,7 @@ func run() throws {
         gpu.sort(); wall.sort()
         func percentile(_ a:[Double],_ p:Double)->Double { a[min(a.count-1,Int(Double(a.count-1)*p))] }
         let result:[String:Any] = ["device":renderer.device.name,"width":width,"height":height,"frames":count,
-            "sampleCount":renderer.sampleCount,"vertices":renderer.vertexCount,"drawCalls":renderer.lastStatistics.drawCalls,
+            "sampleCount":renderer.sampleCount,"rasterScale":renderer.rasterScale,"vertices":renderer.vertexCount,"drawCalls":renderer.lastStatistics.drawCalls,
             "surfaces":renderer.lastStatistics.surfaceCount,"gpuMedianMs":percentile(gpu,0.5),"gpuP95Ms":percentile(gpu,0.95),
             "wallMedianMs":percentile(wall,0.5),"wallP95Ms":percentile(wall,0.95),"note":"Synchronous offscreen benchmark; not an on-device iOS FPS measurement." ]
         print(String(data:try JSONSerialization.data(withJSONObject:result,options:[.prettyPrinted,.sortedKeys]),encoding:.utf8)!)

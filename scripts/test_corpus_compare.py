@@ -99,6 +99,7 @@ class CorpusComparisonTests(unittest.TestCase):
             self.manifest = {"format": "mettle-frames", "version": 1, "backend": "Metal",
                              "sourceSHA256": digest(self.document_path), "sceneIndex": 0, "sceneDuration": times[-1],
                              "loop": "once", "width": width, "height": height,
+                             "curveTolerance": 0.05, "sampleCount": 4, "rasterScale": 1,
                              "device": "Synthetic measurement test fixture; not a GPU result", "frames": entries}
             self.save_native()
         return case
@@ -129,12 +130,30 @@ class CorpusComparisonTests(unittest.TestCase):
         self.assertFalse(result["pixelPass"])
         self.assertEqual(result["comparedCases"], 0)
 
+    def test_requested_raster_quality_cannot_reuse_lower_quality_evidence(self):
+        self.fixture()
+        prepared = prepare(self.corpus_path)
+        lower = compare(prepared, self.native, expected_raster_scale=2)
+        self.assertFalse(lower["pass"])
+        self.assertIn("raster scale", lower["cases"][0]["error"])
+        self.manifest.update(rasterScale=2, rasterWidth=32, rasterHeight=32)
+        self.save_native()
+        higher = compare(prepared, self.native, expected_raster_scale=2)
+        self.assertTrue(higher["pass"])
+        self.assertEqual(higher["cases"][0]["renderSettings"]["rasterScale"], 2)
+        del self.manifest["rasterScale"]
+        del self.manifest["rasterWidth"]
+        del self.manifest["rasterHeight"]
+        self.save_native()
+        self.assertTrue(compare(prepared, self.native, expected_raster_scale=1)["pass"])
+
     def test_native_manifest_invariants_are_not_silently_ignored(self):
         image = Image.new("RGBA", (8, 8), (25, 50, 100, 255))
         self.fixture([image, image])
         original = copy.deepcopy(self.manifest)
         changes = [("backend", "CPU"), ("sourceSHA256", "0" * 64), ("sceneIndex", 1), ("sceneDuration", 1),
-                   ("loop", "loop"), ("width", 9), ("height", 9), ("device", ""), ("format", "generic-images")]
+                   ("loop", "loop"), ("width", 9), ("height", 9), ("device", ""), ("format", "generic-images"),
+                   ("sampleCount", 3), ("sampleCount", True), ("curveTolerance", 0), ("rasterScale", 3), ("rasterWidth", 7)]
         for field, value in changes:
             with self.subTest(field=field):
                 self.manifest = {**copy.deepcopy(original), field: value}
@@ -315,12 +334,13 @@ class CorpusComparisonTests(unittest.TestCase):
         executable = self.root / "synthetic-executable-never-run"
         executable.touch()
         with patch("compare_corpus.subprocess.run") as run:
-            render_native(prepare(self.corpus_path), executable, self.root / "new-native-run")
+            render_native(prepare(self.corpus_path), executable, self.root / "new-native-run", raster_scale=2)
         args = run.call_args.args[0]
         # macOS aliases /var to /private/var; renderer inputs are canonical paths.
         self.assertIn(str(self.document_path.resolve()), args)
         self.assertEqual(args[args.index("--times") + 1], "0,0.20000000298023224")
         self.assertEqual(args[args.index("--loop") + 1], "once")
+        self.assertEqual(args[args.index("--raster-scale") + 1], "2")
         self.assertFalse(any(value.endswith(".png") for value in args))
 
 

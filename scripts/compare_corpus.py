@@ -315,7 +315,7 @@ def gate_measurements(measurement, thresholds):
     return gates
 
 
-def native_frames(case, directory):
+def native_frames(case, directory, expected_raster_scale=None):
     require(directory.is_dir(), f"{case['id']}: missing native evidence directory")
     manifest_path = directory / "manifest.json"
     manifest = load_json(manifest_path)
@@ -329,6 +329,16 @@ def native_frames(case, directory):
     require((integer(manifest.get("width"), "native width", 1), integer(manifest.get("height"), "native height", 1)) == size,
             f"{case['id']}: native manifest dimensions mismatch")
     require(isinstance(manifest.get("device"), str) and manifest["device"].strip(), f"{case['id']}: missing native device identity")
+    number(manifest.get("curveTolerance"), "native curveTolerance", minimum=1e-9, maximum=1)
+    require(integer(manifest.get("sampleCount"), "native sampleCount", 1, 32) in (1, 2, 4, 8, 16, 32),
+            f"{case['id']}: invalid native MSAA sample count")
+    raster_scale = integer(manifest.get("rasterScale", 1), "native rasterScale", 1, 2)
+    if expected_raster_scale is not None:
+        require(raster_scale == expected_raster_scale, f"{case['id']}: native raster scale differs from the requested quality")
+    for key, dimension in zip(("rasterWidth", "rasterHeight"), size):
+        if key in manifest:
+            require(integer(manifest[key], f"native {key}", 1) == dimension * raster_scale,
+                    f"{case['id']}: inconsistent internal raster dimensions")
     frames = manifest.get("frames")
     require(isinstance(frames, list) and len(frames) == len(case["resolvedFrames"]), f"{case['id']}: native frame count mismatch")
     names, output = set(), []
@@ -346,7 +356,7 @@ def native_frames(case, directory):
     return manifest, output
 
 
-def compare(prepared, native_root):
+def compare(prepared, native_root, expected_raster_scale=None):
     results = []
     for case in prepared["cases"]:
         result = {"id": case["id"], "expectation": case["expectation"], "coverage": case["coverage"],
@@ -359,9 +369,11 @@ def compare(prepared, native_root):
                         f"{case['id']}: blocked conversion has unexpected native output")
                 result.update(status="blocked-as-expected", passContract=True, expectedErrorCodes=case["expectedErrorCodes"], diagnostics=case["diagnostics"])
             else:
-                manifest, frames = native_frames(case, directory)
+                manifest, frames = native_frames(case, directory, expected_raster_scale)
                 result["nativeManifestSHA256"] = digest(directory / "manifest.json")
                 result["device"] = manifest["device"]
+                result["renderSettings"] = {"curveTolerance": manifest["curveTolerance"],
+                    "sampleCount": manifest["sampleCount"], "rasterScale": manifest.get("rasterScale", 1)}
                 for reference, actual in zip(case["resolvedFrames"], frames):
                     measurement = measure(png(reference["reference"]["resolvedPath"]), png(actual["path"]), case)
                     gates = gate_measurements(measurement, prepared["data"]["thresholds"])
@@ -449,9 +461,10 @@ def write_report(prepared, summary, native_root, output):
     (output / "index.html").write_text(page)
 
 
-def render_native(prepared, executable, native_root):
+def render_native(prepared, executable, native_root, raster_scale=1):
     """Run the native CLI with exact times; no source image is an input."""
     executable = executable.resolve()
+    require(integer(raster_scale, "render raster scale", 1, 2) in (1, 2), "Raster scale must be 1 or 2")
     require(executable.is_file(), f"Missing native renderer executable {executable}")
     native_root = native_root.resolve()
     require(not native_root.is_relative_to(prepared["root"]) and not prepared["root"].is_relative_to(native_root),
@@ -463,7 +476,8 @@ def render_native(prepared, executable, native_root):
         times = ",".join(repr(frame["time"]) for frame in case["resolvedFrames"])
         subprocess.run([str(executable), "frames", str(case["documentPath"]), "--scene", str(case["sceneIndex"]),
                         "--width", str(case["viewport"]["width"]), "--height", str(case["viewport"]["height"]),
-                        "--loop", "once", "--times", times, "--output", str(native_root / case["id"])], check=True)
+                        "--loop", "once", "--times", times, "--raster-scale", str(raster_scale),
+                        "--output", str(native_root / case["id"])], check=True)
 
 
 def main(argv=None):
@@ -473,18 +487,25 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, default=ROOT / "artifacts/community/report")
     parser.add_argument("--check-sources", action="store_true", help="Check source/compile integrity only; no native pixel claim")
     parser.add_argument("--render-with", type=Path, help="Native mettle CLI to run before comparison (requires an Apple Metal device)")
+    parser.add_argument("--raster-scale", type=int, choices=(1, 2),
+                        help="Render at this scale and require matching manifest quality; rendering defaults to 1")
     args = parser.parse_args(argv)
     try:
         prepared = prepare(args.corpus)
         if args.check_sources:
-            require(args.render_with is None, "--check-sources cannot render native frames")
+            require(args.render_with is None and args.raster_scale is None, "--check-sources cannot request native rendering settings")
             print(json.dumps({"sourceIntegrityPass": True, "cases": len(prepared["cases"]), "nativePixels": "not-run", "motionPlaybackVerified": False}))
             return 0
         if args.render_with:
-            render_native(prepared, args.render_with, args.native)
-        summary = compare(prepared, args.native)
+            render_native(prepared, args.render_with, args.native, args.raster_scale or 1)
+        summary = compare(prepared, args.native, args.raster_scale)
         write_report(prepared, summary, args.native, args.output)
         print(json.dumps({key: summary[key] for key in ("pass", "pixelPass", "renderCases", "comparedCases", "expectedBlockedCases", "motionPlaybackVerified")}, indent=2))
+        failed = [{"case": case["id"], "time": frame["time"],
+                   "gates": [gate for gate in frame["gates"] if not gate["pass"]]}
+                  for case in summary["cases"] for frame in case["frames"] if not frame["pass"]]
+        if failed:
+            print(json.dumps({"failedPixelGates": failed}, indent=2))
         print(f"Report: {args.output / 'index.html'}")
         return 0 if summary["pass"] else 1
     except (EvidenceError, OSError, subprocess.CalledProcessError, KeyError, TypeError) as error:
